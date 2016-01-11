@@ -1,0 +1,231 @@
+\documentclass{beamer}
+
+\input{../ts-glærur}
+
+\title{FOR3R - hugtök í reikniritum}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Skilgreiningar: Reiknirit}
+Í fyrsta tíma skilgreindum við reiknirit sem \emph{forrit} sem:
+\begin{itemize}
+  \item Eru vel skilgreind (hlutverk og notkun)
+  \item Taka inn breytur
+  \item Beita skilgreindum reikniaðgerðum
+  \item Skila niðurstöðu
+\end{itemize}
+En þetta þarf ekki að vera eina rétta skilgreiningin.
+\end{frame}
+
+\begin{frame}{Skilgreiningar: Reiknirit}
+\begin{quote}
+``Informally, an algorithm is any well-defined computational procedure that takes
+some value, or set of values, as input and produces some value, or set of values, as
+output. An algorithm is thus a sequence of computational steps that transform the
+input into the output.''
+\end{quote} - Introduction to Algorithms
+\end{frame}
+
+\begin{frame}{Skilgreiningar: Reiknirit}
+\begin{quote}
+``An algorithm is an effective method expressed as a finite list$^{[1]}$ of well-defined instructions$^{[2]}$ for calculating a function.$^{[3]}$ Starting from an initial state and initial input (perhaps empty),$^{[4]}$ the instructions describe a computation that, when executed, proceeds through a finite $^{[5]}$ number of well-defined successive states, eventually producing ''output``$^{[6]}$ and terminating at a final ending state.''
+\end{quote} - \href{http://en.wikipedia.org/wiki/Algorithm}{Wikipedia}
+\end{frame}
+
+\begin{frame}{Reiknirit - bara fyrir tölur?}
+\begin{quote}
+``Again, it might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science of operations, and which should be also susceptible of adaptations to the action of the operating notation and mechanism of the engine.''
+\end{quote} - Ada Lovelace
+\end{frame}
+
+\begin{frame}{Örfá fræg reiknirit}
+
+\begin{itemize}
+ \item \href{http://en.wikipedia.org/wiki/Euclidean_algorithm}{Reiknirit Evklíðs}: Stærsti samnefnari tveggja talna
+ \item Reiknirit \href{http://en.wikipedia.org/wiki/Dijkstra\%27s\_algorithm}{Dijkstra}/\href{http://en.wikipedia.org/wiki/A*\_search_algorithm}{A*}: Strætóleiðir, tölvuleikir, o.fl.
+ \item \href{http://en.wikipedia.org/wiki/RSA\_(algorithm)}{RSA}: Dulkóðun
+ \item \href{http://en.wikipedia.org/wiki/PageRank}{PageRank}: Google-niðurstöður (gamalt)
+ \item \href{http://en.wikipedia.org/wiki/MapReduce}{MapReduce}: Dreifing verkefna yfir tölvukerfi
+ \item \href{http://en.wikipedia.org/wiki/AKS\_primality\_test}{AKS primality test}: Prímtölur
+\end{itemize}
+Einnig: Reiknirit fyrir leit og röðun.
+\end{frame}
+
+
+\begin{frame}{Hvernig lýsum við reikniritum?}
+Reikniritum má lýsa á marga vegu. T.d. má lýsa þeim með því að nota
+\begin{itemize}
+ \item mannamál
+ \item sauðakóða
+ \item forritunarmál
+ \item rafrásir?
+\end{itemize}
+Flestar leiðir eru færar svo lengi sem útkoman er skýr.
+\end{frame}
+
+\begin{frame}{Hvernig lýsum við reikniritum?}
+\begin{quote}
+\emph{Science is what we understand well enough to explain to a computer}
+\end{quote} - Donald Knuth
+\end{frame}
+
+\begin{frame}{Skilgreiningar: Rétt reiknirit}
+\begin{itemize}
+ \item Reiknirit er sagt \emph{rétt} (e. \emph{correct}) ef það skilar skilgreindri niðurstöðu fyrir öll skilgreind inntök
+ \begin{itemize}
+  \item Sum reiknirit eru gagnleg þó þau séu ekki rétt
+  \item Dæmi: Mörg ``Heuristic'' reiknirit (í. \emph{brjóstvitsaðferðir})
+ \end{itemize}
+ \item Rétt reiknirit \emph{leysir} (e. \emph{solves}) gefið, tölulegt vandamál
+ \begin{itemize}
+  \item Ekki er nóg að reiknirit leysi vandamál til að það sé gagnlegt
+  \item Dæmi: Bogosort
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Kynning: Tímaflækja}
+\begin{itemize}
+ \item Reiknirit geta þurft mjög mismunandi tíma til að leysa sama verkefni
+ \item Mjög hefðbundin aðferð við að komast að keyrslutíma: Mæla hann
+ \begin{itemize}
+  \item ``Með inntak af stærð $n = 1000$ var forritið 567ms í keyrslu á 2.4 GHz örgjörva...''
+  \item Python: \href{http://docs.python.org/2/library/timeit.html}{timeit}
+ \end{itemize}
+ \item Aðferð sem veitir almennari innsýn: Að telja grundvallaraðgerðir
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Að telja grunnaðgerðir}
+Til að einfalda talningu gerum við ráð fyrir ýmsu um tölvuna sem reikniritin keyra á.
+\begin{itemize}
+ \item Einn örgjörvi, engin samhliða vinnsla
+ \item Enginn skortur á minni, einungis ein gerð af minni
+ \begin{itemize}
+  \item Wikipedia: \href{http://en.wikipedia.org/wiki/Memory_hierarchy}{Memory hierarchy}
+ \end{itemize}
+ \item Einfaldar aðgerðir taka fastan (e. \emph{constant}) tíma. Þar á meðal eru
+ \begin{itemize}
+  \item Aflestur og skrif gagna í minni
+  \item Stýring: if, lykkjur, fallsköll
+  \item Reikniaðgerðir: samlagning, frádráttur, margföldun, deiling
+  \item Jafnvel algeng stærðfræðiföll (lograr, veldishafning, hornaföll?)
+ \end{itemize}
+\end{itemize}
+Ath. vandlega: Einfaldanir!
+\end{frame}
+
+\begin{frame}[fragile]{Að telja grunnaðgerðir - dæmi}
+Athugum Python-fall sem leggur saman þrjár tölur.
+
+\begin{minted}{python}
+def add_three(a, b, c):
+    total = a  # Constant time c1
+    total += b  # Constant time c2
+    total += c  # Constant time c3
+
+    return total
+\end{minted}
+
+Heildarkeyrslutíminn er summa $c_1$, $c_2$ og $c_3$. Þar sem þetta eru allt fastar segjum við að keyrslutíminn sé \emph{fastur}. Köllum hann $T = c_1 + c_2 + c_3 = \sum_i^3 c_i$.
+
+Ath: Í raunverulegri tölvu væri raunverulegur keyrslutími háður t.d. stærð og tagi talnanna. Við lítum framhjá slíku.
+\end{frame}
+
+\begin{frame}[fragile]{Að telja grunnaðgerðir - dæmi}
+Athugum Python-fall sem finnur meðaltal talna í lista.
+
+\begin{minted}{python}
+def list_average(a):
+    total = 0  # Constant time c1
+    n = len(a)  # Constant time c2 (documented)
+    for i in a:  # Constant time c3
+        total += i  # n times constant time c4
+    average = total/n  # Constant time c5
+    return average
+\end{minted}
+
+Heildarkeyrslutíminn er summan $c_1 + c_2 + c_3 + n\cdot c_4 + c_5$. Sameinum fastana, köllum keyrslutímann $T = c_4 \cdot n + c_{1235}$. Þar sem keyrslutíminn líkist þá fyrsta stigs margliðu (e. \emph{polynomial}) af $n$ köllum við hann \emph{línulegan}. Þar sem $n$ er lengd inntaksins er talað um \emph{línulegt fall af inntaksstærð.}
+\end{frame}
+
+\begin{frame}[fragile]{Að telja grunnaðgerðir - dæmi}
+Athugum fall sem leggur saman tvo jafn langa lista.
+\begin{minted}{python}
+def list_summation(a, b):
+    n = len(a)  # c1, assume len(a) == len(b)
+    c = []  # c2
+    for i in range(0, n):  # c3
+        a_temp = a[i]  # n*c4
+        b_temp = b[i]  # n*c5
+        c.append(a_temp + b_temp)  # n*(c6 + c7)
+    return c
+\end{minted}
+
+Heildarkeyrslutíminn er summan $c_1 + c_2 + c_3 + n\cdot (c_4 + c_5 + c_6 + c_7)$. Sameinum fastana, köllum keyrslutímann $T = c_{4567}\cdot n + c_{124}$ (styttra: $T = k_1\cdot n + k_2$). Aftur línulegur keyrslutími.
+\end{frame}
+
+\begin{frame}[fragile]{Innskot - ``list comprehensions'' og ``generators''}
+Kóðinn á undan er auðvitað ekki skilvirkur.
+
+Skárra:
+\begin{minted}{python}
+def list_summation(a, b):
+    return [x+y for x, y in zip(a, b)]
+\end{minted}
+
+Enn betra?
+\begin{minted}{python}
+def list_sum_generator(a, b):
+    for x, y in zip(a, b):
+        yield x + y
+\end{minted}
+
+Lesefni: \href{https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions}{list comprehensions}, \href{http://freepythontips.wordpress.com/2013/09/29/the-python-yield-keyword-explained/}{generators}.
+\end{frame}
+
+\begin{frame}{Að þekkja áhrif tímaflækju}
+\begin{itemize}
+ \item Oft höfum við áhuga á að skoða hvernig reiknirit hegða sér fái þau mjög stór inntök
+ \begin{itemize}
+  \item Stærð $n$ í dæmunum hér á undan
+ \end{itemize}
+ \item $T = k_1\cdot n + k_2, k_1 = 1, k_2 = 100$
+ \item $T = k_1\cdot n + k_2, k_1 = 10, k_2 = 1000$
+ \item $T = k_1\cdot n^2 + k_2, k_1 = 100, k_2 = 10000$
+ \item Hvað gerist þegar $n \to \infty$?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{$\Theta$-notation: Óformleg skilgreining}
+Við innleiðum svokallað $\Theta$-notation til að lýsa vexti falla. Óformleg skilgreining á því gæti verið eftirfarandi:
+
+\begin{center}
+$\Theta(g(x))$ er mengi falla sem vaxa eins og $g(x)$.
+\end{center}
+
+\begin{center}
+Fallið $g(x)$ fæst út frá margliðu $f(x)$ með því að fjarlægja alla fastaliði úr $f(x)$.
+\end{center}
+Dæmi: 
+\begin{itemize}
+ \item $T(n) = k_1\cdot n + k_2$ er í menginu $\Theta(n)$
+ \item $T(n) = k_1\cdot n^2 + k_2$ er í menginu $\Theta(n^2)$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Frekara efni}
+\begin{itemize}
+ \item Kafli 3 í kennslubók fjallar um tímaflækjur
+ \item \href{http://en.wikipedia.org/wiki/Time_complexity}{Wikipedia}
+ \item \href{https://wiki.python.org/moin/TimeComplexity}{Tímaflækjur innbyggðra falla í Python}
+\end{itemize}
+Skoðum nákvæmari skilgreiningu á $\Theta$-notation og skilgreiningu á ``stóra O'' notation í næstu viku.
+\end{frame}
+
+
+\end{document}
+
