@@ -1,0 +1,99 @@
+\documentclass[handout]{beamer}
+
+\input{../ts-glærur}
+
+\title{FOR3R - kynning á áfanganum}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{FOR3R - um áfangann}
+Hvað er reiknirit (e. \emph{algorithm})?
+\begin{itemize}[<+->]
+ \item Margar skilgreiningar til
+ \begin{itemize}
+  \item Öll forrit?
+  \item ``Stærðfræðileg'' forrit?
+ \end{itemize}
+ \item Hér munum við helst nota þá skilgreiningu að reiknirit séu forrit sem:
+ \begin{itemize}[<+->]
+  \item Eru vel skilgreind (hlutverk og notkun)
+  \item Taka inn breytur
+  \item Beita skilgreindum reikniaðgerðum
+  \item Skila niðurstöðu
+ \end{itemize}
+ \item Skoðum betur í næsta tíma
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Forritunarmál áfangans: Python}
+\begin{columns}[c]
+\column{.6\textwidth}
+\begin{itemize}[<+->]
+ \item Þessa önnina munum við notast við forritunarmálið \emph{Python}. Ástæður:
+ \begin{itemize}
+  \item Lítil Python-forrit eru læsileg. Líklegt er að stærðfræðileg lýsing á reikniriti líkist útfærslu þess í Python.
+  \item Það er hipp og kúl.
+ \end{itemize}
+ \item Sýnidæmi gera ráð fyrir Python 3.
+ \item Ath. að FOR3R er \emph{ekki} áfangi í Python-forritun. (Sjá: fyrsta heimaverkefnið)
+\end{itemize}
+\column{0.4\textwidth}
+\includegraphics[width=\linewidth]{Pics/PythonLogo}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Engu að síður\ldots}
+Nokkur atriði sem einkenna Python
+\begin{itemize}
+ \item Inndráttur (e. \emph{indentation}) skilgreinir blokkir
+ \begin{itemize}
+  \item Engir slaufusvigar, engar semíkommur
+  \item Ólíkt öðrum málum kenndum í TS
+ \end{itemize}
+ \item Venjulega túlkað (e. \emph{interpreted}) frekar en þýtt (e. \emph{compiled})
+ \begin{itemize}
+  \item Líkt og PHP og JavaScript
+ \end{itemize}
+ \item Notar hvorki hrein gildisviðföng (e. \emph{call by value}) né hrein tilvísunarviðföng (e. \emph{call by reference)}
+ \begin{itemize}
+  \item Líkast Java
+ \end{itemize}
+ \item ``\href{https://wiki.python.org/moin/Why\%20is\%20Python\%20a\%20dynamic\%20language\%20and\%20also\%20a\%20strongly\%20typed\%20language}{Strong dynamic typing}''
+ \begin{itemize}
+  \item Ólíkt öðrum málum kenndum í TS
+ \end{itemize}
+ \item \mint{python}|import this|
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dæmi}
+Lítum á nokkur einföld Python-dæmi.
+\end{frame}
+
+\begin{frame}{Þróunarumhverfi}
+\begin{itemize}
+ \item IDLE: standardinn, fylgir með Windows bundle
+ \item PyCharm: byggt á IntelliJ
+ \item Eclipse + PyDev: fyrir Eclipse aðdáendur
+ \item Visual studio?
+\end{itemize}
+Plaintext editor + skipanalínan ætti einnig að duga.
+\end{frame}
+
+
+\begin{frame}{Gagnlegir tenglar}
+\begin{itemize}
+ \item \href{http://www.codecademy.com/en/tracks/python}{Code Academy - Python}
+ \item \href{http://www.learnpython.org/}{LearnPython.org}
+ \item Opinber síða: \url{http://python.org/}
+ \item Byrjendabók í Python: \href{http://www.swaroopch.com/notes/python/}{A Byte of Python}
+ \item StackOverflow: \href{http://stackoverflow.com/questions/101268/hidden-features-of-python}{Hidden features of Python}
+\end{itemize}
+\end{frame}
+
+
+\end{document}
