@@ -2,7 +2,7 @@
 
 \input{../ts-glærur}
 
-\title{FOR3R - hugtök í reikniritum}
+\title{FOR3R - reiknirit}
 
 \begin{document}
 
@@ -10,15 +10,24 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Skilgreiningar: Reiknirit}
-Í fyrsta tíma skilgreindum við reiknirit sem \emph{forrit} sem:
-\begin{itemize}
+\section{Hugtakið ``reiknirit''}
+
+\begin{frame}{Hvað er reiknirit?}
+Hvað er reiknirit (e. \emph{algorithm})?
+\begin{itemize}[<+->]
+ \item Margar skilgreiningar til
+ \begin{itemize}
+  \item Öll forrit?
+  \item ``Stærðfræðileg'' forrit?
+ \end{itemize}
+ \item Hér munum við helst nota þá skilgreiningu að reiknirit séu forrit sem:
+ \begin{itemize}[<+->]
   \item Eru vel skilgreind (hlutverk og notkun)
   \item Taka inn breytur
   \item Beita skilgreindum reikniaðgerðum
   \item Skila niðurstöðu
+ \end{itemize}
 \end{itemize}
-En þetta þarf ekki að vera eina rétta skilgreiningin.
 \end{frame}
 
 \begin{frame}{Skilgreiningar: Reiknirit}
@@ -32,13 +41,13 @@ input into the output.''
 
 \begin{frame}{Skilgreiningar: Reiknirit}
 \begin{quote}
-``An algorithm is an effective method expressed as a finite list$^{[1]}$ of well-defined instructions$^{[2]}$ for calculating a function.$^{[3]}$ Starting from an initial state and initial input (perhaps empty),$^{[4]}$ the instructions describe a computation that, when executed, proceeds through a finite $^{[5]}$ number of well-defined successive states, eventually producing ''output``$^{[6]}$ and terminating at a final ending state.''
+``An algorithm is an effective method that can be expressed within a finite amount of space and time$^{[1]}$ and in a well-defined formal language$^{[2]}$ for calculating a function.$^{[3]}$''
 \end{quote} - \href{http://en.wikipedia.org/wiki/Algorithm}{Wikipedia}
 \end{frame}
 
 \begin{frame}{Reiknirit - bara fyrir tölur?}
 \begin{quote}
-``Again, it might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science of operations, and which should be also susceptible of adaptations to the action of the operating notation and mechanism of the engine.''
+``Again, it might act upon other things besides number, were objects found whose mutual fundamental relations could be expressed by those of the abstract science of operations''
 \end{quote} - Ada Lovelace
 \end{frame}
 
@@ -65,9 +74,9 @@ Reikniritum má lýsa á marga vegu. T.d. má lýsa þeim með því að nota
  \item rafrásir?
 \end{itemize}
 Flestar leiðir eru færar svo lengi sem útkoman er skýr.
-\end{frame}
+\pause
 
-\begin{frame}{Hvernig lýsum við reikniritum?}
+\vspace{0.5cm}
 \begin{quote}
 \emph{Science is what we understand well enough to explain to a computer}
 \end{quote} - Donald Knuth
@@ -76,17 +85,19 @@ Flestar leiðir eru færar svo lengi sem útkoman er skýr.
 \begin{frame}{Skilgreiningar: Rétt reiknirit}
 \begin{itemize}
  \item Reiknirit er sagt \emph{rétt} (e. \emph{correct}) ef það skilar skilgreindri niðurstöðu fyrir öll skilgreind inntök
- \begin{itemize}
+ \begin{itemize} \pause
   \item Sum reiknirit eru gagnleg þó þau séu ekki rétt
-  \item Dæmi: Mörg ``Heuristic'' reiknirit (í. \emph{brjóstvitsaðferðir})
+  \item Dæmi: Mörg heuristic reiknirit (í. \emph{brjóstvitsaðferðir}) skila niðurstöðu sem er einungis ``nógu góð''
  \end{itemize}
  \item Rétt reiknirit \emph{leysir} (e. \emph{solves}) gefið, tölulegt vandamál
- \begin{itemize}
+ \begin{itemize} \pause
   \item Ekki er nóg að reiknirit leysi vandamál til að það sé gagnlegt
   \item Dæmi: Bogosort
  \end{itemize}
 \end{itemize}
 \end{frame}
+
+\section{Tímaflækjur}
 
 \begin{frame}{Kynning: Tímaflækja}
 \begin{itemize}
@@ -94,11 +105,12 @@ Flestar leiðir eru færar svo lengi sem útkoman er skýr.
  \item Mjög hefðbundin aðferð við að komast að keyrslutíma: Mæla hann
  \begin{itemize}
   \item ``Með inntak af stærð $n = 1000$ var forritið 567ms í keyrslu á 2.4 GHz örgjörva...''
-  \item Python: \href{http://docs.python.org/2/library/timeit.html}{timeit}
  \end{itemize}
  \item Aðferð sem veitir almennari innsýn: Að telja grundvallaraðgerðir
 \end{itemize}
 \end{frame}
+
+\subsection{Grunnaðgerðir}
 
 \begin{frame}{Að telja grunnaðgerðir}
 Til að einfalda talningu gerum við ráð fyrir ýmsu um tölvuna sem reikniritin keyra á.
@@ -184,7 +196,7 @@ def list_sum_generator(a, b):
         yield x + y
 \end{minted}
 
-Lesefni: \href{https://docs.python.org/2/tutorial/datastructures.html#list-comprehensions}{list comprehensions}, \href{http://freepythontips.wordpress.com/2013/09/29/the-python-yield-keyword-explained/}{generators}.
+Lesefni: \href{https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions}{list comprehensions}, \href{http://freepythontips.wordpress.com/2013/09/29/the-python-yield-keyword-explained/}{generators}.
 \end{frame}
 
 \begin{frame}{Að þekkja áhrif tímaflækju}
@@ -223,7 +235,6 @@ Dæmi:
  \item \href{http://en.wikipedia.org/wiki/Time_complexity}{Wikipedia}
  \item \href{https://wiki.python.org/moin/TimeComplexity}{Tímaflækjur innbyggðra falla í Python}
 \end{itemize}
-Skoðum nákvæmari skilgreiningu á $\Theta$-notation og skilgreiningu á ``stóra O'' notation í næstu viku.
 \end{frame}
 
 

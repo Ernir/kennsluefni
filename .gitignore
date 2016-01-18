@@ -8,5 +8,6 @@
 *.backup
 *.out
 *.toc
+*_minted*
 *Próf*
 *próf*
