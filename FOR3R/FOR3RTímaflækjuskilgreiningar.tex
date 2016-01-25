@@ -10,6 +10,8 @@
 \titlepage
 \end{frame}
 
+\section{Besta- versta og meðaltilfelli}
+
 \begin{frame}{$\Theta$-notation: Óformleg skilgreining}
 Í síðasta tíma lýstum við svokölluðu $\Theta$-notation til að lýsa vexti falla óformlega á eftirfarandi hátt:
 
@@ -19,6 +21,97 @@ $\Theta(g(x))$ er mengi falla sem vaxa ``eins og $g(x)$.''
 
 Þannig myndi t.d. $f(x) = 2 x^2 + 6$ vaxa eins og $x^2$, og þ.a.l. vera í menginu $\Theta(n^2)$. (Oft skrifað $f(x) = \Theta(n^2)$)
 \end{frame}
+
+\begin{frame}{Versti, besti og meðaltími}
+\begin{itemize}
+ \item Keyrslutími reiknirita fer oft ekki bara eftir stærð inntaks heldur líka eðli þess
+ \begin{itemize}
+  \item Besta tilfellið: Hversu hratt getur reikniritið mögulega keyrt?
+  \item Versta tilfellið: Hversu lengi getur reikniritið mögulega keyrt? Oft áhugaverðasta tilfellið!
+  \item ''Meðaltilfellið: Hversu langan tíma þarf reikniritið undir venjulegum kringumstæðum?
+  \begin{itemize}
+   \item Oft erfitt að skilgreina
+   \item Oft ``random''
+  \end{itemize}
+ \end{itemize}
+ \item Ath. að sama notation er notað í öllum tilfellum. Talað er um að reiknirit hafi gefinn keyrslutíma í ákveðnu tilfelli
+ \item Dæmi: Reiknirit getur haft $\Theta(n)$ keyrslutíma í besta tilfellinu, en $\Theta(n^2)$ fyrir versta- og meðaltilfellið.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um tímaflækju}
+Skoðum eftirfarandi útfærslu á reikniritinu ``línuleg leit'':
+
+\begin{minted}{python}
+def linear_search(search_item, search_list):
+    for i, item in enumerate(search_list):
+        if item == search_item:
+            return i
+    return -1
+\end{minted}
+
+Það tekur inn lista með $n$ stökum og eitt stak sem á að leita að í listanum. Það skilar fyrsta vísi þar sem leitarstakið er jafnt staki í listanum, svo 
+\begin{verbatim}
+linear_search(x, l) 
+\end{verbatim}
+skilar tölunni $2$.
+
+Hver er tímaflækja þessa reiknirits í besta, versta og meðaltilfellinu?
+
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um tímaflækju}
+Skoðum eftirfarandi útfærslu á reikniritinu ``línuleg leit'':
+
+\begin{minted}{python}
+def linear_search(search_item, search_list):
+    for i, item in enumerate(search_list):
+        if item == search_item:
+            return i
+    return -1
+\end{minted}
+
+Það tekur inn lista með $n$ stökum og eitt stak sem á að leita að í listanum. Það skilar fyrsta vísi þar sem leitarstakið er jafnt staki í listanum, svo 
+\begin{verbatim}
+linear_search(4, [3, 2, 4, 1, 0, 4])
+\end{verbatim}
+skilar tölunni $2$.
+
+Hver er tímaflækja þessa reiknirits í versta, besta og meðaltilfellinu á $\Theta$-formi?
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um tímaflækju}
+Skoðum aðra útfærslu á línulegri leit. Þessi finnur alla vísana í listanum (ekki bara þann fyrsta):
+\begin{minted}{python}
+def linear_search_all(search_item, search_list):
+    indices = []
+    for i, item in enumerate(search_list):
+        if item == search_item:
+            indices.append(i)
+    return indices
+\end{minted}
+Þannig að
+\begin{verbatim}
+linear_search_all(4, [3, 2, 4, 1, 0, 4])
+\end{verbatim}
+skilar listanum \texttt{[2, 5]}.
+
+Hver er tímaflækja þessa reiknirits í versta, besta og meðaltilfellinu á $\Theta$-formi?
+\end{frame}
+
+\begin{frame}[fragile]{Python-ábending}
+Hægt er að skrifa forritið á síðustu glæru á eftirfarandi hátt:
+\begin{minted}{python}
+def linear_search_all(search_item, search_list):
+    for i, item in enumerate(search_list):
+        if item == search_item:
+            yield i
+\end{minted}
+Fallið skilgreinir þá svokallaðan \emph{generator}, sem skilar gildunum einu í einu. Þessi aðferð þykir betri þar sem henni er komið við, þar sem ekki þarf að búa til allan listann í minni.
+\end{frame}
+
+
+\section{Tímaflækjur: Formleg skilgreining}
 
 \begin{frame}{$\Theta$-notation: Formleg skilgreining}
 Skilgreinum $\Theta$-notation á eftirfarandi hátt:
@@ -96,23 +189,5 @@ eða
  \end{itemize}
 \end{itemize}
 \end{frame}
-
-\begin{frame}{Versti, besti og meðaltími}
-\begin{itemize}
- \item Keyrslutími reiknirita fer oft ekki bara eftir stærð inntaks heldur líka eðli þess
- \begin{itemize}
-  \item Besta tilfellið: Hversu hratt getur reikniritið mögulega keyrt?
-  \item Versta tilfellið: Hversu lengi getur reikniritið mögulega keyrt? Oft áhugaverðasta tilfellið!
-  \item ''Meðaltilfellið: Hversu langan tíma þarf reikniritið undir venjulegum kringumstæðum?
-  \begin{itemize}
-   \item Oft erfitt að skilgreina
-   \item Oft ``random''
-  \end{itemize}
- \end{itemize}
- \item Ath. að sama notation er notað í öllum tilfellum. Talað er um að reiknirit hafi gefinn keyrslutíma í ákveðnu tilfelli m.t.t. ákveðins notations.
- \item Dæmi: Reiknirit getur haft $O(n)$ keyrslutíma í besta tilfellinu, en $O(n^2)$ fyrir versta- og meðaltilfellið.
-\end{itemize}
-\end{frame}
-
 
 \end{document}
