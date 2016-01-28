@@ -1,0 +1,69 @@
+\documentclass{article}
+
+\input{../ts-skil}
+
+\title{FOR3R3U Skilaverkefni 2 - Tímaflækjur}
+
+\begin{document}
+
+\maketitle
+
+\section{Verkefni}
+Leysið eftirfarandi verkefni. Skilið tveimur til einkunnagjafar.
+
+\subsection{Tímaflækjur innbyggðra Python-aðgerða}
+Við höfum litið á það sem svo að köll á ``einföld'' föll taki fastan tíma. Sum föll sem virðast einföld eru þó með keyrslutíma sem er ansi háður inntakinu.
+
+Opinbera Python-síðan heldur utan um \href{https://wiki.python.org/moin/TimeComplexity}{tímaflækjur innbyggðra aðgerða}.
+
+Hver er tímaflækja eftirfarandi aðgerða í Python, á $O$-sniði í meðaltilfellinu?
+
+\begin{enumerate}
+ \item Að ná í stak úr lista (get)
+ \item Að yfirskrifa stak í lista (set)
+ \item Að eyða staki úr lista (delete)
+ \item Að ná í lengd lista
+ \item Að ná í stak úr dictionary
+\end{enumerate}
+
+\subsection{Samanburður á keyrslutíma}
+Gerum ráð fyrir að við séum með nokkur mismunandi reiknirit sem leysir sama verkefnið. Hversu langan tíma þurfa reikniritin til að reikna út verkefni af stærð $n$, ef keyrslutíminn er gefinn með föllunum á eftirfarandi töflu?
+
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$f(x)$\textbackslash$n$&10&100&10000&1000000000\\
+\midrule
+$\log_2(n)$&$3.3219$&$6.6439$&&\\
+$\sqrt{n}$&$3.1623$&&&\\
+$n$&&&&\\
+$n\log_2(n)$&&&&\\
+$n^2$&&&&\\
+$2^n$&&&&\\
+$n!$&&&&\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Klárið að fylla út töfluna.
+
+\subsection{Skilgreining á keyrslutímaflokkum}
+Útskýrið muninn á $O$-sniði og $\Theta$-sniði með eigin orðum. Af hverju er fallið $f(n) = n$ ekki í $\Theta(n^2)$, en hægt væri að segja (þó óvenjulegt væri) að það sé í $O(n^2)$?
+
+\subsection{Mælingar}
+Finnið uppskrift að röðunarreikniritinu \emph{Selection Sort} á netinu og útfærið það í Python.
+
+Prófið að keyra fallið á ýmsum slembnum (e. \emph{random}) listum af lengdum frá $100$ upp í $20000$. Mælið keyrslutímann, t.d. með því að nota \href{https://docs.python.org/3.5/library/time.html}{time}. Dæmi um hvernig nota má \texttt{time}:
+
+\begin{minted}{python}
+from time import time
+start_time = time()
+# Skipanir sem á að tímamæla
+end_time = time() - start_time
+print(end_time)
+\end{minted}
+
+Lýsið því hvernig keyrslutíminn hegðar sér. Hegðar hann sér eins og kunnugleg gerð af falli?
+
+\paragraph{Ráðlegging:} Teiknið graf, með lengd listans á $x$-ásnum og tímann á x-ásnum.
+\end{document}
