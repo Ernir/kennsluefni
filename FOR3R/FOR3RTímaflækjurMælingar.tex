@@ -14,9 +14,9 @@
 
 \begin{frame}
 \begin{itemize}
- \item Við höfum nokkra tímaflækjuflokka
+ \item Við höfum séð nokkra tímaflækjuflokka
  \begin{itemize}
-  \item $\Theta(n)$, $\Theta(n^2)$, $\Theta(\sqrt{n})$, \ldots
+  \item $\Theta(n)$, $\Theta(n^2)$, $\Theta(1)$, \ldots
  \end{itemize}
  \item En hvað þýðir þetta í alvörunni?
 \end{itemize}
@@ -92,7 +92,7 @@ Innbyggða leiðin \texttt{[::-1]} til að snúa við streng er mun hraðvirkari
 \begin{center}
 \begin{tabular}{lll}
 \toprule
-$n$&$t_n$ (sek)&$\frac{(t_n - t_{n=1})\cdot10^7}{n}$\\
+$n$&$t_n$ (sek)&$\frac{(t_n - t_{n=100})\cdot10^7}{n}$\\
 \midrule
 100& 0.000211000&0.0000\\
 500& 0.000551939&6.8187\\
@@ -103,9 +103,6 @@ $n$&$t_n$ (sek)&$\frac{(t_n - t_{n=1})\cdot10^7}{n}$\\
 \end{tabular}
 \end{center}
 Sjáum að þegar $n$ verður stórt vex $t_n$ nokkurn veginn í hlutfalli við lengd strengsins.
-\end{frame}
-
-\begin{frame}
 \end{frame}
 
 \end{document}
