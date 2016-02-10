@@ -1,0 +1,71 @@
+\documentclass[handout]{beamer}
+
+\input{../ts-glærur}
+
+\title{FOR3R - Memoization}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Endurkvæmni}
+\begin{itemize}
+ \item Í endurkvæmu reikniriti er verkefni leyst með því að skipta því niður í minni tilfelli af sjálfu sér
+ \item Upp getur komið sú staða að sömu útreikningarnar séu framkvæmdir oft
+ \begin{itemize}
+  \item Mjög óhagkvæmt!
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi: Fibonacci}
+Skoðum endurkvæmt reiknirit (multiply recursive) sem reiknar út Fibonacci tölur:
+\begin{minted}[frame=lines]{python}
+def fib(n):
+    if n == 1 or n == 2:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+\end{minted}
+En þessi (lélega) útfærsla er með mjög slæma tímaflækju, þó hún lýsi vandamálinu vel. Hvernig getum við gert betur?
+\end{frame}
+
+\begin{frame}{Að losna við milliniðurstöður}
+\begin{itemize}
+ \item Fibonacci-forritið reiknar sömu hlutina út mjög oft
+ \begin{itemize}
+  \item Lausn: Geymum niðurstöðurnar þegar við reiknum út
+  \item Þegar kalla á aftur á fallið, athugum fyrst hvort að við höfum kallað á þetta áður
+ \end{itemize}
+ \item Þetta er kallað \emph{memoization}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fibonacci með memoization}
+Búum til dictionary að nafni \texttt{memo} til að geyma milliniðurstöður.
+\begin{minted}[frame=lines]{python}
+memo = {}
+def fib_m(n):
+    if n == 1 or n == 2:
+        return 1
+    elif n not in memo:
+        memo[n] = fib_m(n - 1) + fib_m(n - 2)
+    return memo[n]
+\end{minted}
+Hversu mikið batnar tímaflækjan?
+\end{frame}
+
+\begin{frame}{Að lokum}
+\begin{itemize}
+ \item Memoization eykur minnisþörf, en getur minnkað keyrslutíma
+ \item Þegar memoization er notað til að besta (finna bestu lausn) er það kallað kvik bestun (e. \emph{dynamic programming})
+ \item Python 3 er með svokallaðan function decorator til að geyma niðurstöður fallskalla sjálfkrafa
+ \begin{itemize}
+  \item \href{https://docs.python.org/3/library/functools.html\#functools.lru\_cache}{LRU cache}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\end{document}
