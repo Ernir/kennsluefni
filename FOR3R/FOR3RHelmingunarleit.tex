@@ -1,0 +1,111 @@
+\documentclass{beamer}
+
+\input{../ts-glærur}
+
+\title{FOR3R - Helmingunarleit}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Að leita}
+
+\begin{frame}{Að leita}
+\begin{itemize}
+ \item ``Leit í lista'' er frekar hversdagslegt verkefni.
+ \item Dæmi:
+ \begin{itemize}
+  \item Hvar er talan $5$ í listanum $l = [4, 6, 7, 4, 5, 9]$?
+  \item Svar: í sæti 4.
+ \end{itemize}
+ \item Við þekkjum þegar reikniritið ``línuleg leit'', sem athugar einfaldlega alla möguleika og finnur fyrir okkur svarið.
+\end{itemize}
+\end{frame}
+
+\subsection{Helmingunarleit}
+
+\begin{frame}{Tengt verkefni: ``Giskileikur''}
+\begin{itemize}
+ \item ``Giskileikur'' er svipað verkefni og ``leit í lista''. 
+ \item Dæmi:
+ \begin{itemize}
+  \item ``Ég er að hugsa um tölu á milli 1 og 100. Þú mátt spyrja já og nei spurninga.''
+ \end{itemize}
+ \item Nennum við að spyrja um allar tölurnar?
+ \pause
+ \item Af hverju getum við hér komist upp með að spyrja ekki um allar, en ekki þegar við erum að framkvæma ``venjulega leit'' í lista?
+ \pause
+ \item Getum við skilið þetta vandamál nógu vel til að láta tölvu leysa það?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Divide and Conquer}
+Giskileikurinn hentar vel til lausnar með Divide and Conquer.
+\begin{itemize}
+ \item  \textbf{Divide} the problem into a number of subproblems that are smaller instances of the
+same problem.
+ \item \textbf{Conquer} the subproblems by solving them recursively. If the subproblem sizes are
+small enough, however, just solve the subproblems in a straightforward manner.
+ \item \textbf{Combine} the solutions to the subproblems into the solution for the original problem.
+\end{itemize}
+- Introduction to Algorithms, kafli 4
+\end{frame}
+
+\begin{frame}{Niðurstaða: Helmingunarleit}
+\begin{itemize}
+ \item Helmingunarleit er leitarreiknirit sem byggir á sömu hugmynd og góða lausnin á giskileiknum
+ \item Við finnum stakið í miðjum listanum, og spyrjum hvort að það sé stærra eða minna en það stak se leitað er að.
+ \begin{itemize}
+  \item Sé miðjustakið stærra en leitarstakið finnum við miðjuna í undirlistanum til vinstri, annars í undirlistanum til hægri
+  \item Haldið er áfram þar til stakið er fundið.
+ \end{itemize}
+ \item \textbf{Ath. vandlega} að þetta virkar ekki nema að stökin í listanum séu \emph{röðuð}
+\end{itemize}
+Sauðakóði: \href{http://en.wikipedia.org/wiki/Binary\_search\_algorithm\#Algorithm}{T.d. Wikipedia}
+\end{frame}
+
+\section{Skilgreiningar}
+
+\begin{frame}{Skilgreiningaratriði}
+\begin{itemize}
+ \item Til að við getum leyst ákveðið vandamál formlega er oft gagnlegt að skilgreina það fyrst formlega.
+ \item Getum við skilgreint ``leitarvandamál''?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hugmynd að formlegri skilgreiningu}
+\begin{framed}
+\texttt{LEIT Í FYLKI}
+
+\textbf{Inntak:} Fylki af stökum $[x_0, x_1, \ldots, x_n]$ og leitargildi $y$
+
+\textbf{Spurning:} Getum við fundið $i$ svo að $x_i = y$?
+\end{framed}
+Við getum notað línulega leit til að leysa þetta verkefni á $\Theta(n)$ tíma í versta tilfellinu.
+\end{frame}
+
+\begin{frame}{Önnur skilgreining}
+\begin{framed}
+\texttt{LEIT Í RÖÐUÐU FYLKI}
+
+\textbf{Inntak:} Fylki af stökum $[x_0, x_1, \ldots, x_n]$ þar sem $x_i \leq x_{i+1}$, og leitargildi $y$
+
+\textbf{Spurning:} Getum við fundið $i$ svo að $x_i = y$?
+\end{framed}
+Við getum notað helmingunarleit til að leysa þetta verkefni á $\Theta(\log(n))$ tíma í versta tilfellinu.
+\end{frame}
+
+\begin{frame}{Helmingunarleit í öðrum samhengjum}
+\begin{itemize}
+ \item Helmingunarleit er gagnlegur hugsunarháttur fyrir margar gerðir af vandamálum
+ \begin{itemize}
+  \item Giskileikurinn
+  \item Vísar (e. indexes) í gagnagrunnum!
+ \end{itemize}
+ \item Seinna í áfanganum: Tvíleitartré.
+\end{itemize}
+\end{frame}
+
+
+\end{document}
