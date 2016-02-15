@@ -1,0 +1,51 @@
+\documentclass{article}
+
+\input{../ts-skil}
+
+\title{FOR3R3U Tímaverkefni - Endurkvæmni}
+
+\begin{document}
+
+\maketitle
+
+\section{Verkefni}
+Þessi verkefni eru ætluð til æfingar í endurkvæmum hugsunarhætti. Þeim þarf ekki að skila.
+\subsection{1. Endurkvæm línuleg leit}
+Skrifið línulega leit í Python, með því að nota endurkvæmni í stað ítrunar.
+\subsection{2. Viðsnúningur á lista}
+Skrifið endurkvæmt Python-fall sem tekur inn streng og skilar sama streng í öfugri röð.
+\subsection{3. Betri Fibonacci}
+Við höfum skoðað eftirfarandi forrit, sem reiknar út svokallaðar \href{http://en.wikipedia.org/wiki/Fibonacci_number}{Fibonacci tölur}:
+
+\begin{minted}{python}
+def fib(n):
+    if n == 1 or n == 2:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+\end{minted}
+
+En við sáum í hendi okkar að keyrslutíminn á þessu forriti væri hrikalegur. Gerum nú aðeins betur.
+
+\subsubsection{a) Ítrun}
+Skrifaðu útgáfu af þessu falli í Python sem notar lykkju í stað endurkvæmni.
+
+\subsubsection{b) Halaendurkvæmni}
+Skrifaðu halaendurkvæma (e. \emph{tail recursive}) útgáfu af þessu falli í Python.
+
+\subsection{4. Ackermann}
+Ackermann-föll eru sögufræg í rannsóknum á endurkvæmni. Ein framsetning á slíku falli er eftirfarandi: 
+
+\[
+ A(m,n) = \left\{
+ \begin{array}{ll}
+ n+1&\text{ þegar }m = 0\\
+ A(m-1,1)&\text{ þegar }m > 0 \text{ og } n = 0\\
+ A(m-1,A(m,n-1))&\text{ þegar }m>0 \text{ og } n > 0\\
+ \end{array}
+ \right.
+\]
+
+Skrifaðu þetta fall í Python.
+
+\end{document}
