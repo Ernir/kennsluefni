@@ -9,5 +9,7 @@
 *.out
 *.toc
 *_minted*
+*.save
+*BACKUP
 *Próf*
 *próf*
