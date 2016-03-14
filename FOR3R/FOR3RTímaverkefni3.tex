@@ -1,0 +1,33 @@
+\documentclass{article}
+
+\input{../ts-skil}
+
+\title{FOR3R3U Tímaverkefni - Strengjareiknirit}
+
+\begin{document}
+
+\maketitle
+
+\section{Verkefni}
+Þessi verkefni eru ætluð til æfingar. Þeim þarf ekki að skila.
+\subsection{1. Einföld strengjaleit}
+Skrifið einfalt hlutstrengjaleitarfall í Python, \texttt{string\_find}. Það skal taka inn tvo strengi, \texttt{pattern} og \texttt{text} (gerum ráð fyrir að lengd \texttt{pattern} sé minni en lengd \texttt{text}). Það skal skila þeim vísum (e. \emph{indices}) þar sem \texttt{pattern} hefst sem hlutstrengur í \texttt{text}. 
+
+Þannig myndi t.d. kall á \texttt{string\_find} með \texttt{pattern = "ana"} og \texttt{text = "bananaananas"} skila vísunum $1, 3, 6$ og $8$.
+
+Veltið fyrir ykkur hver tímaflækja reikniritsins er m.t.t. lengdar strengjanna \texttt{pattern} og \texttt{text}.
+
+\subsection{2. Hamming fjarlægð}
+Svokölluð Hamming-fjarlægð (e. \emph{Hamming distance}) milli tveggja strengja af sömu lengd er fjöldi þeirra sæta í strengjunum þar sem tákn strengjanna eru ekki eins. Skrifið Python-fallið \texttt{hamming\_distance} sem tekur inn tvo strengi, \texttt{text\_1} og \texttt{text\_2} og skilar Hamming-fjarlægð þeirra á milli.
+
+Þannig myndi t.d. kall á \texttt{hamming\_distance} með \texttt{text\_1 = "abraca"} og \texttt{text\_2 = "ababra"} skila tölunni 3, þar sem 3 sæti í strengjunum eru ekki eins.
+\subsection{3. Ónákvæm leit}
+Tiltölulega ``einfalt'' er að finna hlutstrengi þar sem hlutstrengurinn kemur nákvæmlega fyrir í strengnum sem leita skal í (sjá dæmi 1).
+
+Nokkuð algengt er hins vegar að gögnin passi ekki nákvæmlega saman, t.d. vegna villna í strengjunum.
+
+Skrifið ónákvæmt hlutstrengjaleitarfall í Python, \texttt{approximate\_string\_find}. 
+
+Það skal taka inn tvo strengi og eina heiltölu, \texttt{pattern}, \texttt{text} og \texttt{distance}. Það skal skila þeim vísum þar sem Hamming-fjarlægð á milli \texttt{pattern} og hlutstrengsins í \texttt{text} er minni en eða jöfn \texttt{distance}.
+
+\end{document}
