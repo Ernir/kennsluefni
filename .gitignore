@@ -1,5 +1,7 @@
+./*.pdf
+FOR3R/*.pdf
+
 *.nav
-*.pdf
 *.snm
 *.vrb
 *.aux
