@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\input{../ts-skil}
+
+\title{FOR3R3U Skilaverkefni 4 - gagnagrindur}
+
+\begin{document}
+
+\maketitle
+\section{Verkefni}
+Skilið inn eftirfarandi dæmum.
+
+\subsection{1. Listi}
+Skrifið Python klasa (einn fyrir eintengdan og annan fyrir tvítengdan lista) sem skilgreina lista af númeruðum stökum (númerin eru líkt og í fylki). Klasarnir skulu útfæra eftirfarandi föll:
+
+\begin{itemize}
+ \item \verb|__init__|: Býr til nýjan, tóman lista
+ \item \texttt{add(value)}: Bætir hnúti (e. \emph{node}) framan á listann sem hefur ákveðið gildi
+ \item \texttt{get(index)}: Skilar gildi úr listanum sem hefur ákveðinn vísi (e. \emph{index})
+ \item \texttt{head()}: Skilar fyrsta gildinu í listanum
+ \item \texttt{foot()}: Skilar síðasta gildinu í listanum
+ \item \texttt{search(value)}: Skilar vísi á fyrsta hnútinum sem hefur ákveðið gildi
+ \item \texttt{delete(value)}: Eyðir öllum hnútum úr listanum sem hafa ákveðið gildi
+ \item \texttt{delete\_index(index)}: Eyðir hnúti úr listanum sem hefur ákveðinn vísi
+ \item \texttt{clear()}: Tæmir listann
+\end{itemize}
+Þið þurfið einnig að skrifa tvo viðeigandi klasa sem tákna hnúta.
+
+Ekki má nota innbyggðu \texttt{list} gagnagrindina!
+
+\subsection{2. Biðröð, hlaði og forgangsbiðröð}
+Skrifið eftirfarandi Python-klasa, sem tákna
+\begin{itemize}
+ \item biðröð (e. \emph{queue})
+ \item hlaða (e. \emph{stack})
+ \item og forgangsbiðröð (e. \emph{priority queue}).
+\end{itemize}
+
+Klasarnir skulu útfæra eftirfarandi föll:
+\begin{itemize}
+ \item \verb|__init__|: Býr til tóma gagnagrind
+ \item \texttt{push(value)}: Bætir við gildi (þarf að vera push(value, priority) fyrir forgangsbiðröðina)
+ \item \texttt{pop()}: Skilar (og fjarlægir) viðeigandi ``fremsta'' gildinu
+ \item \texttt{clear()}: Tæmir gagnagrindina
+\end{itemize}
+
+\subsection{3. Tvíleitartré}
+Skrifið Python-klasa sem skilgreinir tvíleitartré (e. \emph{Binary Search Tree}) fyrir heiltölur.
+
+Skrifið einnig eftirfarandi föll:
+\begin{itemize}
+ \item \verb|tree_insert|: Fallið setur nýjan hnút á réttan stað í tréð.
+ \item \verb|inorder_tree_walk|: Fallið prentar \emph{endurkvæmt} út öll gildi í trénu, í röð.
+ \item \verb|tree_search|: Fallið leitar \emph{endurkvæmt} að gefnu gildi í trénu og skilar hnút sem inniheldur það gildi, annars skilar það \verb|None|.
+ \item \verb|tree_minimum| og \verb|tree_maximum|: Föllin skila annars vegar minnsta gildi í trénu og hins vegar stærsta gildi í trénu.
+ \item \verb|tree_delete|: Fallið eyðir hnút úr trénu. 
+\end{itemize}
+Þið þurfið einnig að skrifa viðeigandi klasa sem táknar hnút.
+
+\end{document}
