@@ -1,0 +1,292 @@
+\documentclass{beamer}
+
+\input{../Haust2015glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 7, seinni fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Miðmisseriskönnun
+ \item Strengir
+\end{itemize}
+Kafli: 7 
+\end{frame}
+
+\section{Verkfall?}
+
+\begin{frame}{Mögulegt verkfall!}
+\begin{columns}
+\column{0.4\textwidth}
+\pause
+\includegraphics[width=\linewidth]{Pics/scared-cat}
+\column{0.6\textwidth}
+\pause
+\begin{itemize}
+ \item Ef af verkfalli SFR verður, munu eftirfarandi tímar væntanlega falla niður:
+ \begin{itemize}
+  \item Fyrirlestur föstudagsins 16. október
+  \item Allir dæmatímar mánudaginn 19. og þriðjudaginn 20. október
+  \item \ldots og fleiri ef framhald verður
+ \end{itemize}
+ \item Miðmisserisprófið virðist hins vegar vera óhult!
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\section{Eval og tölvuhögun}
+
+\begin{frame}[fragile]{Eval}
+Fallið \texttt{eval} framkvæmir streng sem Matlab-skipun.
+
+\begin{minted}[frame=lines]{matlab}
+>> eval('a = 1:4')
+a =
+   1   2   3   4
+>> eval('x = 1:5; s = sum(x)') % Röð skipana
+s =  15
+\end{minted}
+
+Hægt er að keyra heilu forritin á þennan hátt.
+\end{frame}
+
+\begin{frame}[fragile]{Notkunardæmi á \texttt{eval}}
+Getum látið notanda slá inn fall til að teikna:
+\begin{minted}[frame=lines]{matlab}
+f = input('Sláið inn fall (af x): ','s');
+x = 0:0.1:10;
+plot(x, eval(f))
+\end{minted}
+\end{frame}
+
+\begin{frame}{Hvenær skal ekki nota eval}
+\begin{itemize}
+ \item Oftast er slæm hugmynd að nota \texttt{eval}!
+ \begin{itemize}
+  \item Reyna aðra möguleika fyrst
+  \item Getur engu að síður verið einfaldara en aðrir möguleikar
+ \end{itemize}
+ \item \texttt{eval} er ekki hraðvirkt
+ \item Sé notanda leyft að skrifa og keyra kóða er það öryggisgalli
+ \begin{itemize}
+  \item Gæti skipt máli í Matlab sé kóði keyrður á vél með marga notendur
+  \item Nýlegar fréttir: \href{http://labs.detectify.com/post/130332638391/how-patreon-got-hacked-publicly-exposed-werkzeug}{Patreon hakkað}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Forrit sem gögn}
+
+\begin{frame}{Forrit sem gögn}
+\begin{itemize}
+ \item Þetta vekur athygli á mikilvægu atriði
+ \begin{itemize}
+  \item Þó að \emph{forrit} og \emph{gögn} séu aðskilin hugtök, þá meðhöndlar tölvan þau á sama hátt
+  \begin{itemize}
+   \item Forrit hafa stýriskipanir sem geta breytt hegðun forritsins
+   \item En forrit geta líka breytt forritum
+  \end{itemize}
+  \item Afleiðingar:
+  \begin{itemize}
+   \item Tölvur ráða við mjög margvísleg verkefni
+   \item Auðvelt er að breyta hegðun tölva
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{ENIAC}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Pics/eniac}
+\end{center}
+\end{frame}
+
+\begin{frame}{John von Neumann}
+\begin{columns}
+\column{0.7\textwidth}
+\begin{itemize}
+ \item Von Neumann var gríðarlega afkastamikill vísindamaður
+ \begin{itemize}
+  \item 150 útgefnar greinar, flestar í stærðfræði
+  \item \href{https://en.wikipedia.org/wiki/List\_of\_things\_named\_after\_John\_von\_Neumann}{List of things named after John von Neumann}
+ \end{itemize}
+ \item Setti fram hugmyndina um að geyma forrit í minni tölvunnar eins og hver önnur gögn
+ \begin{itemize}
+  \item Þetta er hluti af \emph{von Neumann högun} tölva
+  \item Nær allar tölvur síðan hafa haft þetta skipulag
+ \end{itemize}
+\end{itemize}
+\column{0.3\textwidth}
+\includegraphics[width=\linewidth]{Pics/john-von-neumann}
+
+John von Neumann (1903-1957)
+\end{columns}
+\end{frame}
+
+\section{Meira um strengi}
+
+\begin{frame}[fragile]{Is-föll fyrir strengi}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Fall&Merking\\
+\midrule
+\texttt{isletter}&Satt ef stafur (char) er bókstafur\\
+\texttt{isdigit}&Satt ef stafur er tala\\
+\texttt{isspace}&Satt ef stafur er biltákn\\
+\texttt{ispunct}&Satt ef stafur er greinarmerki\\
+\texttt{ischar}&Satt ef gefin breyta er af taginu \texttt{char}\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{isstrprop} fallið}
+\vspace{1.5\baselineskip}
+Getum notað fallið \texttt{istrpprop} til að athuga hvort að stafir strengs séu af ákveðinni gerð\footnote{Fleiri möguleikar eru til. Sjá \texttt{help isstrprop}.}.
+\begin{minted}[frame=lines]{matlab}
+>> isstrprop('Jón','lower')
+ans =
+   0   0   0   1
+>> isstrprop('Ha!?','punct')
+ans =
+   0   0   1   1
+>> isstrprop('a b ','wspace') % Whitespace, biltákn
+ans =
+   0   1   0   1
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Fallið \texttt{mat2str}}
+Fallið \texttt{mat2str} getur breytt fylki í streng sem skilgreinir fylkið.
+\begin{minted}[frame=lines]{matlab}
+>> a = randi(10, 2, 2)
+a =
+   5   6
+   4   3
+>> mat2str(a)
+ans = [5 6;4 3]
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Meira um \texttt{sprintf}}
+\begin{itemize}
+ \item Við getum notað \texttt{sprintf} til að fá tölur á ákveðnu sniði
+ \begin{itemize}
+  \item \texttt{fprintf} dugar líka ef við viljum einungis \emph{sýna} töluna, en ekki geyma hana
+ \end{itemize}
+\end{itemize}
+\begin{minted}[frame=lines]{matlab}
+>> sprintf('%6.4f',48.2)
+ans =
+48.2000
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{sprintf} í lykkju}
+Dæmi: Notkun \texttt{sprintf} til að búa til strengjafylki
+
+\begin{minted}[frame=lines]{matlab}
+usernames = [];
+for i = 9:11
+  usernames = [usernames; sprintf('jon%-2d',i)];
+end
+disp(usernames)
+\end{minted}
+Útkoman: $3\times 5$ strengjafylki.
+\end{frame}
+
+\section{Hólfafylki (8.1)}
+
+\begin{frame}{Hólfafylki}
+\begin{itemize}
+ \item Hingað til höfum við lent í vandræðum við að geyma gögn sem ekki eru öll ``eins'' í einhverjum skilningi
+ \begin{itemize}
+  \item Nýlegasta dæmið: Mislangir strengir
+ \end{itemize}
+ \item Til að geyma safn af gögnum sem ekki eru öll ``eins'' má nota nýja gagnagerð, svokallað hólfafylki (e. \emph{cell array})
+ \item Hólfafylki komast fram hjá hefðbundnum minnissvæðatakmörkunum með því að geyma benda (e. \emph{pointers}) á önnur minnissvæði
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hólfafylki}
+Búa má til hólfafylki/hólfavigra með því að umlykja gögnin sem geyma skal með slaufusvigum:
+
+\begin{minted}[frame=lines]{matlab}
+>> cells = {'a', 'ab', 'abc', 1}
+cells = 
+    'a'    'ab'    'abc'    [1]
+>> whos cells
+  Name       Size            Bytes  Class    Attributes
+  cells      1x4               468  cell
+\end{minted}
+\end{frame}
+
+\begin{frame}{Fyrirlestraræfing}
+\begin{enumerate}
+ \item Hvað gerir eftirfarandi skipun?\\
+ \texttt{eval('eval(''b = 4'')')}
+ \item Notið vigurkóðun og \texttt{isstrprop} fallið til að hreinsa allt nema tölur úr strengnum \texttt{s}.
+ \item Skrifið skipun sem býr til hólfafylki þar sem hvert hólf inniheldur einn hluta nafns ykkar.
+\end{enumerate}
+\end{frame}
+
+\section{Miðmisserispróf}
+
+\begin{frame}{Námsefni til miðmisserisprófs}
+\begin{itemize}
+ \item Allar glærur
+ \item Öll verkefni (skila, dæmatíma- og fyrirlestra)
+ \item Kaflar 1-7 í kennslubókinni, með eftirfarandi undantekningum:
+ \begin{itemize}
+  \item Kafli 2.6 (\texttt{diff} og \texttt{meshgrid})
+  \item Kafli 3.8 (föll sem skipanir)
+  \item Kafli 4.5 (\texttt{menu} fallið)
+  \item Kafli 6.3 (\texttt{menu} + einingaforritun)
+  \item Kafli 6.4.1 (\texttt{persistent} breytur)
+  \item Kafli 6.5 (aflúsun - fórum yfir, en er ekki til prófs)
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Grófur efnislisti}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Matlab segðir og breytur
+ \item Vigrar og fylki
+ \item Föll og skipanaskrár
+ \item \texttt{if}, \texttt{elseif} og \texttt{else}
+ \item Lykkjur
+ \item Vigurkóðun
+ \item Inntak og úttak
+ \item Gagnagerðir
+ \begin{itemize}
+  \item Heiltölur, fleytitölur, rökbreytur og stafir
+ \end{itemize}
+\end{itemize}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Tvíundarkerfið
+ \item Línurit
+ \item Skráarvinnsla: \texttt{save} og \texttt{load}
+ \item Gildissvið breyta
+ \item \texttt{switch}
+ \item Þýðing/túlkun og fleira undir húddinu
+ \item Skipulag forrita
+ \item Ýmis sérhæfð föll
+\end{itemize}
+
+\end{columns}
+\end{frame}
+
+
+\end{document}

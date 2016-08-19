@@ -1,0 +1,39 @@
+\usepackage[utf8]{inputenc}
+\usepackage[icelandic]{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{booktabs}
+\usepackage[outputdir=.]{minted} %Minted and configuration
+\usepackage{framed}
+\usepackage{tikz}
+\usemintedstyle{default}
+\renewcommand{\theFancyVerbLine}{\sffamily \arabic{FancyVerbLine}}
+\newcommand{\Mod}[1]{\ \text{mod}\ #1}
+
+\usebackgroundtemplate%
+{%
+\vbox to \paperheight{
+\includegraphics[width=\paperwidth]{Pics/hi-slide-head}
+
+\vfill
+\hspace{0.5cm}\includegraphics[width=0.3\paperwidth]{Pics/hi-von-logo}
+\vspace{0.5cm}
+    }%
+}
+
+\setbeamertemplate{navigation symbols}{}
+\usecolortheme{dove}
+\setbeamercolor{frametitle}{fg=white}
+\hypersetup{colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Yfirlit}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\author{Eiríkur Ernir Þorsteinsson}
+\institute{Háskóli Íslands}
+\date{Haust 2016}

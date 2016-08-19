@@ -1,0 +1,354 @@
+\documentclass{beamer}
+
+\input{../Haust2015glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 11, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Hreiðruð föll
+ \item Endurkvæmni
+\end{itemize}
+Kaflar: 10.4 - 10.5
+\end{frame}
+
+\begin{frame}{Næstu skilaverkefni}
+\begin{itemize}
+ \item Það fer að styttast í önninni
+ \begin{itemize}
+  \item Heimadæmum 9 skal skila 6. nóvember
+  \item Heimadæmum 10 skal skila 13. nóvember
+  \item Heimadæmum 11 skal skila 20. nóvember
+  \item Ein aukadæmi verða eftir það
+  \begin{itemize}
+   \item Þau verða sérstök - gefa einkunnina 10 (skil) eða 0 (ekki-skil), ætluð til prófundirbúnings
+  \end{itemize}
+ \end{itemize}
+ \item Bestu 9 skammtarnir gilda til einkunnar
+\end{itemize}
+\end{frame}
+
+\section{Færslur (8.2)}
+
+\begin{frame}{Skoðum kafla 8 aftur!}
+\begin{itemize}
+ \item Færslur (e. \emph{structures})
+ \begin{itemize}
+  \item Gagnagrind sem hópar gildi sem eiga saman
+  \item Dæmi: Upplýsingar um vöru: vörunúmer, lýsing, innkaupsverð, söluverð
+ \end{itemize}
+ \item Færslur hafa svið (e. \emph{fields}) og gildi (e. \emph{values})
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Að smíða færslur}
+\begin{itemize}
+ \item Hægt er að búa til færslu á tvo mismunandi vegu
+ \begin{itemize}
+  \item Með því að nota \texttt{struct} fallið
+  \item Með því að nota punktvirkja
+ \end{itemize}
+ \item Náð er í gögn með punktvirkjanum
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{struct} fallið}
+Í struct-fallinu koma til skiptis nafn sviðs og gildi sviðsins.
+\begin{minted}{matlab}
+>> student = struct('id', '12345', 'grades', [6 7 8])
+student = 
+        id: '12345'
+    grades: [6 7 8]
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Að ná í gögn úr færslu}
+Punktvirkjann (e. \emph{dot operator}) má nota til að ná í gögn úr færslu.
+\begin{minted}{matlab}
+>> student.id
+ans =
+12345
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Punktvirkinn}
+\begin{itemize}
+ \item Punktvirkjann má líka nota til að búa til færslur
+ \item Þá skrifum við nafn breytu, punkt, og svo nafn sviðsins (breytan þarf ekki að vera skilgreind fyrirfram)
+\begin{minted}{matlab}
+>> student2.id = '23456';
+>> student2.grades = [7 8 9];
+\end{minted}
+ \item Ef við viljum að \texttt{student2} sé af sömu gerð og \texttt{student} þá verðum við að nota nákvæmlega sömu sviðsnöfn og gagnagerðir
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nánar um punktvirkjann}
+\begin{itemize}
+ \item Þegar punktvirkinn er notaður til að búa til færslubreytu þá verður breytan til smátt og smátt
+ \begin{itemize}
+  \item Einu sviði bætt við í einu
+ \end{itemize}
+ \item Þetta hefur svipuð vandamál í för með sér og þegar vigur er stækkaður inni í lykkju - nýjar minnisúthlutanir þurfa að eiga sér stað
+ \begin{itemize}
+  \item Það er því hraðvirkara að nota \texttt{struct}-fallið
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Að prenta út færslur}
+\begin{itemize}
+ \item Fallið \texttt{disp} birtir öll svið færslu
+ \item \texttt{fprintf} getur einungis birt einstök svið
+ \begin{itemize}
+  \item En það er e.t.v. ekki undarlegt - \texttt{fprintf} er nákvæmnistól
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Færsluföll}
+\begin{center}
+\begin{tabular}{lp{7cm}}
+\toprule
+Nafn falls&Hlutverk\\
+\midrule
+\texttt{isstruct}&Skilar \texttt{true} ef inntak er færsla\\
+\texttt{isfield}&Skilar \texttt{true} ef gefin færsla hefur svið með gefnu nafni\\
+\texttt{fieldnames}&Skilar hólfavigri með nöfnum allra sviða í gefinni færslu\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Færsluvigrar}
+\begin{itemize}
+ \item Oft viljum við geyma margar færslur af sömu gerð en með mismunandi gildum
+ \begin{itemize}
+  \item Dæmi: Nemendaskrá, vörulisti
+ \end{itemize}
+ \item Búum þá til vigur af færslum
+ \begin{itemize}
+  \item Munum: Allt í Matlab er fylki
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Að nota færsluvigur}
+\begin{itemize}
+ \item Getum notað færsluvigur eins og aðra vigra
+ \begin{itemize}
+  \item Vísum í sæti vigurs með númeri
+  \item Vísum í svið færslu með punktvirkjanum
+ \end{itemize}
+\end{itemize}
+\begin{minted}[fontsize=\small]{matlab}
+>> products = struct('name', 'Torfstrekkjari', 'price', 12000);
+>> products(2) = struct('name', 'Blómalím', 'price', 1500);
+>> products.price
+ans =
+       12000
+ans =
+        1500
+\end{minted}
+
+\end{frame}
+
+\begin{frame}{Fyrirlestraræfing}
+\begin{enumerate}
+ \item Búið til $1 \times 1$ færslubreytu sem inniheldur upplýsingar um nafn ykkar og kennitölu
+ \item Búið til færsluvigur með a.m.k. 2 færslum sem inniheldur upplýsingar um nafn bjórs, nafn brugghúss, og seldan lítrafjölda
+ \item Finnið heildarfjölda seldra lítra skv. færsluvigrinum í liðnum á undan með lykkju eða vigurkóðun
+\end{enumerate}
+\end{frame}
+
+\section{Hlutbundin forritun}
+
+\begin{frame}{Hlutbundin forritun}
+\begin{itemize}
+ \item Hingað til höfum við verið að raða gögnunum okkar niður í vigra, hólfafylki, færslur\ldots
+ \begin{itemize}
+  \item Föll taka gögnin síðan inn, vinna með þau og skila öðrum gögnum
+ \end{itemize}
+ \item Hægt er að nálgast forritun á annan hátt - hlutbundinn (e. \emph{object oriented})
+ \begin{itemize}
+  \item Hvaða fyrirbrigði/hlutir koma við sögu í vandamálinu?
+  \item Hvernig hegða þessir hlutir sér?
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hvað er hlutur?}
+\pause
+\begin{itemize}
+ \item Hvaða fyrirbrigði sem skilgreinast af gögnum og aðgerðum á þau geta verið hlutir
+ \begin{itemize}
+  \item Mjög opið hugtak! \pause
+ \end{itemize}
+ \item Dæmi um fyrirbrigði sem gætu verið hlutir í forriti \pause
+ \begin{itemize}
+  \item Allt sem sést í tölvuleikjum \pause
+  \item Hringur
+  \begin{itemize}
+   \item Gögn/eiginleikar: Staðsetning miðpunkts, radíus
+   \item Aðgerðir: Teikna, reikna flatarmál
+  \end{itemize} \pause
+  \item Almennt brot
+  \begin{itemize}
+   \item Gögn/eiginleikar: Nefnari, teljari
+   \item Aðgerðir: Leggja saman, stytta\ldots
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hvernig búum við til hluti í Matlab?}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Til að búa til hluti í Matlab notum við svokallaða klasa (e. \emph{classes})
+ \item Matlab-klasi á heima í sér \texttt{.m} skrá. Hann inniheldur
+ \begin{itemize}
+  \item Eiginleika (e. \emph{properties}) sem lýsa gögnum klasans
+  \begin{itemize}
+   \item Þetta eru breytur
+  \end{itemize}
+  \item Aðferðir (e. \emph{methods}) sem lýsa því hvernig gögnin hegða sér
+  \begin{itemize}
+   \item Þetta eru föll
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\column{0.5\textwidth}
+\begin{minted}[frame=lines]{matlab}
+classdef ClassName % Nafn
+
+    properties
+        % Eiginleikar hingað
+    end
+    
+    methods
+        % Aðferðir hingað
+    end
+    
+end
+\end{minted}
+
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi: Almennt brot}
+\begin{minted}[frame=lines, fontsize=\small]{matlab}
+classdef Fraction
+
+    properties
+        n % Teljari / numerator
+        d % Nefnari / denomenator
+    end
+    
+    methods
+        function frac = Fraction(numerator, denomenator)
+            frac.n = numerator;
+            frac.d = denomenator;
+        end
+    end
+    
+end
+\end{minted}
+
+\end{frame}
+
+\begin{frame}{Í Matlab}
+\begin{center}
+\includegraphics[width=\textheight]{Pics/fraction-workspace}
+\end{center}
+\end{frame}
+
+
+\begin{frame}{Hvað vorum við að horfa á?}
+\begin{itemize}
+ \item Við vorum að skoða klasa með\ldots
+ \item Tveimur eiginleikum
+ \begin{itemize}
+  \item \texttt{n} og \texttt{d}, sem tákna teljara og nefnara
+  \item Einni aðferð, sem ``smíðar'' nýja hluti
+  \begin{itemize}
+   \item Slík aðferð er kölluð smiður (e. \emph{constructor})
+   \item Notuð til að upphafsstilla gildi, athuga hvort að breyturnar séu af leyfilegum gerðum o.fl.
+   \item Flestir klasar hafa smið
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fleiri aðferðir}
+\begin{columns}
+\column{0.45\textwidth}
+\begin{itemize}
+ \item Til að klasinn okkar virki vel þarf hann fleiri aðferðir
+ \item Oftast viljum við að klasinn okkar prentist á skynsamlegan hátt út þegar við köllum á \texttt{disp} eða þegar við gefum breytum gildi af hans tagi
+ \item Hvernig gerum við það?
+ \begin{itemize}
+  \item Bætum við \texttt{disp} aðferð á klasann!
+ \end{itemize}
+\end{itemize}
+\column{0.55\textwidth}
+
+\begin{minted}[frame=lines, fontsize=\small]{matlab}
+function disp(fr)
+    fprintf('%d/%d\n', fr.n, fr.d)
+end
+\end{minted}
+
+Þetta fer inn í ``\texttt{methods}'' blokk klasans
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Látum klasann vinna vinnu}
+\vspace{\baselineskip}
+Við kunnum að leggja saman brot:
+\[
+\frac{c}{d} + \frac{a}{b} = \frac{cb+ad}{db} 
+\]
+Þetta má gera í klasanum okkar með því að bæta við aðferðinni
+\begin{minted}[frame=lines]{matlab}
+function newFrac = add(frac1, frac2)
+    newN = frac1.n * frac2.d + frac2.n * frac1.d;
+    newD = frac1.d * frac2.d;
+    newFrac = Fraction(newN, newD);
+end
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Af hverju hlutbundin forritun?}
+\begin{itemize}
+ \item Mörgum ``kerfum'' er auðvelt að lýsa með hlutbundnum aðferðum
+ \begin{itemize}
+  \item Sérstaklega kerfum sem eiga að herma eftir bókstaflegum hlutum
+ \end{itemize}
+ \item Ýmis atriði í hlutbundinni forritun hjálpa til við að gera kóða endurnýtanlegan og skilanlegri
+ \begin{itemize}
+  \item Erfðir, hjúpun, \ldots
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fyrirlestraræfing}
+\begin{enumerate}
+ \setcounter{enumi}{3}
+ \item Breytið \texttt{disp} aðferðinni í \texttt{Fraction} klasanum okkar svo að tölur með 1 í nefnara séu sýndar án nefnara (t.d. sýna töluna \texttt{3} en ekki \texttt{3/1})
+ \item Bætið margföldunaraðferð við \texttt{Fraction} klasann
+\end{enumerate}
+
+\end{frame}
+
+
+\end{document}

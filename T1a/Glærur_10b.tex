@@ -1,0 +1,249 @@
+\documentclass{beamer}
+
+\input{../Haust2015glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 10, seinni fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Nafnlaus föll
+ \item Fallshandföng
+ \item Breytilegur fjöldi viðfanga
+\end{itemize}
+Kaflar: 10.1 - 10.3 
+\end{frame}
+
+\section{Hreiðruð föll (10.4)}
+
+\begin{frame}{Hreiðruð föll}
+\begin{itemize}
+ \item Matlab leyfir hreiðruð föll (e. \emph{nested functions})
+ \begin{itemize}
+  \item Þá er skilgreining eins falls algjörlega innan í öðru falli
+  \item Notað til að skipuleggja forrit
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um hreiðrað fall}
+Skoðum \texttt{nestedVolume.m} á blaðsíðu 333. Það reiknar út rúmmál tenings.
+\end{frame}
+
+
+\begin{frame}{Gildissvið breyta}
+\vspace{\baselineskip}
+\begin{itemize}
+ \item Gildissvið breytu (e. \emph{scope of a variable}) er gildissvið ysta falls sem notar hana
+ \begin{itemize}
+  \item Innra fall hefur aðgang að breytum ytra falls
+  \item Ytra fall hefur aðgang að breytum innra falls
+  \item Ef ytra fall notar breytu innra falls ekki, þá er hún staðvær (e. \emph{local}) í innra falli
+ \end{itemize}
+ \item Breytur í ytri föllum virka því sem víðværar (e. \emph{global}) breytur í innri föllum - ekki þarf að senda þær inn í föllin sem inntaksbreytur
+ \item Bókin eyðir ekki miklu púðri í þessar pælingar - \href{http://se.mathworks.com/help/matlab/matlab_prog/nested-functions.html?refresh=true}{skjölunin á Matlab-síðunni} er með meira fyrir fróðleiksfúsa
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fyrirlestraræfing}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{enumerate}
+ \item Hvert er gildi skilabreytanna \texttt{a} og \texttt{b} í fallinu hér til hliðar?
+\end{enumerate}
+
+\column{0.45\textwidth}
+\begin{minted}[frame=lines, fontsize=\small]{matlab}
+function [a, b] = nestTest()
+a = nested1();
+b = nested2();
+
+    function x = nested1()
+        x = 1;
+    end
+
+    function x = nested2()
+        x = 2;
+    end
+end
+\end{minted}
+
+\end{columns}
+\end{frame}
+
+\section{Endurkvæmni (10.5)}
+
+\begin{frame}[fragile]{Endurkvæmni}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{itemize}
+ \item Hægt er að skilgreina hugtök með því að nota hugtakið sjálft
+ \begin{itemize}
+  \item Slík skilgreining er kölluð endurkvæm
+  \item Samanstendur af tveimur hlutum: Grunntilfelli (e. \emph{base case}) og almennu tilfelli (e. \emph{general case})
+ \end{itemize}
+ \item Grunntilfellið er notað til að ``loka'' endurkvæmninni
+ \begin{itemize}
+  \item Ef grunntilfellið vantar verður endurkvæmnin óendanleg
+ \end{itemize}
+\end{itemize}
+\column{0.4\textwidth}
+
+\vspace{0.1cm}
+Endurkvæm skilgreining á hrópmerkingu:
+\begin{align*}
+1! &= 1\\
+n! &= n\cdot(n-1)!\\
+\end{align*}
+
+% \[
+% n! = \left\{
+% \begin{array}{lll}
+% 1&,& n = 1\\
+% n\cdot(n-1)!&,& n \geq 1\\
+% \end{array}
+% \right.
+% \]
+
+\end{columns}
+\end{frame}
+
+\begin{frame}{(Óendanleg) endurkvæmni á ýmsum stöðum}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{itemize}
+ \item Endurkvæmar skammstafanir:
+ \begin{itemize}
+  \item VISA stendur fyrir ``\textbf{V}ISA \textbf{I}nternational \textbf{S}ervice \textbf{A}ssociation''
+  \item Bing stendur fyrir ``\textbf{B}ing \textbf{I}s \textbf{N}ot \textbf{G}oogle''
+ \end{itemize}
+ \item ``Vinir vina minna eru vinir mínir''
+\end{itemize}
+\column{0.4\textwidth}
+\includegraphics[width=\linewidth]{Pics/google-recursion}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Endurkvæmt mynstur}
+Sierpinski-þríhyrningurinn:
+\begin{center}
+\includegraphics[width=0.6\linewidth]{Pics/sierpinski}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Endurkvæmni í Matlab}
+Föll í Matlab geta verið endurkvæm (bls. 335):
+\begin{minted}[frame=lines]{matlab}
+function facn = fact(n)
+if n == 1
+  facn = 1; % Grunntilfelli
+else
+  facn = n * fact(n-1); % Almennt tilfelli
+end
+end
+\end{minted}
+Í almenna tilfellinu er kallað aftur á fallið sjálft!
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi: Endurkvæm útprentun}
+Fall sem prentar út orð í setningu í öfugri röð (bls. 337):
+\begin{minted}[frame=lines]{matlab}
+function prtwords(sent)
+
+  [word, rest] = strtok(sent);
+  if ~isempty(rest) % Grunntilfelli: rest er tómur
+    prtwords(rest);
+  end
+  disp(word)
+end
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi: Endurkvæmt hjálparfall}
+\vspace{\baselineskip}
+\begin{minted}[frame=lines, fontsize=\scriptsize]{matlab}
+function maximum = recursiveMax(inputVector)
+  
+  maximum = maxHelper(inputVector, -inf);
+  
+  function partialMaximum = maxHelper(partialV, currentMax)
+    if isempty(partialV)
+      partialMaximum = currentMax;
+    else
+       if partialV(1) > currentMax
+         partialMaximum = maxHelper(partialV(2:end), partialV(1));
+       else
+         partialMaximum = maxHelper(partialV(2:end), currentMax);
+       end
+    end
+  end
+  
+end
+\end{minted}
+
+\end{frame}
+
+
+
+\begin{frame}{Tengd hugtök}
+\begin{itemize}
+ \item Endurkvæmni (í forritun) byggir á svipuðum hugmyndum og þrepun í stærðfræði
+ \item Endurkvæmni er afar skyld lykkjum
+ \begin{itemize}
+  \item Lykkjur eru leið til að keyra sama kóðann oft, með smá breytingum í hverri ítrun
+  \item Endurkvæmni er leið til að keyra sama kóðann oft, með smá breytingum í hverju fallskalli
+ \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Hvenær á að nota endurkvæmni?}
+\begin{itemize}
+ \item Endurkvæm útgáfa af forriti er oftast dýrari í keyrslu en útgáfa sem notar ítrun
+ \begin{itemize}
+  \item Það kostar mun meira að framkvæma kall á fall en að framkvæma eina ítrun
+ \end{itemize}
+ \item En stundum er endurkvæma útgáfan skiljanlegri
+ \begin{itemize}
+  \item Tími forritarans er oft meira virði en tími tölvunnar
+  \item Til eru forritunarmál sem hafa engar lykkjur, bara endurkvæmni
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]{Fyrirlestraræfing}
+\begin{columns}
+\column{0.4\textwidth}
+\begin{enumerate}
+ \setcounter{enumi}{1}
+ \item Breytið fallinu \texttt{prtwords} (á fyrri glæru) svo það prenti setningu út í réttri röð, ekki öfugri (ráðlegging: Færið \texttt{disp}ið)
+ \item Hverju skilar fallskallið \texttt{f(v, 5)}, þar sem \texttt{v} er vigur af tölum?
+\end{enumerate}
+
+\column{0.6\textwidth}
+\begin{minted}[frame=lines, fontsize=\small]{matlab}
+function r = f(v, x)
+  if isempty(v)
+    r = false;
+  else
+    r = (v(1)==x) || f(v(2:end),x);
+ end
+end
+\end{minted}
+
+\end{columns}
+\end{frame}
+
+
+\end{document}

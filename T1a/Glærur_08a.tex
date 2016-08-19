@@ -1,0 +1,223 @@
+\documentclass{beamer}
+
+\input{../Haust2015glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 8, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Meira um strengi
+ \item Miðmisseriskönnun
+ \item Verkfall?
+\end{itemize}
+Kafli: 7 
+\end{frame}
+
+\section{Gagnagrindur}
+
+\begin{frame}{Gagnagrindur}
+\begin{itemize}
+ \item Gagnagrind (e. \emph{data structure}) er skilgreind aðferð við að geyma og skipuleggja gögn í minni tölvunnar þannig að hægt sé að vinna með þau á skilvirkan hátt
+ \begin{itemize}
+  \item Sumar gagnagrindur henta vel fyrir leit í gögnum
+  \item Aðrar henta vel til að setja inn ný gögn
+ \end{itemize}
+ \item Val á gagnagrind getur skipt miklu máli
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gagnagrindur í Matlab}
+\begin{itemize}
+ \item Höfum séð vigra og fylki
+ \begin{itemize}
+  \item Vigrar og fylki hafa ákveðið skipulag
+  \begin{itemize}
+   \item Gögnin í vigrum eru í númeruðum sætum, frá 1 til $n$
+   \item Vigrar eru geymdir í samfelldu minnisplássi, svo það er auðvelt að ná í gildið í $k$-ta sætinu
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Pics/vector-index}
+\end{center}
+   \end{itemize}
+  \item Vigrar og fylki eru oftast góð gagnagrind fyrir einsleit gögn, sérstaklega þegar stærðin er þekkt fyrirfram
+  \begin{itemize}
+   \item Ef $v$ inniheldur \texttt{double} tölur, þá er $v(i)$ $8i$ bætum frá ``$v(0)$''
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dæmi um gagnagrind: Eintengdur listi}
+\includegraphics[width=\textwidth]{Pics/singly-linked-list}
+\end{frame}
+
+\begin{frame}{Dæmi um gagnagrind: Tré}
+\vspace{\baselineskip}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Pics/tree}
+\end{center}
+\end{frame}
+
+\begin{frame}{Dæmi um gagnagrind: Hakkatafla}
+% \vspace{\baselineskip}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Pics/hash-table}
+\end{center}
+\end{frame}
+
+\section{Hólfafylki (8.1)}
+
+\begin{frame}{Hólfafylki og hólfavigrar}
+\begin{itemize}
+ \item Hingað til höfum við lent í vandræðum við að geyma gögn sem ekki eru öll ``eins'' í einhverjum skilningi
+ \begin{itemize}
+  \item Nýlegasta dæmið: Mislangir strengir
+ \end{itemize}
+ \item Til að geyma safn af gögnum sem ekki eru öll ``eins'' í Matlab má nota nýja gagnagerð, svokallað hólfafylki (e. \emph{cell array})
+ \item Hólfafylki komast fram hjá hefðbundnum minnissvæðatakmörkunum með því að geyma benda (e. \emph{pointers}) á önnur minnissvæði
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Hólfafylki - dæmi}
+Búa má til hólfafylki/hólfavigra með því að umlykja gögnin sem geyma skal með slaufusvigum:
+
+\begin{minted}[frame=lines]{matlab}
+>> cells = {'a', 'ab', 'abc', 1}
+cells = 
+    'a'    'ab'    'abc'    [1]
+>> whos cells
+  Name       Size            Bytes  Class    Attributes
+  cells      1x4               468  cell
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Hólfafylki - dæmi}
+Fyrri skipunin býr til $1\times 4$ hólfavigur, sú seinni $2 \times 2$ hólfafylki
+\begin{minted}[frame=lines]{matlab}
+>> ca = {23, 'a', 1:2:9, 'hello'} 
+ca = 
+   [23]   'a'   [1x5 double]   'hello'
+
+>> cm = {23, 'a'; 1:2:9, 'hello'}
+cm = 
+    [        23]    'a'    
+    [1x5 double]    'hello'
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Innihald hólfa}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Hvert hólf í hólfavigri inniheldur einhverja tegund af Matlab vigri/fylki
+ \item Getum líka forúthlutað hólfavigri með fallinu \texttt{cell}:
+\end{itemize}
+\column{0.5\textwidth}
+\begin{minted}[frame=lines]{matlab}
+>> cm1 = cell(2,2)
+cm1 = 
+    []    []
+    []    []
+\end{minted}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Vísun í hólfavigra}
+\begin{center}
+Getum vísað á tvo vegu í stök hólfavigra
+\end{center}
+
+\begin{columns}
+\column{0.5\textwidth}
+Með innihaldsvísun (e. \emph{content indexing}), sem gefur okkur innihald hólfsins
+\begin{minted}[frame=lines]{matlab}
+>> ca{3}
+ans =
+    1    3    5    7    9
+\end{minted}
+\column{0.5\textwidth}
+Með hólfavísun (e. \emph{cell indexing}), sem gefur okkur hólfið sem er á þeim stað
+\begin{minted}[frame=lines]{matlab}
+>> ca(3)
+ans = 
+    [1x5 double]
+\end{minted}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Fyrirlestraræfing}
+\begin{enumerate}
+ \item Skoðum aftur hólfavigurinn\\ \texttt{ca = \{23, 'a', 1:2:9, 'hello'\} }\\
+ . Hvaða gildi hefur \texttt{ca\{4\}(2:3)}?
+ \item Skoðum hólfafylkið\\
+\texttt{ cf=\{'fylkin', 'eru'; [2 3; 8 7], [1:3; 2:4]\} }\\
+. Hvernig má ná í alla aðra línuna í fylkinu sem er í fyrra hólfinu í annarri línu \texttt{cf}?
+ \item Af hverju er svona mikið vandamál að geyma gildi af mismunandi gerðum í sama vigrinum?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Framsetning á hólfafylkjum}
+\begin{itemize}
+ \item Fallið \texttt{cellplot} sýnir á myndrænan hátt skipulag hólfafylkis
+ \item Fallið \texttt{celldisp} sýnir innihald allra hólfa í hólfafylki
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Viguraðgerðir á hólfavigra}
+\begin{itemize}
+ \item Hólfavigrar eru vigrar, svo hægt er að nota margar viguraðgerðir á þá
+ \begin{itemize}
+  \item Dæmi: \texttt{length} og \texttt{size} föllin
+  \item Þó ekki öll, t.d. \texttt{max}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Viguraðgerðir á hólfavigra}
+Þegar unnið er með hólfavigrana sjálfa þarf að nota hólfavísun
+\begin{minted}[frame=lines]{matlab}
+>> ca = {23, 'a', 1:2:9, 'hello'};
+>> ca(1:2)
+ans = 
+    [23]    'a'
+>> ca(3) = [] % Staki 3 í ca hent
+ca = 
+    [23]    'a'    'hello'
+>> ca{3} = [] % Stak 3 í ca sett sem tómi vigurinn
+ca = 
+    [23]    'a'    []
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Strengir í hólfavigrum}
+\begin{itemize}
+ \item Algeng notkun á hólfavigrum er að nota þá til þess að geyma strengi af mismunandi lengdum
+ \begin{itemize}
+  \item Munum að til þess að geyma vigur af strengjum þurftum við að smíða stafafylki, þar sem allar línur eru af sömu lengd
+ \end{itemize}
+\end{itemize}
+\begin{minted}[frame=lines]{matlab}
+>> students = {'Ari', 'Anna', 'Bragi', 'Brynja'}
+students = 
+    'Ari'    'Anna'    'Bragi'    'Brynja'
+\end{minted}
+\end{frame}
+
+\begin{frame}{Fyrirlestraræfing}
+\begin{enumerate}
+ \setcounter{enumi}{3}
+ \item Segjum að við höfum hólfavigurinn\\ \texttt{students = \{'Ari', 'Anna', ...\}}
+ \\. Skrifið Matlab-fall til að athuga hvort að nemandinn \texttt{'Drífa'} sé í listanum.
+ \item Er hægt að setja hólfavigur inn í hólfavigur?
+\end{enumerate}
+\end{frame}
+
+\end{document}

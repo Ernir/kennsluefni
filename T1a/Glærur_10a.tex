@@ -1,0 +1,270 @@
+\documentclass{beamer}
+
+\input{../Haust2015glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 10, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Almenn skráarvinnsla
+ \item Excel-skrár
+ \item \texttt{.mat} skrár
+\end{itemize}
+Kaflar: 9.1 - 9.3 
+\end{frame}
+
+\begin{frame}{Um heimaverkefni}
+\begin{itemize}
+ \item Í þessari viku er verið að forrita \emph{í tveggja manna hópum}
+ \item Ráð og trikk fyrir paraforritun:
+ \begin{itemize}
+  \item Pör þar sem annar aðilinn er sterkari forritari eru mjög góð
+  \begin{itemize}
+   \item Veikari lærir af þeim sterkari
+   \item Sterkari lærir af kennslunni
+  \end{itemize}
+  \item Forritið á \emph{einni} tölvu
+  \begin{itemize}
+   \item Hlutverk ykkar: ``Driver'' (situr við tölvu) og ``navigator'' (hugsar fram í tímann, grípur villur)
+   \item Látið veikari forritarann vera driver til að byrja með
+   \item Skiptið um hlutverk þegar þið eruð farin að detta í Facebook
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{Nafnlaus föll (10.1)}
+
+\begin{frame}[fragile]{Nafnlaus föll}
+\begin{itemize}
+ \item Nafnlaus föll (e. \emph{anonymous functions}) eru einföld einnar línu föll
+ \begin{itemize}
+  \item Þurfa ekki að vera í sérstakri \texttt{.m}-skrá
+  \item Geta einfaldað forritun töluvert
+ \end{itemize}
+ \item Almennt snið:
+\begin{verbatim}
+handfang = @(viðföng) fallsegð
+\end{verbatim}
+ \begin{itemize}
+  \item Þar sem \texttt{handfang} er fallshandfang (e. \emph{function handle})
+  \item \texttt{viðföng} er 0 eða fleiri breytur sem unnið er með
+  \item \texttt{fallsegð} er ein Matlab-segð (e. \emph{expression})
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um nafnlaus föll}
+\begin{minted}{matlab}
+>> circleArea = @(r) pi*r.^2 % Fallið skilgreint
+circleArea =
+@(r) pi * r .^ 2
+>> circleArea(10) % Fallið notað
+ans =  314.16
+>> circleArea(1:3) % Notuðum .^, svo vigrar virka
+ans =
+    3.1416   12.5664   28.2743
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um nafnlaus föll}
+\begin{minted}{matlab}
+>> f = @(x,y) y*sin(x) + x*cos(y); % Tvö inntök
+>> f(1,2)
+ans =
+    1.2668
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um nafnlaus föll}
+Nafnlaust fall án inntaksbreytu:
+\begin{minted}{matlab}
+>> randomPrint = @() fprintf('%.2f\n', rand());
+>> randomPrint() % Kallað á fallið
+0.81
+>> randomPrint % Engir svigar - fallið bara sýnt
+randomPrint = 
+    @()fprintf('%.2f\n',rand())
+\end{minted}
+\end{frame}
+
+\section{Fallshandföng (10.2)}
+
+\begin{frame}[fragile]{Fallshandföng}
+\vspace{\baselineskip}
+\begin{itemize}
+ \item Fallshandfang er leið til að vísa til falls
+ \begin{itemize}
+  \item Koma líka fyrir í öðrum samhengjum en þegar nafnlaus föll eru búin til
+ \end{itemize}
+ \item Getum fengið handfang fyrir ýmis föll (þar á meðal innbyggð)
+ \begin{itemize}
+  \item Notum til þess virkjann (e. \emph{operator}) @
+ \end{itemize}
+\end{itemize}
+\begin{minted}{matlab}
+>> sinHandle = @sin
+sinHandle = 
+    @sin
+>> sinHandle(pi/4)
+ans =
+    0.7071
+\end{minted}
+\end{frame}
+
+\begin{frame}{Af hverju fallshandföng?}
+\begin{itemize}
+ \item Hægt er að vinna með fallshandföng eins og hver önnur gildi, t.d. sett þau sem viðföng í önnur föll
+ \item Þetta kallast að föll séu ``fyrsta stigs hlutir'' (e. \emph{first class objects})
+ \begin{itemize}
+  \item Þýðir að þeir hegða sér eins og grunnhlutir í málinu
+  \item Hægt í sumum forritunarmálum: Scheme, Javascript, Python\ldots
+  \item Ekki hægt í öðrum: Java, C
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dæmi um fallshandföng}
+Lítum á \texttt{fnfnexamp.m} a blaðsíðu 324!
+
+Fallið tekur við fallshandfangi og teiknar það á ákveðnu bili.
+\end{frame}
+
+\begin{frame}[fragile]{Hagnýting handfanga: \texttt{fplot} fallið}
+Fallið \texttt{fplot} teiknar fall á gefnu bili. Almennt snið:
+\begin{verbatim}
+>> fplot(fallshandfang, [lággildi hágildi])
+\end{verbatim}
+Fallið sem handfangið vísar til verður að taka við einu gildi og skila einu gildi. Það verður líka að ráða við að inntakið sé vigur.
+\end{frame}
+
+\begin{frame}{Fyrirlestraræfing}
+\begin{enumerate}
+ \item Skilgreinið nafnlaust fall til að reikna rúmmál kúlu
+ \[
+  \text{formúla: } V = \frac{4}{3} \pi r^3
+ \]
+ \item Notið \texttt{fplot} til að teikna $f(x) = x\cos(5x)$ á bilinu 0 til 10
+\end{enumerate}
+\end{frame}
+
+\section{Breytilegur fjöldi viðfanga (10.3)}
+
+\begin{frame}{Breytilegur fjöldi viðfanga}
+\begin{itemize}
+ \item Hingað til hafa öll föll sem við skrifum tekið fastan fjölda viðfanga
+ \item Matlab leyfir breytilegan fjölda inntaksbreyta og breytilegan fjölda skilabreyta
+ \begin{itemize}
+  \item Notum hólfavigrana \texttt{varargin} og \texttt{varargout} til að geyma inntaks- og skilabreyturnar
+  \item Fjöldinn fæst með \texttt{nargin} og \texttt{nargout}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um \texttt{nargin} og \texttt{varargin}}
+\begin{minted}[frame=lines, fontsize=\small]{matlab}
+function varDisp(firstArg, varargin)
+fprintf('Fjöldi viðfanga er %d\n', nargin)
+fprintf('Fasta viðfangið er %d\n', firstArg)
+
+fprintf('Fjöldi aukaviðfanga er %d, þau eru: \n', nargin-1)
+for i = 1:(nargin-1)
+    fprintf('%10d\n', varargin{i})
+end
+end
+\end{minted}
+\end{frame}
+
+\begin{frame}{Dæmi um \texttt{nargin} og \texttt{varargin}}
+Lítum á \texttt{areafori.m} á blaðsíðu 327!
+
+Fallið reiknar út flatarmál hrings með radíus gefinn í fetum. Það tekur við einu eða tveimur inntaksbreytum. Ef seinni breytan er gefin og með gildið \texttt{'i'} skilar fallið niðurstöðunni í fertommum, annars ferfetum.
+\end{frame}
+
+\begin{frame}[fragile]{Breytilegur fjöldi skilabreyta}
+Getum skilað vigri af breytilegri lengd. Almennt snið:
+\begin{verbatim}
+function [skilA, skilB, ..., varargout] = fall(inntök)
+  ...
+end
+\end{verbatim}
+\texttt{varargout} er hólfavigur sem fallið fyllir í eftir þörfum.
+\end{frame}
+
+\begin{frame}{Dæmi um \texttt{varargout}}
+Lítum á \texttt{typesize.m} blaðsíðu 330!
+
+Fallið skilar 's' ef inntakið er skalarbreyta, 'v' ef það er vigur, og 'm' ef það er fylki. Það skilar einnig víddunum ef það er vigur eða fylki.
+\end{frame}
+
+\section{Hreiðruð föll (10.4)}
+
+\begin{frame}{Hreiðruð föll}
+\begin{itemize}
+ \item Matlab leyfir hreiðruð föll (e. \emph{nested functions})
+ \begin{itemize}
+  \item Þá er skilgreining eins falls algjörlega innan í öðru falli
+  \item Notað til að skipuleggja forrit
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um hreiðrað fall}
+Skoðum \texttt{nestedVolume.m} á blaðsíðu 333. Það reiknar út rúmmál tenings.
+\end{frame}
+
+
+\begin{frame}{Gildissvið breyta}
+\vspace{\baselineskip}
+\begin{itemize}
+ \item Gildissvið breytu (e. \emph{scope of a variable}) er gildissvið ysta falls sem notar hana
+ \begin{itemize}
+  \item Innra fall hefur aðgang að breytum ytra falls
+  \item Ytra fall hefur aðgang að breytum innra falls
+  \item Ef ytra fall notar breytu innra falls ekki, þá er hún staðvær (e. \emph{local}) í innra falli
+ \end{itemize}
+ \item Breytur í ytri föllum virka því sem víðværar (e. \emph{global}) breytur í innri föllum - ekki þarf að senda þær inn í föllin sem inntaksbreytur
+ \item Bókin eyðir ekki miklu púðri í þessar pælingar - \href{http://se.mathworks.com/help/matlab/matlab_prog/nested-functions.html?refresh=true}{skjölunin á Matlab-síðunni} er með meira fyrir fróðleiksfúsa
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fyrirlestraræfing}
+\begin{columns}
+\column{0.55\textwidth}
+\begin{enumerate}
+ \setcounter{enumi}{2}
+ \item Sýnið haus á falli sem getur fengið núll eða fleiri inntaksbreytur
+ \item Hvernig má skrifa fall sem getur tekið 0, 1 eða 2 inntaksbreytur, en skilar villu ef þær eru fleiri?
+ \item Hvert er gildi skilabreytanna \texttt{a} og \texttt{b} í fallinu hér til hliðar?
+\end{enumerate}
+\column{0.45\textwidth}
+\begin{minted}[frame=lines, fontsize=\small]{matlab}
+function [a, b] = nestTest()
+a = nested1();
+b = nested2();
+
+    function x = nested1()
+        x = 1;
+    end
+
+    function x = nested2()
+        x = 2;
+    end
+end
+\end{minted}
+
+\end{columns}
+\end{frame}
+
+
+\end{document}

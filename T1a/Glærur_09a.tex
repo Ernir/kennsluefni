@@ -1,0 +1,324 @@
+\documentclass{beamer}
+
+\input{../Haust2015glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 9, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Gagnagrindur
+ \item Hólfavigrar/hólfafylki
+\end{itemize}
+Kafli: 8.1
+\end{frame}
+
+\subsection{Miðmisserispróf}
+
+\begin{frame}{Miðmisserispróf}
+\pause
+\begin{itemize}
+ \item 53 nemendur af 67 (79\%) tóku prófið \pause
+ \begin{itemize}
+  \item 69\% í fyrra 
+ \end{itemize} \pause
+ \item Meðaleinkunn var 7.19 \pause
+ \begin{itemize}
+  \item Var 5.51 í fyrra!
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sé vilji til að bæta sig\ldots}
+\begin{itemize}
+ \item \emph{Skrifa meiri Matlab-kóða!}
+ \item Gera heimadæmi og fyrirlestraæfingar (sjálf)
+ \item Mæta í dæmatíma og gera tímadæmi
+ \item Mæta í stoðtíma á föstudögum
+ \item Gera fleiri dæmi úr bókinni úr því sem ykkur finnst vanta æfingu í
+ \begin{itemize}
+  \item Nóg er til af þeim
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Það sem sleppt var vegna verkfalls\ldots}
+\begin{itemize}
+ \item Færslur (e. \emph{structures})
+ \begin{itemize}
+  \item Gagnagrind sem hópar gildi sem eiga saman
+  \item Dæmi: Upplýsingar um vöru: vörunúmer, lýsing, innkaupsverð, söluverð
+ \end{itemize}
+ \item Til að búa til færslu má nota fall sem heitir \texttt{struct}.
+ \item Fjallað er um færslur í kafla 8.2
+\end{itemize}
+\end{frame}
+
+\section{Skráarvinnsla (9.1)}
+
+\subsection{Lestur úr skrám}
+
+\begin{frame}{Skráarvinnsla}
+\begin{itemize}
+ \item Höfum séð einfaldar skipanir til að lesa og skrifa fylki í skrár
+ \begin{itemize}
+  \item \texttt{load} og \texttt{save}
+  \item Þær duga oft, en stundum þarf öflugri aðferðir
+ \end{itemize}
+ \item Í almennri skráarvinnslu felst:
+ \begin{enumerate}
+  \item Opna skrá
+  \item Skrifa í skrá/lesa úr skrá
+  \item Loka skrá
+ \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Opna skrá}
+\begin{itemize}
+ \item Almennt form:
+\begin{minted}[frame=lines]{matlab}
+>> fid = fopen('skráarnafn'); % eða
+>> fid = fopen('skráarnafn', 'heimildir');
+\end{minted}
+ \item Skilagildið er -1 ef ekki tókst að opna skrána:
+\begin{minted}[frame=lines]{matlab}
+fid = fopen('daemi.dat');
+if fid == -1
+  error('Tókst ekki að opna skrá');
+else
+  % Skrifa kóða sem vinnur með skrána
+end
+\end{minted}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Loka skrá}
+\begin{itemize}
+ \item Þegar við höfum lokið við að nota skrá, þá eigum við að loka henni.
+\begin{minted}[frame=lines]{matlab}
+>> res = fclose(fid); % Lokar skrá með auðkennið fid
+\end{minted}
+\begin{minted}[frame=lines]{matlab}
+>> res = fclose('all'); % Lokar öllum opnum skrám
+\end{minted}
+ \item Ef ekki tókst að loka þá er skilagildið -1
+ \begin{itemize}
+  \item Gerist reyndar ekki oft að slíkt mistakist
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Að lesa úr skrá}
+Getum lesið skrár á tvo vegu:
+\begin{enumerate}
+ \item Línu fyrir línu (með notkun \texttt{fgetl}) (\textbf{f}ile \textbf{get} \textbf{l}ine)
+ \begin{itemize}
+  \item Fáum þá hverja línu sem streng
+  \item Þurfum lykkju til að lesa alla skrána
+ \end{itemize}
+ \item Alla skrána inn í eina gagnagrind (með \texttt{textscan} eða \texttt{fscanf})
+ \begin{itemize}
+  \item Gefum snið (e. \emph{format}) skráarinnar í skipuninni
+ \end{itemize}
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}[fragile]{Notkun á fgetl}
+\vspace{\baselineskip}
+Notum lykkju til að lesa. Fallið \texttt{feof} (\textbf{f}ile \textbf{e}nd \textbf{o}f \textbf{f}ile) segir til um hvort við erum komin út á enda skráarinnar.
+\begin{minted}[frame=lines]{matlab}
+fid = fopen('skráarheiti');
+if fid ~= -1
+    while ~feof(fid)
+        line = fgetl(fid);
+        % Gerum eitthvað við línuna
+    end
+else
+    error('Ekki tókst að opna skrá');
+end
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Oft gagnlegt: Að skipta upp streng}
+\begin{itemize}
+ \item Oft þegar verið er að lesa inn gögn þurfum við að skipta streng upp í búta
+ \item Höfum tvær aðalleiðir: 
+ \begin{enumerate}
+  \item \texttt{strtok} skiptir streng upp í tvo búta, ``haus'' og ``hala''
+  \begin{itemize}
+   \item Leitar að ``skiptitákni'' - allt sem er fyrir framan táknið er hausinn, afgangur strengsins er halinn
+   \item Sjálfgefið skiptitákn er bilstafur
+  \end{itemize}
+  \item \texttt{strsplit} skiptir streng upp í hólfavigur af strengjum
+  \begin{itemize}
+   \item Inntaksstrengurinn klipptur í sundur á öllum stöðum þar sem skiptitáknið kemur fyrir
+  \end{itemize}
+ \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Skrá sem við munum vinna með}
+Skráin \texttt{subjexp.dat}, af blaðsíðu 299
+\begin{minted}[frame=lines]{matlab}
+5.3	a
+2.2	b
+3.3	a
+4.4	a
+1.1	b
+\end{minted}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Dæmi}
+Skoðum blaðsíðu 300 \pause
+
+Svipað forrit:
+\begin{minted}[frame=lines]{matlab}
+fid = fopen('subjexp.dat');
+if fid ~= -1
+    while ~feof(fid)
+        line = fgetl(fid);
+        [number, character] = strtok(line);
+        fprintf('%.2f%s\n', str2double(number), character)
+    end
+else
+    error('Ekki tókst að opna skrá');
+end
+fclose(fid);
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Fyrirlestraræfing}
+\vspace{\baselineskip}
+\begin{enumerate}
+ \item Breytið \texttt{while}-lykkju forritsins á síðustu glæru þannig að forritið finni summu talnanna sem það les inn
+ \item Væru línurnar í skránni \texttt{subjexp.dat} á sniðinu\\
+ \verb|5.3 a 28|\\
+ sýnið hvernig hægt væri að brjóta þær upp í þrjú gildi. (Ráðlegging: \texttt{strtok} tvisvar, eða \texttt{strsplit})
+ \item Föll á borð við \texttt{fopen} gefa ákveðið skilagildi (\texttt{-1}) sem hægt er að athuga gildið á til að sjá hvort að keyrslan hafi tekist. Hvaða brögðum má beita til að athuga hvort að föll sem ekki eru með slík sérstök skilagildi hafi lent í villu? (Ráðlegging: Athuga fyrirlestur 4b)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{textscan}}
+\begin{itemize}
+ \item Fallið \texttt{textscan} les alla skrána inn í hólfavigur
+\begin{minted}[frame=lines]{matlab}
+>> cellArray = textscan(fid, 'snið')
+\end{minted}
+ \item Sniðið getur innihaldið sniðslýsingar á svipaðan hátt og \texttt{fprintf}
+ \item Úttakið er hólfavigur, með eitt hólf fyrir hvern dálk í skránni
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um notkun \texttt{textscan}}
+\begin{minted}[frame=lines]{matlab}
+>> fid = fopen('subjexp.dat');
+>> cellArray = textscan(fid, '%f %c')
+cellArray = 
+    [5x1 double]    [5x1 char]
+>> cellArray{1}'
+ans =
+    5.3000    2.2000    3.3000    4.4000    1.1000
+\end{minted}
+Í sniðslýsingunni: \texttt{f} fyrir double, \texttt{c} fyrir char
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{textscan} fyrir strengi}
+Hægt er að nota \texttt{textscan} fallið á streng til að skipta honum niður í hólfavigur:
+\begin{minted}[frame=lines]{matlab}
+>> myString = '0.45 abc 123';
+>> secondCellArray = textscan(myString, '%f %s %d')
+secondCellArray = 
+    [0.4500]    {1x1 cell}    [123]
+\end{minted}
+\end{frame}
+
+\subsection{Að skrifa í skrár}
+
+\begin{frame}[fragile]{\texttt{fprintf} í skrá}
+\begin{itemize}
+ \item Aðalskipunin til að skrifa í skrár er \texttt{fprintf}
+ \begin{itemize}
+  \item Þetta er sama \texttt{fprintf} fall og við könnumst við
+  \item Til að skrifa í skrána þarf að láta fallið fá skráarauðkenni sem fyrsta viðfang
+ \end{itemize}
+ \item Notkunin verður þá á borð við \verb|fprintf(fid, 'snið', breyta1, breyta2...)|
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{fprintf} í skrá}
+Dæmi:
+\begin{minted}[frame=lines]{matlab}
+fid = fopen('tilraun.txt', 'w');
+for i = 1:5
+    fprintf(fid, '%d: %d\n', i, randi(50));
+end
+fclose(fid);
+\end{minted}
+Ath. að hér er skráin \emph{yfirskrifuð} í hvert skipti. Til að skrifa aftast í skrá þarf að gefa \texttt{fopen} aðrar heimildir.
+\end{frame}
+
+\begin{frame}{Skráarheimildir}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Regla&Lýsing\\
+\midrule
+\texttt{'r'}&Opnar skrá til lesturs\\
+\texttt{'w'}&Opnar eða býr til skrá til skriftar, yfirskrifar\\
+\texttt{'a'}&Opnar eða býr til skrá til skriftar, skrifar aftast\\
+\texttt{'r+'}&Opnar skrá til skriftar eða lesturs\\
+\texttt{'w+'}&Opnar eða býr til skrá til skriftar eða lesturs, yfirskrifar\\
+\texttt{'a+'}&Opnar eða býr til skrá til skriftar eða lesturs, skrifar aftast\\
+\bottomrule
+\end{tabular}
+
+\end{center}
+
+\end{frame}
+
+\begin{frame}[fragile]{Fyrirlestraræfing}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{enumerate}
+ \setcounter{enumi}{3}
+ \item Skrifið forrit sem les inn tölur úr skránni \texttt{subjexp.dat} og reiknar út summu þeirra talna í fyrri dálkinum þar sem stafurinn í seinni dálkinum er \texttt{'a'}.
+ \item Skrifið hitastigstöfluna til hægri í skrá, þannig að hver lína í skránni innihaldi lýsingu á borð við
+\begin{verbatim}
+Klukkan 0 var hitinn 12.5C
+\end{verbatim}
+\end{enumerate}
+\column{0.4\textwidth}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Klst&$C^\circ$\\
+\midrule
+0&12.5\\
+3&12.4\\
+6&12.3\\
+9&12.8\\
+12&13.4\\
+15&14.0\\
+18&13.1\\
+21&12.8\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{columns}
+\end{frame}
+
+
+
+\end{document}

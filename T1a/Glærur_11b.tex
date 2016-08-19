@@ -1,0 +1,238 @@
+\documentclass{beamer}
+
+\input{../Haust2015glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 11, seinni fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Færslur
+ \item Hlutbundin forritun
+\end{itemize}
+Kafli: 8.2
+
+\href{http://www.ce.berkeley.edu/~sanjay/e7/oop.pdf}{Lesefni um hlutbundna forritun}
+\end{frame}
+
+\subsection{Lausn á gamalli fyrirlestraræfingu}
+
+\begin{frame}[fragile]{Lausn á fyrirlestraræfingu}
+\vspace{\baselineskip}
+Breytið \texttt{disp} aðferðinni í \texttt{Fraction} klasanum okkar svo að tölur með 1 í nefnara séu sýndar án nefnara (t.d. sýna töluna \texttt{3} en ekki \texttt{3/1})
+\pause
+
+Bætum við \texttt{if}-setningu:
+\begin{minted}[frame=lines]{matlab}
+function disp(frac)
+    if frac.denom ~= 1
+        fprintf('%d/%d\n',frac.numer, frac.denom)
+    else
+        fprint('%d\n', frac.numer)
+    end
+end
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]{Lausn á fyrirlestraræfingu}
+\vspace{\baselineskip}
+Bætið margföldunaraðferð við \texttt{Fraction} klasann
+\pause
+
+Mjög svipað og \texttt{add} aðferðin:
+\begin{minted}[frame=lines]{matlab}
+function newFrac = mult(frac1, frac2)
+   newN = frac1.numer * frac2.numer;
+   newD = frac1.denom * frac2.denom;
+   newFrac = Fraction(newN, newD);
+end
+\end{minted}
+
+\end{frame}
+
+\section{Að skilgreina vandamál}
+
+\begin{frame}{Hvað erum við eiginlega að gera hérna?}
+\pause
+\begin{itemize}
+ \item Venjulega erum við ekki að skrifa kóða kóðans vegna
+ \item Oftast forritum við til að \emph{leysa vandamál}
+ \item Vandamál eru af ýmsum toga
+ \begin{itemize}
+  \item Stundum vel skilgreind vandamál
+  \begin{itemize}
+   \item ``Vinstra framdekkið á bílnum mínum er sprungið.''
+  \end{itemize}
+  \item Oftar óljós vandamál
+  \begin{itemize}
+   \item ``Bíllinn minn er bilaður.''
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Óljós vandamál}
+\begin{itemize}
+ \item Í fullkomnum heimi vitum við alltaf til hvers er ætlast af okkur/hvað við viljum gera
+ \item Í alvöru heimi þurfum við oft að komast að því sjálf
+ \begin{itemize}
+  \item Þurfum að ákvarða lýsingu á vandamálinu
+  \item Þurfum líka að ákvarða hvernig lausnin ætti að líta út
+  \item Best að gera þetta \emph{áður} en byrjað er að forrita!
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Að lýsa vandamáli betur}
+\begin{itemize}
+ \item Tökum okkur tíma í að skoða nákvæmlega til hvers er ætlast af okkur
+ \begin{itemize}
+  \item Ferlið getur verið mjög formlegt - gerð er þarfagreining og/eða kröfulýsing
+  \begin{itemize}
+   \item Sérstaklega algengt þegar um útselda forritunarvinnu er að ræða
+  \end{itemize}
+  \item Getur líka verið mjög óformlegt
+  \begin{itemize}
+   \item Sest niður og vandamálið rætt
+   \item Erfiðast - að hafa agann til að sleppa því ekki!
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Abstract dæmi}
+\begin{itemize}
+ \item Fáum í hendurnar safn af mæligögnum (gagnapunktum) sem okkur grunar að innihaldi margar lélegar niðurstöður. Viljum henda lélegu niðurstöðunum en geyma þær góðu.
+ \begin{itemize}
+  \item Opin spurning: Hvað þurfum við að gera?
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Erfið vandamál}
+
+\begin{frame}{Að leysa erfið vandamál}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Fæst vandamál eru árennileg við fyrstu sýn
+ \begin{itemize}
+  \item Erfitt að vita hvar á að byrja
+ \end{itemize}
+ \item Afar stór hluti af því að verða góður forritari er að læra að brjóta vandamál niður
+ \begin{itemize}
+  \item Stórt vandamál er venjulega samansafn af litlum vandamálum
+ \end{itemize}
+\end{itemize}
+
+\column{0.5\textwidth}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{Pics/catcube}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Abstract vandamál}
+\begin{itemize}
+ \item Vandamál: Vinstra framdekkið á bílnum mínum er sprungið. Ákveðum að við þurfum að skipta um dekk. Hvernig leysum við það vandamál? \pause
+ \begin{itemize}
+  \item Tökum sprungna dekkið af
+  \item Sækjum varadekkið
+  \item Setjum varadekkið á
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Abstract vandamál}
+\begin{itemize}
+ \item Vandamál: Hvernig tökum við sprungna dekkið af? \pause
+ \begin{itemize}
+  \item Losum um rærnar
+  \item Tjökkum bílinn upp
+  \item Losum rærnar alveg af
+  \item Tökum sprungna dekkið af
+ \end{itemize}
+ \item Hugsunin: höldum áfram að brjóta vandamálið niður þar til það er orðið einfalt
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Niðurbrot á vandamálum}
+\begin{itemize}
+ \item Til að brjóta niður forritunarvandamál getum við spurt okkur ýmissa spurninga:
+ \begin{itemize}
+  \item Get ég leyst einhvern afmarkaðan hluta af vandamálinu?
+  \item Gæti ég leyst aðeins einfaldari útgáfu af þessu verkefni?
+  \begin{itemize}
+   \item Get ég leyst ákveðin tilvik?
+  \end{itemize}
+  \item Er þetta vandamál á einhvern hátt svipað vandamáli sem ég kann að leysa?
+  \item Hvaða gögn er ég með?
+  \begin{itemize}
+   \item Hvernig er best að setja þau fram?
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Þegar vandamálið hefur verið brotið niður}
+\begin{itemize}
+ \item Þegar vandamálið er orðið nógu smátt er auðvelt\footnote{Eða a.m.k. auðveldara} að leysa það
+ \item Virðist vandamálið ennþá vera of stórt - brjótið það meira niður!
+ \begin{itemize}
+  \item Hugmyndin er að enda með eina ``einingu'' sem auðvelt er að útfæra
+ \end{itemize}
+ \item Forritunarmál hjálpa til við þetta ferli
+ \begin{itemize}
+  \item Eitt fall táknar venjulega eina gerð útreikninga
+  \item Einn klasi táknar venjulega eitt fyrirbrigði
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Erfiðleikar við niðurbrot}
+\begin{itemize}
+ \item Það er nokkur list að einangra leysanlega hluta vandamála
+ \item Almennt gagnlegt
+ \begin{itemize}
+  \item Eyða meiri tíma í að nota tól (t.d. forritunarmál) sem þið þekkið
+  \begin{itemize}
+   \item Séu tólin kunnugleg er auðveldara að koma auga á lítil vandamál sem hægt er að leysa með þeim
+  \end{itemize}
+  \item Læra á fleiri tól
+  \begin{itemize}
+   \item Nýir hugsunarhættir fylgja nýjum tólum
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Lexía}
+Þegar við erum með forritunarvandamál, gerum eftirfarandi:
+\begin{enumerate}
+ \item Greinum vandamálið vandlega
+ \item Brjótum vandamálið niður í viðráðanlegar einingar
+ \item Forritum hverja einingu fyrir sig
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}{Fyrirlestraræfing}
+\begin{enumerate}
+ \item Við viljum skrifa leikinn Mylla (Tic Tac Toe) í Matlab. Hvernig gæti lausn á því vandamáli litið út?
+ \item Við þurfum að framkvæma útreikninga með tvinntölum í hlutbundnu forritunarmáli, svo við þurfum að útfæra tvinntölur. Hvernig getum við brotið það vandamál niður?
+\end{enumerate}
+
+\end{frame}
+
+
+\end{document}
