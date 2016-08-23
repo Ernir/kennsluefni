@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \input{../Haust2016glærur}
 
@@ -22,9 +22,12 @@
  \end{itemize}
  \item Dæmatímar
  \begin{itemize}
-  \item Hefjast í \emph{næstu viku}
+  \item Hefjast í næstu viku
   \item Sjö hópar, miðvikudögum til föstudaga
-  \item Ykkur verður úthlutað hópum fljótlega\textsuperscript{\textregistered}
+  \begin{itemize}
+   \item Einungis þarf að mæta í \emph{einn}
+  \end{itemize}
+  \item Hópum verður úthlutað fljótlega\textsuperscript{\textregistered}
  \end{itemize}
 \end{itemize} 
 \end{frame}
@@ -43,6 +46,7 @@ Einkunn ákvarðast af prófseinkunn og vetrareinkunn
  \item Vetrareinkunn skiptist í skilaverkefnaeinkunn og tímaverkefnaeinkunn
  \item Skilaverkefnaeinkunn gildir 20\% af heildareinkunn
  \item Tímaverkefnaeinkunn gildir 10\% af heildareinkunn
+ \item Nauðsynlegt er að skila a.m.k. 6 af fyrstu 8 skilaverkefnunum!
 \end{itemize}
 \end{columns}
 \end{frame}
@@ -97,7 +101,7 @@ Misserið er 14 vikur, svo gera má ráð fyrir 15-16 klst. af vinnu í viku. Þ
 \begin{itemize}
  \item Kennslusíða bókarinnar, \href{http://connect.mheducation.com/class/tol104g16}{McGraw-Hill Connect} verður notuð í dæmatímum og fyrirlestrum
  \begin{itemize}
-  \item Æfingaverkefni sem fara yfir sig sjálf 
+  \item Inniheldur æfingaverkefni
   \item Athugið að kaupa þarf aðgang!
  \end{itemize}
 \end{itemize}
@@ -106,15 +110,16 @@ Misserið er 14 vikur, svo gera má ráð fyrir 15-16 klst. af vinnu í viku. Þ
 \begin{frame}{Gradescope}
 \begin{itemize}
  \item Verkefnaskil fara fram í vefkerfinu \href{https://gradescope.com/}{Gradescope}
+ \item Aðgangskóði er \textbf{926WD9}
  \item Kerfið tekur við \texttt{.pdf} skrám
- \item Fyrstu skilin munu koma í næstu viku
+ \item Fyrstu skilin verða í næstu viku
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Fyrirspurnir og umræður}
 \label{frame:piazza}
 \begin{itemize}
- \item Spjallkerfið \href{piazza.com/hi.is/fall2016/tl105g}{Piazza} verður notað í þessu námskeiði
+ \item Spjallkerfið \href{https://piazza.com/hi.is/fall2016/tol104g}{Piazza} verður notað í þessu námskeiði
  \item Kerfið mun vera besta leiðin til að fá svör frá samnemendum, dæmatímakennurum og undirrituðum
  \item Setjið allar fyrirspurnir um námskeiðið þangað!
  \begin{itemize}
@@ -210,6 +215,8 @@ Yrðing (e. \emph{proposition}) er fullyrðing sem er áreiðanlega sönn eða �
 \end{itemize}
 \end{frame}
 
+\subsection{Rökvirkjar}
+
 \begin{frame}{Neitun}
 Dæmi um neitun: Ef $p$ stendur fyrir ``við erum stödd í stofu HT-105'', þá stendur $\lnot p$ fyrir ``það er ekki svo að við séum stödd í stofu HT-105'' (sem umorða má í ``við erum ekki stödd í stofu HT-105'').
 
@@ -274,6 +281,191 @@ $p$&$q$&$p \lor q$ \\
 \end{tabular}
 \end{center}
 \end{columns}
+\end{frame}
+
+\begin{frame}{Vandamál í daglegu tali}
+\begin{itemize}
+ \item Orðin ``og'' og ``eða'' eru tvíræð í daglegu tali
+ \item Sé skrifað á matseðil ``með þessum rétti fylgja franskar eða hrísgrjón'', hvað þýðir það?\pause
+ \begin{itemize}
+  \item Væntanlega er átt við eitthvað á borð við ``með þessum rétti fylgja franskar eða hrísgrjón en ekki hvort tveggja''
+  \item Einnig er væntanlega átt við að kúnninn skuli velja, frekar en að um sé að ræða yfirlýsingu sem hefur sanngildi \pause
+ \end{itemize}
+ \item Í stærðfræði/rökfræði: 
+ \begin{itemize}
+  \item Merking og-unar og eð-unar er skýr og samkvæmt sanntöflum
+  \item Yrðing hefur sanngildi
+  \item Til að tákna ``einn og aðeins einn'' af tveimur möguleikum má nota aðgreinda eðun (e. \emph{exclusive or})
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aðgreind eðun}
+\begin{columns}
+\column{0.6\textwidth}
+Samsett yrðing búin til með aðgreindri eðun er sönn þegar ein og aðeins ein yrðinganna sem að henni koma er sönn. Aðgreind eðun er oft táknuð með \texttt{XOR} eða $\oplus$.
+
+\vspace*{0.5cm}
+Hvert er sanngildi samsettu yrðingarinnar ``við erum stödd í stofu HT-105 aðgreint-eða við erum að læra Stærðfræðimynstur''?
+\column{0.4\textwidth}
+Sanntafla \texttt{XOR}:
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$p$&$q$&$p \oplus q$ \\
+\midrule
+1&1&0\\
+1&0&1\\
+0&1&1\\
+0&0&0\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Afleiðing}
+\begin{itemize}
+ \item Hægt er að búa til samsetta yrðingu úr einni yrðingu sem leiðir til annarrar
+ \item Táknað með $p \to q$
+ \item Í mæltu máli má t.d. setja afleiðingu fram sem
+ \begin{itemize}
+  \item ef $p$, þá $q$
+  \item $q$ ef $p$
+  \item $q$ hvenær sem $p$
+  \item nægjanlegt skilyrði fyrir $q$ er $p$
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aðgreind eðun}
+\begin{columns}
+\column{0.6\textwidth}
+Samsetta yrðingin $p \to q$ er ósönn þegar $p$ er sönn og $q$ er ósönn, annars er hún sönn.
+
+\vspace*{0.5cm}
+
+Hver eru möguleg sanngildi yrðingarinnar ``ef ég er kosinn, þá mun ég lækka skatta''?
+
+\column{0.4\textwidth}
+Sanntafla afleiðingar:
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+$p$&$q$&$p \to q$ \\
+\midrule
+1&1&1\\
+1&0&0\\
+0&1&1\\
+0&0&1\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Tvískilyrðing}
+\begin{itemize}
+ \item Hægt er að búa til samsetta yrðingu sem táknar tvískilyrðingu
+ \item Táknað með $p \leftrightarrow q$
+ \item Á mæltu máli má t.d. setja tvískilyrðingu fram sem
+ \begin{itemize}
+  \item $p$ er nauðsynlegt og nægjanlegt fyrir $q$
+  \item ef $p$ þá $q$ og öfugt
+  \item $p$ ef og aðeins ef $q$
+  \item $p$ þá og því aðeins að $q$
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tvískilyrðing í daglegu tali}
+\begin{itemize}
+ \item Tvískilyrðing eru oft áskilin í daglegu tali
+ \item ``Ef þú klárar aðalréttinn mátt þú fá ís'' \pause
+ \item Hér er líklega átt við ``Þú mátt fá ís þá og því aðeins að þú klárir aðalréttinn''
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sanntafla tvískilyrðingar}
+\begin{center}
+Sanntafla tvískilyrðingar
+\begin{tabular}{cccccc}
+\toprule
+$p$&$q$&$p \to q$&$q \to p$&$p \leftrightarrow q$&$(p \to q) \land (q \to p)$\\
+\midrule
+1&1&1&1&1&1\\
+1&0&0&1&0&0\\
+0&1&1&0&0&0\\
+0&0&1&1&1&1\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\subsection{Sísönnur, mótsagnir og jafngildi}
+
+\begin{frame}{Sísönnur og mótsagnir}
+Við getum skilgreint hugtök sem tengjast samsettum yrðingum:
+
+\begin{tcolorbox}[title=Sísanna]
+Samsett yrðing sem er sönn óháð sanngildi grunnyrðinganna er kölluð sísanna (e. \emph{tautology})
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Mótsögn]
+Samsett yrðing sem er \textbf{ó}sönn óháð sanngildi grunnyrðinganna er kölluð mótsögn (e. \emph{contradiction})
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Jafngildi}
+Við getum búið til skilgreiningu á því hvenær tvær yrðingar eru ``eins'':
+
+\begin{tcolorbox}[title=Jafngildi]
+Yrðingarnar $p$ og $q$ eru jafngildar (e. \emph{equivalent}) sé $p \leftrightarrow q$ sísanna.
+\end{tcolorbox}
+
+Jafngildi er oft táknað með $\equiv$.
+\end{frame}
+
+
+\begin{frame}{Sanntöflur og jafngildi}
+Athugum hvort að $p \to q$ og $\lnot p \lor q$ séu jafngildar. Notum einn dálk fyrir hverja breytu og einn dálk fyrir hverja aðgerð. \pause
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$p$&$q$&$\lnot p$&$\lnot p \lor q$&$p \to q$ \\
+\midrule
+1&1&0&1&1\\
+1&0&0&0&0\\
+0&1&1&1&1\\
+0&0&1&1&1\\
+\bottomrule
+\end{tabular}
+\end{center}
+Sjáum að síðustu tveir dálkarnir eru eins, svo $(p \to q) \leftrightarrow (\lnot p \lor q)$ er sísanna og þar með $p \to q \equiv \lnot p \lor q$.
+\end{frame}
+
+\begin{frame}{Forgangur rökvirkja}
+Hægt er að gera forgang rökvirkja ljósan með því að nota sviga. Séu svigar ekki til staðar er forgangurinn eftirfarandi:
+
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+Virki&Forgangur\\
+\midrule
+$\lnot$&1\\
+$\land$&2\\
+$\lor$&3\\
+$\to$&4\\
+$\leftrightarrow$&5\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Virkja ofar í töflunni skal gilda á undan þeim sem eru neðar.
+\end{frame}
+
+\begin{frame}{Næst}
+Í næsta tíma verður farið yfir hagnýtingar á yrðingum (kafli 1.2), meira um jafngildi (kafli 1.3) og magnara (kafli 1.4).
 \end{frame}
 
 
