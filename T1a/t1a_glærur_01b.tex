@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 1, seinni fyrirlestur}
@@ -25,58 +25,6 @@
  \item Breytur
 \end{itemize}
 \end{frame}
-
-\subsection{Leiðréttingar frá því síðast}
-
-\begin{frame}{Vegna árekstra}
-\begin{itemize}
- \item Fyrirlestrar
- \begin{itemize}
-  \item Miðvikudögum klukkan 8:20 í VRII 158, föstudögum klukkan 13:20 í VRII 157
- \end{itemize}
- \item Dæmatímar (hefjast í næstu viku)
- \begin{itemize}
-  \item d1: {\color{red} Þriðjudögum klukkan 15:00 í Á-101}
-  \begin{itemize}
-   \item Stærðfræði, eðlisfræði, verkfræðileg eðlisfræði %(26)
-  \end{itemize}
-  \item d2: Mánudögum klukkan 15.00 í VRII 258
-  \begin{itemize}
-   \item Iðnaðarverkfræði, vélaverkfræði og efnaverkfræði %(17)
-  \end{itemize}
-  \item d3: Þriðjudögum klukkan 13.20 í VRII 157
-  \begin{itemize}
-   \item Umhverfis- og byggingarverkfræði, jarðeðlisfræði %(33)
-  \end{itemize}
- \end{itemize}
-\end{itemize} 
-\end{frame}
-
-\begin{frame}{Vegna þess að samlagning er flókin}
-\begin{itemize}
- \item Vikuleg heimaverkefnaskil
- \begin{itemize}
-  \item Gilda 20\% samtals
-  \item 10 bestu verkefni gilda til einkunnar
-  \item \emph{Skila þarf 4 af fyrstu 8 heimaverkefnunum til að öðlast próftökurétt}
- \end{itemize}
- \item Fyrirlestraæfingar
- \begin{itemize}
-  \item Gilda 10\% samtals
-  \item 20 skil gefa fulla einkunn
- \end{itemize}
- \item Miðmisserispróf (líklega laugardaginn 17. október)
- \begin{itemize}
-  \item Gildir {\color{red} 20\%} ef það leiðir til hækkunar, annars 0\%
- \end{itemize}
- \item Lokapróf
- \begin{itemize}
-  \item Gildir 50\% ef miðmisserispróf leiðir til hækkunar, annars {\color{red} 70\%}
-  \item Lágmarkseinkunn á prófi og námskeiðinu í heild er 5.
- \end{itemize}
-\end{itemize}
-\end{frame}
-
 
 \begin{frame}{Matlab-skipanaglugginn}
 \includegraphics[width=\textwidth]{Pics/command-window}
@@ -198,8 +146,8 @@ Hjálpin í Matlab er almennt mjög gagnleg.
 \end{frame}
 
 \begin{frame}[fragile, shrink]{Dæmi um útreikninga}
-\vspace{1.8cm}
-Lausn á annars stigs jöfnunni $x^2 + 3x - 4 = 0$.
+\vspace{1cm}
+Lausn á annars stigs jöfnunni $x^2 + 3x - 4 = 0$
 \begin{minted}[frame=lines]{matlab}
 >> a = 1;
 >> b = 3;
@@ -295,27 +243,10 @@ r4 = (3 \cdot 2 + 4) \Mod{10}  &=  0\\
   \item \texttt{rng(tala)}: upphafsstillt með gildinu \texttt{tala}
  \end{itemize}
 \end{itemize}
-% \begin{columns}
-% \column{0.5\textwidth}
-% \begin{minted}[frame=lines]{matlab}
-% >> rng('shuffle')
-% >> rand()
-% ans =
-%     0.5472
-% \end{minted}
-% \column{0.5\textwidth}
-% \begin{minted}[frame=lines]{matlab}
-% >> rng('default')
-% >> rand()
-% ans =
-%     0.8147
-% \end{minted}
-% Aftur upphaflega gildið
-% \end{columns}
 \end{frame}
 
 \begin{frame}[shrink]{Upphafsgildið}
-\vspace{2cm}
+\vspace{1cm}
 \begin{itemize}
  \item Slembitölugjafi samanstendur af mjög löngum hring af slembitölum
  \begin{itemize}
@@ -329,6 +260,7 @@ r4 = (3 \cdot 2 + 4) \Mod{10}  &=  0\\
 \end{frame}
 
 \begin{frame}[fragile]{Dæmi um slembitölur}
+\vspace{-0.5cm}
 \begin{columns}
 \column{0.6\textwidth}
 \begin{minted}[frame=lines]{matlab}
