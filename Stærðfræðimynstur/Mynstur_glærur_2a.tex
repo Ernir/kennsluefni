@@ -1,0 +1,183 @@
+\documentclass[handout]{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Stærðfræðimynstur í tölvunarfræði}
+\subtitle{Vika 2, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta tíma}
+\begin{itemize}
+ \item Skoðuðum hagnýtingar á yrðingum
+ \item Sáum staðalsnið fyrir yrðingar
+ \begin{itemize}
+  \item Eð-að staðalsnið
+  \item Og-að staðalsnið
+ \end{itemize}
+ \item Kynntumst umsögnum
+ \item Kynntumst mögnurum
+\end{itemize}
+\end{frame}
+
+\section{Mengi}
+
+\begin{frame}{Mengi}
+\begin{itemize}
+ \item Mengi (e. \emph{set}) er grundvallareining í strjálli stærðfræði
+ \item Skyld hugmynd ``hópur'':
+ \begin{itemize}
+  \item Mengi eru notuð til að ``hópa'' hluti saman
+  \item ``Hópur'' af hlutum myndar mengi
+ \end{itemize}
+ \item ``Hlutur'' í mengi er kallaður stak (e. \emph{member} eða \emph{element})
+ \item Hlutir í sama mengi eiga oftast eitthvað sameiginlegt
+ \item Dæmi um mengi: Allar heiltölur, allir nemendur í þessu námskeiði
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Skilgreining á mengi}
+
+Klassísk skilgreining á mengi er eftirfarandi:
+\begin{tcolorbox}[title=Mengi]
+Mengi er óraðað samansafn hluta. Hlutur í mengi er kallaður stak þess. Mengi inniheldur stök sín. $a \in A$ táknar að stakið $a$ sé í menginu $A$. $a \notin A$ táknar að $a$ sé ekki í $A$.
+\end{tcolorbox}
+
+\end{frame}
+
+\begin{frame}{Að tilgreina mengi}
+\begin{itemize}
+ \item Slaufusvigar eru oftast notaðir til að afmarka mengi
+ \item Nokkrar leiðir eru algengar þegar kemur að því að tilgreina stök mengis
+ \begin{itemize}
+  \item Að telja upp öll stökin: 
+  \begin{itemize}
+   \item Mengi enskra sérhljóða: $\{a, e, i, o, u\}$
+  \end{itemize}
+  \item Að sýna mynstur og láta þrípunkt tákna ``augljósa'' endurtekningu:
+  \begin{itemize}
+   \item Mengi jákvæðra heiltalna minni en 100: $\{1, 2, 3,\ldots, 100\}$
+  \end{itemize}
+  \item Að tilgreina skilyrði sem stök þurfa að uppfylla:
+  \begin{itemize}
+   \item $\{x \in \mathbf{Z^+} | x < 100\}$
+  \end{itemize}
+ \end{itemize}
+ \item Sum mengi hafa stöðluð nöfn: $\mathbf{R}$ (mengi rauntalna), $\mathbf{Z^+}$ (mengi jákvæðra heiltalna), \ldots
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hvað má fara í mengi?}
+\begin{itemize}
+ \item Skilgreiningin okkar á mengjum leyfir ýmislegt
+ \begin{itemize}
+  \item Mengi af mengjum: $\{\mathbf{N}, \mathbf{Z}, \mathbf{Q}, \mathbf{R}\}$
+ \end{itemize}
+ \item Tómt mengi, táknað $\emptyset$
+ \begin{itemize}
+  \item Mengi sem inniheldur tóma mengið $\{\emptyset\}$
+ \end{itemize}
+ \item Þessi opna skilgreining veldur tæknilegum vandræðum
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Þversögn Russels}
+\begin{itemize}
+ \item Látum $S$ vera mengið sem inniheldur þau mengi $x$ sem ekki innihalda sig sjálf, þ.e.a.s.
+\end{itemize}
+\[
+ S = \{x | x \notin x\}
+\]
+\begin{itemize}
+ \item Er $S$ í sjálfu sér? \pause
+ \begin{itemize}
+  \item Ef já, þá verður það að uppfylla það skilyrði að vera ekki í sjálfu sér \pause
+  \item Ef nei, þá uppfyllir það skilyrðið sem það þarf að uppfylla til að vera í sjálfu sér \pause
+ \end{itemize}
+ \item Þversögn. Leiddi til frumsendulegrar mengjafræði (e. \emph{axiomatic set theory}), sem er strangari
+\end{itemize}
+\end{frame}
+
+\section{Skilgreiningar sem tengjast mengjum}
+
+\begin{frame}{Jöfn mengi}
+\begin{tcolorbox}[title=Jöfn mengi]
+Tvö mengi eru jöfn (e. \emph{equal}) ef þau innihalda sömu stök, þ.e.a.s. $\forall x (x \in A \leftrightarrow x \in B ) $. Við skrifum $A = B$ ef mengin $A$ og $B$ eru jöfn.
+\end{tcolorbox}
+Til dæmis eru mengin $\{a, b, c\}$ og $\{b, c, a\}$ jöfn. Sömuleiðis $\{a, b, c\}$ og $\{a, a, b, c\}$.
+\end{frame}
+
+\begin{frame}{Hlutmengi}
+\begin{tcolorbox}[title=Hlutmengi]
+Mengið $A$ er hlutmengi í (e. \emph{subset of}) $B$ þá og því aðeins að hvert stak í $A$ sé einnig í $B$, þ.e.a.s. $\forall x (x \in A \to x \in B)$. Við skrifum $A \subseteq B$ ef $A$ er hlutmengi í $B$.
+\end{tcolorbox}
+
+Athugum að séu tvö mengi jöfn, þá er $A \subseteq B$ og $B \subseteq A$.
+\end{frame}
+
+\begin{frame}{Tóma mengið sem hlutmengi}
+\begin{itemize}
+ \item Er tóma mengið hlutmengi í öllum mengjum? \pause
+ \item Athugum skilgreininguna:
+ \begin{itemize}
+  \item Látum $S$ vera mengi. Gildir $\forall x (x \in \emptyset \to x \in S)$? \pause
+  \item $x \in \emptyset$ er alltaf ósatt \pause
+  \item $p \to q$ er alltaf satt þegar $p$ er ósatt
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fjöldatala mengis}
+\begin{tcolorbox}[title=Fjöldatala]
+Látum $S$ vera mengi. Séu $n$ mismunandi stök í $n$ og $n \in \mathbf{Z^+}$, þá er $S$ endanlegt mengi (e. \emph{finite set}) og $n$ er fjöldatala (e. \emph{cardinality}) mengisins $S$. Fjöldatala (eða stærð) mengisins $S$ er táknuð með $|S|$.
+\end{tcolorbox}
+Hægt er að skilgreina fjöldatölur fyrir mengi sem eru ekki endanleg.
+\end{frame}
+
+\begin{frame}{Veldismengi mengis}
+\begin{tcolorbox}[title=Veldismengi]
+Látum $S$ vera mengi. Þá er veldismengi (e. \emph{power set}) $S$ mengi allra hlutmengja $S$. Veldismengi $S$ er táknað með $\mathbf{P}(S)$.
+\end{tcolorbox}
+Dæmi: \[\mathbf{P}(\{0, 1\}) = \{\emptyset, \{0\}, \{1\}, \{0, 1\}\}\]
+
+Athugum að tóma mengið og mengið sjálft eru alltaf stök í veldismengi mengis.
+\end{frame}
+
+\begin{frame}{Mengjamargfeldi}
+\begin{tcolorbox}[title=Mengjamargfeldi]
+Látum $A$ og $B$ vera mengi. Mengjamargfeldi $A$ og $B$ er mengi allra raðaðra para $(a, b)$ þar sem $a \in A$ og $b \in B$, þ.e.a.s. mengið $\{(a, b) | a \in A \land b \in B\}$. Mengjamargfeldi $A$ og $B$ er táknað með $A \times B$.
+\end{tcolorbox}
+Dæmi:
+\[
+ \{1, 2\} \times \{a, b\} = \{(1, a), (1, b), (2, a), (2, b)\}
+\]
+Athugum að almennt gildir ekki að $A \times B$ sé jafnt $B \times A$.
+\end{frame}
+
+
+\section{Mengi í tölvum}
+
+\begin{frame}[fragile]{Gagnagerðir sem mengi}
+ \begin{itemize}
+  \item Hugmyndin um gagnagerð (e. \emph{data type}) byggir á mengjum
+  \item Gagnagerð samanstendur af mengi mögulegra gilda og aðgerðum á þau
+  \item Gagnagerðin \texttt{Boolean} í Java skilgreinist af:
+  \begin{itemize}
+   \item Menginu \{\texttt{true},\texttt{false}\}
+   \item Aðgerðum: Og (\verb|&&|), eða (\verb&||&), \ldots
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
+\begin{frame}{Næst}
+
+\end{frame}
+
+
+\end{document}
