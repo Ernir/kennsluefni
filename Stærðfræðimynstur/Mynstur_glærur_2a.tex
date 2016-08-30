@@ -1,4 +1,4 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \input{../Haust2016glærur}
 
@@ -144,7 +144,7 @@ Hægt er að skilgreina fjöldatölur fyrir mengi sem eru ekki endanleg.
 \begin{tcolorbox}[title=Veldismengi]
 Látum $S$ vera mengi. Þá er veldismengi (e. \emph{power set}) $S$ mengi allra hlutmengja $S$. Veldismengi $S$ er táknað með $\mathbf{P}(S)$.
 \end{tcolorbox}
-Dæmi: \[\mathbf{P}(\{0, 1\}) = \{\emptyset, \{0\}, \{1\}, \{0, 1\}\}\]
+Dæmi: \[\mathbf{P}(\{0, 1\}) = \pause \{\emptyset, \{0\}, \{1\}, \{0, 1\}\}\]
 
 Athugum að tóma mengið og mengið sjálft eru alltaf stök í veldismengi mengis.
 \end{frame}
@@ -155,11 +155,104 @@ Látum $A$ og $B$ vera mengi. Mengjamargfeldi $A$ og $B$ er mengi allra raðaðr
 \end{tcolorbox}
 Dæmi:
 \[
- \{1, 2\} \times \{a, b\} = \{(1, a), (1, b), (2, a), (2, b)\}
+ \{1, 2\} \times \{a, b\} = \pause \{(1, a), (1, b), (2, a), (2, b)\}
 \]
 Athugum að almennt gildir ekki að $A \times B$ sé jafnt $B \times A$.
 \end{frame}
 
+\begin{frame}{Sammengi}
+\begin{tcolorbox}[title=Sammengi]
+Látum $A$ og $B$ vera mengi. 
+Sammengi (e. \emph{union}) mengjanna er mengið sem inniheldur stökin sem eru í $A$ eða $B$, 
+þ.e.a.s. mengið $\{x | x \in A \lor x \in B \}$. 
+Sammengi $A$ og $B$ er táknað með $A\cup B$.
+\end{tcolorbox}
+Dæmi:
+\[
+ \{1, 3\} \cup \{1, 2, 4\} = \pause \{1, 2, 3, 4\}
+\]
+\end{frame}
+
+\begin{frame}{Sniðmengi}
+\begin{tcolorbox}[title=Sniðmengi]
+Látum $A$ og $B$ vera mengi.
+Sniðmengi (e. \emph{intersection}) mengjanna er mengið sem inniheldur stökin sem eru í $A$ og $B$, 
+þ.e.a.s. mengið $\{x | x \in A \land x \in B \}$. 
+Sniðmengi $A$ og $B$ er táknað með $A\cap B$.
+\end{tcolorbox}
+Mengi eru kölluð sundurlæg (e. \emph{disjoint}) ef sniðmengi þeirra er tóma mengið.
+
+Dæmi um sniðmengi:
+\[
+ \{1, 3\} \cap \{1, 2, 4\} = \pause \{1\}
+\]
+\end{frame}
+
+\begin{frame}{Mengjamismunur}
+\begin{tcolorbox}[title=Mengjamismunur]
+Mismunur mengjanna $A$ og $B$ er mengi þeirra staka sem eru í $A$ en ekki í $B$, þ.e.a.s. mengið $\{x | x \in A \land x \notin B\}$.
+Mengjamismunur $A$ og $B$ er táknaður með $A - B$ eða $A \setminus B$.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Almengi og fyllimengi}
+Fyrir mengi er hægt að skilgreina mengi allra mögulegra staka, kallað almengi (e. \emph{universal set}) oft táknað með $U$. Þá má skilgreina:
+
+\begin{tcolorbox}[title=Fyllimengi]
+Látum $A$ vera mengi og $U$ almengi þess. Þá er fyllimengi $A$ m.t.t. $U$ mengið $U \setminus A$. Fyllimengi $A$ er táknað með $\overline{A}$.
+\end{tcolorbox}
+
+Algengt er að nefnd mengi á borð við $\mathbf{R}$ eða $\mathbf{N}$ þjóni sem almengi.
+\end{frame}
+
+\section{Mengjajafngildi}
+
+\begin{frame}{Mengjajafngildi}
+\begin{columns}
+\column{0.3\textwidth}
+Með þessum skilgreiningum má rökstyðja ýmis jafngildi fyrir mengi.
+
+\vspace*{0.5cm}
+Tafla úr kafla 2.2.
+\column{0.7\textwidth}
+\begin{center}
+\includegraphics[height=0.8\textheight]{set-equivalences}
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Útleiðsla á De Morgan fyrir mengi}
+Viljum sýna að $\overline{A \cap B} = \overline{A} \cup \overline{B}$.
+
+\begin{align*}
+\overline{A \cap B} &= \{x | x \notin A \cap B\}\\ 
+&= \{x | \lnot ( x \in A \cap B)\}\\ 
+&= \{x | \lnot ( x \in A \land x \in B)\}\\ 
+&= \{x | \lnot ( x \in A) \lor \land (x \in B)\}\\ 
+&= \{x | x \notin A \lor x \notin B\}\\ 
+&= \{x | x \in \overline{A} \lor x \in \overline{B}\}\\ 
+&= \{x | x \in \overline{A} \cup \overline{B}\}\\ 
+&= \overline{A} \cup \overline{B}
+\end{align*}
+\end{frame}
+
+\begin{frame}{Meðlimatöflur}
+Hægt er að kanna jafngildi með meðlimatöflu, sem svipar til sanntöflu:
+\begin{center}
+\includegraphics[width=\textwidth]{membership-table}
+\end{center}
+\end{frame}
+
+\begin{frame}{Útvíkkun}
+Sammengi margra mengja er mengi þeirra staka sem er í a.m.k. einu mengjanna:
+\[
+ A_1 \cup A_2 \cup \ldots \cup A_n = \bigcup_{i=1}^n A_i
+\]
+Sniðmengi margra mengja er mengi þeirra staka sem er í öllum mengjunum:
+\[
+ B_1 \cap B_2 \cap \ldots \cap B_n = \bigcap_{i=1}^n B_i
+\]
+\end{frame}
 
 \section{Mengi í tölvum}
 
@@ -175,8 +268,22 @@ Athugum að almennt gildir ekki að $A \times B$ sé jafnt $B \times A$.
  \end{itemize}
 \end{frame}
 
-\begin{frame}{Næst}
+\begin{frame}[fragile]{Tölvuframsetning á mengjum}
+Hægt er að tákna mengi með bitastrengjum.
 
+Gerum ráð fyrir að $U$ hafi fjöldatöluna $n$ og skilgreinum fyrir það röðun. Setjum stök þess í rununa $a_1, a_2, \ldots a_n$.
+
+Táknum þá hlutmengi $A$ í $U$ með því að að nota $n$ bita runu, þar sem $i$-ti bitinn er 1 sé $a_i$ í $A$, annars 0.
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi um bitaframsetningu}
+Látum $U = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$. Þá er mengi oddatalna í $U$ mengið $\{1, 3, 5, 7, 9\}$, sem við getum táknað með bitarununni $1010101010$. 
+
+Getum séð að fyllimengi oddatalnanna er $0101010101$. Hægt er að nota bitaaðferðir til að reikna út sniðmengi og sammengi.
+\end{frame}
+
+\begin{frame}{Næst}
+Föll (kafli 2.3), rakningavensl (kafli 2.4), reiknanleiki (kafli 2.5), fylki (kafli 2.6)
 \end{frame}
 
 
