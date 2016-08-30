@@ -58,15 +58,15 @@ Mengi er óraðað samansafn hluta. Hlutur í mengi er kallaður stak þess. Men
  \begin{itemize}
   \item Að telja upp öll stökin: 
   \begin{itemize}
-   \item Mengi enskra sérhljóða: $\{a, e, i, o, u\}$
+   \item Mengi enskra sérhljóða: $\{a, e, i, o, u\}$ \pause
   \end{itemize}
   \item Að sýna mynstur og láta þrípunkt tákna ``augljósa'' endurtekningu:
   \begin{itemize}
-   \item Mengi jákvæðra heiltalna minni en 100: $\{1, 2, 3,\ldots, 100\}$
+   \item Mengi jákvæðra heiltalna minni en 100: $\{1, 2, 3,\ldots, 100\}$ \pause
   \end{itemize}
   \item Að tilgreina skilyrði sem stök þurfa að uppfylla:
   \begin{itemize}
-   \item $\{x \in \mathbf{Z^+} | x < 100\}$
+   \item $\{x \in \mathbf{Z^+} | x < 100\}$ \pause
   \end{itemize}
  \end{itemize}
  \item Sum mengi hafa stöðluð nöfn: $\mathbf{R}$ (mengi rauntalna), $\mathbf{Z^+}$ (mengi jákvæðra heiltalna), \ldots
@@ -87,7 +87,7 @@ Mengi er óraðað samansafn hluta. Hlutur í mengi er kallaður stak þess. Men
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Þversögn Russels}
+\begin{frame}{Vandræði}
 \begin{itemize}
  \item Látum $S$ vera mengið sem inniheldur þau mengi $x$ sem ekki innihalda sig sjálf, þ.e.a.s.
 \end{itemize}
@@ -101,6 +101,10 @@ Mengi er óraðað samansafn hluta. Hlutur í mengi er kallaður stak þess. Men
   \item Ef nei, þá uppfyllir það skilyrðið sem það þarf að uppfylla til að vera í sjálfu sér \pause
  \end{itemize}
  \item Þversögn. Leiddi til frumsendulegrar mengjafræði (e. \emph{axiomatic set theory}), sem er strangari
+ \begin{itemize}
+  \item Þversögnin er kennd við Russell, Russell's Paradox
+ \end{itemize}
+
 \end{itemize}
 \end{frame}
 
@@ -135,7 +139,7 @@ Athugum að séu tvö mengi jöfn, þá er $A \subseteq B$ og $B \subseteq A$.
 
 \begin{frame}{Fjöldatala mengis}
 \begin{tcolorbox}[title=Fjöldatala]
-Látum $S$ vera mengi. Séu $n$ mismunandi stök í $n$ og $n \in \mathbf{Z^+}$, þá er $S$ endanlegt mengi (e. \emph{finite set}) og $n$ er fjöldatala (e. \emph{cardinality}) mengisins $S$. Fjöldatala (eða stærð) mengisins $S$ er táknuð með $|S|$.
+Látum $S$ vera mengi. Séu $n$ mismunandi stök í $S$ og $n \in \mathbf{Z^+}$, þá er $S$ endanlegt mengi (e. \emph{finite set}) og $n$ er fjöldatala (e. \emph{cardinality}) mengisins $S$. Fjöldatala (eða stærð) mengisins $S$ er táknuð með $|S|$.
 \end{tcolorbox}
 Hægt er að skilgreina fjöldatölur fyrir mengi sem eru ekki endanleg.
 \end{frame}
@@ -228,7 +232,7 @@ Viljum sýna að $\overline{A \cap B} = \overline{A} \cup \overline{B}$.
 \overline{A \cap B} &= \{x | x \notin A \cap B\}\\ 
 &= \{x | \lnot ( x \in A \cap B)\}\\ 
 &= \{x | \lnot ( x \in A \land x \in B)\}\\ 
-&= \{x | \lnot ( x \in A) \lor \land (x \in B)\}\\ 
+&= \{x | \lnot ( x \in A) \lor \lnot (x \in B)\}\\ 
 &= \{x | x \notin A \lor x \notin B\}\\ 
 &= \{x | x \in \overline{A} \lor x \in \overline{B}\}\\ 
 &= \{x | x \in \overline{A} \cup \overline{B}\}\\ 
