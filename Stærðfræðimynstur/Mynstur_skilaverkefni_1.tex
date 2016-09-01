@@ -1,0 +1,156 @@
+\documentclass{exam}
+
+\input{../Haust2016verkefnablöð}
+
+\title{Stærðfræðimynstur í tölvunarfræði \\ Skilaverkefni 1}
+\author{}
+
+% \printanswers
+
+\begin{document}
+\maketitle
+\thispagestyle{empty} 
+
+Skila skal þessu verkefni á vefnum \href{https://gradescope.com/}{Gradescope}. Aðgangskóði fyrir námskeiðið er \textbf{926WD9}.
+
+Samvinna á milli nemenda er eðlileg og æskileg. Hins vegar er hvorki æskilegt né heimilt að fá lausnir hjá öðrum (þ.m.t. Google), afrita lausnir eða láta aðra fá lausnina sína. Í slíkum tilvikum er einkunnin 0 gefin sem fyrsta viðvörun. Hikið ekki við að leita til umsjónarkennara ef þið eruð í vafa um hvað telst eðlileg samvinna og hvað ekki.
+
+Telji nemandi að mistök hafi verið gerð við yfirferð skal tilkynna slíkt á vefnum Gradescope.
+
+\section{Spurningar}
+\begin{questions}
+\question Látum $p$, $q$ og $r$ vera eftirfarandi yrðingar:
+
+\begin{align*}
+p &: \text{Nemandi fær háa einkunn fyrir skilaverkefnin}\\
+q &: \text{Nemandi gerir öll æfingaverkefnin}\\
+r &: \text{Nemandi fær háa vetrareinkunn}
+\end{align*}
+
+Skrifið eftirfarandi yrðingar með því að nota $p$, $q$ og $r$ ásamt rökvirkjum:
+
+\begin{enumerate}[a)]
+ \item Til að nemandi fái háa vetrareiknunn er nauðsynlegt að nemandi fái háa einkunn fyrir skilaverkefnin.
+ \item Nemandi sem fær háa einkunn fyrir skilaverkefnin og gerir öll æfingaverkefnin fær háa vetrareinkunn.
+\end{enumerate}
+
+\begin{solution}
+\begin{enumerate}[a)]
+ \item $r \rightarrow p$.\\
+ \item $(p \land q) \rightarrow r$.
+\end{enumerate}
+\end{solution}
+
+
+\question Eftirfarandi setningar nota orðið ``eða''. Í hverju tilfelli um sig, útskýrið hvort um er að ræða ``eða'', táknað með $\lor$ eða ``aðgreint eða'', táknað með $\oplus$.
+
+\begin{enumerate}[a)]
+ \item Starfið krefst reynslu af Java eða C\#.
+ \item Með hádegismatnum fylgir súpa eða salat.
+ \item Til að ferðast til landsins þarftu að vera með gilt vegabréf eða ökuskírteni.
+ \item Nú skal duga eða drepast.
+\end{enumerate}
+
+\begin{solution}
+
+\begin{enumerate}[a)]
+ \item Eða
+ \item Aðgreint eða
+ \item Eða
+ \item Aðgreint eða
+\end{enumerate}
+
+\end{solution}
+
+\question Við erum stödd á eyju riddara og ribbalda. Sem fyrr segja riddarar alltaf satt og ribbaldar alltaf ósatt. Að þessu sinni segir $A$ ``við erum bæði riddarar'' og $B$ segir ``$A$ er ribbaldi''.
+
+Útskýrið hvað má álykta um hvort $A$ og $B$ séu riddarar eða ribbaldar.
+
+\begin{solution}
+
+If A is a knight, then his statement that both of them are knights is true, and both will be telling the truth. But that is impossible, because B is asserting otherwise (that A is a knave). If A is a knave, then B’s assertion is true, so he must be a knight, and A’s assertion is false, as it should be. Thus we conclude that A is a knave and B is a knight.
+\end{solution}
+
+\newpage
+
+\question Skrifið upp sanntöflur fyrir eftirfarandi yrðingar.
+\begin{enumerate}[a)]
+\item $(q \rightarrow \lnot p) \lor (\lnot p \rightarrow \lnot q)$
+\item $(p \leftrightarrow q) \oplus (\lnot p \rightarrow r)$
+\end{enumerate}
+
+\begin{solution}
+\begin{verbatim}
+a)
+p    q    ~p   q->~p  ~q   ~p->~q   (q->~p)v(~p->~q)
+---------------------------------------------------
+0    0    1    1      1	   1        1
+0    1    1    1      0    0        1
+1    0    0    1      1    1        1
+1    1    0    0      0    1        1
+[~ táknar neitunarvirkjan]
+Samsetta yrðingin er sísanna (alltaf sönn).
+
+b)
+p    q    r    p<->q  ~p   ~p->r    (p<->q)o(~p->r)
+---------------------------------------------------
+0    0    0    1      1    0        1
+0    0    1    1      1    1        0
+0    1    0    0      1    0        0
+0    1    1    0      1    1        1
+1    0    0    0      0    1        1
+1    0    1    0      0    1        1
+1    1    0    1      0    1        0
+1    1    1    1      0    1        0
+[o táknar aðgreint-eða virkjann (xor)]
+\end{verbatim}
+\end{solution}
+
+\question Notið þekktar umritunarreglur til að sýna eftirfarandi:
+\[ (( p \lor \lnot ~q) \land r) \rightarrow p \equiv (p \lor q) \lor \lnot ~r \]
+Sýnið útreikninga. Notið eina reglu í einu.
+
+\begin{solution}
+\begin{eqnarray*}
+\begin{array}{llll}
+	(( p \lor \lnot ~q) \land r) \rightarrow p
+& \equiv & \lnot((p \lor \lnot q)\land r) \lor p &\textrm{Umritun leiðingar} \\
+& \equiv & ( \lnot (p \lor \lnot q) \lor \lnot r) \lor p &\textrm{Regla De Morgan}\\
+& \equiv & (( \lnot p \land q) \lor \lnot r) \lor p &	\textrm{Regla De Morgan}\\
+& \equiv & (( \lnot p \land q) \lor p) \lor \lnot r &	\textrm{Tengiregla}\\
+& \equiv & ((\lnot p \lor p) \land (q \lor p) \lor \lnot r)	&\textrm{Dreifiregla}\\
+& \equiv & T \lor (q \lor p) \lor \lnot r	&\textrm{Regla um eiginleika neitunar}\\
+& \equiv & (q \lor p) \lor \lnot r	&\textrm{Drottnunarregla}\\
+\end{array}
+\end{eqnarray*}
+\end{solution}
+
+
+\question Setjið fram eftirfarandi staðhæfingar með því að nota rökvirkja, umsagnir og magnara. Tilgreinið viðkomandi óðal.
+\begin{enumerate}[a)]
+ \item Einhver hlutur er ekki á réttum stað.
+ \item Öll verkfæri eru á réttum stað og í góðu ástandi.
+ \item Ekkert er á réttum stað og í góðu ástandi.
+ \item Eitt verkfæranna er ekki á réttum stað, en það er í góðu ástandi.
+\end{enumerate}
+
+\begin{solution}
+
+Let $R(x)$ be ``x is in the correct place''; let $E(x)$ be ``x is in excellent condition''; let $T(x)$ be ``$x$ is a tool''; and let the domain of discourse be all things.
+
+\begin{enumerate}[a)]
+\item There exists something not in the correct place: $\exists x \lnot R(x)$.
+\item If something is a tool, then it is in the correct place place and in excellent condition: $\forall x (T(x) \to (R(x) \land E(x))).$
+\item This is saying that everything fails to satisfy the condition: $\forall x \lnot (R(x) \land E(x)).$
+\item There exists a tool with this property: $\exists x (T(x) \land  \lnot R(x) \land E(x)).$
+\end{enumerate}
+\end{solution}
+
+
+
+\end{questions}
+
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
+
+\end{document}
