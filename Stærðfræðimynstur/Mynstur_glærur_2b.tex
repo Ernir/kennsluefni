@@ -3,7 +3,7 @@
 \input{../Haust2016glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 2, fyrri fyrirlestur}
+\subtitle{Vika 2, seinni fyrirlestur}
 
 \begin{document}
 
@@ -113,7 +113,7 @@ Fall $f$ er átækt (e. \emph{surjective}) ef það ``þekur'' myndmengi sitt, �
 \begin{center}
 \includegraphics[width=\textwidth]{function-types}
 \end{center}
-Fall sem er bæði eintækt og átækt er kallað gagntækt.
+Fall sem er bæði eintækt og átækt er kallað gagntækt (e. \emph{bijective}).
 \end{frame}
 
 \begin{frame}{Andhverfanleg föll}
@@ -127,11 +127,44 @@ Andhverfa fallsins $f$ er táknuð með $f^{-1}$. Um $f^{-1}$ gildir:
 \]
 
 \end{tcolorbox}
+Fall sem er ekki gagntækt er óandhverfanlegt. Hægt er að búa til andhverfanlegt fall úr óandhverfanlegu með því að takmarka formengi þess.
+\end{frame}
+
+\begin{frame}{Samantekt}
+\begin{itemize}
+ \item Látum $f: A \to B$
+ \begin{itemize}
+  \item Til að sýna að fall sé eintækt: Sýna að $f(x) = f(y)$ fyrir ótilgreind $x, y \in A$ þegar $x \neq y$.
+  \item Til að sýna að fall sé átækt: Athuga ótilgreint $y \in B$ og finna $x \in A$ svo að $f(x) = y$
+ \end{itemize}
+ \item Til að sýna fram á hið gagnstæða, finnið mótdæmi
+\end{itemize}
+
 \end{frame}
 
 
+\begin{frame}{Samskeyting falla}
+\begin{tcolorbox}[title=Samskeyting falla]
+Látum $g$ vera fall frá menginu $A$ til mengisins $B$ og látum $f$ vera fall frá menginu $B$ til mengisins $C$. Samskeyting (e. \emph{composition}) fallanna $f$ og $g$, fyrir $a \in A$ er þá táknuð með $f \circ g$ og skilgreinist af
+
+\[
+ (f \circ g)(a) = f(g(a))
+\]
+
+\end{tcolorbox}
+
+\end{frame}
+
 
 \section{Rakningavensl}
+
+\begin{frame}{Runur}
+\begin{tcolorbox}[title=Runur]
+Runa (e. \emph{sequence}) er fall frá hlutmengi heiltalna (oftast mengi jákvæðra heiltalna) til annars mengis $S$. Mynd heiltölunnar $n$ er táknuð með $a_n$. Sagt er að $a_n$ sé liður (e. \emph{term}) í rununni.
+\end{tcolorbox}
+Bókin táknar runur með slaufusvigum, t.d. $\{a_n\}$. Runur eru samt ekki mengi.
+\end{frame}
+
 
 \section{Reiknanleiki}
 
