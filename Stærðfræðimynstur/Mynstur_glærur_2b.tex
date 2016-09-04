@@ -1,4 +1,4 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \input{../Haust2016glærur}
 
@@ -99,14 +99,21 @@ public static int f (String s) {
 
 \begin{frame}{Eintæk föll}
 \begin{tcolorbox}[title=Eintækt fall]
-Fall er eintækt (e. \emph{injective}) ef það varpar engum tveimur stökum í formengi sínu í sama stak bakmengisins, þ.e.a.s. ef \[\forall a \forall b (f(a) = f(b) \to a = b)\] og þar með \[\forall a \forall b (f(a) \neq f(b) \to a \neq b)\].
+Fall er eintækt (e. \emph{injective} eða \emph{one-to-one}) ef það varpar engum tveimur stökum í formengi sínu í sama stak bakmengisins, þ.e.a.s. ef \[\forall a \forall b (f(a) = f(b) \to a = b)\] og þar með \[\forall a \forall b (a \neq b \to f(a) \neq f(b))\].
 \end{tcolorbox}
+
+Er fallið $f: \mathbf{R} \to \mathbf{R}$, $f(x) = x + 1$ eintækt? \pause
+
+Já, athugum að sé $x \neq y$, þá $x + 1 \neq y + 1$.
 \end{frame}
 
 \begin{frame}{Átæk föll}
 \begin{tcolorbox}[title=Átækt fall]
-Fall $f$ er átækt (e. \emph{surjective}) ef það ``þekur'' bakmengi sitt, þ.e.a.s. að fyrir hvert stak $b$ í bakmenginu er til stak í formenginu $a$ svo að $f(a) = b$, \[\forall b \exists a (f(a) = b)\].
+Fall $f$ er átækt (e. \emph{surjective} eða \emph{onto}) ef það ``þekur'' bakmengi sitt, þ.e.a.s. að fyrir hvert stak $b$ í bakmenginu er til stak í formenginu $a$ svo að $f(a) = b$, \[\forall b \exists a (f(a) = b)\].
 \end{tcolorbox}
+Er fallið $f: \mathbf{Z} \to \mathbf{Z}$, $f(x) = x^2$ átækt? \pause
+
+Nei, engin heiltala gefur $f(x) = -1$, til dæmis.
 \end{frame}
 
 \begin{frame}{Eintækni og átækni}
@@ -134,7 +141,7 @@ Fall sem er ekki gagntækt er óandhverfanlegt. Hægt er að búa til andhverfan
 \begin{itemize}
  \item Látum $f: A \to B$
  \begin{itemize}
-  \item Til að sýna að fall sé eintækt: Sýna að $f(x) = f(y)$ fyrir ótilgreind $x, y \in A$ þegar $x \neq y$.
+  \item Til að sýna að fall sé eintækt: Sýna að sé $f(x) = f(y)$ fyrir ótilgreind $x, y \in A$, þá sé $x = y$.
   \item Til að sýna að fall sé átækt: Athuga ótilgreint $y \in B$ og finna $x \in A$ svo að $f(x) = y$
  \end{itemize}
  \item Til að sýna fram á hið gagnstæða, finnið mótdæmi
