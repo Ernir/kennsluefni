@@ -1,6 +1,6 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 2, seinni fyrirlestur}
@@ -20,23 +20,6 @@
   \item Grundvallarnotkun
   \item Víddir fylkja
   \item Fylki og vigrar sem inntök í föll
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Gömul fyrirlestraræfing}
-\begin{itemize}
- \item Takið eitthvað $2 \times 2$ hlutfylki úr $a$ (sem er $4 \times 4$ fylki) og setjið það í breytuna $b$ \pause
- \begin{itemize}
-  \item Hugmynd að lausn: \texttt{b = a(1:2, 1:2)} \pause
- \end{itemize}
- \item Finnið summu allra staka í [fylki]. \pause
- \begin{itemize}
-  \item Hugmynd að lausn: Kallið á \texttt{sum} fallið. Notið \texttt{sum} fallið aftur á niðurstöðurnar. \pause
- \end{itemize}
- \item Finnið minnstu summu \emph{lína} í fylkinu $a$ \pause
- \begin{itemize}
-  \item Hugmynd að lausn: Snúa, summa, finna minnsta! \pause
  \end{itemize}
 \end{itemize}
 \end{frame}
@@ -115,7 +98,7 @@ ans =
 \end{columns}
 \end{frame}
 
-\begin{frame}{En hvað með margföldun og deilingu?}
+\begin{frame}{Margföldun og deiling?}
 \pause
 \begin{columns}
 \column{0.5\textwidth}
@@ -159,9 +142,50 @@ must agree.
 \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Fylkjadeiling}
+Hægt er að leysa jöfnuhneppið $A x = b$ með
+
+\begin{minted}[frame=lines]{matlab}
+>> x = A\b
+\end{minted}
+
+Skilvirkara og nákvæmara er að nota deilingu en að reikna fylkjaandhverfu.
+\end{frame}
+
+\begin{frame}[fragile]{Fylkjadeiling}
+Dæmi um fylkjadeilingu til að leysa $A x = b$:
+\begin{minted}[frame=lines]{matlab}
+>> A = [1, 1, 1; 1, 2, 3; 1, 3, 6];
+>> b = [3; 1; 4];
+>> x = A\b
+x =
+    10
+   -12
+     5
+\end{minted}
+Þetta má svo staðfesta með því að gefa skipunina \texttt{A*x}.
+
+\end{frame}
+
+\begin{frame}[fragile]{Rutt efra stallaform}
+Einnig er hægt að leysa jöfnuhneppi með því að nota aukið fylki og \texttt{rref} (reduced row echelon form) fallið:
+
+\begin{minted}[frame=lines]{matlab}
+>> rref([A b])
+ans =
+
+     1     0     0    10
+     0     1     0   -12
+     0     0     1     5
+\end{minted}
+
+\end{frame}
+
+
+
 \begin{frame}[fragile]{Stakvísar fylkjaaðgerðir í Matlab}
 \vspace{\baselineskip}
-Til að vinna með stökin beint þarf virkjana \texttt{.*}, \texttt{./}, \texttt{.\textbackslash} og \texttt{.\^}
+Til að vinna með stök fylkis beint þarf virkjana \texttt{.*}, \texttt{./}, \texttt{.\textbackslash} og \texttt{.\^}
 \begin{columns}
 \column{0.5\textwidth}
 \begin{minted}[frame=lines]{matlab}
@@ -268,11 +292,11 @@ Aðgerð&Merking\\
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-\begin{enumerate}
- \item Búið til $3 \times 3$ slembifylkið a og setjið öll stök þess í annað veldi
- \item Hvers konar fylki kemur út úr eftirfarandi skipun? \\ \texttt{a = randi([0 1], 5)*4 + 3} \\
- \item Ef \texttt{a} og \texttt{b} eru $2 \times 2$ fylki þá er í lagi að reikna \texttt{a*b} og \texttt{a.*b}, en niðurstaðan er ekki endilega sú sama.  Búið til fylki \texttt{a} og \texttt{b}, þar sem \texttt{a*b} skilar sömu niðurstöðu og \texttt{a.*b}.\footnote{Ráðlegging: Prófið mjög einföld fylki. \texttt{a} og \texttt{b} mega vera eins.}
-\end{enumerate}
+Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \section{Rökvigrar}
@@ -328,7 +352,7 @@ ans =
 \end{columns}
 \end{frame}
 
-\begin{frame}{Munur á rökvísunum og venjulegum vísunum}
+\begin{frame}{Rökvísanir vs. ``venjulegar''}
 \begin{itemize}
  \item Venjuleg vísun nær í stök eftir númerum
  \begin{itemize}
@@ -453,12 +477,11 @@ ans =
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-\begin{enumerate}
-\setcounter{enumi}{3}
- \item Lát  \texttt{a=[4,1,-3,5]}  og   \texttt{b=[0,1,4,2]}. Hver er útkoman úr  \texttt{a>=b}?
- \item Skrifið eina Matlab setningu sem finnur hversu margar tölur í vigrinum \texttt{v} eru neikvæðar (Vísbending: summa af rökvigri)
- \item Skrifið Matlab setningu sem finnur hversu oft stærsta gildið í vigrinum \texttt{v} kemur fyrir í \texttt{v}
-\end{enumerate}
+Skráið ykkur inn á \url{http://socrative.com/} og gerið seinni þrjár spurningarnar.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 
