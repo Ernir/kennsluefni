@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \input{../Haust2016glærur}
 
@@ -42,7 +42,7 @@ Hvað er reiknirit? \pause
 
 Úr bók:
 \begin{tcolorbox}[title=Reiknirit]
-Reiknirit (e. \emph{algorithm}) er endanleg runa vel skilgreindra aðgerða sem reikna út niðurstöðu á skilgreindu vandamáli.
+Reiknirit (e. \emph{algorithm}) er endanleg runa vel skilgreindra aðgerða sem reikna út lausn á skilgreindu vandamáli.
 \end{tcolorbox}
 
 Orðið ``algorithm'' er afleiða latneskunar á nafinu al-Khowarizmi, sem skrifaði um hindú-arabíska talnakerfið. Bók hans, \emph{Kitab al-jabr w'al muquabala}, er þekkt grundvallarrit.
@@ -100,8 +100,6 @@ point is the largest integer in the sequence.
 \end{frame}
 
 \begin{frame}{Sauðakóði}
-\begin{columns}
-\column{0.6\textwidth}
 \begin{itemize}
  \item Orðalýsing á reikniritum er oft mjög löng og óþægileg
  \item Til að auðvelda lýsingar nota ýmsir höfundar oft svokallaðan sauðakóða (e. \emph{pseudocode})
@@ -111,12 +109,14 @@ point is the largest integer in the sequence.
   \item Í sauðakóða er leyfilegt að lýsa atriðum sem myndu taka margar aðgerðir í tölvu með því að nota setningar
  \end{itemize}
 \end{itemize}
-\column{0.4\textwidth}
-\includegraphics[width=\linewidth]{max-element}
-
-Reiknirit til að finna stærstu heiltölu í runu heiltalna.
-\end{columns}
 \end{frame}
+
+\begin{frame}{Reiknirit með sauðakóða}
+Reiknirit sem finnur stærsta stak í runu, sett fram með sauðakóða
+
+\includegraphics[width=\linewidth]{max-element}
+\end{frame}
+
 
 \begin{frame}{Rétt reiknirit}
 \begin{columns}
@@ -166,22 +166,173 @@ Línuleg leit er reiknirit sem leysir leitarvandamálið fyrir runur:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Röðuð runa}
-\begin{tcolorbox}[title=Röðuð runa]
-Runa $a_1, \ldots, a_n$ er stranglega vaxandi sé $a_1 < a_2 < \ldots < a_n$.
+\begin{frame}{Helmingunarleit}
+Helmingunarleit er afar skilvirkt leitarreiknirit sem virkar á raðaðar runur.
 
-Runa $a_1, \ldots, a_n$ er stranglega lækkandi sé $a_1 > a_2 > \ldots > a_n$.
+\begin{center}
+\includegraphics[width=\textwidth]{binary-search}
+\end{center}
+\end{frame}
 
-Runa sem er stranglega vaxandi eða stranglega lækkandi er röðuð.
-\end{tcolorbox}
+\section{Röðunarreiknirit}
 
-Oft er gert ráð fyrir að röðuð runa sé vaxandi.
+\begin{frame}{Röðunarreiknirit}
+\begin{itemize}
+ \item Annar flokkur vandamála sem oft kemur við sögu er röðunarvandamál
+ \begin{itemize}
+  \item Búa til orðabók
+  \item Setja fram vörulista\ldots
+ \end{itemize}
+ \item Röðunarvandamálið hefur fengið mikla athygli
+ \begin{itemize}
+  \item Yfir 100 þekkt reiknirit
+  \item $\approx$400 blaðsíður um efnið í \emph{The Art of Computer Programming} eftir Donald Knuth
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Röðunarvandamálið}
+Lausn á röðunarvandamáli fyrir runu talna $a_1, a_2, \ldots, a_n$ felur í sér að finna endurröðun $a'_1, a'_2, \ldots, a'_n$ á rununni svo að $a'_1 \leq a'_2 \leq \ldots \leq a'_n$.
 \end{frame}
 
 
+\begin{frame}{Innsetningarröðun}
+\begin{itemize}
+ \item Reikniritið innsetningarröðun (e. \emph{insertion sort}) leysir röðunarvandamálið
+ \item Lýsing úr bók
+ \begin{itemize}
+  \item Byrjum að skoða $a_2$, berum það saman við $a_1$
+  \begin{itemize}
+   \item Sé $a_2 < a_1$ skiptum við á staðsetningum þeirra
+   \item Eftir þetta skref eru fyrstu tvö stökin í innbyrðis réttri röð
+  \end{itemize}
+  \item $a_3$ er borið saman við $a_1$
+  \begin{itemize}
+   \item Sé það stærra en $a_1$ er það borið saman við $a_2$
+   \item Sett á réttan stað í fyrstu þrenndinni
+  \end{itemize}
+  \item Almennt er stak númer $j$ borið saman við öll $j-1$ stökin sem á undan koma
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Innsetningarröðun - sauðakóði}
+\begin{center}
+\includegraphics[width=\textwidth]{insertion-sort}
+\end{center}
+\end{frame}
+
+\section{Gráðug reiknirit}
+
+\begin{frame}{Bestunarreiknirit}
+\begin{itemize}
+ \item Stór flokkur vandamála sem leysa þarf við raunverulegar aðstæður er bestunarvandamál (e. \emph{optimization problems}
+ \item Í bestunarvandamáli höfum við mengi mögulegra lausna, þurfum að finna þá bestu m.t.t. gefins viðmiðs
+ \item Einn einfaldasti flokkur reiknirita sem leysir bestunarvandamál er gráðug reiknirit (e. \emph{greedy algorithms})
+ \begin{itemize}
+  \item Gráðugt reiknirit leysir bestunarvandamál sem skipta má upp í skref með því að velja bestu
+  \item Sum gráðug reiknirit finna alltaf bestu lausn með þessum hætti, sum ekki
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gráðugt reiknirit fyrir skiptimynt}
+\begin{itemize}
+ \item Athugum skiptimyntarvandamálið
+ \begin{itemize}
+  \item Algengt vandamál þangað til á þessari öld
+ \end{itemize}
+ \item Erum með endanlegan fjölda mismunandi mynta
+ \item Viljum rétta manneskju upphæðina $n$
+ \item Viljum rétta eins fáar myntir og við getum
+ \item Þetta vandamál má leysa á gráðugan máta
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gráðug myntskipti}
+\begin{itemize}
+ \item Gráðug aðferð: Teljum til myntir, í hvert skipti veljum við stærstu mynt $\leq n$
+ \begin{itemize}
+  \item Drögum verðgildi myntarinnar frá $n$
+  \item Veljum aftur stærstu mynt sem ekki er stærri en ``nýja $n$''
+  \item Endurtökum
+ \end{itemize}
+ \item Þessi aðferð skilar stundum bestu lausn, fer eftir verðgildum myntanna
+ \begin{itemize}
+  \item Alltaf besta lausn fyrir myntgildin $25, 10, 5, 1$
+  \item Ekki alltaf besta lausn fyrir myntgildin $25, 10, 1$
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Gráðug myntskipti}
+\begin{center}
+\includegraphics[width=\textwidth]{coin-change}
+\end{center}
+\end{frame}
+
+\section{Stöðvunarvandamálið}
+
+\begin{frame}{Stöðvunarvandamálið}
+\begin{itemize}
+ \item Áður hefur verið haldið fram að óákvarðanleg föll séu til
+ \item Sýnum nú að til sé vandamál sem ekkert forrit getur leyst
+ \item Dæmi um slíkt vandamál er stöðvunarvandamálið (e. \emph{the halting problem})
+ \begin{itemize}
+  \item Forrit sem leysir stöðvunarvandamálið myndi geta tekið inn annars vegar forrit og hins vegar inntak í forritið og svarað hvort að forritið muni ná að ljúka keyrslu eða ekki 
+ \end{itemize}
+ \item Alan Turing sýndi að ekki er til forrit sem leysir stöðvunarvandamálið árið 1936
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aths. um stöðvunarvandamálið}
+\begin{itemize}
+ \item Athugum: Það dugar ekki einfaldlega að keyra forritið $P$ með inntakinu $I$ til að ákvarða vandamálið
+ \begin{itemize}
+  \item Ef $P$ klárar vitum við vissulega svarið\ldots
+  \item \ldots en meðan það er enn að keyra vitum við ekki hvort það mun klára eftir eina sekúndu, eftir milljarð ára eða aldrei
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sönnun með mótsögn}
+\begin{itemize}
+ \item Gerum ráð fyrir að við séum með forrit $H$ sem leysir stöðvunarvandamálið fyrir forrit $P$ og inntak $I$
+ \begin{itemize}
+  \item $H$ skilar strengnum ``stoppar'' ef $P$ stoppar gefið $I$ sem inntak, annars ``keyrir endalaust'' \pause
+ \end{itemize}
+ \item Athugum að forrit er safn tákna, svo forrit er strengur, streng má nota sem inntak
+ \item Leysi $H$ stöðvunarvandamálið á það því að geta svarað því hvort $P$ stoppar þegar $P$ sjálft er notað sem inntak
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sönnun með mótsögn}
+\begin{itemize}
+ \item Búum nú til forrit $K(P)$ sem notar $H(P, P)$
+ \begin{itemize}
+  \item Skili $H(P, P)$ strengnum ``keyrir endalaust'' stoppar $K(P)$ 
+  \item Skili $H(P, P)$ strengnum ``stoppar'' fer $K(P)$ í endalausa lykkju
+  \item $K(P)$ gerir sem sagt það gagnstæða við $H(P, P)$
+ \end{itemize}
+ \item Hvað gerist ef við köllum á $K(K)$?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sönnun með mótsögn}
+\begin{itemize}
+ \item Ef $H(K, K)$ segir að $K(K)$ ljúki keyrslu, þá lýkur $K(K)$ ekki keyrslu
+ \item Ef $H(K, K)$ segir að $K(K)$ ljúki ekki keyrslu, þá lýkur $K(K)$ keyrslu
+ \item Mótsögn!
+ \begin{itemize}
+  \item Ekki er til $H$ sem leysir stöðvunarvandamálið fyrir öll forrit
+ \end{itemize}
+\end{itemize}
+
+\end{frame}
+
 
 \begin{frame}{Næst}
-Reiknirit (kafli 3.1) og vöxtur falla (kafli 3.2)
+Vöxtur falla (kafli 3.2)
 \end{frame}
 
 
