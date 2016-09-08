@@ -95,6 +95,12 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Saga}
+Rithátturinn sem oftast er notaður er kallaður stóra-O rithátturinn (e. \emph{big O notation}).
+
+Rithátturinn var fyrst notaður af þýska stærðfræðingnum Paul Bachmann. Donald Knuth gerði ritháttinn vinsælan meðal tölvunarfræðinga.
+\end{frame}
+
 \begin{frame}{Stóra-O ritháttur}
 \begin{tcolorbox}[title=Stóra O ritháttur]
 Látum $f$ og $g$ vera föll frá $Z$ eða $R$ til $R$. Við segjum að $f(x)$ sé $O(g(x))$ ef til eru jákvæðir fastar $C$ og $k$ svo að
@@ -120,10 +126,6 @@ Látum $f$ og $g$ vera föll frá $Z$ eða $R$ til $R$. Við segjum að $f(x)$ s
   \item Þetta er óheppilegur ritháttur!
  \end{itemize}
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Saga}
-Stóra-O rithátturinn var fyrst notaður af þýska stærðfræðingnum Paul Bachmann. Donald Knuth gerði ritháttinn vinsælan meðal tölvunarfræðinga.
 \end{frame}
 
 \begin{frame}{Vitnin}
@@ -177,14 +179,14 @@ Látum $f(x) = a_n x^n + a_{n-1}x^{n-1} + \ldots + a_1x + a_0$, þar sem $a_0, a
 \end{tcolorbox}
 Þetta má sanna með því að taka $x^n$ út fyrir sviga og beita þríhyrningsójöfnunni. (Gert í bók)
 
-Þessi ritháttur gefur venju fyrir margliður. Allar margliður af stigi $n$ eru venjulega sagðar vera $O()$
+Þessi ritháttur gefur venju fyrir margliður. Allar margliður af stigi $n$ eru venjulega sagðar vera $O(x^n)$
 \end{frame}
 
 \begin{frame}{Summa og stóra-O}
 Hvaða stóra-O mat getum við sett á summu fyrstu $n$ heiltalnanna, $1 + 2 + \ldots + n$? \pause
 
 Athugum að hver liður í summunni sem kemur á undan $n$ er $\leq n$. $n$ lagt $n$ sinnum við $n$ gefur $n^2$. Setjum upp ójöfnu, tökum $C = 1$ og $k = 1$ og sjáum að $O(n^2)$ er gott mat.
-
+\pause
 Einnig:
 \[
  \sum_{i=1}^n i = \frac{n(n+1)}{2}
@@ -207,7 +209,7 @@ Stóra-O rithátturinn er oft notaður til að lýsa keyrslutíma. Algengustu f�
  1, \log n, n, n \log n, n^2 , 2^n , n!
 \]
 
-Þessi föll eru hér í ``vaxandi röð''.
+Þessi föll eru hér í ``vaxandi röð''. Hvert fall er í stóra O af föllunum til hægri.
 \end{frame}
 
 \begin{frame}{Stærðfræðigreining og vöxtur}
