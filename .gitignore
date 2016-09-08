@@ -3,6 +3,9 @@ FOR3R/*.pdf
 T1a/*.pdf
 Stærðfræðimynstur/*.pdf
 
+T1a/*verkefni*.tex
+Stærðfræðimynstur/*verkefni*.tex
+
 *.nav
 *.snm
 *.vrb
