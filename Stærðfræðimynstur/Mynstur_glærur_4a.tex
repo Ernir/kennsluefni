@@ -1,0 +1,255 @@
+\documentclass[handout]{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Stærðfræðimynstur í tölvunarfræði}
+\subtitle{Vika 4, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta tíma}
+\begin{itemize}
+ \item Stöðvunarvandamálið
+ \item Vöxtur falla
+ \begin{itemize}
+  \item Stóra O ritháttur
+  \item Aðrir rithættir - $\Theta$, $\Omega$
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Leiðrétting!}
+Í heimadæmum 3, spurningu 2 er sýnd stígandi runa:
+\[
+ c_1 = 1, c_2 = 5, c_3 = 10, c_4 = 25
+\]
+Til samræmis við reiknirit á glærum og í bók ætti runan að vera lækkandi:
+\[
+ c_1 = 25, c_2 = 10, c_3 = 5, c_4 = 1
+\]
+\end{frame}
+
+\section{Reikniflækja}
+
+\begin{frame}{Reikniflækja}
+\begin{itemize}
+ \item Höfum lýst því hvernig hægt er að nota stóra-O rithátt til að tákna vöxt falla
+ \item Notum nú föll til að tákna hegðun reiknirita
+ \item Getum táknað hegðunina með falli af inntaksstærð reikniritsins
+ \begin{itemize}
+  \item Sé reiknirit að vinna með inntak af stærð $n$ getum við táknað ákveðna hegðunareiginleika þess með falli $f(n)$
+ \end{itemize}
+ \item Talað er um reikniflækju eða lausnarflækjustig (e. \emph{computational complexity})
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Reikniflækja}
+\begin{itemize}
+ \item Skoðum fyrst og fremst tímaflækju (e. \emph{time complexity}) reiknirita
+ \begin{itemize}
+  \item Lýsum keyrslutíma reiknirits sem falli af inntaksstærð
+  \item Venjulega er keyrslutímafallið síðan sett fram með stóra-O eða stóra-$\Theta$ rithætti
+ \end{itemize}
+ \item Einnig er til minnisflækja (e. \emph{space complexity})
+ \begin{itemize}
+  \item Ekki fjallað um í bók, sleppum
+  \item Minnisflækja og tímaflækja eru tengd - til að skrifa í minni þarf tíma
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tímaflækja}
+\begin{itemize}
+ \item Til að kvarða tímaflækju reiknirits eru grunnaðgerðir þess taldar
+ \begin{itemize}
+  \item Dæmi um grunnaðgerðir: Breyta búin til, samlagning tveggja talna, samanburður á breytum
+ \end{itemize}
+ \item Fallið sem lýsir keyrslutíma er þá í raun fall sem lýsir fjölda grunnaðgerða
+ \item Varnagli: Tímaflækja hunsar ýmis praktísk atriði sem koma við sögu í raunverulegum tölvum
+ \begin{itemize}
+  \item Minni er ekki allt jafn hraðvirkt
+  \item Grunnaðgerðir taka mis langan tíma
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tímaflækja max reikniritsins}
+Lítum aftur á \texttt{max} reikniritið. Hver er tímaflækja þess á $\Theta$-sniði?
+
+\includegraphics[width=\linewidth]{max-element} \pause
+
+Alltaf þarf að gefa hágildinu upphafsgildi og skila. Fyrir hvern lið í rununni þurfum við að framkvæma tvo samanburði. Í eitt eða fleiri skipti þarf að uppfæra hágildið. Tímaflækjan er $\approx 2n$ sem er $\Theta(n)$.
+\end{frame}
+
+\begin{frame}{Versti- besti og meðalkeyrslutími}
+\begin{itemize}
+ \item Keyrslutími reiknirita er oft mismunandi eftir gerð inntaka
+ \item Þá setjum við fram keyrslutíma fyrir mismunandi tilfelli
+ \item Mikilvægasta tilfellið er oftast versti keyrslutíminn (e. \emph{worst-case complexity})
+ \item Önnur tilfelli eru meðalkeyrslutími (oft erfitt að reikna) og besta tilfellið (oft lítið gagn í þeim upplýsingum)
+ \item Athugum að rugla ekki saman hugtökunum um efri og neðri mörk á vexti falla og hugtökunum um besta og versta keyrslutíma
+\end{itemize}
+\end{frame}
+
+\section{Tímaflækjur ýmissa reiknirita}
+
+\subsection{Leitarreiknirit}
+
+\begin{frame}{Línuleg leit}
+Upprifjun: Línuleg leit
+
+\begin{center}
+\includegraphics[width=\textwidth]{linear-search}
+\end{center}
+\end{frame}
+
+\begin{frame}{Versti og besti keyrslutími}
+\begin{itemize}
+ \item Dæmi: Línuleg leit þarf mjög mismunandi tíma
+ \item Keyrslutíminn fer eftir staðsetningu liðarins sem leita á að
+ \begin{itemize}
+  \item Versta tilfellið: Liðurinn er ekki til eða úti á enda, þurfum að skoða alla \pause
+  \begin{itemize}
+   \item $\theta(n)$
+  \end{itemize}
+  \item Besta tilfellið: Liðurinn er fremst í rununni \pause
+  \begin{itemize}
+   \item $\theta(1)$
+  \end{itemize}
+  \item Meðaltilfellið: Jafn líklegt að liðurinn sé hvar sem er \pause
+  \begin{itemize}
+   \item $\theta(n)$
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Helmingunarleit}
+Upprifjun: Helmingunarleit
+
+\begin{center}
+\includegraphics[width=\textwidth]{binary-search}
+\end{center}
+\end{frame}
+
+\begin{frame}{Tímaflækja helmingunarleitar}
+\begin{itemize}
+ \item Gerum ráð fyrir að lengd rununnar sem helmingunarleit á að leita í sé $n = 2^k$ þar sem $k \in Z^+$
+ \begin{itemize}
+  \item Sé lengd rununnar ekki veldi af $2$ gerum við ráð fyrir að um sé að ræða hlutrunu í lengri runu 
+ \end{itemize}
+ \item Leitarbilið minnkar niður í stærð $2^{k-1}$ eftir fyrstu ítrun, $2^{k-2}$ eftir aðra ítrun\ldots
+ \item Fastur fjöldi aðgerða í hverri ítrun \pause
+ \begin{itemize}
+  \item Þurfum $k$ skref og $n = 2^k$, svo um er að ræða $\Theta(\log(n))$ reiknirit
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Lograr í tímaflækjum}
+Í tölvunarfræði fáumst við oftast við logrann með grunntöluna 2. Grunntalan skiptir ekki máli í stóra-$\Theta$ framsetningu (og tengdum ritháttum) vegna þess að lograr eru fast margfeldi hver af öðrum.
+
+\[
+ \log_b(x) = \frac{\log_k(x)}{\log_k(b)}
+\]
+
+\end{frame}
+
+\subsection{Röðun}
+
+\begin{frame}{Innsetningarröðun}
+Upprifjun - innsetningarröðun
+\begin{center}
+\includegraphics[width=\textwidth]{insertion-sort}
+\end{center}
+\end{frame}
+
+\begin{frame}{Tímaflækja innsetningarröðunar}
+\begin{itemize}
+ \item Innsetningarröðun notar línulega leitaraðferð til að finna stað fyrir hvert stak \pause
+ \begin{itemize}
+  \item $O(n)$ tími
+ \end{itemize}
+ \item Öllum stökum er svo hliðrað \pause
+ \begin{itemize}
+  \item $O(n)$ tími
+ \end{itemize}
+ \item Þetta þarf að gera $n-1$ sinni
+ \begin{itemize}
+  \item Heildarkeyrslutími í versta tilfellinu $\Theta(n^2)$
+ \end{itemize}
+ \item Til eru almenn röðunarreiknirit sem virka á $\Theta(n\log(n))$ tíma
+\end{itemize}
+\end{frame}
+
+\subsection{Fylkjamargföldun}
+
+\begin{frame}{Fylkjamargföldun}
+Skoðum reiknirit sem framkvæmir fylkjamargföldun á $m \times k$ fylkinu $A$ og $k \times n$ fylkinu $B$:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{matrix-multiplication}
+\end{center}
+\end{frame}
+
+\begin{frame}{Tímaflækja fylkjamargföldunar}
+\begin{itemize}
+ \item Um er að ræða $m \cdot n$ stök, til að mynda hvert þeirra þarf $k$ samlagningar \pause
+ \begin{itemize}
+  \item Heildartímaflækja: $O(kmn)$
+  \item Verður $O(n^3)$ þegar $m = n = k$ (tvö ferningsfylki)
+ \end{itemize}
+ \item Til eru reiknirit með lægri tímaflækjur fyrir tvö ferningsfylki
+ \begin{itemize}
+  \item Strassen-reikniritið: $\approx O(2.81)$
+  \item Coppersmith-Winograd reikniritið: $O(n^{2.375477}$)
+  \begin{itemize}
+   \item Nýrri útgáfur: $O(n^{2.374})$ (Stothers, 2010) \pause, $O(n^{2.3728642})$ (Williams, 2011), \pause $O(n^{2.3728639})$ (Le Gall, 2014)
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tímaflækjur - raunveruleg áhrif}
+Keyrslutími reiknirita á tölvu þar sem ein bitaaðgerð tekur $10^{-11}s$.
+\begin{center}
+\includegraphics[width=\textwidth]{time-table}
+\end{center}
+Hér er $* > 10^{100}$ ár.
+\end{frame}
+
+\begin{frame}{Keyrslutímar - hugtök}
+\begin{center}
+\includegraphics[width=\textwidth]{complexity-terminology}
+\end{center}
+\end{frame}
+
+
+\section{Lausnaraðferðir}
+
+\begin{frame}{Lausnaraðferðir}
+\begin{itemize}
+ \item Höfum þegar kynnst einni almennri lausnaraðferð - gráðugri bestunaraðferð
+ \item Almenn leið til að leysa vandamál: ``Brute force'' reiknirit
+ \begin{itemize}
+  \item Brute force er almennt hugtak sem er notað yfir reiknirit sem virka ``beint af augum'', oft með því að nota skilgreiningar beint
+  \item Brute force reiknirit vinna oft með því að kanna einfaldlega alla möguleika
+  \item Geta virkað vel til að sýna fram á að eitthvað sé leysanlegt eða fyrir lítil vandamál
+ \end{itemize}
+ \item Fleiri lausnaraðferðir - kvik bestun og deila-og-drottna reiknirit (kafli 8)
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Næst}
+(4.1)?
+\end{frame}
+
+
+\end{document}
