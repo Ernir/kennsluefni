@@ -117,15 +117,15 @@ Upprifjun: Línuleg leit
  \begin{itemize}
   \item Versta tilfellið: Liðurinn er ekki til eða úti á enda, þurfum að skoða alla \pause
   \begin{itemize}
-   \item $\theta(n)$
+   \item $\Theta(n)$
   \end{itemize}
   \item Besta tilfellið: Liðurinn er fremst í rununni \pause
   \begin{itemize}
-   \item $\theta(1)$
+   \item $\Theta(1)$
   \end{itemize}
   \item Meðaltilfellið: Jafn líklegt að liðurinn sé hvar sem er \pause
   \begin{itemize}
-   \item $\theta(n)$
+   \item $\Theta(n)$
   \end{itemize}
  \end{itemize}
 \end{itemize}
@@ -204,7 +204,7 @@ Skoðum reiknirit sem framkvæmir fylkjamargföldun á $m \times k$ fylkinu $A$ 
  \begin{itemize}
   \item Heildartímaflækja: $O(kmn)$
   \item Verður $O(n^3)$ þegar $m = n = k$ (tvö ferningsfylki)
- \end{itemize}
+ \end{itemize}\pause
  \item Til eru reiknirit með lægri tímaflækjur fyrir tvö ferningsfylki
  \begin{itemize}
   \item Strassen-reikniritið: $\approx O(2.81)$
@@ -231,24 +231,62 @@ Hér er $* > 10^{100}$ ár.
 \end{frame}
 
 
-\section{Lausnaraðferðir}
+\section{P = NP}
 
-\begin{frame}{Lausnaraðferðir}
+\begin{frame}{Meðfærileiki vandamála}
 \begin{itemize}
- \item Höfum þegar kynnst einni almennri lausnaraðferð - gráðugri bestunaraðferð
- \item Almenn leið til að leysa vandamál: ``Brute force'' reiknirit
+ \item Mjög mikill munur er á vexti veldisvísisfalla og margliða
+ \item Skipta má vandamálum í meðfærileg (e. \emph{tractable}) og ómeðfærileg (e. \emph{intractable})
+ \item Flest vandamál sem eru leysanleg með reikniriti sem keyrir á margliðutíma eru meðfærileg
  \begin{itemize}
-  \item Brute force er almennt hugtak sem er notað yfir reiknirit sem virka ``beint af augum'', oft með því að nota skilgreiningar beint
-  \item Brute force reiknirit vinna oft með því að kanna einfaldlega alla möguleika
-  \item Geta virkað vel til að sýna fram á að eitthvað sé leysanlegt eða fyrir lítil vandamál
+  \item Leit í runu, röðun, fylkjamargföldun\ldots
  \end{itemize}
- \item Fleiri lausnaraðferðir - kvik bestun og deila-og-drottna reiknirit (kafli 8)
+ \item Flest vandamál sem ekki hafa þekkt reiknirit sem leysir þau á margliðutíma eru ómeðfærileg
+ \begin{itemize}
+  \item Skák á $n \times n$ borði, stöðvast gefið forrit með gefið inntak í $k$ skrefum?
+ \end{itemize}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{P og NP}
+\begin{itemize}
+ \item Sum vandamál eru þess eðlis að hægt er að leysa þau á margliðutíma í versta tilfellinu, mengi slíkra vandamála er kallað $P$
+ \item Sum vandamál eru þess eðlis að hægt er að staðfesta eða hafna gefinni lausn á þeim á margliðutíma í versta tilfellinu, mengi slíkra vandamála er kallað $NP$
+ \item Stærsta opna spurningin í tölvunarfræði:
+\end{itemize}
+\[
+ \text{er } P = NP \text { eða } P \neq NP \text{ ? }
+\]
+\end{frame}
+
+\begin{frame}{NP-complete vandamál}
+\begin{itemize}
+ \item $NP$-complete vandamál eru flokkur vandamála innan $NP$ sem hefur merkilegan eiginleika:
+ \begin{itemize}
+  \item Sé til reiknirit sem leysir eitthvert $NP$-complete vandamál á margliðutíma er til reiknirit sem leysir öll $NP$-vandamál á margliðutíma
+ \end{itemize}
+ \item Yfir 3000 þekkt $NP$-complete vandamál
+ \item Fyrsta sannanlega $NP$-complete vandamálið var ``boolean satisfiability problem''
+ \begin{itemize}
+  \item Er til ákvörðun á $n$ rökbreytum svo að gefin yrðing sé sönn?
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Samband mengjanna (Wikipedia)}
+\begin{center}
+\includegraphics[width=\textwidth]{P-NP}
+\end{center}
 \end{frame}
 
 
 \begin{frame}{Næst}
-(4.1)?
+\begin{itemize}
+ \item 4.1 (Deiling og deilingarafgangur)
+ \item 4.2 (Mismunandi grunntölur)
+ \item 4.3 (Prímtölur)
+\end{itemize}
+
 \end{frame}
 
 
