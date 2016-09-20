@@ -1,0 +1,244 @@
+\documentclass{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Stærðfræðimynstur í tölvunarfræði}
+\subtitle{Vika 5, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta tíma}
+\begin{itemize}
+ \item Talnafræði
+ \item Deiling og afgangur
+ \item Framsetning heiltalna
+ \begin{itemize}
+  \item Tvíundarkerfið og önnur kerfi
+ \end{itemize}
+ \item Prímtölur
+ \item Stærsti samdeilir og minnsta samfeldi
+\end{itemize}
+\end{frame}
+
+\section{Klassísk dulkóðun}
+
+\begin{frame}{Klassísk dulkóðun}
+\begin{itemize}
+ \item Ein elsta þekkta leiðin til að dulkóða skilaboð er kennd við Júlíus Sesar
+ \item Sesar gerði skilaboðin sín ólæsileg með því að skipta hverjum bókstaf í skilaboðunum út fyrir þann bókstaf sem er þremur sætum aftar í stafrófinu
+ \begin{itemize}
+  \item $B$ verður að $E$, $N$ verður að $Q$
+ \end{itemize}
+ \item Það að gera skilaboð ólæsileg á kerfisbundinn, afkallanlegan máta kallast dulkóðun (e. \emph{encryption})
+ \item Það að ná upprunalegu skilaboðunum aftur úr dulkóðuninni kallast afkóðun (e. \emph{decryption})
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Reikniritið hans Sesars}
+\begin{itemize}
+ \item Í klassíska latneska stafrófinu eru 23 bókstafir
+ \begin{itemize}
+  \item $A	B	C	D	E	F	G	H	 I	K	L	M	N	O	P	Q	R	S	T	V	X	Y	Z$
+ \end{itemize}
+ \item Sesar hefur því séð fyrir sér að hvern staf megi tákna með heiltölu $p$, þar sem $0 \leq p \leq 22$
+ \item Sesar hefur næst skilgreint fall til dulkóðunar:
+\end{itemize}
+\[
+ f(p) = (p + 3) \Mod 23
+\]
+\end{frame}
+
+\begin{frame}{Dulkóðun}
+Latína er lítið notuð í dag. Notum frekar enska stafrófið (sem er af lengd 26) og dulkóðum skilaboðin \texttt{MEET YOU IN THE PARK} með reikniriti Sesars. \pause
+
+\texttt{MEET YOU IN THE PARK} má setja fram með tölum:
+\begin{center}
+\texttt{12 4 4 19\quad
+24 14 20\quad
+8 13\quad
+19 7 4\quad
+15 0 17 10}
+\end{center}\pause
+skiptum svo hverri tölu $p$ út fyrir $f(p) = (p+3) \Mod 26$:
+\begin{center}
+\texttt{
+15 7 7 22\quad
+1 17 23\quad
+11 16\quad
+22 10 7\quad
+18 3 20 13}
+\end{center}
+sem má lesa sem \texttt{PHHW BRX LQ WKH SDUN}.
+\end{frame}
+
+\begin{frame}{Afkóðun}
+Til að afkóða þarf að hliðra stöfunum til baka niður stafrófið. Þetta má gera með andhverfu dulkóðunarfallsins, andhverfa dulkóðunarfallsins á glærunni á undan er:
+
+\[
+ f^{-1}(p) = (p-3)\Mod 26
+\]
+\end{frame}
+
+\begin{frame}{Almennari hliðrunardulkóðun}
+Almennt má fá fram dulkóðun með því að hliðra hverjum staf í stafrófinu um $k$ sæti:
+\[
+ f(p) = (p + k) \Mod 26
+\]
+og afkóðun með
+\[
+ f^{-1}(p) = (p - k) \Mod 26
+\]
+Hér er $k$ lykill (e. \emph{key}) fyrir dulkóðunina.
+\end{frame}
+
+\begin{frame}{Betri hliðrunardulkóðun}
+Hægt er að gera hliðrunardulkóðun minna óörugga með því að nota fall:
+\[
+ f(p) = (ap + b)\Mod 26
+\]
+þar sem $a$ og $b$ eru heiltölur og $gcd(a,26) = 1$. Þegar $gcd(a,26) = 1$ er vörpunin gagntæk. Vörpun af þessu tagi kallast vildarvörpun (e. \emph{affine transformation}).
+\end{frame}
+
+\begin{frame}{Að brjóta hliðrunardulkóðun}
+\begin{itemize}
+ \item Hliðrunardulkóðun er viðkvæm fyrir tíðnigreiningu
+ \item Tökum dulkóðaðan texta af góðri lengd
+ \item Skoðum hvaða stafir koma oftast fyrir í textanum
+ \item Berum saman við hvaða stafir eru algengastir í viðkomandi máli
+ \item Prófa sig áfram
+\end{itemize}
+\end{frame}
+
+\section{Blokkardulkóðun}
+
+\begin{frame}{Blokkardulkóðun}
+\begin{itemize}
+ \item Við getum verndað okkur gegn tíðnigreiningu með því að skipta ekki út einum staf í einu, heldur mörgum stöfum
+ \item Skiptum textanum upp í blokkir
+ \item Skiptum blokkunum út í heilu lagi
+ \item Kallast \emph{block cypher} (ísl. \emph{blokkardulkóðun}?)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Blokkardulkóðun}
+\begin{itemize}
+ \item Skoðum umskiptingardulkóðun (e. \emph{transposition cypher})
+ \item Notum umröðun $\sigma$ á hlutmengi í jákvæðu heiltölunum $\{1, 2, \ldots, m\}$
+ \item Látum $\sigma$ sem sagt vera gagntæka vörpun frá $\{1, 2, \ldots, m\}$ í sjálft sig
+ \item Til dulkóðunar skiptum við textanum upp í blokkir af stærð $m$
+\end{itemize}
+\[
+ p_1p_2\ldots p_m = c_1c_2\ldots c_m = p_{\sigma(1)}p_{\sigma(2)}\ldots p_{\sigma(m)}
+\]
+
+\end{frame}
+
+\begin{frame}{Dæmi um blokkardulkóðun}
+Gefin er blokkarstærðin $m=4$ með $\sigma(1) = 3, \sigma(2) = 1, \sigma(3) = 4$ og $\sigma(4) = 2$.
+
+Dulkóðum strenginn \texttt{PIRATE ATTACK}. Fáum grunntextann \texttt{PIRA TEAT TACK}.
+
+Í samræmi við $\sigma$, setjum fyrsta stafinn í þriðja sætið, annan stafinn í fyrsta sætið\ldots
+
+Fáum \texttt{IAPR ETTA AKTC}.
+\end{frame}
+
+\begin{frame}{Dæmi um blokkarafkóðun}
+Gefin er blokkarstærðin $m=4$ með $\sigma(1) = 3, \sigma(2) = 1, \sigma(3) = 4$ og $\sigma(4) = 2$.
+
+Afkóðum strenginn \texttt{SWUETRAEOEHS}. Athugum að $\sigma^{-1}$ varpar $3$ í $1$, $1$ í $2$, \ldots
+
+Fáum strenginn \texttt{USEW ATER HOSE}. Störum og sjáum að hér stendur \texttt{USE WATER HOSE}.
+\end{frame}
+
+\section{Public Key Cryptography}
+
+\begin{frame}{Public Key Cryptography}
+\begin{itemize}
+ \item Galli við klassíska dulkóðun: Sami lykill er notaður til að dulkóða og til að afkóða
+ \item Komist einhver að lyklinum til að framkvæma dulkóðun má líka framkvæma afkóðun
+ \begin{itemize}
+  \item Slíkt kerfi er kallað ``private key'' dulkóðunarkerfi
+  \item Góð private key kerfi eru til, t.d. AES
+ \end{itemize}
+ \item Á 8. áratugnum voru ``public key'' dulkóðunarkerfi búin til
+ \begin{itemize}
+  \item Mismunandi dulkóðunar- og afkóðunarlyklar, einungis afkóðunarlyklinum haldið leyndum
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RSA kerfið}
+\begin{itemize}
+ \item Í RSA kerfinu er hver aðili með opinberan dulkóðunarlykil og leynilegan afkóðunarlykil
+ \item Hluti af opinbera lyklinum er margfeldi tveggja prímtalna
+ \item Hluti af leynilega lyklinum eru prímtölurnar sjálfar
+ \item Þáttun er erfitt verkefni, svo leynilegi lykillinn er öruggur svo lengi sem prímtölurnar eru sæmilega stórar
+\end{itemize}
+\end{frame}
+
+\begin{frame}{RSA kerfið}
+\begin{itemize}
+ \item Nokkrir hlutir koma við sögu í RSA dulkóðun
+ \begin{itemize}
+  \item Stórar prímtölur $p$ og $q$ (haldið leyndum)
+  \item Veldisvísir $e$ (gerður opinber)
+  \begin{itemize}
+   \item $e$ og $(p-1)(q-1)$ þurfa að vera ósamþátta, þ.e.a.s. $gcd(e, (p-1)(q-1)) = 1$
+   \item $1 < e < n$
+  \end{itemize}
+  \item Margfeldi prímtalnanna, $n = pq$ (gert opinbert)
+  \item $d$, tala svo að $(d\cdot e) \Mod (p-1)(q-1) = 1$ (haldið leyndri)
+  \begin{itemize}
+   \item Reiknað út
+   \item Aðferðir í kafla 4.4 (var sleppt)
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Einföld dulkóðun og afkóðun}
+Gerum ráð fyrir að skilaboðin $m$ séu heiltala, $0 \leq m < n$ og $gcd(m, n) = 1$. Þá má búa til dulkóðuð skilaboð $c$ með
+\[
+c = m^e \Mod n
+\]
+og afkóða með 
+\[
+ m = c^d \Mod n
+\]
+Opinberi lykillinn er þá tvenndin $(n, e)$ og leyndi lykillinn talan $d$.
+
+Munum að hægt er að reikna út deilingarafganga stórra veldisvísistalna á skilvirkan hátt!
+\end{frame}
+
+\begin{frame}{Af hverju virkar þetta?}
+Það er talan $d$ sem er notuð til afkóðunar. $d$ er reiknað með því að leysa jöfnuna $(d\cdot e) \Mod (p-1)(q-1) = 1$.
+
+Tölurnar $n = pq$ og $e$ eru gerðar opinberar. Væri hægt að reikna $p$ og $q$ út frá $n$ þegar $n$ er mjög stórt (meira en 300-400 stafir) væri RSA óöruggt, en það virðist vera erfitt verkefni.
+\end{frame}
+
+\begin{frame}{Dulkóðun og afkóðun - dæmi}
+Byrjum á að finna tölurnar sem til þarf. Veljum $p=61$, $q = 53$ svo $n = 3233$. Fáum $(61 - 1)(53 - 1) = 3120$. Veljum okkur prímtölu sem veldisvísi $e$ svo auðveldara sé að sannfæra okkur um að $gcd(e,3120)=1$. Veljum $e = 17$. Leysum $d \cdot 17 \Mod 3120 = 1$, fáum $d = 2753$.
+
+Dulkóðum töluna 65.
+\[
+ c = 65^{17} \Mod 3233 = 2790
+\]
+Afkóðum töluna 2790 með sama reikniriti.
+\[
+ m = 2790^{2753} \Mod 3233 = 65
+\]
+
+
+\end{frame}
+
+
+
+\end{document}
