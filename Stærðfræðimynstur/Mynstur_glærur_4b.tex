@@ -1,9 +1,9 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \input{../Haust2016glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 4, seinni fyrirlestur}
+\subtitle{Vika 4, fyrri fyrirlestur}
 
 \begin{document}
 
@@ -96,7 +96,7 @@ og
 \end{frame}
 
 \begin{frame}{Dæmi um deilingu}
-Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $101$ og deilirinn $11$ (101/11)? \pause
+Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $101$ og deilirinn $11$ (þ.e.a.s. reiknum 101/11)? \pause
 
 Höfum
 \[
@@ -108,7 +108,7 @@ Svo kvótinn er $101 \text{ div } 11 = 9$ og afgangurinn $101 \Mod 11 = 2$.
 \end{frame}
 
 \begin{frame}{Dæmi um deilingu}
-Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $-11$ og deilirinn $3$ (-11/3)? \pause
+Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $-11$ og deilirinn $3$ (þ.e.a.s. reiknum 11/3)? \pause
 
 Höfum
 \[
@@ -192,11 +192,132 @@ Fáum afgangana $1, 0, 0, 0, 1, 1, 1, 1$ svo
 \[
  (241)_{10} = (11110001)_2
 \]
+\end{frame}
+
+\begin{frame}{Samlagning tvíundartalna}
+Reikniaðgerðir með heiltölur fara fram með svipuðum hætti óháð framsetningu þeirra.
+\begin{center}
+\includegraphics[width=0.9\textwidth]{binary-addition}
+\end{center}
+\end{frame}
+
+\begin{frame}{Veldishafning og afgangar}
+\begin{itemize}
+ \item Stundum þarf að reikna út $b^n \Mod m$, þar sem $b$, $n$ og $m$ eru stórar heiltölur
+ \item Ekki er skilvirkt að reikna fyrst út $b^n$ og svo afganginn þegar deilt er með $m$, því $b^n$ verður risastór tala
+ \item Til að einfalda útreikninga notum við tvíundarframsetningu á $n$, $n = (a_{k-1}\ldots a_1 a_0)_2$ til að setja fram $b^n$
+\end{itemize}
+\[
+ b_n = b^{a_{k-1}\cdot 2^{k-1} + \ldots + a_1\cdot 2^1 + a_0 \cdot 2^0} = b^{a_{k-1}\cdot2^{k-1}\cdot \ldots \cdot b^{a_1\cdot 2} \cdot b^{a_0}}
+\]
+Margföldum saman þá liði þar sem tvíundarframsetningin á $n$ er með 1.
+\end{frame}
+
+\begin{frame}{Dæmi: Framsetning á $3^{11}$}
+Athugum að $(11)_{10} = (1011)_2$ og sjáum:
+\begin{align*}
+3^{11} &= 3^8\cdot 3^2 \cdot 3^1\\
+&=6561 \cdot 9 \cdot 3\\
+&=177147
+\end{align*}
 
 \end{frame}
 
+\begin{frame}{Modular exponentiation}
+Notum þessa innsýn til að setja fram reiknirit til að reikna $b^n \Mod m$:
+\begin{center}
+\includegraphics[width=0.9\textwidth]{modular-exponentiation}
+\end{center}
+\end{frame}
 
 \section{Prímtölur}
+
+\begin{frame}{Prímtölur}
+\begin{tcolorbox}[title=Prímtölur]
+Heiltala $p$ stærri en 1 er prímtala (e. \emph{prime}) ef einu deilar $p$ eru 1 og $p$ sjálft. Heiltala stærri en 1 sem ekki er prímtala er samsett tala (e. \emph{composite}).
+\end{tcolorbox}
+\end{frame}
+
+
+\begin{frame}{Grundvallarsetning}
+``The fundamental theorem of arithmetic'' er eftirfarandi:
+
+\begin{tcolorbox}[title=Fundamental theorem of arithmetic]
+Hver heiltala stærri en 1 er prímtala eða margfeldi tveggja eða fleiri prímtalna sem skrifa má í stígandi röð.
+\end{tcolorbox}
+
+Það að finna prímtölurnar sem mynda samsetta tölu þegar þær eru margfaldaðar saman kallast að finna prímtöluþætti samsettu tölunnar.
+\end{frame}
+
+\begin{frame}{Að finna prímtöluþætti}
+Erfitt verk er að finna prímtöluþætti. Einfaldasta leiðin er að prófa margar deilingar. Þá er eftirfarandi staðreynd gagnleg:
+\begin{tcolorbox}
+Sé $n$ samsett heiltala, þá á $n$ prímtöluþátt minni en eða jafnan $\sqrt{n}$
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Prímtöluþáttun: Dæmi}
+Sýnum að 101 sé prímtala.
+
+Einu prímtölurnar sem eru minni en $\sqrt{101}$ eru $2, 3, 5$ og $7$. Þar sem engin þessara talna myndar heiltölukvóta þegar $101$ er deilt með þeim er $101$ prímtala.
+\end{frame}
+
+\begin{frame}{Prímtöluþáttun: Dæmi}
+Finnum prímtöluþáttun 7007. Prófum að deila með prímtölum í vaxandi röð.
+
+2, 3 og 5 ganga ekki upp í 7007, en 7 gerir það og gefur kvótann 1001. Byrjum aftur á að deila með 7 og fáum 1001/7 = 143. 7 gengur ekki upp í 143, en 143/11 = 13. 13 er prímtala, svo við erum búin. Prímtöluþáttunin er $7 \cdot 7 \cdot 11 \cdot 13$.
+\end{frame}
+
+\begin{frame}{Prímtöluþáttun - hversu erfið?}
+Deiling verður mjög þung aðgerð þegar fjöldi bita er stór, endurteknar deilingar þeim mun verri. M.t.t. fjölda bita vex keyrslutíminn veldisvexti. Ekkert reiknirit er til sem finnur prímtöluþáttun á margliðutíma.
+
+Skilvirkasta þáttunarreiknritið sem þekkt er, GNFS, þáttar $b$ bita heiltölu á 
+\[
+ O \left(exp\left(\sqrt[3]{\frac{64}{9}b(\log b)^2}\right)\right)
+\]
+sem er samt ekki margliðutími. Þetta atriði er mikilvægt í dulkóðun.
+\end{frame}
+
+\begin{frame}{Prímtölutékk - hversu erfitt?}
+\begin{itemize}
+ \item Hægt er að nota endurtekna deilingu til að athuga hvort að tala sé prímtala
+ \begin{itemize}
+  \item Veldisvísistími
+ \end{itemize}
+ \item Ýmis góð reiknirit til
+ \item Hægt er að komast að því hvort að tala sé prímtala eða ekki á margliðutíma
+ \begin{itemize}
+  \item Agrawal-Kayal-Saxena (AKS) primality test, 2002
+  \item Merkileg niðurstaða!
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Stærsti samdeilir og minnsta samfeldi}
+
+\begin{frame}{Stærsti samdeilir}
+\begin{tcolorbox}[title=Stærsti samdeilir]
+Látum $a$ og $b$ vera heiltölur, ekki báðar núll. Stærsta heiltala $d$ svo að $d|a$ og $d|b$ er kölluð stærsti samdeilir (e. \emph{greatest common divisor}) $a$ og $b$ og táknuð með $gcd(a, b)$.
+\end{tcolorbox}
+Dæmi: $gcd(24, 36) = 12$
+
+Tvær tölur með stærsta samdeilinn 1 eru ósamþátta (e. \emph{relatively prime}). Hægt er að reikna út stærsta samdeili með reikniriti Evklíðs (sjá bók).
+\end{frame}
+
+\begin{frame}{Minnsta samfeldi}
+\begin{tcolorbox}[title=Minnsta samfeldi]
+Minnsta samfeldi (e. \emph{least common multiple}) jákvæðra heiltalna $a$ og $b$ er minnsta jákvæða heiltala sem er deilanleg með bæði $a$ og $b$. Hún er táknuð $lcm(a, b)$.
+\end{tcolorbox}
+Dæmi: $lcm(4, 6) = 12$.
+\end{frame}
+
+\begin{frame}{Tengsl GCD og LCM}
+\begin{tcolorbox}[title=GCD og LCM]
+Látum $a$ og $b$ vera jákvæðar heiltölur. Þá er $a\cdot b = gcd(a, b) \cdot lcm(a, b)$.
+\end{tcolorbox}
+\end{frame}
+
+
 
 \begin{frame}{Næst}
 Dulkóðun (4.6)
