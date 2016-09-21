@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 5, fyrri fyrirlestur}
@@ -15,6 +15,7 @@
 
 \begin{frame}{Í síðasta þætti\ldots}
 \begin{itemize}
+ \item Föll
  \item \texttt{if}
  \begin{itemize}
   \item \texttt{if-else}
@@ -27,7 +28,6 @@ Kaflar: 4.3, 4.4, 4.6
 \end{frame}
 
 \begin{frame}[fragile]{Gömul fyrirlestraæfing}
-\vspace{\baselineskip}
 Skrifið ykkar eigin útgáfu af \texttt{isrow} fallinu. \pause
 \begin{minted}[frame=lines]{matlab}
 function isARow = myIsRow(matrix)
@@ -45,7 +45,6 @@ end
 \end{frame}
 
 \begin{frame}{Hugtakið ``lykkja''}
-\vspace{\baselineskip}
 \begin{itemize}
  \item Hingað til hefur hver skipun verið framkvæmd nákvæmlega einu sinni
  \item Við getum látið Matlab endurtaka framkvæmd skipunar, oftast með smávægilegum breytingum, með því að nota lykkju (e. \emph{loop})
@@ -91,17 +90,14 @@ end
 \end{verbatim}
  \item \emph{Svið}ið er vigur. 
  \begin{itemize}
-  \item Breytan fær hvert gildi sviðsins á fætur öðru og skipanirnar eru framkvæmdar fyrir öll gildin.
-  \begin{itemize}
-   \item Fyrst fær hún fyrsta gildi vigursins, svo annað\ldots
-   \item Allar skipanir inni í lykkjunni eru framkvæmdar einu sinni per gildi
-  \end{itemize}
+  \item Breytan fær hvert gildi sviðsins á fætur öðru og skipanirnar eru framkvæmdar fyrir öll gildin
+  \item Fyrst fær hún fyrsta gildi vigursins, svo annað\ldots
+  \item Allar skipanir inni í lykkjunni eru framkvæmdar einu sinni fyrir hvert gildi sviðsins
  \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Dæmi um for-lykkju}
-\vspace{\baselineskip}
 \begin{columns}
 \column{0.5\textwidth}
 Skráin \texttt{forExample.m}
@@ -117,7 +113,6 @@ Keyrsla í skipanaglugga
 \end{frame}
 
 \begin{frame}[fragile]{Mismunandi for-lykkjur}
-\vspace{1.5\baselineskip}
 Getum haft hvaða vigur sem er í haus for-lykkjunnar
 \begin{columns}
 \column{0.5\textwidth}
@@ -210,21 +205,22 @@ end
 \end{frame}
 
 \begin{frame}{Fyrirlestraæfing}
-\vspace{\baselineskip}
-\begin{enumerate}
- \item Skrifið Matlab-skipanaskrána \texttt{say5} sem biður notanda um streng og skrifar hann út fimm sinnum.
- \item Skrifið Matlab-fall sem tekur inn tölur $m$ og $n$ og skilar summunni $m + (m+1) + \ldots + n$.
- \item Skrifið Matlab-skipanaskrá sem skrifar út öll 99 erindin í laginu ``99 Bottles of Beer on the Wall''.
- \vspace{\baselineskip}
- 
- \emph{\small 99 bottles of beer on the wall, 99 bottles of beer.
+Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
+
+Lagið:
+
+
+\emph{\small 99 bottles of beer on the wall, 99 bottles of beer.
 
 Take one down and pass it around, 98 bottles of beer on the wall.
 
 98 bottles of beer on the wall, 98 bottles of beer.
 
 Take one down and pass it around, 97 bottles of beer on the wall.}
-\end{enumerate}
 \end{frame}
 
 \subsection{Forúthlutun í lykkju}
@@ -452,24 +448,11 @@ save mymulttable.dat multmatrix -ascii
 \end{frame}
 
 \begin{frame}[fragile]{Fyrirlestraæfing}
-\begin{columns}
-\column{0.7\textwidth}
-\begin{enumerate}
-\setcounter{enumi}{3}
- \item Skrifið fall sem notar for-lykkju til að finna \emph{stærsta} gildi í vigri
- \item Skrifið forrit til að prenta út þríhyrning
-af stjörnum með 4 línum
- \item Skrifið forrit sem notar hreiðraðar lykkjur til að reikna út summu staka allra í fylki.
-\end{enumerate}
-\column{0.3\textwidth}
-\begin{verbatim}
-*
-**
-***
-****
-\end{verbatim}
+Skráið ykkur inn á \url{http://socrative.com/} og klárið spurningarnar.
 
-\end{columns}
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 
