@@ -1,0 +1,153 @@
+\documentclass[handout]{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Stærðfræðimynstur í tölvunarfræði}
+\subtitle{Vika 6, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta tíma}
+\begin{itemize}
+ \item Þrepun
+ \item Sterk þrepun
+\end{itemize}
+\end{frame}
+
+\section{Rakningarvensl - upprifjun}
+
+\begin{frame}{Rakningarvensl}
+\begin{tcolorbox}[title=Rakningarvensl]
+Rakningarvensl (e. \emph{recurrence relation}) fyrir runu $\{a_n\}$ er jafna sem skilgreinir $a_n$ sem fall af einum eða fleiri fyrri liðum rununnar, þ.e.a.s. $a_0, a_1, \ldots, a_{n-1}$ fyrir öll $n > n_0$, þar sem $n_0$ er ekki-neikvæð heiltala.
+\end{tcolorbox}
+Runa er lausn (e. \emph{solution}) á rakningarvenslum ef liðir hennar uppfylla venslin. Liðirnir sem eru fyrir framan fyrsta liðinn sem rankningarvenslin tilgreina eru upphafsskilyrði (e. \emph{initial conditions}) þeirra.
+\end{frame}
+
+\begin{frame}{Dæmi um rakningarvensl}
+Látum $\{a_n\}$ vera runu sem uppfyllir $a_n = a_{n-1} + 3$ fyrir $n=1, 2, 3, \ldots$ og setjum $a_0 = 2$. Hvað eru þá $a_1, a_2$ og $a_3$? \pause
+
+\begin{align*}
+a_1 &= a_0 + 3 = 2 + 3 = 5\\
+a_2 &= 5 + 3 = 8\\
+a_3 &= 8 + 3 = 11\\
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Dæmi um rakningarvensl}
+\begin{itemize}
+ \item Fibonacci-rununa $f_0, f_1, f_2, \ldots$ má skilgreina með rakningavenslum
+ \begin{itemize}
+  \item Upphafsskilyrði: $f_0 = 0, f_1 = 1$
+  \item Rakningarvensl: $f_n = f_{n-1} + f_{n-2}$
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Endurkvæmni}
+
+\begin{frame}{Endurkvæm lýsing á föllum}
+\begin{itemize}
+ \item Rakningarvensl eru runur þar sem seinni liðir eru skilgreindir út frá fyrri liðum
+ \item Hægt er að nota endurkvæmni (e. \emph{recursion}) til að skilgreina föll út frá sjálfum sér
+ \item Endurkvæm skilgreining á falli (með mengi ekki-neikvæðu heiltalnanna sem formengi) fer fram í tvennu lagi:
+ \begin{enumerate}
+  \item Grunnskref (e. \emph{basis step}) skilgreinir fallsgildi fallsins í núlli eða nálægt núlli
+  \item Endurkvæmt skref (e. \emph{recursive step}) gefur reglu til að finna fallsgildi fallsins í gefinni heiltölu með því að nota gildi fallsins af lægri heiltölum
+ \end{enumerate}
+ \item Endurkvæmni er líka kölluð rakning, endurkvæma skrefið er líka kallað þrepunarskref (e. \emph{inductive step})
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Endurkvæmt fall}
+Við getum skilgreint fall á eftirfarandi hátt:
+\begin{align*}
+f(0) &= 3\\
+f(n+1) &= 2f(n) + 3
+\end{align*}
+Hvernig finnum við gildi $f(4)$? \pause Finnum öll minni fallsgildi, og reiknum:
+\begin{align*}
+f(1) = 2f(0) + 3 &= 2 \cdot 3 + 3 = 9\\
+f(2) = 2f(1) + 3 &= 2 \cdot 9 + 3 = 21\\
+f(3) = 2f(2) + 3 &= 2 \cdot 21 + 3 = 45\\
+f(4) = 2f(3) + 3 &= 2 \cdot 45 + 3 = 93
+\end{align*}
+\end{frame}
+
+\begin{frame}{Endurkvæm skilgreining}
+Hvernig getum við á endurkvæman máta skilgreint stærðina $a^n$, þar sem $a$ er rauntala önnur en $0$ og $n$ er jákvæð heiltala?
+\pause
+\begin{itemize}
+ \item Grunnskref: Skilgreinum $a^0 = 1$.
+ \item Endurkvæmt skref: $a^{n+1} = a \cdot a^n$
+\end{itemize}
+\end{frame}
+
+\section{Endurkvæm skilgreining mengja}
+
+\begin{frame}{Endurkvæm skilgreining mengja}
+\begin{itemize}
+ \item Hægt er að skilgreina mengi á endurkvæman máta 
+ \begin{itemize}
+  \item Grunnskref: Tilgreinum safn staka sem tilheyrir menginu
+  \item Endurkvæmt skref: Tilgreinum reglu til að búa til ný stök út frá upphaflegu stökunum
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Endurkvæm skilgreining}
+\begin{itemize}
+ \item Skilgreinum $S$, mengi allra jákvæðra margfelda af $3$:
+ \begin{itemize}
+  \item Grunnskref: $3 \in S$
+  \item Endurkvæmt skref: Sé $x \in S$ og $y \in S$, þá er $x+y \in S$
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Upprifjun - Strengir}
+\begin{itemize}
+ \item Sérstök, mikið notuð gerð af runum kallast strengur (e. \emph{string})
+ \item Strengur er endanleg runa af stöfum, úr endanlegu mengi (stafrófinu)
+ \begin{itemize}
+  \item Stafrófið getur verið hvaða mengi sem er, en algeng stafróf eru \texttt{\{'a', 'b', 'c', \ldots\}} og \texttt{\{0, 1\}}
+ \end{itemize}
+ \item Strengur með engum stöfum (af lengdinni $0$) er kallaður tómur og táknaður með $\lambda$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Strengir - endurkvæm skilgreining}
+\begin{itemize}
+ \item Við getum skilgreint mengi strengja $\Sigma^*$ yfir stafrófið $\Sigma$ á endurkvæman hátt:
+ \begin{itemize}
+  \item Grunnskref: $\lambda \in \Sigma^*$
+  \item Endurkvæmt Skref: Sé $w \in \Sigma^*$ og $x \in \Sigma$, þá er $wx \in \Sigma^*$
+ \end{itemize}
+ \item Þ.e.a.s. ef við skeytum staf úr stafrófinu aftan á streng fáum við annan streng
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Strengjasamskeyting}
+\begin{itemize}
+ \item Getum skilgreint samskeytingu (e. \emph{concatenation}) tveggja strengja á endurkvæman átt:
+ \begin{itemize}
+  \item Grunnskref: Sé $w \in \Sigma^*$ er $w\lambda = w$
+  \item Endurkvæmt Skref: Sé $w_1 \in \Sigma^*$ og $w_2 \in \Sigma^*$ og $x \in \Sigma$, þá er $w_1(w_2x) = (w_1w_2)x$
+ \end{itemize}
+ \item Dæmi: Sé $w_1 = abra$ og $w_2 = cadabra$ er $w_1w_2 = abracadabra$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Næst}
+Kaflar 5.4 (endurkvæm reiknirit) og 5.5 (sönnun forrita).
+\end{frame}
+
+
+\end{document}
