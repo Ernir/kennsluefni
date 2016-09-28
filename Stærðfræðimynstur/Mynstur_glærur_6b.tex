@@ -1,0 +1,95 @@
+\documentclass[handout]{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Stærðfræðimynstur í tölvunarfræði}
+\subtitle{Vika 6, seinni fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta tíma}
+\begin{itemize}
+ \item Upprifjun á rakningarvenslum
+ \item Endurkvæm reiknirit
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Af hverju virkar þrepun?}
+\begin{itemize}
+ \item Þrepun er ekki göldrótt!
+ \item Í hefðbundnu grunnskrefi þrepunarsönnunar sýnum við að staðhæfing $P(1)$ sé sönn
+ \item Í þrepunarskrefi þrepunarsönnunar sýnum við fram á að $P(k) \to P(k+1)$ fyrir ótilgreinda heiltölu $k$
+ \item Þá getum við séð fyrir okkur að $P(n)$ gildi fyrir allar jákvæðar heiltölur $n$
+ \begin{itemize}
+  \item Af hverju?
+  \item $P(1)$ er satt og við vitum að ef $P(1)$ er satt þá er $P(2)$ líka satt
+  \item Þá er $P(2)$ satt og við vitum að ef $P(2)$ er satt þá er $P(3)$ líka satt\ldots
+  \item Sönnun í bók
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Endurkvæm reiknirit}
+
+\begin{frame}{Endurkvæm reiknirit}
+\begin{itemize}
+ \item Munum að reiknirit er endanleg runa vel skilgreindra aðgerða sem reikna út lausn á skilgreindu vandamáli
+ \item Reiknirit hefur inntak, sem lýsir tilviki af vandamálinu sem það leysir
+ \item Reiknirit er kallað endurkvæmt ef það leysir vandamálið með því að smætta það niður í smærra tilvik af sama vandamáli
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Endurkvæmt hrópmerkt}
+Hrópmerkt hentar vel til endurkvæms útreiknings.
+\begin{center}
+\includegraphics[width=\textwidth]{factorial-algorithm}
+\end{center}
+\[
+3! = 3\cdot 2! = 3 \cdot 2 \cdot 1! = 3 \cdot 2 \cdot 1
+\]
+\end{frame}
+
+\begin{frame}{Endurkvæmt GCD}
+\begin{columns}
+\column{0.5\textwidth}
+Við getum reiknað stærsta samdeili (gcd) með endurkvæmu reikniriti sem byggir á því að 
+\[
+ gcd(a,b) = gcd(b \Mod a, a)
+\]
+og að 
+\[
+ gcd(0,b) = b
+\]
+þegar $b > 0$.
+\column{0.5\textwidth}
+Þannig getum við reiknað stærsta samdeili 5 og 8:
+\begin{align*}
+gcd(5,8) &= gcd(8 \Mod 5, 5)\\
+&= gcd(3,5)\\
+&= gcd(5 \Mod 3, 3)\\
+&= gcd(2,3)\\
+&= gcd(3 \Mod 2, 2)\\
+&= gcd(1,2)\\
+&= gcd(2 \Mod 1, 1)\\
+&= gcd(0,1)\\
+&= 1
+\end{align*}
+
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}{Næst}
+???
+\end{frame}
+
+
+\end{document}
