@@ -189,6 +189,7 @@ Já, við getum það:
   \begin{itemize}
    \item Þegar síðustu sameiningunni er lokið er runan röðuð!
   \end{itemize}
+  \item Merge sort var fundið upp af John von Neumann (1945)
  \end{itemize}
 \end{itemize}
 \end{frame}
@@ -214,7 +215,59 @@ Merge sort er síðan lýst endurkvæmt:
 \end{center}
 \end{frame}
 
-\section{Sannanleg forritun}
+\section{Rökstudd forritun}
+
+\begin{frame}{Rökstudd forritun}
+\begin{itemize}
+ \item Bókin inniheldur vísi að umfjöllun um rökstudda forritun
+ \item Sýnir að hægt er að tengja saman rökfræði og reiknirit
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hugtök úr rökstuddri forritun}
+\begin{itemize}
+ \item Forrit er naumrétt (e. \emph{partially correct} eða \emph{weakly correct}) skili það ``réttri niðurstöðu'' þegar forritið er ``rétt notað'' og lýkur keyrslu
+ \item Til skilgreiningar á því hvað teljist rétt eru hugtökin forskilyrði (e. \emph{precondition} eða \emph{initial assertion}) og eftirskilyrði (e. \emph{postcondition} eða \emph{final assertion}) notuð
+ \begin{itemize}
+  \item Forskilyrði lýsa þeim aðstæðum sem þurfa að gilda áður en forrit keyrir (venjulega lýsing eiginleikum inntaks)
+  \item Eftirskilyrði lýsir þeim aðstæðum sem gilda eftir að forrit keyrir (venjulega lýsing á eiginleikum skilagildis)
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Naumrétt forrit}
+\begin{tcolorbox}[title=Naumrétt forrit]
+Forrit eða forritsbútur $S$ er naumréttur með tilliti til forskilyrðisins $p$ og eftirskilyrðisins $q$ ef $q$ er satt hvenær sem $p$ er satt og $S$ lýkur keyrslu.
+
+Rithátturinn $p\{S\}q$ táknar að $S$ sé naumrétt með tilliti til forskilyrðisins $p$ og eftirskilyrðisins $q$.
+\end{tcolorbox}
+Sé forrit naumrétt m.t.t. gefinna skilyrða og auk þess er tryggt að það ljúki alltaf keyrslu við gefin skilyrði er það rammrétt (e. \emph{correct} eða \emph{strongly correct}).
+
+Rithátturinn $p\{S\}q$ er kallaður Hoare þrennd (e. \emph{Hoare triple}).
+\end{frame}
+
+\begin{frame}{Rökstutt forrit}
+Sýnum að forritsbúturinn
+\begin{align*}
+y &:= 2\\
+z &:= x + y
+\end{align*}
+sé naumréttur m.t.t. upphafsskilyrðisins $p: x = 1$ og eftirskilyrðisins $q: z = 3$. \pause
+
+G.r.f.a. $p$ sé satt. $y$ fær gildið 2. Þar sem $p$ er satt fær $z$ gildið $1+2 = 3$. Þá er $q$ satt, svo $p\{S\}q$ er satt.
+\end{frame}
+
+\begin{frame}{Lengri rökstudd forrit}
+\begin{itemize}
+ \item Við getum rökstutt lengri forrit með því að brjóta þau niður í rökstudda forritsbúta
+ \item Við getum skilgreint leiðir til að rökstyðja forritsbúta sem fela í sér algeng forritunarhugtök:
+ \begin{itemize}
+  \item Lykkjur
+  \item Stýrisetningar
+ \end{itemize}
+ \item Gildi, fyrir gefna forritsbúta $S_1$ og $S_1$ bæði $p\{S_1\}q$ og $q\{s_2\}r$, þá má fyrir samsetta forritið $S = S_1;S_2$ skrifa $p\{S_1; S_2\}r$ eða einfaldlega $p\{S\}r$
+\end{itemize}
+\end{frame}
 
 
 \begin{frame}{Næst}
