@@ -1,4 +1,4 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \input{../Haust2016glærur}
 
@@ -25,16 +25,28 @@
 \begin{itemize}
  \item Þrepun er ekki göldrótt!
  \item Í hefðbundnu grunnskrefi þrepunarsönnunar sýnum við að staðhæfing $P(1)$ sé sönn
- \item Í þrepunarskrefi þrepunarsönnunar sýnum við fram á að $P(k) \to P(k+1)$ fyrir ótilgreinda heiltölu $k$
+ \item Við gerum svo ráð fyrir að $P(k)$ sé satt fyrir ótilgreinda jákvæða heiltölu $k$ og sýnum að $P(k) \to P(k+1)$ fyrir allar jákvæðar heiltölur $k$
  \item Þá getum við séð fyrir okkur að $P(n)$ gildi fyrir allar jákvæðar heiltölur $n$
  \begin{itemize}
   \item Af hverju?
   \item $P(1)$ er satt og við vitum að ef $P(1)$ er satt þá er $P(2)$ líka satt
   \item Þá er $P(2)$ satt og við vitum að ef $P(2)$ er satt þá er $P(3)$ líka satt\ldots
-  \item Sönnun í bók
  \end{itemize}
+ \item Sönnun í bók
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Sterk þrepun}
+\begin{itemize}
+ \item Sterk þrepun er sönnunaraðferð sem er jafngild ``venjulegri'' þrepun
+ \begin{itemize}
+  \item Þ.e.a.s. ef hægt er að nota aðra sönnunaraðferðina má nota hina líka
+ \end{itemize}
+ \item Þá er ekki sýnt fram á að $P(k) \to P(k+1)$, heldur að \[[P(1) \land P(2) \land \ldots \land P(k)] \to P(k+1)\]
+ \item Sterka þrepun er betra að nota þegar ljósara er að $[P(1) \land \ldots \land P(k)] \to P(k+1)$ heldur en að einungis $P(k) \to P(k+1)$
+\end{itemize}
+\end{frame}
+
 
 \section{Endurkvæm reiknirit}
 
@@ -52,7 +64,7 @@ Hrópmerkt hentar vel til endurkvæms útreiknings.
 \includegraphics[width=\textwidth]{factorial-algorithm}
 \end{center}
 \[
-3! = 3\cdot 2! = 3 \cdot 2 \cdot 1! = 3 \cdot 2 \cdot 1
+3! = 3\cdot 2! = 3 \cdot 2 \cdot 1! = 3 \cdot 2 \cdot 1 \cdot 0! = 3 \cdot 2 \cdot 1 \cdot 1
 \]
 \end{frame}
 
@@ -85,10 +97,128 @@ gcd(5,8) &= gcd(8 \Mod 5, 5)\\
 \end{columns}
 \end{frame}
 
+\begin{frame}{Endurkvæmt GCD}
+Við getum skrifað reiknirit út frá þessari innsýn:
+\begin{center}
+\includegraphics[width=\textwidth]{gcd-recursive}
+\end{center}
+\end{frame}
+
+\begin{frame}{Línuleg leit}
+Rifjum upp línulega leit:
+\begin{center}
+\includegraphics[width=\textwidth]{linear-search}
+\end{center}
+\end{frame}
+
+\begin{frame}{Endurkvæm línuleg leit?}
+Getum við gert endurkvæma útgáfu af línulegri leit?\pause
+
+Já, við getum það:
+\begin{center}
+\includegraphics[width=\textwidth]{linear-search-recursive}
+\end{center}
+\end{frame}
+
+\begin{frame}{Helmingunarleit}
+Rifjum upp helmingunarleit:
+\begin{center}
+\includegraphics[width=\textwidth]{binary-search}
+\end{center}
+\end{frame}
+
+\begin{frame}{Endurkvæm helmingunarleit?}
+Getum við gert endurkvæma útgáfu af helmingunarleit?\pause
+
+Já, við getum það:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{binary-search-recursive}
+\end{center}
+\end{frame}
+
+\section{Endurkvæmni og ítrun}
+
+\begin{frame}{Endurkvæmni og ítrun}
+\begin{itemize}
+ \item Höfum séð endurkvæm reiknirit sem byrja á að skoða heildarmyndina og brjóta hana svo niður í smærri tilvik
+ \item Gætum þess í stað séð fyrir okkur að við byrjum á að skoða smáu tilvikin og ``byggjum svo upp'' í þau stóru
+ \begin{itemize}
+  \item Slíka aðferðafræði köllum við ítrun
+  \item Ítrun er venjulega framkvæmd með lykkjum
+ \end{itemize}
+ \item Ítrun og endurkvæmni framkvæma hliðstæða útreikninga!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Endurkvæmni og ítrun}
+\begin{itemize}
+ \item Hvenær á að nota endurkvæmni og hvenær á að nota ítrun við forritun? \pause
+ \begin{itemize}
+  \item Ráðlegging undirritaðs: Notið það sem ykkur finnst lýsa vandamálinu best
+  \begin{itemize}
+   \item Tími forritarans er verðmætur
+   \item Getið síðan breytt úr einu í annað ef \emph{mælingar} sýna að upprunalega nálgunin er ekki skilvirk
+  \end{itemize}
+  \item Þekkið forritunarmálin sem þið eruð að nota - styðja þau endurkvæmni vel?
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Merge Sort}
+
+\begin{frame}{Röðun}
+\begin{itemize}
+ \item Höfum áður séð innsetningarröðun
+ \begin{itemize}
+  \item Keyrslutími innsetningarröðunar á runu af lengd $n$ er $O(n^2)$ í versta tilfellinu
+ \end{itemize}
+ \item Skoðum nú endurkvæma lýsingu á reikniriti sem raðar á $O(n\log(n))$ tíma í versta tilfellinu
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Merge sort}
+\begin{itemize}
+ \item Hugmyndin að baki merge sort er eftirfarandi:
+ \begin{itemize}
+  \item Heildarrununni er skipt upp í tvær hlutrunur af jafnri (eða næstum jafnri) lengd
+  \begin{itemize}
+   \item Hverri hlutrunu er svo skipt upp í tvær hluthlutrunur, o.s.frv.
+   \item Uppskiptingunni er haldið áfram þar til runurnar eru af lengdinni 1
+  \end{itemize}
+  \item Þegar uppskiptingunni er lokið eru runurnar sameinaðar tvær og tvær svo að úr verði röðuð runa
+  \begin{itemize}
+   \item Þegar síðustu sameiningunni er lokið er runan röðuð!
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Keyrsla merge sort}
+\vspace{0.5cm}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{merge-sort-visual}
+\end{center}
+\end{frame}
+
+\begin{frame}{Merge reikniritið}
+Mikið af vinnunni sem fer fram í merge sort felst í því að sameina listana:
+\begin{center}
+\includegraphics[width=\textwidth]{merge}
+\end{center}
+\end{frame}
+
+\begin{frame}{Merge sort}
+Merge sort er síðan lýst endurkvæmt:
+\begin{center}
+\includegraphics[width=0.9\textwidth]{merge-sort}
+\end{center}
+\end{frame}
+
+\section{Sannanleg forritun}
 
 
 \begin{frame}{Næst}
-???
+Talning (6.1) og skúffureglan (6.2)
 \end{frame}
 
 
