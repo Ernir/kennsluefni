@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 6, seinni fyrirlestur}
@@ -166,6 +166,35 @@ Index exceeds matrix dimensions.
   \end{itemize}
  \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{Tögunarvillur}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Tögunarvillur (e. \emph{type errors}) eru villuflokkur út af fyrir sig
+ \item Koma upp þegar breytur eru ekki af þeim tögum sem forritarinn býst við
+ \item Geta oft verið mjög lúmskar!
+\end{itemize}
+\column{0.5\textwidth}
+\vspace{0.5cm}
+\begin{minted}[frame=lines]{matlab}
+>> a = int32(7);
+>> b = int32(3);
+>> a/b
+ans =
+           2
+\end{minted}
+\begin{minted}[frame=lines]{matlab}
+>> a = '1';
+>> b = 2;
+>> a + b
+ans =
+    51
+\end{minted}
+
+\end{columns}
+\end{frame}
+
 
 \subsection{Villuleit}
 
@@ -349,11 +378,11 @@ ans =
 \begin{frame}[fragile]{Fyrirlestraræfing}
 \begin{columns}
 \column{0.5\textwidth}
-\begin{enumerate}
- \item Getur komið villa vegna kóðans til hliðar? Ef svo er, hver er þá villan?
- \item Hvort getur \texttt{int64} eða \texttt{double} geymt stærri tölur? Hvort hefur meiri nákvæmni?
- \item Við getum framkvæmt samanburðinn \texttt{x == Inf} og fengið satt/ósatt, en þar sem allur samanburður við \texttt{NaN} gefur ósatt, hvernig getum við fundið út hvort breyta innihaldi \texttt{NaN}?
-\end{enumerate}
+Skráið ykkur inn á \url{http://socrative.com/} og klárið spurningarnar.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \column{0.5\textwidth}
 \begin{minted}[frame=lines]{matlab}
 i = input('i: ');
@@ -362,7 +391,6 @@ while i > 0
 end
 disp(k)
 \end{minted}
-
 \end{columns}
 \end{frame}
 
