@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 7, seinni fyrirlestur}
@@ -15,31 +15,9 @@
 
 \begin{frame}{Í síðasta þætti\ldots}
 \begin{itemize}
- \item Miðmisseriskönnun
  \item Strengir
 \end{itemize}
 Kafli: 7 
-\end{frame}
-
-\section{Verkfall?}
-
-\begin{frame}{Mögulegt verkfall!}
-\begin{columns}
-\column{0.4\textwidth}
-\pause
-\includegraphics[width=\linewidth]{Pics/scared-cat}
-\column{0.6\textwidth}
-\pause
-\begin{itemize}
- \item Ef af verkfalli SFR verður, munu eftirfarandi tímar væntanlega falla niður:
- \begin{itemize}
-  \item Fyrirlestur föstudagsins 16. október
-  \item Allir dæmatímar mánudaginn 19. og þriðjudaginn 20. október
-  \item \ldots og fleiri ef framhald verður
- \end{itemize}
- \item Miðmisserisprófið virðist hins vegar vera óhult!
-\end{itemize}
-\end{columns}
 \end{frame}
 
 \section{Eval og tölvuhögun}
@@ -78,7 +56,7 @@ plot(x, eval(f))
  \item Sé notanda leyft að skrifa og keyra kóða er það öryggisgalli
  \begin{itemize}
   \item Gæti skipt máli í Matlab sé kóði keyrður á vél með marga notendur
-  \item Nýlegar fréttir: \href{http://labs.detectify.com/post/130332638391/how-patreon-got-hacked-publicly-exposed-werkzeug}{Patreon hakkað}
+  \item Sískemmtilegt gúgl: ``Arbitrary code execution'' 
  \end{itemize}
 \end{itemize}
 \end{frame}
@@ -140,9 +118,7 @@ John von Neumann (1903-1957)
 Fall&Merking\\
 \midrule
 \texttt{isletter}&Satt ef stafur (char) er bókstafur\\
-\texttt{isdigit}&Satt ef stafur er tala\\
 \texttt{isspace}&Satt ef stafur er biltákn\\
-\texttt{ispunct}&Satt ef stafur er greinarmerki\\
 \texttt{ischar}&Satt ef gefin breyta er af taginu \texttt{char}\\
 \bottomrule
 \end{tabular}
@@ -204,52 +180,43 @@ disp(usernames)
 Útkoman: $3\times 5$ strengjafylki.
 \end{frame}
 
-\section{Hólfafylki (8.1)}
-
-\begin{frame}{Hólfafylki}
+\begin{frame}[fragile]{Oft gagnlegt: Að skipta upp streng}
 \begin{itemize}
- \item Hingað til höfum við lent í vandræðum við að geyma gögn sem ekki eru öll ``eins'' í einhverjum skilningi
- \begin{itemize}
-  \item Nýlegasta dæmið: Mislangir strengir
- \end{itemize}
- \item Til að geyma safn af gögnum sem ekki eru öll ``eins'' má nota nýja gagnagerð, svokallað hólfafylki (e. \emph{cell array})
- \item Hólfafylki komast fram hjá hefðbundnum minnissvæðatakmörkunum með því að geyma benda (e. \emph{pointers}) á önnur minnissvæði
+  \item \texttt{strtok} skiptir streng upp í tvo búta, ``haus'' og ``hala''
+  \begin{itemize}
+   \item Leitar að ``skiptitákni'' - allt sem er fyrir framan táknið er hausinn, afgangur strengsins er halinn
+   \item Sjálfgefið skiptitákn er bilstafur
+  \end{itemize}
 \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Hólfafylki}
-Búa má til hólfafylki/hólfavigra með því að umlykja gögnin sem geyma skal með slaufusvigum:
-
 \begin{minted}[frame=lines]{matlab}
->> cells = {'a', 'ab', 'abc', 1}
-cells = 
-    'a'    'ab'    'abc'    [1]
->> whos cells
-  Name       Size            Bytes  Class    Attributes
-  cells      1x4               468  cell
+>> [haus, hali] = strtok('Fyrsta annað þriðja')
+haus =
+Fyrsta
+hali =
+ annað þriðja
 \end{minted}
+
 \end{frame}
+
 
 \begin{frame}{Fyrirlestraræfing}
-\begin{enumerate}
- \item Hvað gerir eftirfarandi skipun?\\
- \texttt{eval('eval(''b = 4'')')}
- \item Notið vigurkóðun og \texttt{isstrprop} fallið til að hreinsa allt nema tölur úr strengnum \texttt{s}.
- \item Skrifið skipun sem býr til hólfafylki þar sem hvert hólf inniheldur einn hluta nafns ykkar.
-\end{enumerate}
+Skráið ykkur inn á \url{http://socrative.com/} og gerið spurningarnar tvær.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \section{Miðmisserispróf}
 
 \begin{frame}{Námsefni til miðmisserisprófs}
 \begin{itemize}
- \item Allar glærur
- \item Öll verkefni (skila, dæmatíma- og fyrirlestra)
- \item Kaflar 1-7 í kennslubókinni, með eftirfarandi undantekningum:
+ \item Glærur
+ \item Verkefni (sérstaklega skilaverkefni)
+ \item Kaflar 1-7 í kennslubókinni (fjórðu útgáfu), með undantekningum:
  \begin{itemize}
-  \item Kafli 2.6 (\texttt{diff} og \texttt{meshgrid})
   \item Kafli 3.8 (föll sem skipanir)
-  \item Kafli 4.5 (\texttt{menu} fallið)
+  \item \texttt{menu}-fallið (bls.133)
   \item Kafli 6.3 (\texttt{menu} + einingaforritun)
   \item Kafli 6.4.1 (\texttt{persistent} breytur)
   \item Kafli 6.5 (aflúsun - fórum yfir, en er ekki til prófs)
@@ -284,7 +251,6 @@ cells =
  \item Skipulag forrita
  \item Ýmis sérhæfð föll
 \end{itemize}
-
 \end{columns}
 \end{frame}
 
