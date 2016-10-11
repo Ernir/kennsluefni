@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 8, fyrri fyrirlestur}
@@ -16,10 +16,68 @@
 \begin{frame}{Í síðasta þætti\ldots}
 \begin{itemize}
  \item Meira um strengi
- \item Miðmisseriskönnun
- \item Verkfall?
 \end{itemize}
-Kafli: 7 
+\end{frame}
+
+\section{Miðmisserispróf}
+
+\begin{frame}{Miðmisserispróf}
+\pause
+\begin{itemize}
+ \item 60 nemendur af 72 ($\approx$83\%) tóku prófið 
+ \begin{itemize}
+  \item 79\% árið 2015
+  \item 69\% árið 2014 
+ \end{itemize} \pause
+ \item Meðaleinkunn var $\approx$6.61 \pause
+ \begin{itemize}
+  \item 7.19 árið 2015
+  \item 5.51 árið 2014
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Einkunnadreifingin}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{midmisserisprof2016}
+\end{center}
+\end{frame}
+
+
+\section{Miðmisseriskönnun}
+
+\begin{frame}{Miðmisseriskönnun}
+\begin{center}
+\includegraphics[width=\textwidth]{Dreifing2016}
+\end{center}
+Meðaleinkunn námskeiðsins var 8.31 (Meðaleinkunn IVT 7.83). 42/72 ($\approx$58\%) tóku þátt.
+\end{frame}
+
+\begin{frame}{Almenn ánægja}
+\begin{itemize}
+ \item Fleiri jákvæðar en neikvæðar athugasemdir bárust um
+ \begin{itemize}[<+->]
+  \item Skipulag
+  \item Fyrirlestraræfingar
+  \item Alla kennarana
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Almenn óánægja}
+\begin{itemize}
+ \item Stofan
+ \begin{itemize}
+  \item Óþægileg
+  \item Rafmagnslaus \pause
+ \end{itemize}
+ \item Socrative
+ \begin{itemize}
+  \item Kerfið virðist vera svarthol \pause
+ \end{itemize}
+ \item Vantar stoðtíma \pause 
+ \item Vantar fleiri dæmi
+\end{itemize}
 \end{frame}
 
 \section{Gagnagrindur}
@@ -55,19 +113,23 @@ Kafli: 7
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Dæmi um gagnagrind: Eintengdur listi}
+\begin{frame}{Dæmi um gagnagrind}
+Eintengdur listi
+\begin{center}
 \includegraphics[width=\textwidth]{Pics/singly-linked-list}
+\end{center}
 \end{frame}
 
-\begin{frame}{Dæmi um gagnagrind: Tré}
+\begin{frame}{Dæmi um gagnagrind}
 \vspace{\baselineskip}
+Tré
 \begin{center}
 \includegraphics[width=0.6\textwidth]{Pics/tree}
 \end{center}
 \end{frame}
 
-\begin{frame}{Dæmi um gagnagrind: Hakkatafla}
-% \vspace{\baselineskip}
+\begin{frame}{Dæmi um gagnagrind}
+Hakkatafla
 \begin{center}
 \includegraphics[width=0.6\textwidth]{Pics/hash-table}
 \end{center}
@@ -153,20 +215,17 @@ ans =
 \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Fyrirlestraræfing}
-\begin{enumerate}
- \item Skoðum aftur hólfavigurinn\\ \texttt{ca = \{23, 'a', 1:2:9, 'hello'\} }\\
- . Hvaða gildi hefur \texttt{ca\{4\}(2:3)}?
- \item Skoðum hólfafylkið\\
-\texttt{ cf=\{'fylkin', 'eru'; [2 3; 8 7], [1:3; 2:4]\} }\\
-. Hvernig má ná í alla aðra línuna í fylkinu sem er í fyrra hólfinu í annarri línu \texttt{cf}?
- \item Af hverju er svona mikið vandamál að geyma gildi af mismunandi gerðum í sama vigrinum?
-\end{enumerate}
+\begin{frame}{Fyrirlestraræfing}
+Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrri tvær spurningarnar.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \begin{frame}{Framsetning á hólfafylkjum}
 \begin{itemize}
- \item Fallið \texttt{cellplot} sýnir á myndrænan hátt skipulag hólfafylkis
+ \item Fallið \texttt{cellplot} sýnir á myndrænan hátt skipulag hólfafylkis\footnote{Ath. virkar ekki í Octave}
  \item Fallið \texttt{celldisp} sýnir innihald allra hólfa í hólfafylki
 \end{itemize}
 \end{frame}
@@ -211,13 +270,30 @@ students =
 \end{minted}
 \end{frame}
 
+\begin{frame}[fragile]{Að skipta upp streng}
+\begin{itemize}
+ \item Höfum tvær aðalleiðir til að skipta upp streng
+ \begin{enumerate}
+  \item \texttt{strtok} skiptir streng upp í tvo búta, ``haus'' og ``hala''
+  \begin{itemize}
+   \item Leitar að ``skiptitákni'' - allt sem er fyrir framan táknið er hausinn, afgangur strengsins er halinn
+   \item Sjálfgefið skiptitákn er bilstafur
+  \end{itemize}
+  \item \texttt{strsplit} skiptir streng upp í hólfavigur af strengjum
+  \begin{itemize}
+   \item Leitar líka að skiptitákni
+   \item Inntaksstrengurinn klipptur í sundur á öllum stöðum þar sem skiptitáknið kemur fyrir
+  \end{itemize}
+ \end{enumerate}
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Fyrirlestraræfing}
-\begin{enumerate}
- \setcounter{enumi}{3}
- \item Segjum að við höfum hólfavigurinn\\ \texttt{students = \{'Ari', 'Anna', ...\}}
- \\. Skrifið Matlab-fall til að athuga hvort að nemandinn \texttt{'Drífa'} sé í listanum.
- \item Er hægt að setja hólfavigur inn í hólfavigur?
-\end{enumerate}
+Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \end{document}
