@@ -1,0 +1,176 @@
+\documentclass[handout]{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 8, seinni fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Miðmisserispróf
+ \item Miðmisseriskönnun
+ \item Hólfavigrar
+ \item Meira um strengi
+\end{itemize}
+\end{frame}
+
+\section{Færslur (8.2)}
+
+\begin{frame}{Færslur}
+\begin{itemize}
+ \item Lítum nú á færslur (e. \emph{structures})
+ \begin{itemize}
+  \item Gagnagrind sem hópar gildi sem eiga saman
+  \item Dæmi: Upplýsingar um vöru: vörunúmer, lýsing, innkaupsverð, söluverð
+ \end{itemize}
+ \item Færslur hafa svið (e. \emph{fields}) og gildi (e. \emph{values})
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Að smíða færslur}
+\begin{itemize}
+ \item Hægt er að búa til færslu á tvo mismunandi vegu
+ \begin{itemize}
+  \item Með því að nota \texttt{struct} fallið
+  \item Með því að nota punktvirkja
+ \end{itemize}
+ \item Náð er í gögn með punktvirkjanum
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{struct} fallið}
+Í struct-fallinu koma til skiptis nafn sviðs og gildi sviðsins.
+\begin{minted}{matlab}
+>> student = struct('id', '12345', 'grades', [6 7 8])
+student = 
+        id: '12345'
+    grades: [6 7 8]
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Að ná í gögn úr færslu}
+Punktvirkjann (e. \emph{dot operator}) má nota til að ná í gögn úr færslu.
+\begin{minted}{matlab}
+>> student.id
+ans =
+12345
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Punktvirkinn}
+\begin{itemize}
+ \item Punktvirkjann má líka nota til að búa til færslur
+ \item Þá skrifum við nafn breytu, punkt, og svo nafn sviðsins (breytan þarf ekki að vera skilgreind fyrirfram)
+\begin{minted}{matlab}
+>> student2.id = '23456';
+>> student2.grades = [7 8 9];
+\end{minted}
+ \item Ef við viljum að \texttt{student2} sé af sömu gerð og \texttt{student} þá verðum við að nota nákvæmlega sömu sviðsnöfn og gagnagerðir
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nánar um punktvirkjann}
+\begin{itemize}
+ \item Þegar punktvirkinn er notaður til að búa til færslubreytu þá verður breytan til smátt og smátt
+ \begin{itemize}
+  \item Einu sviði bætt við í einu
+ \end{itemize}
+ \item Þetta hefur svipuð vandamál í för með sér og þegar vigur er stækkaður inni í lykkju - nýjar minnisúthlutanir þurfa að eiga sér stað
+ \begin{itemize}
+  \item Það er því hraðvirkara að nota \texttt{struct}-fallið
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Að prenta út færslur}
+\begin{itemize}
+ \item Fallið \texttt{disp} birtir öll svið færslu
+ \item \texttt{fprintf} getur einungis birt einstök svið
+ \begin{itemize}
+  \item En það er e.t.v. ekki undarlegt - \texttt{fprintf} er nákvæmnistól
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Færsluföll}
+\begin{center}
+\begin{tabular}{lp{7cm}}
+\toprule
+Nafn falls&Hlutverk\\
+\midrule
+\texttt{isstruct}&Skilar \texttt{true} ef inntak er færsla\\
+\texttt{isfield}&Skilar \texttt{true} ef gefin færsla hefur svið með gefnu nafni\\
+\texttt{fieldnames}&Skilar hólfavigri með nöfnum allra sviða í gefinni færslu\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Færsluvigrar}
+\begin{itemize}
+ \item Oft viljum við geyma margar færslur af sömu gerð en með mismunandi gildum
+ \begin{itemize}
+  \item Dæmi: Nemendaskrá, vörulisti
+ \end{itemize}
+ \item Búum þá til vigur af færslum
+ \begin{itemize}
+  \item Munum: Allt í Matlab er fylki
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Að nota færsluvigur}
+\begin{itemize}
+ \item Getum notað færsluvigur eins og aðra vigra
+ \begin{itemize}
+  \item Vísum í sæti vigurs með númeri
+  \item Vísum í svið færslu með punktvirkjanum
+ \end{itemize}
+\end{itemize}
+\begin{minted}[fontsize=\small]{matlab}
+>> products = struct('name', 'Torfstrekkjari', 'price', 12000);
+>> products(2) = struct('name', 'Blómalím', 'price', 1500);
+>> products.price
+ans =
+       12000
+ans =
+        1500
+\end{minted}
+
+\end{frame}
+
+\begin{frame}[fragile]{Upphafsstilling með hólfavigrum}
+Hægt er að nota hólfavigur til að búa til færsluvigur í einu skrefi:
+
+\begin{minted}{matlab}
+>> products = struct('name', {'Torfstrekkjari', 'Blómalím'})
+\end{minted}
+
+\end{frame}
+
+
+\begin{frame}{Fyrirlestraræfing}
+\begin{enumerate}
+ \item Búið til $1 \times 1$ færslubreytu sem inniheldur upplýsingar um nafn ykkar og kennitölu
+ \item Búið til færsluvigur með a.m.k. 2 færslum sem inniheldur upplýsingar um nafn bjórs, nafn brugghúss, og seldan lítrafjölda
+ \item Finnið heildarfjölda seldra lítra skv. færsluvigrinum í liðnum á undan með lykkju eða vigurkóðun
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Fyrirlestraræfing}
+Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
+\end{frame}
+
+\end{document}
