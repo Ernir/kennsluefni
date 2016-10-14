@@ -151,22 +151,44 @@ ans =
 Hægt er að nota hólfavigur til að búa til færsluvigur í einu skrefi:
 
 \begin{minted}{matlab}
->> products = struct('name', {'Torfstrekkjari', 'Blómalím'})
+>> products = struct('name', {'Torfstrekkjari', ...
+   'Blómalím'})
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Samskeyting}
+\texttt{nafnfærsluvigurs.nafnsviðs} skilar mörgum breytum. Hægt er að skeyta þeim saman með því að umlykja skipunina með hornklofum:
+\begin{minted}{matlab}
+>> [p1, p2] = products.price
+p1 =
+       12000
+p2 =
+        1500
+>> prices = [products.price]
+prices =
+       12000        1500
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Hreiðraðar færslur}
+Hægt er að setja færslu inn í færslu.
+
+\begin{minted}{matlab}
+course = struct('code', 'TÖL105G', 'teacher', ...
+   struct('name', 'Ernir'))
+course = 
+       code: 'TÖL105G'
+    teacher: [1x1 struct]
+>> course.teacher.name
+ans =
+Ernir
 \end{minted}
 
 \end{frame}
 
 
 \begin{frame}{Fyrirlestraræfing}
-\begin{enumerate}
- \item Búið til $1 \times 1$ færslubreytu sem inniheldur upplýsingar um nafn ykkar og kennitölu
- \item Búið til færsluvigur með a.m.k. 2 færslum sem inniheldur upplýsingar um nafn bjórs, nafn brugghúss, og seldan lítrafjölda
- \item Finnið heildarfjölda seldra lítra skv. færsluvigrinum í liðnum á undan með lykkju eða vigurkóðun
-\end{enumerate}
-\end{frame}
-
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
+Skráið ykkur inn á \url{http://socrative.com/} og gerið æfinguna.
 
 Herbergisnúmer = \texttt{TOL105G2016}
 
