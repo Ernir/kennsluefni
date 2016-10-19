@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 9, fyrri fyrirlestur}
@@ -15,64 +15,50 @@
 
 \begin{frame}{Í síðasta þætti\ldots}
 \begin{itemize}
- \item Gagnagrindur
- \item Hólfavigrar/hólfafylki
+ \item Færslur
 \end{itemize}
-Kafli: 8.1
+Kafli: 8.2
 \end{frame}
 
-\subsection{Miðmisserispróf}
+\section{Skráarvinnsla (9.3)}
 
-\begin{frame}{Miðmisserispróf}
-\pause
+\subsection{Upprifjun}
+
+\begin{frame}{Upprifjun Einfalt I/O}
 \begin{itemize}
- \item 53 nemendur af 67 (79\%) tóku prófið \pause
+ \item Þegar unnið er með mikið gagnamagn er gott að geyma gögn í skrám
+ \item Skipunin \texttt{save skráarnafn fylki -ascii} vistar gögnin í $fylki$ í skrá
  \begin{itemize}
-  \item 69\% í fyrra 
- \end{itemize} \pause
- \item Meðaleinkunn var 7.19 \pause
- \begin{itemize}
-  \item Var 5.51 í fyrra!
+  \item Ef skráin er þegar til er hún yfirskrifuð
+  \item Skrifa má aftast í skrá í stað yfirskriftar með því að gefa valmöguleikann \texttt{-append}
  \end{itemize}
-\end{itemize}
+ \item Skipunin \texttt{load skráarnafn} les innihald skrár inní fylki
+  \begin{itemize}
+   \item Fylkið heitir sama nafni og skráin (án endingar)
+  \end{itemize}
+ \end{itemize}
 \end{frame}
 
-\begin{frame}{Sé vilji til að bæta sig\ldots}
-\begin{itemize}
- \item \emph{Skrifa meiri Matlab-kóða!}
- \item Gera heimadæmi og fyrirlestraæfingar (sjálf)
- \item Mæta í dæmatíma og gera tímadæmi
- \item Mæta í stoðtíma á föstudögum
- \item Gera fleiri dæmi úr bókinni úr því sem ykkur finnst vanta æfingu í
- \begin{itemize}
-  \item Nóg er til af þeim
- \end{itemize}
-\end{itemize}
+\begin{frame}[fragile]{Dæmi um skráarinntak og skráarúttak}
+\begin{minted}[frame=lines]{matlab}
+>> a = randi(5,2,2) % 2x2 slembifylki búið til
+a =
+   3   2
+   3   4
+>> save gogn.dat a -ascii % a skrifað í skrána gogn.dat
+>> load gogn.dat % innihald gogn.dat sett í breytuna gogn
+>> gogn
+gogn =
+   3   2
+   3   4
+\end{minted}
 \end{frame}
-
-\begin{frame}{Það sem sleppt var vegna verkfalls\ldots}
-\begin{itemize}
- \item Færslur (e. \emph{structures})
- \begin{itemize}
-  \item Gagnagrind sem hópar gildi sem eiga saman
-  \item Dæmi: Upplýsingar um vöru: vörunúmer, lýsing, innkaupsverð, söluverð
- \end{itemize}
- \item Til að búa til færslu má nota fall sem heitir \texttt{struct}.
- \item Fjallað er um færslur í kafla 8.2
-\end{itemize}
-\end{frame}
-
-\section{Skráarvinnsla (9.1)}
 
 \subsection{Lestur úr skrám}
 
 \begin{frame}{Skráarvinnsla}
 \begin{itemize}
- \item Höfum séð einfaldar skipanir til að lesa og skrifa fylki í skrár
- \begin{itemize}
-  \item \texttt{load} og \texttt{save}
-  \item Þær duga oft, en stundum þarf öflugri aðferðir
- \end{itemize}
+ \item \texttt{load} og \texttt{save} duga oft, en stundum þarf öflugri aðferðir
  \item Í almennri skráarvinnslu felst:
  \begin{enumerate}
   \item Opna skrá
@@ -149,7 +135,7 @@ end
 \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]{Oft gagnlegt: Að skipta upp streng}
+\begin{frame}[fragile]{Upprifjun: Að skipta upp streng}
 \begin{itemize}
  \item Oft þegar verið er að lesa inn gögn þurfum við að skipta streng upp í búta
  \item Höfum tvær aðalleiðir: 
@@ -168,7 +154,9 @@ end
 \end{frame}
 
 \begin{frame}[fragile]{Skrá sem við munum vinna með}
-Skráin \texttt{subjexp.dat}, af blaðsíðu 299
+Áður en hafist er handa við að lesa inn skrá þurfum við að ákveða skrá til að vinna með.
+
+Skráin \texttt{subjexp.dat}, í bók (bls. 299 í 3. útgáfu, 323 í 4. útgáfu), er eftirfarandi:
 \begin{minted}[frame=lines]{matlab}
 5.3	a
 2.2	b
@@ -181,9 +169,7 @@ Skráin \texttt{subjexp.dat}, af blaðsíðu 299
 
 
 \begin{frame}[fragile]{Dæmi}
-Skoðum blaðsíðu 300 \pause
-
-Svipað forrit:
+Forritið byggt á forriti í bók (bls. 300 í 3. útgáfu, 323 í 4. útgáfu)
 \begin{minted}[frame=lines]{matlab}
 fid = fopen('subjexp.dat');
 if fid ~= -1
@@ -199,15 +185,12 @@ fclose(fid);
 \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]{Fyrirlestraræfing}
-\vspace{\baselineskip}
-\begin{enumerate}
- \item Breytið \texttt{while}-lykkju forritsins á síðustu glæru þannig að forritið finni summu talnanna sem það les inn
- \item Væru línurnar í skránni \texttt{subjexp.dat} á sniðinu\\
- \verb|5.3 a 28|\\
- sýnið hvernig hægt væri að brjóta þær upp í þrjú gildi. (Ráðlegging: \texttt{strtok} tvisvar, eða \texttt{strsplit})
- \item Föll á borð við \texttt{fopen} gefa ákveðið skilagildi (\texttt{-1}) sem hægt er að athuga gildið á til að sjá hvort að keyrslan hafi tekist. Hvaða brögðum má beita til að athuga hvort að föll sem ekki eru með slík sérstök skilagildi hafi lent í villu? (Ráðlegging: Athuga fyrirlestur 4b)
-\end{enumerate}
+\begin{frame}{Fyrirlestraræfing}
+Skráið ykkur inn á \url{http://socrative.com/} og fyrstu tvær spurningarnar.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \begin{frame}[fragile]{\texttt{textscan}}
@@ -243,6 +226,21 @@ secondCellArray =
     [0.4500]    {1x1 cell}    [123]
 \end{minted}
 \end{frame}
+
+\begin{frame}[fragile]{\texttt{fscanf}}
+Fallið \texttt{fscanf} er svipað \texttt{textscan}, en skilar fylki.
+
+\begin{minted}{matlab}
+>> fid = fopen('subjexp.dat');
+>> mat = fscanf(fid, '%f %c', [2, inf])
+mat =
+    5.3000    2.2000    3.3000    4.4000    1.1000
+   97.0000   98.0000   97.0000   97.0000   98.0000
+\end{minted}
+
+
+\end{frame}
+
 
 \subsection{Að skrifa í skrár}
 
@@ -290,16 +288,13 @@ Regla&Lýsing\\
 
 \begin{frame}[fragile]{Fyrirlestraræfing}
 \begin{columns}
-\column{0.6\textwidth}
-\begin{enumerate}
- \setcounter{enumi}{3}
- \item Skrifið forrit sem les inn tölur úr skránni \texttt{subjexp.dat} og reiknar út summu þeirra talna í fyrri dálkinum þar sem stafurinn í seinni dálkinum er \texttt{'a'}.
- \item Skrifið hitastigstöfluna til hægri í skrá, þannig að hver lína í skránni innihaldi lýsingu á borð við
-\begin{verbatim}
-Klukkan 0 var hitinn 12.5C
-\end{verbatim}
-\end{enumerate}
-\column{0.4\textwidth}
+\column{0.7\textwidth}
+Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
+\column{0.3\textwidth}
 \begin{center}
 \begin{tabular}{ll}
 \toprule
