@@ -1,0 +1,72 @@
+\documentclass[handout]{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Stærðfræðimynstur í tölvunarfræði}
+\subtitle{Vika 9, seinni fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta tíma}
+\begin{itemize}
+ \item Inngangur að venslum
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Leiðrétting}
+\begin{tcolorbox}[title=Gegntæk vensl]
+Vensl $R$ á mengi $A$ eru gegntæk (e. \emph{transitive}) ef, hvenær sem $(a, b) \in R$ og $(b, c) \in R$, þá sé $(a, c) \in R$, fyrir öll $a, b, c \in A$. Þ.e.a.s. vensl $R$ á mengi $A$ eru gegntæk þegar $\forall a\forall b\forall c(((a, b) \in R \land (b, c) \in R) \to (a, c) \in R)$
+\end{tcolorbox}
+\begin{columns}
+\column{0.5\textwidth}
+Gegnvirk vensl:
+\begin{align*}
+R_1 &= \{(a, b)|a \leq b\}\\
+R_2 &= \{(a, b)|a > b\}\\
+R_3 &= \{(a, b)|a = b \text{ eða } a = -b\}\\
+R_4 &= \{(a, b)|a = b\}\\
+\end{align*}
+\column{0.5\textwidth}
+Ekki gegnvirk vensl:
+\begin{align*}
+R_5 &= \{(a, b)|a = b+1\}\\
+R_6 &= \{(a, b)|a+b \leq 3\}\\
+\end{align*}
+\end{columns}
+\end{frame}
+
+
+\section{N-vensl}
+
+\begin{frame}{$n$-undarvensl}
+\begin{itemize}
+ \item Í síðasta tíma skoðuðum við tvíundarvensl (vensl á tvö mengi) og vensl á mengi (eitt mengi)
+ \item Oft koma upp vensl á milli tveggja eða fleiri mengja
+ \item Köllum vensl á milli $n$ mengja $n$-undarvensl (e. \emph{n-ary relations})
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Skilgreining}
+\begin{tcolorbox}[title=n-undarvensl]
+Látum $A_1, A_2, \ldots, A_n$ vera mengi. $n$-undarvensl á mengin er hlutmengi $A_1 \times A_2 \times \ldots \times A_n$. Mengin $A_1, A_2, \ldots, A_n$ eru þá óðöl (e. \emph{domains}) venslanna og talan $n$ er stig (e. \emph{degree}) þeirra.
+\end{tcolorbox}
+
+\end{frame}
+
+
+
+\begin{frame}{Næst}
+
+Kafli 9.2 (Hagnýting vensla), Kafli 10.1 (Net), vonandi Kafli 9.3 (Framsetning vensla).
+
+\end{frame}
+
+
+\end{document}
