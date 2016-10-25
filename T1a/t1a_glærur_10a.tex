@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 10, fyrri fyrirlestur}
@@ -15,33 +15,11 @@
 
 \begin{frame}{Í síðasta þætti\ldots}
 \begin{itemize}
- \item Almenn skráarvinnsla
  \item Excel-skrár
  \item \texttt{.mat} skrár
-\end{itemize}
-Kaflar: 9.1 - 9.3 
-\end{frame}
-
-\begin{frame}{Um heimaverkefni}
-\begin{itemize}
- \item Í þessari viku er verið að forrita \emph{í tveggja manna hópum}
- \item Ráð og trikk fyrir paraforritun:
- \begin{itemize}
-  \item Pör þar sem annar aðilinn er sterkari forritari eru mjög góð
-  \begin{itemize}
-   \item Veikari lærir af þeim sterkari
-   \item Sterkari lærir af kennslunni
-  \end{itemize}
-  \item Forritið á \emph{einni} tölvu
-  \begin{itemize}
-   \item Hlutverk ykkar: ``Driver'' (situr við tölvu) og ``navigator'' (hugsar fram í tímann, grípur villur)
-   \item Látið veikari forritarann vera driver til að byrja með
-   \item Skiptið um hlutverk þegar þið eruð farin að detta í Facebook
-  \end{itemize}
- \end{itemize}
+ \item Sýnidæmi um skráarvinnslu
 \end{itemize}
 \end{frame}
-
 
 \section{Nafnlaus föll (10.1)}
 
@@ -125,7 +103,7 @@ ans =
 \begin{frame}{Af hverju fallshandföng?}
 \begin{itemize}
  \item Hægt er að vinna með fallshandföng eins og hver önnur gildi, t.d. sett þau sem viðföng í önnur föll
- \item Þetta kallast að föll séu ``fyrsta stigs hlutir'' (e. \emph{first class objects})
+ \item Þetta kallast að föll séu ``fyrsta stigs hlutir'' (e. \emph{first class objects}) í Matlab
  \begin{itemize}
   \item Þýðir að þeir hegða sér eins og grunnhlutir í málinu
   \item Hægt í sumum forritunarmálum: Scheme, Javascript, Python\ldots
@@ -134,10 +112,21 @@ ans =
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Dæmi um fallshandföng}
-Lítum á \texttt{fnfnexamp.m} a blaðsíðu 324!
+\begin{frame}[fragile]{Dæmi um fallshandföng}
+\begin{minted}[frame=lines, label='fnfnexamp.m']{matlab}
+function fnfnexamp(funh)
+% fnfnexamp receives the handle of a function
+% and plots that function of x (which is 1:.25:6)
+% Format: fnfnexamp(function handle)
+x = 1:.25:6;
+y = funh(x);
+plot(x,y,'ko')
+xlabel('x')
+ylabel('fn(x)')
+title(func2str(funh))
+end
+\end{minted}
 
-Fallið tekur við fallshandfangi og teiknar það á ákveðnu bili.
 \end{frame}
 
 \begin{frame}[fragile]{Hagnýting handfanga: \texttt{fplot} fallið}
@@ -149,13 +138,14 @@ Fallið sem handfangið vísar til verður að taka við einu gildi og skila ein
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-\begin{enumerate}
- \item Skilgreinið nafnlaust fall til að reikna rúmmál kúlu
- \[
-  \text{formúla: } V = \frac{4}{3} \pi r^3
- \]
- \item Notið \texttt{fplot} til að teikna $f(x) = x\cos(5x)$ á bilinu 0 til 10
-\end{enumerate}
+Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
+\[
+ \text{formúla: } V = \frac{4}{3} \pi r^3
+\]
 \end{frame}
 
 \section{Breytilegur fjöldi viðfanga (10.3)}
@@ -185,10 +175,22 @@ end
 \end{minted}
 \end{frame}
 
-\begin{frame}{Dæmi um \texttt{nargin} og \texttt{varargin}}
-Lítum á \texttt{areafori.m} á blaðsíðu 327!
+\begin{frame}[fragile]{Dæmi um \texttt{nargin} og \texttt{varargin}}
+\begin{minted}[frame=lines, label=areafori.m]{matlab}
+function area = areafori(varargin)
+n = nargin; % number of input arguments
+radius = varargin{1}; % Given in feet by default
+if n == 2
+  unit = varargin{2};
+  % if inches is specified, convert the radius
+  if unit == 'i'
+    radius = radius * 12;
+  end
+end
+area = pi * radius .^ 2;
+end
+\end{minted}
 
-Fallið reiknar út flatarmál hrings með radíus gefinn í fetum. Það tekur við einu eða tveimur inntaksbreytum. Ef seinni breytan er gefin og með gildið \texttt{'i'} skilar fallið niðurstöðunni í fertommum, annars ferfetum.
 \end{frame}
 
 \begin{frame}[fragile]{Breytilegur fjöldi skilabreyta}
@@ -201,10 +203,19 @@ end
 \texttt{varargout} er hólfavigur sem fallið fyllir í eftir þörfum.
 \end{frame}
 
-\begin{frame}{Dæmi um \texttt{varargout}}
-Lítum á \texttt{typesize.m} blaðsíðu 330!
+\begin{frame}[fragile]{Dæmi um \texttt{varargout}}
+\begin{minted}[frame=lines, label=mysize.m]{matlab}
+function [row, col, varargout] = mysize(mat)
+% mysize returns dimensions of input argument
+% and possibly also total # of elements
+% Format: mysize(inputArgument)
+[row, col] = size(mat);
+if nargout == 3
+  varargout{1} = row*col;
+end
+end
+\end{minted}
 
-Fallið skilar 's' ef inntakið er skalarbreyta, 'v' ef það er vigur, og 'm' ef það er fylki. Það skilar einnig víddunum ef það er vigur eða fylki.
 \end{frame}
 
 \section{Hreiðruð föll (10.4)}
@@ -220,7 +231,20 @@ Fallið skilar 's' ef inntakið er skalarbreyta, 'v' ef það er vigur, og 'm' e
 \end{frame}
 
 \begin{frame}[fragile]{Dæmi um hreiðrað fall}
-Skoðum \texttt{nestedVolume.m} á blaðsíðu 333. Það reiknar út rúmmál tenings.
+\begin{minted}[frame=lines, label=nestedvolume.m]{matlab}
+function outvol = nestedvolume(len, wid, ht)
+% nestedvolume receives the lenght, width, and
+% height of a cube and returns the volume; it calls
+% a nested function that returns the area of the base
+% Format: nestedvolume(length,width,height)
+outvol = base * ht;
+  function outbase = base
+  % returns the area of the base
+  outbase = len * wid;
+  end % base function
+end % nestedvolume function
+\end{minted}
+
 \end{frame}
 
 
@@ -241,12 +265,11 @@ Skoðum \texttt{nestedVolume.m} á blaðsíðu 333. Það reiknar út rúmmál t
 \begin{frame}[fragile]{Fyrirlestraræfing}
 \begin{columns}
 \column{0.55\textwidth}
-\begin{enumerate}
- \setcounter{enumi}{2}
- \item Sýnið haus á falli sem getur fengið núll eða fleiri inntaksbreytur
- \item Hvernig má skrifa fall sem getur tekið 0, 1 eða 2 inntaksbreytur, en skilar villu ef þær eru fleiri?
- \item Hvert er gildi skilabreytanna \texttt{a} og \texttt{b} í fallinu hér til hliðar?
-\end{enumerate}
+Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \column{0.45\textwidth}
 \begin{minted}[frame=lines, fontsize=\small]{matlab}
 function [a, b] = nestTest()
