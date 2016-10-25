@@ -1,4 +1,4 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \input{../Haust2016glærur}
 
@@ -191,9 +191,35 @@ Netaframsetning (hluta?) internetsins, af wikimedia
 \end{itemize}
 \end{frame}
 
+\section{Hugtök sem tengjast netum}
+
+\begin{frame}{Hugtök}
+\begin{itemize}
+ \item Tveir hnútar $u$ og $v$ eru aðlægir (e. \emph{adjacent}) í óstefndu neti $G$ ef bæði $u$ og $v$ koma fyrir í skilgreiningu einhvers leggs í $G$
+ \item Nágrannar hnúts $v$ eru þeir hnútar sem eru aðlægir $v$
+ \begin{itemize}
+  \item Mengi nágranna hnútsins $v$ er táknað með $N(v)$
+ \end{itemize}
+ \item Stig (e. \emph{degree}) hnúts $v$ í óstefndu neti er fjöldi hnúta sem eru aðlægir $v$
+ \begin{itemize}
+  \item Lykkja á hnút ``telur tvöfalt'', hækkar stig hnútsins um 2
+  \item Stig hnúts $v$ er táknað með $\deg(v)$
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Handabandssetningin}
+\begin{tcolorbox}[title=Handabandssetningin]
+Látum $G = (V, E)$ vera óstefnt net með $m$ leggjum. Þá er
+\[
+ 2m = \sum_{v \in V} \deg(v)
+\]
+\end{tcolorbox}
+Handabandssetningin (e. \emph{the handshake theorem}) á við um fjölnet og net með lykkjum.
+\end{frame}
 
 \begin{frame}{Næst}
-Hugtök í netafræði (10.2) og framsetning á netum (10.3)
+(Fleiri) hugtök í netafræði (10.2) og framsetning á netum (10.3)
 \end{frame}
 
 
