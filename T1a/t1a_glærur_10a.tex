@@ -132,7 +132,7 @@ end
 \begin{frame}[fragile]{Hagnýting handfanga: \texttt{fplot} fallið}
 Fallið \texttt{fplot} teiknar fall á gefnu bili. Almennt snið:
 \begin{verbatim}
->> fplot(fallshandfang, [lággildi hágildi])
+>> fplot(fallshandfang, [minnstaX stærstaX])
 \end{verbatim}
 Fallið sem handfangið vísar til verður að taka við einu gildi og skila einu gildi. Það verður líka að ráða við að inntakið sé vigur.
 \end{frame}
@@ -263,30 +263,11 @@ end % nestedvolume function
 \end{frame}
 
 \begin{frame}[fragile]{Fyrirlestraræfing}
-\begin{columns}
-\column{0.55\textwidth}
 Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
 
 Herbergisnúmer = \texttt{TOL105G2016}
 
 Notendanafn = HÍ-tölvupóstfang
-\column{0.45\textwidth}
-\begin{minted}[frame=lines, fontsize=\small]{matlab}
-function [a, b] = nestTest()
-a = nested1();
-b = nested2();
-
-    function x = nested1()
-        x = 1;
-    end
-
-    function x = nested2()
-        x = 2;
-    end
-end
-\end{minted}
-
-\end{columns}
 \end{frame}
 
 
