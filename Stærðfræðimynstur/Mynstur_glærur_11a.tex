@@ -1,0 +1,90 @@
+\documentclass{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Stærðfræðimynstur í tölvunarfræði}
+\subtitle{Vika 11, fyrri fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta tíma}
+\begin{itemize}
+ \item Eiginleikar neta
+ \item Nokkrar gerðir sérstakra neta
+ \item Spyrðingar
+ \item Framsetning á netum
+\end{itemize}
+\end{frame}
+
+\subsection{Um misserislok}
+
+\begin{frame}{Námsáætlun}
+\begin{itemize}
+ \item Tímar sem við eigum eftir:
+ \begin{itemize}
+  \item Þri 1. nóvember (net/stoðtími)
+  \item Fös 4. nóvember (net)
+  \item Þri 8. nóvember (net/tré?/stoðtími)
+  \item Fös 11. nóvember (tré)
+  \item Þri 15. nóvember (tré/stoðtími)
+  \item Fös 18. nóvember (mál og stöðuvélar)
+  \item Þri 22. nóvember (mál og stöðuvélar)
+  \item Fös 25. nóvember (dæmayfirferð og stoðtími)
+ \end{itemize}
+ \item 12. kafla er sleppt
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Síðustu skiladæmi}
+\begin{itemize}
+ \item Útlit er fyrir að við náum n skilaverkefnum
+ \begin{itemize}
+  \item Skilaverkefni 9: Skil 3. nóvember
+  \item Skilaverkefni 10: Skil 10. nóvember 
+  \item Skilaverkefni 11: Skil 17. nóvember
+  \item Skilaverkefni 12: Skil 24. nóvember
+ \end{itemize}
+ \item Af þessum 12 verkefnum mun einkunn 10 bestu skilaverkefna gilda 20\% til lokaeinkunnar
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Connect-einkunnin}
+\begin{itemize}
+ \item \emph{Skil} á Connect-verkefnum gildir 10\% til lokaeinkunnar
+ \item $\text{Einkunn} = (\text{hlutfall skilaðra fyrirlestraræfinga} + \text{hlutfall skilaðra dæmatímaverkefna}) \cdot 5$
+ \item Tekið er við Connect-verkefnum út nóvember
+\end{itemize}
+\end{frame}
+
+\section{Vegur í neti}
+
+\begin{frame}{Vegur í neti}
+Skilgreining á vegi (e.  path) kemur víða við í netafræði.
+
+\begin{tcolorbox}[title=Vegur]
+Látum $n$ vera ekki-neikvæða heiltölu. Þá er vegur af lengd $n$ frá hnúti $u$ í $G$ til hnúts $v$ í $G$ runa $e_1, \ldots, e_n$ af leggjum í $G$ sem hefur þann eiginleika að til sé runa $x_0 = u, x_1, \ldots, x_{n-1}, x_n = v$ af hnútum í $G$ svo að fyrir öll $i = 1, \ldots, n$, hafi leggurinn $e_i$ endahnútana $x_{i-1}$ og $x_i$.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Um vegi}
+\begin{itemize}
+ \item Veg þar sem allir leggirnir eru aðskildir má kalla einfaldan (e. \emph{simple})
+ \item Veg af jákvæðri lengd þar sem upphafs- og endahnúturinn er sami hnútur má kalla rás (e. \emph{circuit})
+ \item Þegar um er að ræða einfalt net getum við táknað veg með því að telja upp hnútana sem hann snertir
+ \item Í stefndu neti getum við á mjög svipaðan hátt skilgreint stefnda vegi/örvavegi (e. \emph{directed paths})
+ \item Athugum vandlega: Mismunandi skilgreiningar eru til á vegum og einföldum vegum, þetta er skilgreiningin sem bókin notar
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
