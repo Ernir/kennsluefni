@@ -31,7 +31,7 @@
  \begin{itemize}
   \item Þri 1. nóvember (net/stoðtími)
   \item Fös 4. nóvember (net)
-  \item Þri 8. nóvember (net/tré?/stoðtími)
+  \item Þri 8. nóvember (net/stoðtími)
   \item Fös 11. nóvember (tré)
   \item Þri 15. nóvember (tré/stoðtími)
   \item Fös 18. nóvember (mál og stöðuvélar)
@@ -46,7 +46,7 @@
 
 \begin{frame}{Síðustu skiladæmi}
 \begin{itemize}
- \item Útlit er fyrir að við náum n skilaverkefnum
+ \item Útlit er fyrir að við náum 12 skilaverkefnum
  \begin{itemize}
   \item Skilaverkefni 9: Skil 3. nóvember
   \item Skilaverkefni 10: Skil 10. nóvember 
@@ -85,6 +85,116 @@ Látum $n$ vera ekki-neikvæða heiltölu. Þá er vegur af lengd $n$ frá hnút
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Vegir í samfélagsneti}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{path-length}
+\end{center}
+\end{frame}
+
+\section{Samhengi}
+
+\begin{frame}{Samanhangandi net}
+Út frá skilgreiningu á vegi fáum við skilgreiningu á samanhangandi (e. \emph{connected}) neti:
+\begin{tcolorbox}[title=Samanhangandi net]
+Óstefnt net er kallað samanhangandi sé til vegur á milli hverra tveggja aðskildra hnúta í netinu.
+\end{tcolorbox}
+Af henni má leiða setningu:
+\begin{tcolorbox}
+Til er einfaldur vegur á milli hverra tveggja aðskildra hnúta í óstefndu samanhangandi neti.
+\end{tcolorbox}
+
+\end{frame}
+
+\begin{frame}{Samhengisþættir}
+Út frá skilgreiningu á hlutmengi getum við skilgreint hlutnet:
+\begin{tcolorbox}[title=Hlutnet]
+Hlutnet nets $G$ er net $H$ sem hefur þá eiginleika að hnútamengi $H$ er hlutmengi hnútamengis $G$ og leggjamengi $H$ er hlutmengi leggjamengis $G$.
+\end{tcolorbox}
+Getum þá skilgreint samhengisþátt:
+\begin{tcolorbox}
+Samhengisþáttur (e. \emph{connected component}) nets $G$ er hlutnet $G$ sem er samanhangandi og óstækkanlegt.
+\end{tcolorbox}
+Ósamanhangandi net hefur meira en einn samhengisþátt.
+\end{frame}
+
+\begin{frame}{Þrjú net}
+\begin{center}
+\includegraphics[width=\textwidth]{graph-connectivity}
+\end{center}
+\end{frame}
+
+\begin{frame}{Brýr}
+\begin{tcolorbox}[title=Brú]
+Leggur $e$ í $G$ kallast brú (e. \emph{bridge} eða \emph{cut edge}) ef hlutnetið sem myndað er með því að fjarlægja $e$ úr $G$ hefur fleiri samhengisþætti en $G$.
+\end{tcolorbox}
+Svipaða skilgreiningu má setja fram fyrir hnúta. Slíkir hnútar eru kallaðir ``cut vertices'' í bókinni.
+\end{frame}
+
+\begin{frame}{Samhengi}
+Við getum skilgreint hnútasamhengi (e. \emph{vertex connectivity}) nets.
+
+\begin{tcolorbox}[title=Samhengi]
+Talan $\kappa(G)$ táknar hnútasamhengi netsins $G$. $\kappa(G)$ er lágmarksfjöldi hnúta sem þarf að fjarlægja úr $G$ til að mynda net sem er ósamanhangandi eða með einungis einn hnút.
+\end{tcolorbox}
+Ósamanhangandi net er með $\kappa(G) = 0$. $\kappa(K_n) = n-1$.
+\end{frame}
+
+\begin{frame}{Samhengi og örvanet}
+\begin{tcolorbox}[title=Stranglega samanhangandi örvanet]
+Örvanet er stranglega samanhangandi (e. \emph{strongly connected}) ef til er örvavegur frá $a$ til $b$ og frá $b$ til $a$ fyrir sérhverja hnúta $a$ og $b$ í örvanetinu.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Veikt samanhangandi örvanet]
+Örvanet er veikt samanhangandi (e. \emph{weakly connected}) sé tilsvarandi óstefnt net samanhangandi.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Samanhangandi örvanet}
+\begin{center}
+\includegraphics[width=\textwidth]{graph-strong-weak-connected}
+\end{center}
+\end{frame}
+\section{Fjöldi vega}
+\begin{frame}{Fjöldi vega}
+\begin{tcolorbox}
+Látum $G$ vera net með grennslafylkið $A$ m.t.t. hnútaröðunar $v_1, \ldots, v_n$. Þá er fjöldi mismunandi vega af jákvæðri lengd $r$ á milli hnúta $v_i$ og $v_j$ talan sem er í sæti $i,j$ í fylkinu $A^r$.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Dæmi}
+Finnum fjölda mismunandi vega á milli $a$ og $d$ í eftirfarandi neti:
+\begin{columns}
+\column{0.25\textwidth}
+\begin{center}
+\includegraphics[width=\linewidth]{graph-mini}
+\end{center}
+\column{0.75\textwidth}
+\[
+A =
+\begin{bmatrix}
+0&1&1&0\\
+1&0&0&1\\
+1&0&0&1\\
+0&1&1&0\\
+\end{bmatrix}
+,
+A^4 =
+\begin{bmatrix}
+8&0&0&8\\
+0&8&8&0\\
+0&8&8&0\\
+8&0&0&8\\
+\end{bmatrix}
+\]
+\begin{center}
+Svo fjöldi veganna er 8.
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Næst}
+Næst: Förum yfir Euler- og Hamilton-vegi, leit að stystu vegum (kaflar 10.5 og 10.6).
+\end{frame}
 
 
 \end{document}
