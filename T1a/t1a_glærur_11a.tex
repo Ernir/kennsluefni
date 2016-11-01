@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 11, fyrri fyrirlestur}
@@ -44,21 +44,33 @@ Kaflar: 10.4 - 10.5
   \item Þessi forritunaraðferð er oftast kölluð ``procedural programming''
  \end{itemize}
  \item Hægt er að nálgast forritun á annan hátt - hlutbundinn (e. \emph{object oriented})
- \begin{itemize}
-  \item Hvaða fyrirbrigði/hlutir koma við sögu í vandamálinu?
-  \item Hvernig hegða þessir hlutir sér?
- \end{itemize}
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Að forrita hlutbundið}
+ \begin{itemize}
+  \item Í procedural forritun byrjum við venjulega á að finna svör við spurningum á borð við
+  \begin{itemize}
+   \item Hvernig líta gögnin mín út?
+   \item Hvernig get ég reiknað úr þessum gögnum?
+  \end{itemize}
+  \item Í hlutbundinni forritun þurfum við að svara aðeins öðrum spurningum
+  \begin{itemize}
+   \item Hvaða fyrirbrigði/hlutir koma við sögu í vandamálinu?
+   \item Hvernig hegða þessir hlutir sér?
+  \end{itemize}
+ \end{itemize}
+\end{frame}
+
 
 \begin{frame}{Hvað er hlutur?}
 \pause
 \begin{itemize}
- \item Hvaða fyrirbrigði sem skilgreinast af gögnum og aðgerðum á þau geta verið hlutir
+ \item Fyrirbrigði sem skilgreinast af gögnum og aðgerðum á þau geta verið hlutir
  \begin{itemize}
   \item Mjög opið hugtak! \pause
  \end{itemize}
- \item Dæmi um fyrirbrigði sem gætu verið hlutir í forriti \pause
+ \item Dæmi um fyrirbrigði sem gætu verið hlutir í forriti? \pause
  \begin{itemize}
   \item Allt sem sést í tölvuleikjum
   \item Hringur
@@ -83,13 +95,44 @@ Kaflar: 10.4 - 10.5
  \item Við getum skoðað teiknihlut með því að búa einn slíkan til
 \begin{minted}{matlab}
 >> f = figure
+>> whos f
 \end{minted}
  \item Getum fengið alla eiginleika hans með \texttt{get} fallinu
 \begin{minted}{matlab}
 >> get(f)
 \end{minted}
 \end{itemize}
+\end{frame}
 
+\begin{frame}[fragile]{Eiginleikar teiknihluta}
+Við getum náð í ákveðna eiginleika teiknihluta með \texttt{get} eða með því að nota punktvirkjann
+\begin{minted}{matlab}
+>> f = figure();
+>> f.Color
+ans =
+    0.9400    0.9400    0.9400
+>> get(f, 'Color')
+ans =
+    0.9400    0.9400    0.9400
+\end{minted}
+Yfirleitt er meira viðeigandi að nota punktvirkjann.
+\end{frame}
+
+\begin{frame}[fragile]{Eiginleikar teiknihluta}
+Við getum breytt ákveðnum eiginleikum teiknihluta með fallinu \texttt{set} eða með því að nota punktvirkjann
+\begin{minted}{matlab}
+>> set(f, 'Color', [0.5 0.5 0.5])
+>> f.Color = [0.5 0.8 0.2];
+\end{minted}
+Yfirleitt er meira viðeigandi að nota punktvirkjann.
+\end{frame}
+
+\begin{frame}[fragile]{Fyrirlestraræfing}
+Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 
@@ -175,11 +218,23 @@ end
 \end{frame}
 
 \begin{frame}[fragile]{Fleiri aðferðir}
+\begin{itemize}
+ \item Getum bætt við fleiri aðferðum heldur en bara smiðnum
+ \item Gætum bætt við aðferð sem heitir \texttt{simplify} sem einfaldar brotið sé kallað á það
+ \item Aðferðir sem við skrifum geta ``yfirskrifað'' innbyggðar aðgerðir
+ \begin{itemize}
+  \item Getum yfirskrifað innbyggð föll m.t.t. klasans okkar
+  \item Getum yfirskrifað innbyggða virkja
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{disp-aðferð}
 \begin{columns}
 \column{0.45\textwidth}
 \begin{itemize}
- \item Til að klasinn okkar virki vel þarf hann fleiri aðferðir
- \item Oftast viljum við að klasinn okkar prentist á skynsamlegan hátt út þegar við köllum á \texttt{disp} eða þegar við gefum breytum gildi af hans tagi
+ \item Oftast viljum við að klasarnir okkar prentist á skynsamlegan hátt út þegar við köllum á \texttt{disp} eða þegar við gefum breytum gildi af hans tagi
  \item Hvernig gerum við það?
  \begin{itemize}
   \item Bætum við \texttt{disp} aðferð á klasann!
@@ -197,42 +252,47 @@ end
 \end{columns}
 \end{frame}
 
+\begin{frame}{Yfirskrifun virkja}
+Hver virki í Matlab samsvarar einu falli (\href{https://se.mathworks.com/help/matlab/matlab_oop/implementing-operators-for-your-class.html\#br02znk-6}{listi}). Dæmi:
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Virki&Fall\\
+\midrule
+$a+b$&\texttt{plus(a,b)}\\
+$a-b$&\texttt{minus(a,b)}\\
+$a*b$&\texttt{mtimes(a,b)}\\
+$a/b$&\texttt{mrdivide(a,b)}\\
+\bottomrule
+\end{tabular}
+\end{center}
+Þessa virkja má útfæra fyrir klasa sem við skrifum.
+\end{frame}
+
+
 \begin{frame}[fragile]{Látum klasann vinna vinnu}
-\vspace{\baselineskip}
 Við kunnum að leggja saman brot:
 \[
 \frac{c}{d} + \frac{a}{b} = \frac{cb+ad}{db} 
 \]
 Þetta má gera í klasanum okkar með því að bæta við aðferðinni
 \begin{minted}[frame=lines]{matlab}
-function newFrac = add(frac1, frac2)
+function newFrac = plus(frac1, frac2)
     newN = frac1.n * frac2.d + frac2.n * frac1.d;
     newD = frac1.d * frac2.d;
     newFrac = Fraction(newN, newD);
 end
 \end{minted}
+
+Þessi aðferð yfirskrifar innbyggða plús-virkjann!
 \end{frame}
 
-\begin{frame}[fragile]{Af hverju hlutbundin forritun?}
-\begin{itemize}
- \item Mörgum ``kerfum'' er auðvelt að lýsa með hlutbundnum aðferðum
- \begin{itemize}
-  \item Sérstaklega kerfum sem eiga að herma eftir bókstaflegum hlutum
- \end{itemize}
- \item Ýmis atriði í hlutbundinni forritun hjálpa til við að gera kóða endurnýtanlegan og skilanlegri
- \begin{itemize}
-  \item Erfðir, hjúpun, \ldots
- \end{itemize}
-\end{itemize}
-\end{frame}
+\begin{frame}[fragile]{Fyrirlestraræfing}
+Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
 
-\begin{frame}{Fyrirlestraræfing}
-\begin{enumerate}
- \setcounter{enumi}{3}
- \item Breytið \texttt{disp} aðferðinni í \texttt{Fraction} klasanum okkar svo að tölur með 1 í nefnara séu sýndar án nefnara (t.d. sýna töluna \texttt{3} en ekki \texttt{3/1})
- \item Bætið margföldunaraðferð við \texttt{Fraction} klasann
-\end{enumerate}
+Herbergisnúmer = \texttt{TOL105G2016}
 
+Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 
