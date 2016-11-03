@@ -1,0 +1,200 @@
+\documentclass{beamer}
+
+\input{../Haust2016glærur}
+
+\title{Tölvunarfræði 1a}
+\subtitle{Vika 11, seinni fyrirlestur}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Í síðasta þætti\ldots}
+\begin{itemize}
+ \item Hlutbundin forritun
+ \item Teiknihlutir
+ \item Klasar
+ \begin{itemize}
+  \item Yfirskrifun aðferða og virkja
+ \end{itemize}
+\end{itemize}
+Kaflar: 11.1 til 11.3
+\end{frame}
+
+\begin{frame}[fragile]{Upprifjun}
+\begin{minted}[frame=lines, fontsize=\small]{matlab}
+classdef Fraction
+
+    properties
+        n % Teljari / numerator
+        d % Nefnari / denomenator
+    end
+    
+    methods
+        function frac = Fraction(numerator, denomenator)
+            frac.n = numerator;
+            frac.d = denomenator;
+        end
+    end
+    
+end
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Upprifjun}
+Tveimur aðferðum bætt við (undir ``methods'')
+\begin{minted}[frame=lines]{matlab}
+function disp(fr)
+    fprintf('%d/%d\n', fr.n, fr.d)
+end
+
+function newFrac = plus(frac1, frac2)
+    newN = frac1.n * frac2.d + frac2.n * frac1.d;
+    newD = frac1.d * frac2.d;
+    newFrac = Fraction(newN, newD);
+end
+\end{minted}
+\end{frame}
+
+\section{Erfðir}
+
+\begin{frame}{Annað dæmi}
+\begin{itemize}
+ \item Skoðum annað dæmi um hlut sem tákna má með hlutbundinni forritun - rétthyrning
+ \begin{itemize}
+  \item Látum rétthyrning hafa eiginleika:
+  \begin{itemize}
+   \item Lengd
+   \item Breidd
+  \end{itemize}
+  \item Látum rétthyrning hafa aðferðir:
+  \begin{itemize}
+   \item Reikna flatarmál
+   \item \texttt{disp}-aðferð
+   \item Samanburðaraðferð sem segir hvor tveggja rétthyrninga sé minni að flatarmáli
+  \end{itemize}
+ \end{itemize}
+ \item Sýnidæmi - bls. 383 í 4. útgáfu bókarinnar
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Erfðir}
+\begin{itemize}
+ \item Við getum notað einn klasa til að mynda annan
+ \item Látum þá einn klasa erfa (e. \emph{inherit}) aðferðir og eiginleika frá öðrum
+ \begin{itemize}
+  \item Klasinn sem erfir er þá undirklasi (e. \emph{subclass})
+  \item Klasinn sem erft er frá er þá yfirklasi (e. \emph{superclass})
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Að erfa}
+\begin{itemize}
+ \item Til að skilgreina undirklasa:
+\begin{minted}{matlab}
+classdef UndirKlasi < Yfirklasi
+\end{minted}
+ \item Til að vísa í smið yfirklasa úr undirklasa:
+\begin{minted}{matlab}
+obj = obj@MySuperClass(SuperClassArguments);
+\end{minted}
+\item Til að vísa í aðra aðferð í yfirklasa:
+\begin{minted}{matlab}
+disp@MySuperClass(obj)
+\end{minted}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Sýnidæmi}
+Búum til nýjan klasa sem notar rétthyrningsklasann til að tákna kassa.
+
+\vspace{1cm}
+Skoðum bls. 385 í 4. útgáfu bókarinnar
+\end{frame}
+
+\section{Handfangsklasar og gildisklasar}
+
+\begin{frame}{Tvær gerðir klasa}
+\begin{itemize}
+ \item Í Matlab höfum við tvær gerðir klasa
+ \item Gildisklasar (e. \emph{value classes})
+ \begin{itemize}
+  \item Ef við tökum ekkert annað fram, þá er klasi sem við búum til gildisklasi
+  \item Þegar við notum gildisklasa til að búa til nýja hluti, þá er hver hlutur sem búinn er til óháður öðrum
+ \end{itemize}
+ \item Handfangsklasar (e. \emph{handle classes})
+ \begin{itemize}
+  \item Handfangsklasi er búinn til með því að erfa frá innbyggða klasanum \texttt{handle}
+  \item Allir hlutir sem búnir eru til með handfangsklasa vísa í sama fyrirbrigðið
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{``Attributes''}
+
+\begin{frame}{Aðgangsstýring}
+\begin{itemize}
+ \item Við getum stýrt því hvaðan eiginleikar og aðferðir hvers klasa eru aðgengileg
+ \item Erum þá með margar \texttt{properties} og/eða \texttt{methods} blokkir
+ \item Þetta getur haldið fólki frá slæmum forritunarvenjum og/eða villum
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aðgangsstýring eiginleika}
+\begin{itemize}
+ \item Aðgangsmöguleikar eiginleika:
+ \begin{itemize}
+  \item \texttt{public} - eiginleikinn er aðgengilegur alls staðar frá (sjálfgefið)
+  \item \texttt{private} - eiginleikinn er eingöngu aðgengilegur innan sama klasa
+  \item \texttt{protected} - eiginleikinn er eingöngu aðgengilegur innan sama klasa eða í undirklösum hans 
+ \end{itemize}
+ \item Gerðir aðgangs:
+ \begin{itemize}
+  \item \texttt{GetAccess}: Lesaðgangur að eiginleika
+  \item \texttt{SetAccess}: Skrifaðgangur að eiginleika
+  \item \texttt{Access}: Bæði les- og skrifaðgangur
+ \end{itemize}
+ \item Dæmi: Blokkin \texttt{properties (SetAccess = protected)} inniheldur eiginleika sem aðeins eru breytanlegir innan sama klasa, en hægt er að skoða alls staðar frá
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aðgangsstýring aðferða}
+\begin{itemize}
+ \item Hægt er að stilla aðgang aðferða með lykilorðunum \texttt{public}, \texttt{private} og \texttt{protected}
+ \item Eina gerðin er \texttt{Access}, sem stýrir því hvaðan er hægt að kalla á aðferðina
+ \item Dæmi: Blokkin \texttt{methods (Access = protected)} inniheldur aðferðir sem aðeins er hægt að kalla á úr sama klasa
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fleiri ``attributes''}
+\begin{itemize}
+ \item Fleiri lykilorð eru til sem stýra hegðun aðferða
+ \item Þau taka öll \texttt{logical} gildi og \texttt{false} er sjálfgefið
+ \begin{itemize}
+  \item \texttt{Abstract} - ef satt, þá er aðferðin ekki útfærð (heldur þarf undirklasa)
+  \item \texttt{Hidden} - ef satt, þá er aðferðin ekki sýnd þegar beðið er um lista af aðferðum
+  \item \texttt{Sealed} - ef satt er ekki hægt að endurskilgreina aðferðina í undirklösum
+  \item \texttt{Static} - ef satt tilheyrir aðferðin klasanum sjálfum frekar en hlutum sem hann býr til
+ \end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]{Fyrirlestraræfing}
+Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
+
+Herbergisnúmer = \texttt{TOL105G2016}
+
+Notendanafn = HÍ-tölvupóstfang
+\end{frame}
+
+
+\end{document}
