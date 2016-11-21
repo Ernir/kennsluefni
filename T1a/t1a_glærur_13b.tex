@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\input{../Haust2015glærur}
+\input{../Haust2016glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 13, seinni fyrirlestur}
@@ -18,10 +18,9 @@
  \item Tölfræði
  \item Mengi
 \end{itemize}
-Kaflar: 12.1, 12.2
 \end{frame}
 
-\section{Margliður (14.1.1)}
+\section{Margliður}
 
 \begin{frame}[fragile]{Margliður}
 \begin{itemize}
@@ -38,7 +37,6 @@ Kaflar: 12.1, 12.2
 \end{frame}
 
 \begin{frame}[fragile]{Að vinna með margliður}
-\vspace{\baselineskip}
 \begin{columns}
 \column{0.6\textwidth}
 Dæmi um fall sem unnið getur með margliður er fallið \texttt{roots}. Reiknum rætur margliðunnar $3x^2 + 2x - 2$:
@@ -67,7 +65,7 @@ ans =
 \end{minted}
 \end{frame}
 
-\section{Nálgun og brúun (14.1.2-3)}
+\section{Nálgun og brúun}
 
 \begin{frame}{Punktar og ferlar}
 \begin{itemize}
@@ -90,8 +88,7 @@ ans =
 
 \subsection{Nálgun punkta}
 
-\begin{frame}[fragile]{Spennandi dæmi}
-\vspace{0.8cm}
+\begin{frame}[fragile]{Dæmi}
 \begin{columns}
 \small
 \column{0.6\textwidth}
@@ -145,11 +142,10 @@ lineEquation =
 >> hold on
 >> plot(time, line)
 \end{minted}
-Hér reyndist besta línan vera $y = -0.7175 + 21.3857$
+Hér reyndist besta línan vera $y = -0.7175x + 21.3857$
 \end{frame}
 
 \begin{frame}[fragile]{Besti fleygbogi fyrir vindgögnin}
-\vspace{1cm}
 \begin{minted}[frame=lines, fontsize=\small]{matlab}
 >> parabolicEquation = polyfit(time, wind, 2);
 >> xi = linspace(min(time),max(time));
@@ -187,7 +183,6 @@ end
 \end{frame}
 
 \begin{frame}[fragile]{Bestu margliður}
-\vspace{\baselineskip}
 \begin{center}
 \includegraphics[height=0.6\textheight]{Pics/poly-subplot}
 \end{center}
@@ -218,14 +213,14 @@ Matlab-fallið \texttt{interp1} brúar vigra
 \begin{center}
 \texttt{yi = interp1(x, y, xi, aðferð);}
 \end{center}
-Hér er \texttt{yi} gildi brúunar í punktunum \texttt{xi}, \texttt{x} og \texttt{y} eru gagnapunktar, \texttt{xi} eru \texttt{x}-gildin í hærri upplausn og ``aðferð'' er einn af strengjunum \texttt{'linear'}, \texttt{'cubic'} eða \texttt{'spline'}.
+Hér er \texttt{yi} gildi brúunar í punktunum \texttt{xi}, \texttt{x} og \texttt{y} eru gagnapunktar, \texttt{xi} eru \texttt{x}-gildin í hærri upplausn og ``aðferð'' er t.d.  \texttt{'linear'}, \texttt{'pchip'} (cubic) eða \texttt{'spline'}.
 \end{frame}
 
 \begin{frame}[fragile]{Fallið \texttt{interp1}}
 \vspace{1cm}
 \begin{minted}[frame=lines, fontsize=\small]{matlab}
 >> xi = linspace(min(time),max(time));
->> yi = interp1(time, wind, xi, 'cubic');
+>> yi = interp1(time, wind, xi, 'pchip');
 >> plot(time, wind, 'r*', xi, yi)
 \end{minted}
 \begin{columns}
@@ -237,7 +232,6 @@ Hér er \texttt{yi} gildi brúunar í punktunum \texttt{xi}, \texttt{x} og \text
 \end{frame}
 
 \begin{frame}[fragile]{Fallið \texttt{interp2}}
-\vspace{1cm}
 \begin{minted}[frame=lines, fontsize=\small]{matlab}
 >> x = 1:4; y=1:4;
 >> z = randi([5,10], 4, 4);
@@ -254,33 +248,35 @@ Matlab hefur líka fallið \texttt{interp2}, sem brúar tvívíð gögn.
 \end{frame}
 
 
-\begin{frame}[fragile]{Fyrirlestraræfing}
+\begin{frame}{Fyrirlestraræfing}
 \begin{columns}
-\column{0.5\textwidth}
-\begin{enumerate}
- \setcounter{enumi}{3}
- \item Hvernig væri margliðan $2x^5 -3x^2 +2$ táknuð í Matlab?
- \item Oft er skynsamlegt að finna jöfnur \emph{tveggja} bestu lína. Ef við höfum gögn yfir mannfjölda á árunum 2000-2015, sýnið hvernig finna má tvær línur, með brot árið 2008 og teikna þær ásamt gagnapunktunum.
-\end{enumerate}
-\column{0.5\textwidth}
+\column{0.3\textwidth}
+\scriptsize
+\begin{tabular}{ll}
+\toprule
+Ár&Fjöldi\\
+\midrule
+2000&279.049\\
+2001&283.361\\
+2002&286.575\\
+2003&288.471\\
+2004&290.570\\
+2005&293.577\\
+2006&299.891\\
+2007&307.672\\
+2008&315.459\\
+2009&319.368\\
+2010&317.630\\
+2011&318.452\\
+2012&319.575\\
+2013&321.857\\
+2014&325.671\\
+2015&329.100\\
+\bottomrule
+\end{tabular}
+
+\column{0.7\textwidth}
 \includegraphics[width=\linewidth]{Pics/kreppa}
 \end{columns}
 \end{frame}
-
-% 2000	279.049
-% 2001	283.361
-% 2002	286.575
-% 2003	288.471
-% 2004	290.570
-% 2005	293.577
-% 2006	299.891
-% 2007	307.672
-% 2008	315.459
-% 2009	319.368
-% 2010	317.630
-% 2011	318.452
-% 2012	319.575
-% 2013	321.857
-% 2014	325.671
-% 2015	329.100
 \end{document}
