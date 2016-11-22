@@ -26,6 +26,22 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Brigðgengni - Dæmi}
+\begin{center}
+Brigðgeng stöðuvél og jafngild löggeng stöðuvél
+\end{center}
+\begin{columns}
+\column{0.48\textwidth}
+\includegraphics[width=\linewidth]{nfa-example}
+\column{0.04\textwidth}
+\column{0.48\textwidth}
+\includegraphics[width=\linewidth]{nfa-equiv}
+\end{columns}
+\begin{center}
+Þær samþykkja málið $\{0^n , 0^n01, 0^n11 | n \geq 0\}$
+\end{center}
+\end{frame}
+
 \begin{frame}{Planið}
 \begin{itemize}
  \item Í dag: Turing-vélar + stoðtími
@@ -33,7 +49,6 @@
  \item Á föstudaginn: Skiladæmi þessarar viku + spurningar um námsefni misserisins
 \end{itemize}
 \end{frame}
-
 
 \section{Turing-vélar}
 
@@ -122,29 +137,32 @@ Látum $V$ vera hlutmengi stafrófs $I$. Turing vél $T$ með lokastöðum samþ
 
 \begin{frame}{Dæmi}
 Smíðum Turing vél sem samþykkir mál þeirra strengja sem hafa $0$ sem bita númer 2.
-
 \begin{center}
 \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
-  \node[state,initial]		(s0) 			{$s_0$};
-  \node[state]			(s1) [right = of s0]	{$s_1$};
-  \node[state]			(s2) [right = of s1]	{$s_2$};
-  \node[state, accepting]	(s3) [below = of s1]	{$s_3$};
-  
-  \path[->]
-%   (s0) edge [align=center,loop above] node{loooop} ()
-  (s0) edge [align=center, bend left = 25] node{$0, 0, R$} (s1)
-  (s0) edge [align=center, bend right = 25, below] node{$1, 1, R$} (s1)
-  (s1) edge [align=center] node{$0, 0, R$} (s2)
-  (s1) edge [align=center, right] node{$1, 1, R$} (s3)
-%   (s0) edge [align=center,bend left = 25,right] node{bend}(s1)
-  ;
+\node[state,initial]		(s0) 			{$s_0$};
+\node[state]			(s1) [right = of s0]	{$s_1$};
+\node[state]			(s2) [right = of s1]	{$s_2$};
+\node[state, accepting]	(s3) [below = of s1]	{$s_3$};
+
+\path[->]
+(s0) edge [align=center, bend left = 25] node{$0, 0, R$} (s1)
+(s0) edge [align=center, bend right = 25, below] node{$1, 1, R$} (s1)
+(s1) edge [align=center] node{$0, 0, R$} (s2)
+(s1) edge [align=center, right] node{$1, 1, R$} (s3)
+;
 \end{tikzpicture}
 \end{center}
 \end{frame}
 
 \begin{frame}{Dæmi}
+\tikzset{ font={\fontsize{8pt}{12}\selectfont}}
+\begin{columns}
+\column{0.35\textwidth}
 Smíðum Turing vél sem samþykkir málið $\{0^n1^n | n \geq 1\}$.
 
+Dæmi um meðhöndlun á strengnum $000111$: $M00111$,
+$M0011M$, $MM011M$, $MM01MM$, $MMM1MM$, $MMMMMM$
+\column{0.65\textwidth}
 \begin{center}
 \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
   \node[state,initial]		(s0) 			{$s_0$};
@@ -171,7 +189,96 @@ Smíðum Turing vél sem samþykkir málið $\{0^n1^n | n \geq 1\}$.
   ;
 \end{tikzpicture}
 \end{center}
+\end{columns}
 \end{frame}
+
+\section{Reikningar}
+
+\begin{frame}{Turing vél sem tölva}
+\begin{itemize}
+ \item Við getum séð fyrir okkur að Turing vélar séu ``tölvur'' sem reikna fallsgildi
+ \item Getum skilgreint fall með því að nota Turing vél
+ \begin{itemize}
+  \item Látum $x$ vera á bandinu þegar Turing vél $T$ byrjar keyrslu, $y$ þegar $T$ hefur lokið keyrslu
+  \item Skilgreinum þá $T(x) = y$
+ \end{itemize}
+ \item Við erum komin með stærðfræðilíkan af tölvu sem vinnur á strengjum!
+ \item Church-Turing Thesis: Fall á náttúrulegu tölurnar er reiknanlegt með reikniriti þá og því aðeins að það sé reiknanlegt með Turing vél
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Reiknigeta}
+\begin{itemize}
+ \item Turing vél af þeirri gerð sem við höfum skoðað getur framkvæmt alla útreikninga sem ``alvöru'' tölva getur framkvæmt
+ \begin{itemize}
+  \item Turing vél hefur óendanlegt minni og endanlegan fjölda staða
+  \item Alvöru tölva hefur endanlegt magn minnis
+ \end{itemize}
+ \item Turing vél gæti þurft mjög margar aðgerðir til að leysa vandamál, en reiknigetan er til staðar
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Endurbætur}
+\begin{itemize}
+ \item Flestar endurskilgreiningar á Turing vélum breyta ekki mengi þeirra vandamála sem hægt er að leysa!
+ \item Getum bannað ýmislegt
+ \begin{itemize}
+  \item Getum takmarkað okkur við tvö tákn
+  \item Getum látið bandið vera óendanlegt í einungis eina átt
+ \end{itemize}
+ \item Getum leyft meira:
+ \begin{itemize}
+  \item Getum leyft mörg bönd
+  \item Getum leyft tvívítt band
+  \item Getum leyft marga hausa
+  \item Getum leyft brigðgengni
+ \end{itemize}
+ \item Þessar breytingar geta hins vegar haft áhrif á keyrslutíma og hversu erfitt er að smíða vélina
+\end{itemize}
+\end{frame}
+
+\section{Gamlar skilgreiningar}
+
+\begin{frame}{Ákvörðunarvandamál}
+\begin{itemize}
+ \item Ákvörðunarvandamál á við flokk spurninga sem hafa svarið ``satt'' eða ``ósatt''
+ \begin{itemize}
+  \item Dæmi: Spurningaflokkurinn ``er $n$ prímtala?''
+  \item Þetta er ákvörðunarvandamál vegna þess að hver spurning á forminu hefur gildið ``satt'' eða ``ósatt''
+ \end{itemize}
+ \item Þegar til er reiknirit sem leysir tilvik ákvörðunarvandamálsins er ákvörðunarvandamálið kallað leysanlegt (e. \emph{solvable} eða \emph{decidable})
+ \item Það að vera með reiknirit sem leysir vandamálið er svipað því að vera með vél sem samþykkir mál þeirra strengja sem tákna tilvik vandamálsins þar sem svarið er ``satt''
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stöðvunarvandamálið}
+\begin{tcolorbox}[title=Stöðvunarvandamálið]
+Stöðvunarvandamálið (e. \emph{the halting problem}) er ákvörðunarvandamál sem á við spurninguna um hvort að Turing vél $T$ stöðvist þegar hún er keyrð á inntaksstrengnum $x$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Óleysanleiki stöðvunarvandamálsins]
+Stöðvunarvandamálið er óleysanlegt. Þ.e.a.s. engin Turing vél er til sem getur tekið við framsetningu á Turing vél $T$ og inntaksstreng $x$ fyrir $T$ og sagt til um hvort $T$ muni stöðvast þegar hún tekur $x$ sem inntak.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{P = NP}
+Höfum áður skilgreint mengin $P$ og $NP$ með því að tala um lausnir eða staðfestingu á lausnum á margliðutíma.
+\begin{tcolorbox}{P og NP}
+Ákvörðunarvandamál er í $P$ ef til er löggeng Turing-vél sem leysir vandamálið á margliðutíma m.t.t. stærð inntaksins.
+
+Ákvörðunarvandamál er í $NP$ ef til er brigðgeng Turing-vél sem leysir vandamálið á margliðutíma m.t.t. stærð inntaksins.
+\end{tcolorbox}
+$NP$ stendur fyrir \emph{nondeterministic polynomial time}.
+\end{frame}
+
+\begin{frame}
+\huge
+\[
+ P \overset{?}{=} NP
+\]
+
+\end{frame}
+
 
 
 \end{document}
