@@ -1,11 +1,8 @@
-./*.pdf
-FOR3R/*.pdf
-T1a/*.pdf
-Stærðfræðimynstur/*.pdf
-T2/*.pdf
 
-T1a/*verkefni*.tex
-Stærðfræðimynstur/*verkefni*.tex
+
+# Hunsa skjöl sem LaTeX þýðandinn býr til
+./*.pdf
+*/*.pdf
 
 *.nav
 *.snm
@@ -19,5 +16,16 @@ Stærðfræðimynstur/*verkefni*.tex
 *_minted*
 *.save
 *BACKUP
+
+# Hunsa próf og verkefni
+
 *Próf*
 *próf*
+*/*verkefni*.tex
+
+# Hunsa ruslskrár frá þróunarumhverfum í T2
+
+T2/Code/.idea/
+T2/Code/CMakeLists.txt
+T2/Code/cmake-build-debug/
+T2/Code/*/.vscode/
