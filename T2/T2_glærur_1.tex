@@ -17,7 +17,7 @@
 Upplýsingaskjal um námskeiðið má finna á Uglu!
 \end{frame}
 
-\section{C++}
+\section{C++ og þýðing}
 
 \begin{frame}{C++}
 \begin{itemize}
@@ -27,9 +27,18 @@ Upplýsingaskjal um námskeiðið má finna á Uglu!
   \item Höfum ýmis þægindi sem við búumst við af nútímaforritunarmálum
   \item Höfum líka ýmsa möguleika á beinni minnisstjórnun
  \end{itemize}
- \item Kom út snemma á 9. áratugnum, hefur verið mjög áhrifamikið
+ \item Kom út snemma á 9. áratugnum
 \end{itemize}
 \end{frame}
+
+\begin{frame}{Af hverju C++?}
+\begin{itemize}
+ \item Mörg mikilvæg tölvunarfræðihugtök sem eru vel sýnileg í C++
+ \item Málið hefur verið mjög áhrifamikið í málum sem á eftir koma
+ \item Praktískt, líklegt að fólk sem vinnur við forritun muni rekast á C-mál
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}[fragile]{Hello World forrit í C++}
 Hið hefðbundna forrit sem skrifar út ``halló heimur'', í C++:
@@ -77,6 +86,25 @@ Hér er \texttt{g++} skipunin sem keyrir upp GCC þýðandann fyrir forritskóð
 \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Að skoða milliskrár}
+Við getum stöðvað GCC á ýmsum stigum.
+
+Stöðvað eftir forþýðingu, skrifar oft út mikinn textavegg:
+\begin{minted}[frame=lines]{bash}
+$ g++ -E p.cpp
+\end{minted}
+Fá smalamálsframsetningu sem þýðandin býr til í skrána \texttt{p.s}:
+\begin{minted}[frame=lines]{bash}
+$ g++ -S p.cpp
+\end{minted}
+Sleppa tengingu, fá ``object code'' í skrána \texttt{p.o}:
+\begin{minted}[frame=lines]{bash}
+$ g++ -c p.cpp
+\end{minted}
+\end{frame}
+
+
+
 \begin{frame}[fragile]{Hvar er þessi þýðandi keyrður?}
 \begin{itemize}
  \item Við munum kynnast skipanalínunni
@@ -119,9 +147,154 @@ g++ (Ubuntu 5.4.0-6ubuntu1~16.04.4) 5.4.0 20160609
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Ritlar og þróunarumhverfi}
+Val á ritli og/eða þróunarumhverfi fyrir C++ skiptir ekki höfuðmáli í þessu námskeiði. Vitað er að \href{https://code.visualstudio.com/}{Microsoft VS Code} (ritill) og \href{https://www.jetbrains.com/student/}{CLion} (þróunarumhverfi) ``virka''.
+
+\begin{center}
+\includegraphics[width=\linewidth]{editors}
+\end{center}
+\end{frame}
+
+\section{Málfræði C++}
+
+\begin{frame}[fragile]{Grundvallarmálfræði}
+Mikið af grundvallarmálfræði (en ekki allri virkni!) C++ ætti að vera kunnuglegt þeim sem þekkja til Java.
+\begin{columns}
+\column{0.6\textwidth}
+\cppfile[firstline=5,lastline=10,gobble=4,fontsize=\small, linenos=false]{Code/w1/javacomparison.cpp}
+\column{0.4\textwidth}
+\cppfile[firstline=13,lastline=15,fontsize=\small, linenos=false]{Code/w1/javacomparison.cpp}
+\end{columns}
+Leggjum héðan af áherslu á þá hluta sem eru öðru vísi en í Java.
+\end{frame}
+
+\begin{frame}{\#include}
+\begin{itemize}
+ \item Í C++ hefjast skipanir til forþýðandans á \#
+ \item Það sem við gerum langoftast er:
+ \begin{itemize}
+  \item ``Taktu skipanir úr þessari skrá og settu þær hingað''
+  \item Höfum þegar séð skipunina \texttt{\#include <iostream>}
+ \end{itemize}
+ \item \texttt{\#include} vinnur á hausskrám (e. \emph{header files}), sem innihalda eingöngu forritslýsingar
+ \item Útfærslan á þeim forritum sem er síðan ``annars staðar'' og er tengdar seinna
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Nafnarými}
+\texttt{cout} skipunin (og mun fleiri) eru í \texttt{std} nafnarýminu (e. \emph{namespace}). Við getum sagt þýðandanum að leita í ákveðnum nafnarýmum:
+\cppfile[label=namespace.cpp]{Code/w1/namespace.cpp}
+\end{frame}
+
+\begin{frame}{Nákvæmari innflutningur}
+\cppfile[label=namespacespecific.cpp]{Code/w1/namespacespecific.cpp}
+\end{frame}
+
+\section{Straumar, inntak og úttak}
+
+\begin{frame}{Inntak og úttak}
+Í C++ eru straumarnir mjög sýnilegir.
+\cppfile[label=input.cpp, firstline=7, lastline=17, gobble=4, fontsize=\small]{Code/w1/input.cpp}
+\end{frame}
+
+\begin{frame}[fragile]{Skipanalínan}
+Skipanalína og straumar virka vel saman.
+\begin{columns}
+\column{0.3\textwidth}
+\inputminted[frame=lines,label=numbers.txt]{bash}{Code/w1/numbers.txt}
+\column{0.6\textwidth}
+\cppfile[firstline=7, lastline=12, gobble=4, label=loopyinput.cpp]{Code/w1/loopyinput.cpp}
+\end{columns}
+\begin{minted}[frame=lines]{bash}
+$ cat numbers.txt | ./loopyinput 
+29
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Skilatáknið}
+Skilatákn (e. \emph{exit code}) forrita sem keyra á skipanalínunni eru aðgengilegt á skipanalínunni. Í bash (Linux skel) er síðasta skilatákn geymt í breytunni \texttt{\$?}.
+
+\begin{minted}[frame=lines]{bash}
+$ g++ hello.cpp -o hello
+$ echo $?
+0
+\end{minted}
+\end{frame}
+
+\section{Inngangur að fylkjum og strengum}
+
+\begin{frame}[fragile]{Fylki}
+Líkt og í Java eru venjuleg fylki af fastri stærð. Þýðandinn tekur frá minnisblokk af ákveðinni stærð fyrir fylki og notar fjarlægðina frá upphafi blokkarinnar til að vísa í stök fylkisins.
+
+Dæmi um fylki:
+\begin{minted}[frame=lines]{cpp}
+int numbers1[5] = {}; // initializes all integers to 0
+int numbers2[5] = {34, 56, -21, 5002, 365};
+int numbers3[] = {2016, 2052, -525}; // 3 elements
+\end{minted}
+Vísar í fylki í C++ byrja í 0.
+
+\end{frame}
+
+\begin{frame}{Varúð!}
+C++ forrit þýðast og keyrast þó vísað sé út fyrir fylki.
+\cppfile[firstline=2, label=arraydanger.cpp]{Code/w1/arraydanger.cpp}
+\end{frame}
+
+\begin{frame}[fragile]{Oftast betri kostur}
+\texttt{vector} gagnagerðin í staðalsafninu er oftast þægilegri - býður meðal annars upp á að stækka vigurinn.
+\cppfile[firstline=7, lastline=17, fontsize=\small, label=vectorexample.cpp]{Code/w1/vectorexample.cpp}
+\end{frame}
+
+\begin{frame}{Strengir}
+C++ getur unnið með strengi eins og þeir eru í forritunarmálinu C - fylki af táknum. Strengirnir sem við höfum séð hingað til hafa flestir verið af slíkri gerð.
+\cppfile[firstline=6, lastline=12, fontsize=\small, label=nullterm.cpp]{Code/w1/nullterm.cpp}
+Strengjunum er ``lokað'' með sértákninu \texttt{'\textbackslash0'}. Strengjavinnsla hættir á þeim stað.
+\end{frame}
+
+\begin{frame}{Strengir}
+Strengir úr C++ staðalsafninu eru skilvirkir og hafa ýmsa þægilega eiginleika.
+
+
+\end{frame}
+
+
+\section{Inngangur að bendum}
+
+\begin{frame}{Bendar}
+\begin{itemize}
+ \item Bendir er breyta sem inniheldur staðsetningu minnissvæðis
+ \begin{itemize}
+  \item Hún ``bendir á'' minnissvæðið
+ \end{itemize}
+ \item Hægt er að nota bendinn til að fá aðgang að gögnunum sem geymd eru í minnissvæðinu
+\end{itemize}
+\begin{center}
+\includegraphics[width=\textwidth]{pointer-visualization}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Bendar}
+Við búum til bendi sem vísar á breytu af gerðinni \texttt{gerd} með \texttt{gerd*}. Við náum í staðsetningu minnissvæðis með \texttt{\&} virkjanum.
+\cppfile[firstline=6, lastline=10, gobble=4, fontsize=\small, label=pointerintro.cpp]{Code/w1/pointerintro.cpp}
+\end{frame}
+
+\begin{frame}[fragile]{Bendar}
+Við getum sótt gögn sem bendir vísar á með \texttt{*} virkjanum.
+\cppfile[firstline=6, lastline=15, gobble=4, fontsize=\small, label=dereferencing.cpp]{Code/w1/dereferencing.cpp}
+\end{frame}
+
+
+\section{Lokaorð}
+
+\begin{frame}{Þessi glærupakki}
+Öll nafngreind forrit í þessum glærupakka, ásamt glærupakkanum sjálfum, má finna á  \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w1}{Github}.
+
+\end{frame}
 
 
 \begin{frame}{Næst}
+Meira um minnismódelið í C++, hlutbundin forritun í C++.
 \end{frame}
 
 

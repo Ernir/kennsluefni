@@ -17,11 +17,12 @@
 *.save
 *BACKUP
 
-# Hunsa próf og verkefni
+# Hunsa próf og sum verkefni
 
 *Próf*
 *próf*
-*/*verkefni*.tex
+T1a/*verkefni*.tex
+Mynstur/*verkefni*.tex
 
 # Hunsa ruslskrár frá þróunarumhverfum í T2
 
@@ -29,3 +30,6 @@ T2/Code/.idea/
 T2/Code/CMakeLists.txt
 T2/Code/cmake-build-debug/
 T2/Code/*/.vscode/
+T2/Code/*/*
+!T2/Code/*/*.cpp
+!T2/Code/*/*.txt

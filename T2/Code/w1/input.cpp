@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
+
 using namespace std;
-int main()
-{
+
+int main() {
     // Declare a variable to store an integer
     int inputNumber;
     cout << "Enter an integer: ";
