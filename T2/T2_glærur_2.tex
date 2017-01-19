@@ -183,11 +183,90 @@ Tvær leiðir til að skrifa út stökin sem eru í þriggja staka fylkinu \text
 
 \section{Hlutbundin forritun í C++}
 
+\begin{frame}{Hlutbundin forritun}
+\begin{itemize}
+ \item Ein aðalástæðan fyrir því að C++ var búið til er að forritunarmálið C styður ekki hlutbundna forritun
+ \item Hlutbundin forritun hefur ýmsar birtingarmyndir, en í C++ og málum sem á eftir koma höfum við:
+ \begin{itemize}
+  \item Hlutir (e. \emph{objects}) - grundvallareiningin í hlutbundinni forritun
+  \begin{itemize}
+   \item Hlutur er ``pakki'' af gögnum og aðgerðum á gögnin
+  \end{itemize}
+  \item Klasar (e. \emph{classes}) eru notaðir til að skilgreina ``gerð'' af hlutum 
+ \end{itemize}
+ \item Tölum um að hlutur sé tilvik (e. \emph{instance}) af klasa
+ \item Getum litið á það sem svo að hlutbundin forritun sé leið okkar til að bæta við tögunarkerfi málsins
+\end{itemize}
+\end{frame}
 
+\begin{frame}{Klasi í C++}
+\begin{itemize}
+ \item Gerum ráð fyrir að hugmyndin um smið (e. \emph{constructor}) sé þekkt
+ \begin{itemize}
+  \item Aðferð sem kallað er á þegar tilvik af klasa er búið til
+  \item Smiður heitir það sama og klasinn
+ \end{itemize}
+ \item í C++ bætum við við hugmyndinni um eyði (e. \emph{destructor}) 
+ \begin{itemize}
+  \item Í eyði eigum við að skila öllum kvikstæðum breytum!
+  \item Í C++ heitir eyðir það sama og klasinn, en nú með \textasciitilde fyrir framan
+ \end{itemize}
+\end{itemize}
+\end{frame}
 
-\subsection{Helstu hugtök í hlutbundinni forritun}
+\begin{frame}{Dæmi um klasa}
 
+\end{frame}
 
+\begin{frame}{Merkilegri klasar}
+\begin{itemize}
+ \item Skólabókardæmi um klasa/hluti líkja oft eftir efnislegum hlutum
+ \begin{itemize}
+  \item Frekar klént
+ \end{itemize}
+ \item Hlutbundin aðferðafræði er þó iðulega notuð um ``hluti'' sem samsvara ekki neinum hlutum sem hægt væri að snerta
+ \begin{itemize}
+  \item \texttt{DatabaseConnection}, \texttt{ResourceManager}, \texttt{JSONEncoder}, \ldots
+ \end{itemize}
+ \item Munum nota hlutbundna forritun til að útfæra ýmsar gagnagrindur seinna í námskeiðinu
+\end{itemize}
+\end{frame}
+
+\section{Fleiri hugtök úr hlutbundinni forritun}
+
+\begin{frame}{Hugtök í hlutbundinni forritun}
+\begin{itemize}
+ \item Þó nokkur hugtök koma við sögu í 
+ \begin{itemize}
+  \item Erfðir (e. \emph{inheritance}) - hægt er að skilgreina klasa með vísun í annan klasa
+  \item Hjúpun (e. \emph{encapsulation}) - hægt er að vernda virkni hlutar með því að takmarka aðgang að innviðum hlutarins
+  \item Abstraction - hægt er að sýna upplýsingar til að vinna með hlut án þess að sýna hvernig hluturinn er útfærður
+  \item Polymorphism - mismunandi klasar geta brugðist við sama boði á mismunandi hátt (kemur oft í erfðum)
+  \item Fjölbinding (e. \emph{overloading}) - hægt er að skilgreina margar mismunandi merkingar fyrir sama fallsnafn eða virkja, aðgerð skilgreinist af samhengi
+ \end{itemize}
+ \item Skoðum sérstaklega erfðir (því erfðir eru mikilvægar) og fjölbindingu (því hún kemur lítið við sögu í Java)
+\end{itemize}
+\end{frame}
+
+\subsection{Erfðir}
+
+\begin{frame}{Erfðir}
+
+\end{frame}
+
+\subsection{Fjölbinding falla}
+
+\subsection{Fjölbinding virkja}
+
+\begin{frame}{Fjölbinding}
+\begin{itemize}
+ \item Við könnumst nú þegar við það að virki geti virkað á mismunandi hátt á mismunandi gögn!
+ \begin{itemize}
+  \item $1 + 2$ er ekki reiknað á sama hátt og $\frac{2}{3} + \frac{4}{3}$, þó við skiljum aðgerðina á sama hátt
+ \end{itemize}
+ \item Í C++ getum við skilgreint hvaða merkingu virki á að hafa á tilvik klasanna okkar
+\end{itemize}
+\end{frame}
 
 
 \section{Lokaorð}
@@ -196,13 +275,13 @@ Tvær leiðir til að skrifa út stökin sem eru í þriggja staka fylkinu \text
 Tengill á fyrirlestraræfingu: \url{https://goo.gl/forms/qaB2Hoxwd6PFEN9I2}
 \vspace{1cm}
 
-Öll nafngreind forrit í þessum glærupakka, ásamt glærupakkanum sjálfum, má finna á  \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w1}{Github}.
+Öll nafngreind forrit í þessum glærupakka, ásamt glærupakkanum sjálfum, má finna á  \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w2}{Github}.
 
 \end{frame}
 
 
 \begin{frame}{Næst}
-Frekari forritun í C++, staðalsafnið.
+Staðalsafn C++
 \end{frame}
 
 
