@@ -30,7 +30,7 @@ int main() {
     // Fill up the areas array
     areas = pizzaArea(areas, pizzaSizes, numSizes);
 
-    // Inspect what 
+    // Inspect what happened
     for (int i = 0; i < numSizes; i++) {
         cout << areas[i] << " ";
     }
