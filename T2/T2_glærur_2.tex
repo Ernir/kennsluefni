@@ -11,31 +11,6 @@
 \titlepage
 \end{frame}
 
-% \section{Inngangur að bendum}
-% 
-% \begin{frame}{Bendar}
-% \begin{itemize}
-%  \item Bendir er breyta sem inniheldur staðsetningu minnissvæðis
-%  \begin{itemize}
-%   \item Hún ``bendir á'' minnissvæðið
-%  \end{itemize}
-%  \item Hægt er að nota bendinn til að fá aðgang að gögnunum sem geymd eru í minnissvæðinu
-% \end{itemize}
-% \begin{center}
-% \includegraphics[width=\textwidth]{pointer-visualization}
-% \end{center}
-% \end{frame}
-% 
-% \begin{frame}[fragile]{Bendar}
-% Við búum til bendi sem vísar á breytu af gerðinni \texttt{gerd} með \texttt{gerd*}. Við náum í staðsetningu minnissvæðis með \texttt{\&} virkjanum.
-% \cppfile[firstline=6, lastline=10, gobble=4, fontsize=\small, label=pointerintro.cpp]{Code/w1/pointerintro.cpp}
-% \end{frame}
-% 
-% \begin{frame}[fragile]{Bendar}
-% Við getum sótt gögn sem bendir vísar á með \texttt{*} virkjanum.
-% \cppfile[firstline=6, lastline=15, gobble=4, fontsize=\small, label=dereferencing.cpp]{Code/w1/dereferencing.cpp}
-% \end{frame}
-
 \section{Breytur og minni í C++}
 
 \begin{frame}{Líftími breyta}
@@ -74,7 +49,7 @@
  \begin{itemize}
   \item Líftími staðværra (e. \emph{local}) breyta er ákvarðaður sjálfkrafa og þær eru settar á hlaðann
   \item Víðværar (e. \emph{global}) breytur og breytur skilgreindar sem \texttt{static} fara í gagnasvæðið
-  \item Kvikstæðar breytur fást með sérstökum minnisúthlutunaraðgerðum eins og \textbf{new} og eru settar í kös
+  \item Kvikstæðar breytur fást með sérstökum minnisúthlutunaraðgerðum eins og \texttt{new} og eru settar í kös
  \end{itemize}
 \end{itemize}
 \end{frame}
@@ -128,16 +103,87 @@ Vond uppskipting
 \end{columns}
 \end{frame}
 
-\begin{frame}{Að setja hluti í kös}
+\subsection{Upprifjun á bendum}
+
+\begin{frame}{Bendar}
+\begin{itemize}
+ \item Bendir er breyta sem inniheldur staðsetningu minnissvæðis
+ \begin{itemize}
+  \item Hún ``bendir á'' minnissvæðið
+ \end{itemize}
+ \item Hægt er að nota bendinn til að fá aðgang að gögnunum sem geymd eru í minnissvæðinu
+ \begin{itemize}
+  \item {\color{red} Nýtt}: Gagnlegt þegar gögnin eru í kös!
+ \end{itemize}
+\end{itemize}
+\begin{center}
+\includegraphics[width=\textwidth]{pointer-visualization}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Bendar}
+Við getum búið til bendi sem vísar á breytu af gerðinni \texttt{gerd} með \texttt{gerd*}, náð í  staðsetningu minnissvæðis með \texttt{\&} virkjanum og sótt gögn sem bendir vísar á með \texttt{*} virkjanum
+
+\cppfile[firstline=6, lastline=15, gobble=4, fontsize=\small, label=dereferencing.cpp]{Code/w1/dereferencing.cpp}
+\end{frame}
+
+\begin{frame}[fragile]{Nýtt trix}
+Nýtt trix: Notum \texttt{new} til að taka frá minnissvæði í kös fyrir breytu og skila bendi á minnissvæðið.
+\begin{minted}[fontsize=\small, frame=lines]{cpp}
+// request memory for one element
+Type* pointer = new Type;
+// request memory for numElements
+Type* pointer = new Type[numElements];
+\end{minted}
+Til að taka frá minni í kös fyrir heiltölur:
+\begin{minted}[fontsize=\small, frame=lines]{cpp}
+// get a pointer to an integer
+int* pointToAnInt = new int;
+// pointer to a block of 10 integers
+int* pointToNums = new int[10];
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{new og delete}
+
+\cppfile[firstline=11, lastline=18, gobble=4, fontsize=\small, label=dynamicdouble.cpp]{Code/w2/dynamicdouble.cpp}
 
 \end{frame}
 
-\begin{frame}{Notkun viðfanga í C++}
+\subsection{Föll og breytur}
 
+\begin{frame}{Föll og breytur í C++}
+\begin{itemize}
+ \item Við höfum töluverða stjórn á hvernig C++ meðhöndlar inntaksbreytur og skilabreytur
+ \item Sjálfgefið er að C++ noti gildisviðföng (e. \emph{value passing})
+ \begin{itemize}
+  \item En stundum er það ekki skilvirkt
+  \item Stundum er það það ekki mögulegt
+ \end{itemize}
+ \item Annar möguleiki: Taka inn og skila bendum
+\end{itemize}
 \end{frame}
 
+\begin{frame}{Meira um fylki í C++}
+Munum: ``gamaldags'' fylki í C++ eru þunn skel utan um benda.
+
+\cppfile[firstline=6, lastline=9, gobble=4, label=arraysandpointers.cpp]{Code/w2/arraysandpointers.cpp}
+Þetta setur takmarkanir á hvernig hægt er að nota fylki sem inntaks- og úttaksbreytur.
+\end{frame}
+
+\begin{frame}{Fylki sem bendar}
+Tvær leiðir til að skrifa út stökin sem eru í þriggja staka fylkinu \texttt{pizzaSizes}
+\begin{columns}
+\column{0.45\textwidth}
+\cppfile[firstline=10, lastline=17, gobble=4, label=arraysandpointers.cpp, fontsize=\scriptsize, linenos=false]{Code/w2/arraysandpointers.cpp}
+\column{0.55\textwidth}
+\cppfile[firstline=22, lastline=27, gobble=4, label=arraysandpointers.cpp, fontsize=\scriptsize, linenos=false]{Code/w2/arraysandpointers.cpp}
+\end{columns}
+\end{frame}
 
 \section{Hlutbundin forritun í C++}
+
+
 
 \subsection{Helstu hugtök í hlutbundinni forritun}
 
