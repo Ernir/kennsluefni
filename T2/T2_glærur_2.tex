@@ -199,24 +199,199 @@ Tvær leiðir til að skrifa út stökin sem eru í þriggja staka fylkinu \text
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Klasi í C++}
+\begin{frame}{Dæmi um klasa}
+Klasi sem táknar mannveru og \texttt{main} fall sem býr til tilvik.
+\begin{columns}
+\column{0.45\textwidth}
+\cppfile[firstline=6, lastline=15, label=human.cpp, fontsize=\tiny, linenos=true]{Code/w2/human.cpp}
+\column{0.45\textwidth}
+\cppfile[firstline=17, lastline=30, label=human.cpp, fontsize=\tiny, linenos=true]{Code/w2/human.cpp}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Hlutir og bendar}
+\begin{columns}
+\column{0.45\textwidth}
+\begin{itemize}
+ \item Við viljum ekki alltaf vera með hluti á hlaðanum
+ \begin{itemize}
+  \item Tilvik af klösum geta verið mjög stór, sprengja hlaðann hratt
+ \end{itemize} 
+ \item Hægt er að vinna með benda á hluti
+ \item Til að vísa í eiginleika hlutar út frá bendi er hægt að nota virkjann \texttt{->}
+ \item Einnig ekki ómögulegt að sækja fyrst gildið og nota svo punktvirkja
+\end{itemize}
+\column{0.45\textwidth}
+\cppfile[firstline=31, lastline=35, label=human.cpp, fontsize=\tiny, linenos=true]{Code/w2/human.cpp}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Smiður og eyðir}
 \begin{itemize}
  \item Gerum ráð fyrir að hugmyndin um smið (e. \emph{constructor}) sé þekkt
  \begin{itemize}
   \item Aðferð sem kallað er á þegar tilvik af klasa er búið til
   \item Smiður heitir það sama og klasinn
+  \item Ef við skrifum ekki smið fáum við sjálfgefinn smið
  \end{itemize}
  \item í C++ bætum við við hugmyndinni um eyði (e. \emph{destructor}) 
  \begin{itemize}
   \item Í eyði eigum við að skila öllum kvikstæðum breytum!
   \item Í C++ heitir eyðir það sama og klasinn, en nú með \textasciitilde fyrir framan
+  \item Ef við skrifum ekki eyði fáum við sjálfgefinn eyði
  \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Dæmi um klasa}
-
+\begin{frame}{Smiður}
+\begin{columns}
+\column{0.45\textwidth}
+\begin{itemize}
+ \item Skilgreini forritari smið er sjálfgefna smiðnum ekki bætt við sjálfkrafa
+ \item Við getum verið með marga smiði!
+ \begin{itemize}
+  \item Sjá fjölbindingu, aðeins seinna
+ \end{itemize}
+ \item Hér sést líka bendirinn \texttt{this}, sem vísar á núverandi tilvik
+\end{itemize}
+\column{0.5\textwidth}
+\cppfile[firstline=6, label=constructhuman.cpp, fontsize=\tiny, linenos=true]{Code/w2/constructhuman.cpp}
+\end{columns}
 \end{frame}
+
+\begin{frame}[fragile]{Eyðir}
+\begin{columns}
+\column{0.45\textwidth}
+\begin{itemize}
+ \item Líkt og með smiði höfum við líka sjálfgefinn eyði
+ \item Ef við úthlutuðum minni með \texttt{new} í klasanum er hér síðasti séns til að gera \texttt{delete}!
+ \item ``Þægilegri'' C++ fyrirbrigði eins og \texttt{vector} og \texttt{string} eru með góða eyða
+\end{itemize}
+\column{0.45\textwidth}
+\begin{minted}[frame=lines]{cpp}
+class Human {
+public:
+  ~Human() {
+    // destructor code here
+  }
+};
+\end{minted}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Afritssmiðir}
+\begin{itemize}
+ \item Hlutir sem innihalda benda á kvikstæð minnissvæði geta valdið vandræðum við afritun
+ \item Ef hluturinn er afritaður, hvað kemur fyrir bendinn?
+ \begin{itemize}
+  \item Við grunna afritun (e. \emph{shallow copy}) er eingöngu bendirinn afritaður - vandamál!
+  \item Við djúpa afritun (e. \emph{deep copy}) er afritinu líka úthlutað nýju kvikstæðu minnissvæði
+ \end{itemize}
+ \item Til að tryggja djúpa afritun þurfum við að búa til sérstakan afritssmið
+ \item Sjá einnig: ``move constructors'', nýtt í C++11
+\end{itemize}
+\end{frame}
+
+\section{Fleiri hugtök úr hlutbundinni forritun}
+
+\begin{frame}{Hugtök í hlutbundinni forritun}
+\begin{itemize}
+ \item Þó nokkur hugtök eru notuð síendurtekið þegar hlutbundin forritun er rædd
+ \begin{itemize}
+  \item Erfðir (e. \emph{inheritance}) - hægt er að skilgreina klasa með vísun í annan klasa
+  \item Hjúpun (e. \emph{encapsulation}) - hægt er að vernda virkni hlutar með því að takmarka aðgang að innviðum hlutarins
+  \item Abstraction - hægt er að sýna upplýsingar til að vinna með hlut án þess að sýna hvernig hluturinn er útfærður
+  \item Polymorphism - mismunandi klasar geta brugðist við sama boði á mismunandi hátt (kemur oft í erfðum)
+  \item Fjölbinding (e. \emph{overloading}) - hægt er að skilgreina margar mismunandi merkingar fyrir sama fallsnafn eða virkja, aðgerð skilgreinist af samhengi
+ \end{itemize}
+ \item Skoðum sérstaklega erfðir (því erfðir eru mikilvægar) og fjölbindingu virkja (því hún kemur lítið við sögu í Java)
+\end{itemize}
+\end{frame}
+
+\subsection{Erfðir}
+
+\begin{frame}{Erfðir}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Í hlutbundinni forritun eru klasar sem eiga margt sameiginlegt tengdir saman með erfðum
+ \item Klasi B er skilgreindur með því að vísa í eiginleika klasa A
+ \begin{itemize}
+  \item Þá er talað um að B erfi frá (e. \emph{inherits from}) klasa A
+ \end{itemize}
+ \item Getur verið gríðarlega gagnlegt til að forðast endurtekningar í kóða
+\end{itemize}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{fishies}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Að skilgreina erfðir}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Þegar klasi $B$ erfir frá $A$ fær $B$ aðgang að aðferðum og eiginleikum $A$
+ \item Síðan höfum við val um hversu mikinn aðgang tilvik af $B$ hafa að eiginleikum $A$
+ \item Venjulega munum við nota \texttt{public} aðgang
+\end{itemize}
+\column{0.5\textwidth}
+\begin{minted}[frame=lines, fontsize=\small]{cpp}
+class A {
+  // ... base class members
+};
+class B: access-specifier A {
+  // ... derived class members
+};
+\end{minted}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi}
+Tvær gerðir af \texttt{Fish} sem eiga það sameiginlegt að geta framkvæmt \texttt{swim()}.
+\begin{columns}
+\column{0.45\textwidth}
+\cppfile[firstline=5, lastline=15, label=fishies.cpp, fontsize=\tiny, linenos=true]{Code/w2/fishies.cpp}
+\column{0.45\textwidth}
+\cppfile[firstline=17, lastline=22, label=fishies.cpp, fontsize=\tiny, linenos=true]{Code/w2/fishies.cpp}
+\cppfile[firstline=24, lastline=29, label=fishies.cpp, fontsize=\tiny, linenos=true]{Code/w2/fishies.cpp}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dæmi}
+\begin{itemize}
+ \item Við getum látið tilvik af undirklösum vinna með aðferðir yfirklasa
+ \item Getum ákveðið hvernig aðferðirnar eru bundnar
+ \begin{itemize}
+  \item Þegar forritið er þýtt (e. \emph{early binding})
+  \item Þegar forritið er keyrt og tag hlutarins ljóst (e. \emph{late binding})
+ \end{itemize}
+ \item Getum tilgreint ``late binding'' með \texttt{virtual} lykilorðinu
+ \item Sjá: polymorphismi!
+\end{itemize}
+\end{frame}
+
+\subsection{Fjölbinding virkja}
+
+\begin{frame}{Fjölbinding}
+\begin{itemize}
+ \item Við könnumst nú þegar við það að virki geti virkað á mismunandi hátt á mismunandi gögn!
+ \begin{itemize}
+  \item $1 + 2$ er ekki reiknað á sama hátt og $\frac{2}{3} + \frac{4}{3}$, þó við skiljum aðgerðina á sama hátt
+  \item Það sama á við í forritun - samlagning á tveimur \texttt{double} tölum fer ekki eins fram og samlagning á tveimur \texttt{int} tölum
+ \end{itemize}
+ \item Í C++ getum við skilgreint hvaða merkingu virki á að hafa á tilvik klasanna okkar
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fjölbinding í C++}
+Við getum skilgreint hvernig tvíundarvirkjar (með tvö viðföng) virka á tilvik af klasanum okkar með því að skilgreina nýja aðferð í klasanum:
+\begin{center}
+\texttt{return\_type operator\_type (parameter);}
+\end{center}
+Lítum á \texttt{lego.cpp}!
+\end{frame}
+
+\section{Lokaorð}
 
 \begin{frame}{Merkilegri klasar}
 \begin{itemize}
@@ -228,55 +403,15 @@ Tvær leiðir til að skrifa út stökin sem eru í þriggja staka fylkinu \text
  \begin{itemize}
   \item \texttt{DatabaseConnection}, \texttt{ResourceManager}, \texttt{JSONEncoder}, \ldots
  \end{itemize}
- \item Munum nota hlutbundna forritun til að útfæra ýmsar gagnagrindur seinna í námskeiðinu
+ \item Munum nota hlutbundna forritun til að útfæra ýmsar gagnagrindur
 \end{itemize}
 \end{frame}
-
-\section{Fleiri hugtök úr hlutbundinni forritun}
-
-\begin{frame}{Hugtök í hlutbundinni forritun}
-\begin{itemize}
- \item Þó nokkur hugtök koma við sögu í 
- \begin{itemize}
-  \item Erfðir (e. \emph{inheritance}) - hægt er að skilgreina klasa með vísun í annan klasa
-  \item Hjúpun (e. \emph{encapsulation}) - hægt er að vernda virkni hlutar með því að takmarka aðgang að innviðum hlutarins
-  \item Abstraction - hægt er að sýna upplýsingar til að vinna með hlut án þess að sýna hvernig hluturinn er útfærður
-  \item Polymorphism - mismunandi klasar geta brugðist við sama boði á mismunandi hátt (kemur oft í erfðum)
-  \item Fjölbinding (e. \emph{overloading}) - hægt er að skilgreina margar mismunandi merkingar fyrir sama fallsnafn eða virkja, aðgerð skilgreinist af samhengi
- \end{itemize}
- \item Skoðum sérstaklega erfðir (því erfðir eru mikilvægar) og fjölbindingu (því hún kemur lítið við sögu í Java)
-\end{itemize}
-\end{frame}
-
-\subsection{Erfðir}
-
-\begin{frame}{Erfðir}
-
-\end{frame}
-
-\subsection{Fjölbinding falla}
-
-\subsection{Fjölbinding virkja}
-
-\begin{frame}{Fjölbinding}
-\begin{itemize}
- \item Við könnumst nú þegar við það að virki geti virkað á mismunandi hátt á mismunandi gögn!
- \begin{itemize}
-  \item $1 + 2$ er ekki reiknað á sama hátt og $\frac{2}{3} + \frac{4}{3}$, þó við skiljum aðgerðina á sama hátt
- \end{itemize}
- \item Í C++ getum við skilgreint hvaða merkingu virki á að hafa á tilvik klasanna okkar
-\end{itemize}
-\end{frame}
-
-
-\section{Lokaorð}
 
 \begin{frame}{Þessi glærupakki}
-Tengill á fyrirlestraræfingu: \url{https://goo.gl/forms/qaB2Hoxwd6PFEN9I2}
+Tengill á fyrirlestraræfingu: \url{https://goo.gl/forms/CtaT9EV2f9xjpEC92}
 \vspace{1cm}
 
 Öll nafngreind forrit í þessum glærupakka, ásamt glærupakkanum sjálfum, má finna á  \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w2}{Github}.
-
 \end{frame}
 
 
