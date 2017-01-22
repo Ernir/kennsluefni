@@ -16,7 +16,7 @@ Skrifið C++ fall \texttt{readToArray} sem tekur tölu $n$ sem inntaksbreytu, le
 
 Skrifið síðan C++ fall \texttt{readToVector} sem gerir það sama, en les inn í og skilar \texttt{std::vector} breytu.
 
-Skrifið að lokum \texttt{main} fall sem kallar á bæði föllin með $n = 3$ og skilar summu allra talnanna (6 alls). Gætið þess að öllu minni sé skilað. Sýnið dæmi um keyrslu.
+Skrifið að lokum \texttt{main} fall sem kallar á bæði föllin með $n = 3$ og skrifar út summu allra talnanna (6 alls). Gætið þess að öllu minni sé skilað. Sýnið dæmi um keyrslu.
 
 \section{Spurning 2}
 Eintengdur listi (e. \emph{singly linked list}) er einföld gagnagerð. Hún samanstendur af hnútum sem innihalda gögn og tengingum þeirra á milli. Tengingin er í eina átt - hver hnútur vísar á nákvæmlega einn annan hnút og tengingin myndar aldrei rás.
@@ -33,11 +33,7 @@ class Node {
     Node(int data, Node* next) {
       this->data = data;
       this->next = next;
-    }
-
-    Node* search(Node* head, int n) {
-      return head;
-    }
+    }    
 };
 \end{minted}
 
@@ -83,9 +79,9 @@ Skrifið klasann \texttt{Complex} sem bætir tvinntölustuðningi við C++. Tvin
 \begin{itemize}
  \item Samlagningu tveggja tvinntalna. Samlagning tvinntalna $z = a + bi$ og $w = c + di$ skilgreinist af $z + w = (a+c) + (b+d)i$. Samlagning skal vera studd með fjölbindingu á \texttt{+} virkjanum.
  \item Frádrátt einnar tvinntölu frá annarri. Frádráttur tvinntalna $z = a + bi$ og $w = c + di$ skilgreinist af $z + w = (a-c) + (b-d)i$. Frádráttur skal vera studdur með fjölbindingu á \texttt{-} virkjanum.
- \item Margföldun tveggja tvinntalna. Margföldun tvinntalna $z = a + bi$ og $w = c + di$ skilgreinist af $zw = (ac -bd) + (bc-ad)i$.
+ \item Margföldun tveggja tvinntalna. Margföldun tvinntalna $z = a + bi$ og $w = c + di$ skilgreinist af $zw = (ac -bd) + (bc+ad)i$.
  Margföldun skal vera studd með fjölbindingu á \texttt{*} virkjanum.
- \item Útreikning samokatölu. Samokatala $z = a+bi$ er $\overline{z} = a-bi$. Samokatölu skal útfæra í aðferðinni \texttt{conjugate}.
+ \item Útreikning samokatölu. Samokatala $z = a+bi$ er $\overline{z} = a-bi$. Útreikning á samokatölu skal útfæra í aðferðinni \texttt{conjugate}.
  \item Útskrift á skipanalínu á forminu \texttt{a + bi}.
 \end{itemize}
 Sýnið dæmi um keyrslu þar sem tölurnar $z = -3.5 + 2i$ og $w = -1+3i$ eru lagðar saman, $w$ er dregin frá $z$, þær margfaldaðar saman og samokatala $z$ er reiknuð. Skrifið út niðurstöður útreikninganna með útskriftaraðferðinni.
