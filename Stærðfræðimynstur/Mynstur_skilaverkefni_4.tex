@@ -1,0 +1,100 @@
+\documentclass{exam}
+
+\input{../Haust2016verkefnablöð}
+
+\title{Stærðfræðimynstur í tölvunarfræði \\ Skilaverkefni 4}
+\author{}
+
+\printanswers
+
+\begin{document}
+\maketitle
+\thispagestyle{empty} 
+
+Skila skal þessu verkefni á vefnum \href{https://gradescope.com/}{Gradescope}. Aðgangskóði fyrir námskeiðið er \textbf{926WD9}.
+
+Samvinna á milli nemenda er eðlileg og æskileg. Hins vegar er hvorki æskilegt né heimilt að fá lausnir hjá öðrum (þ.m.t. Google), afrita lausnir eða láta aðra fá lausnina sína. Í slíkum tilvikum er einkunnin 0 gefin sem fyrsta viðvörun. Hikið ekki við að leita til umsjónarkennara ef þið eruð í vafa um hvað telst eðlileg samvinna og hvað ekki.
+
+Telji nemandi að mistök hafi verið gerð við yfirferð skal tilkynna slíkt á vefnum Gradescope.
+
+\section{Spurningar}
+
+\subsection{Kafli 3.3}
+\begin{questions}
+\question Gefinn er eftirfarandi forritsbútur á sauðakóðaformi:
+
+\begin{verbatim}
+t := 0
+fyrir i:= 1 upp í n
+    fyrir j:= 1 upp í n
+        t := t + i + j
+\end{verbatim}
+
+Svarið um hann eftirfarandi spurningum:
+\begin{enumerate}[a)]
+ \item Hversu margar samlagningar framkvæmir forritið, sem fall af $n$?
+ \item Hver er keyrslutími forritsins, á stóra-$\Theta$ formi? Ekki nota óþarfa fasta í stóra-$\Theta$ framsetningunni.
+\end{enumerate}
+
+\question Gefinn er eftirfarandi forritsbútur á sauðakóðaformi:
+
+\begin{verbatim}
+i := 1
+t := 0
+meðan i er minna en eða jafnt n
+    t := t + i
+    i := 2 * i
+\end{verbatim}
+
+Svarið um hann eftirfarandi spurningum:
+\begin{enumerate}[a)]
+ \item Hversu margar samlagningar og margfaldanir framkvæmir forritið, sem fall af $n$?
+ \item Hver er keyrslutími forritsins, á stóra-$\Theta$ formi? Ekki nota óþarfa fasta í stóra-$\Theta$ framsetningunni.
+\end{enumerate}
+
+\newpage
+
+\question Látum $n$ tákna inntaksstærð reiknirits. Hversu stórt verkefni (hversu stórt $n$) er hægt að leysa á einni mínútu ef reikniritið þarfnast $f(n)$ bitaaðgerða, með því að nota tölvu sem framkvæmir bitaaðgerð á $10^{-12}s$, fyrir eftirfarandi föll $f(n)$?
+
+\begin{enumerate}[a)]
+ \item $10000n$
+ \item $2^n$
+ \item $(\log_2 n)^2$
+ \item $\log_2 \log_2 n$
+\end{enumerate}
+Setjið mjög stórar heiltölur fram á skynsamlegan máta.
+
+\subsection{Kafli 4.1}
+
+\question Reiknið eftirfarandi með heiltöludeilingu. Tiltakið hver deilir (e. \emph{divisor}), deilistofn (e. \emph{dividend}), kvóti (e. \emph{quotient}) og afgangur (e. \emph{remainder}) eru í hvoru tilviki um sig.
+
+\begin{enumerate}[a)]
+ \item \texttt{67/3}
+ \item \texttt{88/5}
+\end{enumerate}
+
+\subsection{Kafli 4.2}
+
+\question Skiptið um grunntölu á eftirfarandi máta. Sýnið aðferð.
+
+\begin{enumerate}[a)]
+ \item Setjið tugakerfistöluna 230 fram sem tvíundarkerfistölu
+ \item Setjið tvíundarkerfistöluna 00001101 fram sem tugakerfistölu
+ \item Setjið sextándakerfistöluna 4A fram sem tvíundarkerfistölu
+\end{enumerate}
+
+\subsection{Kafli 4.3}
+
+\question Finnið þáttanir á eftirfarandi samsettum tölum með endurtekinni deilingu með þekktum prímtölum. Sýnið útreikninga.
+
+\begin{enumerate}[a)]
+ \item $729$
+ \item $2431$
+\end{enumerate}
+
+\end{questions}
+
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
+
+\end{document}

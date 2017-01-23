@@ -1,0 +1,77 @@
+\documentclass{exam}
+
+\input{../Haust2016verkefnablöð}
+
+\title{Stærðfræðimynstur í tölvunarfræði \\ Skilaverkefni 5}
+\author{}
+
+\printanswers
+
+\begin{document}
+\maketitle
+\thispagestyle{empty} 
+
+Skila skal þessu verkefni á vefnum \href{https://gradescope.com/}{Gradescope}. Aðgangskóði fyrir námskeiðið er \textbf{926WD9}.
+
+Samvinna á milli nemenda er eðlileg og æskileg. Hins vegar er hvorki æskilegt né heimilt að fá lausnir hjá öðrum (þ.m.t. Google), afrita lausnir eða láta aðra fá lausnina sína. Í slíkum tilvikum er einkunnin 0 gefin sem fyrsta viðvörun. Hikið ekki við að leita til umsjónarkennara ef þið eruð í vafa um hvað telst eðlileg samvinna og hvað ekki.
+
+Telji nemandi að mistök hafi verið gerð við yfirferð skal tilkynna slíkt á vefnum Gradescope.
+
+\section{Spurningar}
+
+\subsection{Kafli 4.6}
+
+\begin{questions}
+
+\question Dulkóðið skilaboðin \texttt{WATCH YOUR STEP} með því að varpa bókstöfunum í sætisnúmer í enska stafrófinu, beita viðkomandi dulkóðunarfalli og varpa tölustöfunum aftur í bókstafi.
+
+\begin{enumerate}[a)]
+ \item $f(p) = (14p + 21) \Mod 26$
+ \item $f(p) = (-7p + 1) \Mod 26$
+\end{enumerate}
+\paragraph{Í bók:} Hluti af exercise 4.6.3
+
+\question Afkóðið skilaboðin \texttt{EABW EFRO ATMR ASIN} sem voru umröðunardulkóðuð með fallinu $\sigma$ sem umraðar menginu $\{1,2,3,4\}$. $\sigma(1) = 3, \sigma(2) = 1, \sigma(3) = 4$ og $\sigma(4) = 2$.
+
+\paragraph{Í bók:} Exercise 4.6.15
+
+\question Dulkóðið skilaboðin \texttt{ATTACK} með RSA-reikniritinu, með $n = 43\cdot 59$ og $e=13$. Nota má tölvu til útreikninga á stórum tölum.
+
+Notið aðferð úr bók til að breyta bókstöfunum í tölustafi til dulkóðunar. Hún er (hér) eftirfarandi: Breytið hverjum bókstaf í skilaboðunum í tölu skv. enskri stafrófsröð. Ef sú tala er minni en 10 er núlli bætt fyrir framan svo að framsetningin á öllum tölunum verði af sömu lengd, þannig verður t.d. $A$ að $00$. Hópið tölurnar saman tvær og tvær svo úr verði þrír hópar af tölustöfum (hóparnir eru þrír því að bókstafirnir í skilaboðunum eru sex). Meðhöndlið hvern hóp um sig sem eina tölu og dulkóðið þær tölur.
+
+\paragraph{Í bók:} Exercise 4.6.24.
+
+\subsection{Kafli 5.1}
+
+\question Látum umsögnina $P(n)$ vera þá staðhæfingu að $1^2 + 2^2 + \ldots + n^2 = \frac{n(n+1)(2n+1)}{6}$ þar sem $n$ er jákvæð heiltala.
+
+Sýnið þetta með þrepun, með því að útskýra og reikna eftirfarandi:
+
+\begin{enumerate}[a)]
+ \item Hvaða staðhæfing væri $P(1)$?
+ \item Sýnið að $P(1)$ sé satt.
+ \item Hver er þrepunarforsendan (e. \emph{inductive hypothesis})?
+ \item Hvað þarf að sanna í þrepunarskrefinu (e. \emph{inductive step})?
+ \item Klárið þrepunarskrefið, þar sem tekið er fram hvar þrepunarforsendan er notuð.
+\end{enumerate}
+
+\paragraph{Í bók:} Exercise 5.1.3
+
+\question Notið þrepun til að sanna að $1\cdot 1! + 2\cdot 2! + \ldots + n \cdot n! = (n+1)! - 1$ þegar $n$ er jákvæð heiltala.
+
+\paragraph{Í bók:} Exercise 5.1.6
+
+\question Finnið formúlu fyrir 
+\[
+ \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \ldots + \frac{1}{2^n}
+\]
+með því að skoða summuna fyrir lítil gildi á $n$. Sannið formúluna svo með þrepun.
+
+\paragraph{Í bók:} Exercise 5.1.11
+
+\end{questions}
+
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
+
+\end{document}
