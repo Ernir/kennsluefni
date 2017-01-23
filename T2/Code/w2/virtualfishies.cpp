@@ -25,17 +25,17 @@ public:
     }
 };
 
-void MakeFishSwim(Fish inputFish) {
+void MakeFishSwim(Fish* inputFish) {
     // calling virtual method Swim()
-    inputFish.Swim();
+    inputFish->Swim();
 }
 
 int main() {
     Tuna myDinner;
     Carp myLunch;
     // sending Tuna as Fish
-    MakeFishSwim(myDinner);
+    MakeFishSwim(&myDinner);
     // sending Carp as Fish
-    MakeFishSwim(myLunch);
+    MakeFishSwim(&myLunch);
     return 0;
 }
