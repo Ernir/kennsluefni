@@ -42,18 +42,11 @@ void substring() { // Example of extracting a substring from another string
 }
 
 int main() {
-    //constructString();
-    //arrayAccess();
-    //stringComparison();
-    //charComparison();
-    //substring();
-
-    string s1 = "cplusplus";
-    string s2 = ".";
-    string s3 = "com";
-    string combined = s1 + s2 + s3;
-
-    cout << combined << endl;
+    constructString();
+    arrayAccess();
+    stringComparison();
+    charComparison();
+    substring();
 
     return 0;
 }
