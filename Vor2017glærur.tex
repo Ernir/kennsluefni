@@ -10,10 +10,6 @@
 \usemintedstyle{default}
 
 \renewcommand{\theFancyVerbLine}{\sffamily \arabic{FancyVerbLine}}
-%%%%%%%%%%%
-% More math
-%%%%%%%%%%%
-\newcommand{\Mod}[1]{\ \text{mod}\ #1}
 
 %%%%%%%%%%%%%%%%%%%%%%
 % Beamer configuration
@@ -61,14 +57,18 @@
 }
 
 
+% Shortcuts
+\newcommand{\Mod}[1]{\ \text{mod}\ #1}
+\newcommand{\eng}[1]{(e.\ \emph{#1})}
+\newmintedfile[cppfile]{cpp}{frame=lines, linenos=true}
+\newmintedfile[javafile]{java}{frame=lines, linenos=true}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%
 % Further configuration
 %%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue}
 \graphicspath{{./Pics/}}
-
-% \newcommand{cppfile}{\inputminted[frame=lines, linenos=true, label=#2]{cpp}{#1#2}}
-\newmintedfile[cppfile]{cpp}{frame=lines, linenos=true}
 
 
 \author{Eiríkur Ernir Þorsteinsson}

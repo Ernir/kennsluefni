@@ -1,0 +1,241 @@
+\documentclass{beamer}
+
+\input{../Vor2017glærur}
+
+\title{Tölvunarfræði 2}
+\subtitle{Vika 4}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Inngangur}
+
+\begin{frame}{Af hverju þetta námsefni?}
+\begin{itemize}
+ \item Það sem eftir er af námskeiðinu snýst um þekkt reiknirit \eng{algorithms} og gagnagrindur \eng{data structures}
+ \begin{itemize}
+  \item Fræðilegt!
+ \end{itemize}
+ \item Fátt sem kemur jafn víða við, þó e.t.v. munið þið ekki koma til með að útfæra grundvallarreiknirit sjálf
+ \begin{itemize}
+  \item Gagnlegt að vita hvernig innbyggð reiknirit virka
+  \item Innsýn mun nýtast í öðrum samhengjum
+ \end{itemize}
+ \item Almennara en aðrar leiðir til að læra forritun
+\end{itemize}
+\end{frame}
+
+\section{Java}
+
+\begin{frame}{Java}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{itemize}
+ \item Munum héðan af líka forrita í Java, auk C++
+ \item Þekkjum það vonandi flest úr Tölvunarfræði 1!
+ \begin{itemize}
+  \item Ef ekki - setja upp Java-þýðanda (\texttt{javac}) sem allra fyrst, ásamt forritssafni bókahöfunda (\texttt{algs4.jar})
+  \item Leiðbeiningar á \href{http://algs4.cs.princeton.edu/code/}{síðu bókarinnar}
+ \end{itemize}
+ \item Java líkist C++ að ýmsu leyti
+\end{itemize}
+\column{0.4\textwidth}
+\begin{center}
+\includegraphics[width=\textwidth]{java}
+\end{center}
+\end{columns}
+\end{frame}
+
+\subsection{Hlutbundin forritun í Java}
+
+\begin{frame}{Lykilorðið \texttt{static}}
+\begin{itemize}
+ \item Í Java tilheyra allar aðferðir klösum, líka \texttt{main} aðferðir
+ \item Þurfum að ákvarða hvort að aðferðir sem við búum til tilheyri \emph{klasa} eða \emph{tilviki af klasa}
+ \begin{itemize}
+  \item Tilviksaðferðir \texttt{instance methods} tilheyra tilviki, er sjálfgefið
+  \item Klasaaðferðir \eng{class methods} tilheyra klasa
+ \end{itemize}
+ \item Tilsvarandi á við um breytur
+ \item Grundvallaratriði sem mikilvægt er að átta sig á!
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dæmi}
+\javafile[firstline=3, lastline=21, fontsize=\scriptsize, label=StaticExample.java]{Code/w4/StaticExample.java}
+\end{frame}
+
+\begin{frame}[fragile]{Breytur og tilvik}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Í Java höfum við tvær gerðir breyta
+ \begin{itemize}
+  \item Einfaldar gerðir \eng{primitive types}, örfáar innbyggðar
+  \item Tilvísunargerðir \emph{reference types}, allt sem skilgreint er af klösum
+ \end{itemize}
+\end{itemize}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Þegar Java forrit notar \texttt{new}:
+ \begin{itemize}
+  \item Er minnissvæði í kös frátekið
+  \item Kallað er á smið
+  \item Tilvísun (e. \emph{reference}) á hlutinn skilað
+ \end{itemize}
+\end{itemize}
+\end{columns}
+\begin{center}
+Tilvik af klasanum \texttt{A} búið til:
+
+\vspace{-0.5cm}
+\end{center}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{minted}[frame=lines, label=Java]{java}
+A a = new A();
+\end{minted}
+\column{0.5\textwidth}
+\begin{minted}[frame=lines, label=C++]{cpp}
+A *a = new A();
+\end{minted}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dæmi}
+Lítum á \texttt{ObjectInstantiation.java}.
+\end{frame}
+
+\begin{frame}{Jafngildi hluta}
+\begin{itemize}
+ \item Sjáum að jafngildi er skilgreint með \texttt{equals} aðferð
+ \begin{itemize}
+  \item \texttt{equals} aðferð á að vera jafngildisvensl \eng{equivalence relation}
+  \begin{itemize}
+   \item Sjálfhverft \eng{reflexive}: \texttt{x.equals(x)} skal vera satt
+   \item Samhverft \eng{symmetric}: \texttt{x.equals(y)} þá og því aðeins að \texttt{y.equals(x)}
+   \item Gegnvirk \eng{transitive}: Ef \texttt{x.equals(y)} og \texttt{y.equals(z)} þá skal \texttt{x.equals(z)}
+  \end{itemize}
+  \item Einnig skal \texttt{x.equals(y)} alltaf skila sama gildi og \texttt{x.equals(null)} alltaf skila ósönnu
+ \end{itemize}
+ \item Okkar klasar gætu þurft að útfæra \texttt{equals} aðferð
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Gildisveiting breyta}
+Gildra: Gildisveiting afritar gildi á einföldum breytum, en afritar vísun á breytu af tilvísunargerð!
+
+\begin{columns}
+\column{0.6\textwidth}
+\javafile[lastline=13, fontsize=\scriptsize, label=MyInt.java]{Code/w4/MyInt.java}
+\column{0.4\textwidth}
+\javafile[firstline=5, lastline=10, gobble=8, fontsize=\scriptsize, label=Assignment.java]{Code/w4/Assignment.java}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Breytur og aðferðir}
+Gildra: Þegar aðferðir taka við breytum, þá eru breyturnar afritaðar. Þegar breytan er einföld er gildi hennar afritað, en sé hún af tilvísunargerð er vísunin í hana afrituð.
+
+\javafile[firstline=8, lastline=17, gobble=4, fontsize=\scriptsize, label=PassingVariables.java]{Code/w4/PassingVariables.java}
+\end{frame}
+
+\subsection{Stofnrænir klasar}
+
+\begin{frame}{Stofnrænir klasar}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Hingað til hefur verið ákveðin takmörkun á reikniritum og aðferðum - þær virka bara á eina gagnagerð
+ \item Getum reddað ýmsu með fjölbindingu, en ómögulegt er að sjá alla notkunarmöguleika fyrir 
+\end{itemize}
+\column{0.5\textwidth}
+\begin{center}
+\javafile[fontsize=\scriptsize, label=IntegerBox.java]{Code/w4/IntegerBox.java}
+
+Kassi fyrir heiltölur. Það væri óþægilegt að búa til kassa fyrir allar gagnagerðir.
+\end{center}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dæmi}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Við getum útvíkkað klasana okkar og aðferðir með því að skilgreina þau sem stofnræn (e. \emph{generic})
+ \item Stofnrænn klasi eða aðferð inniheldur sínar eigin tögunarskilgreiningar
+\end{itemize}
+\column{0.5\textwidth}
+\begin{center}
+\javafile[fontsize=\scriptsize, firstline=3, lastline=12,label=Genericbox.java]{Code/w4/GenericBox.java}
+
+Kassi fyrir alls kyns hluti.
+\end{center}
+\end{columns}
+\end{frame}
+
+\section{Almennar lýsingar}
+
+\subsection{Skil}
+
+\begin{frame}{Skil}
+\begin{itemize}
+ \item Við skrifum ekki öll okkar forrit frá grunni, við notum forrit annarra
+ \item Til að auðvelda samskipti forrita skilgreinum við oft fyrir þau skil (e. \emph{Application Programming Interfaces}, APIs)
+ \item Í skilum felast notkunar- og samskiptalýsingar á aðferðum og sviðum
+ \item Skil eru sérstaklega mikilvæg fyrir forritasöfn
+ \item Hugmyndin - ef við vitum hvernig hitt forritið hegðar sér þarf forritið okkar ekki að hafa aðgang að útfærslu þess
+ \item Felur í sér n.k. samning á milli forrita
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Vandamál!}
+\begin{itemize}
+ \item Skil geta verið\ldots
+ \begin{itemize}
+  \item \ldots of erfið í útfærslu
+  \item \ldots of erfið í notkun
+  \item \ldots of þröng (of fáar aðferðir)
+  \item \ldots of víð (of margar aðferðir)
+  \item \ldots of almenn
+  \item \ldots of sérhæfð
+  \item \ldots of háð útfærslunni
+ \end{itemize}
+ \item En samt nauðsynleg!
+\end{itemize}
+\end{frame}
+
+\subsection{Hugrænar gagnagerðir}
+
+\begin{frame}{Hugrænar gagnagerðir}
+\begin{itemize}
+ \item Hugræn gagnagerð (e. \emph{Abstract Data Type, ADT}) er gagnagerð þar sem útfærslan er falin fyrir þeim sem nota gagnagerðina
+ \begin{itemize}
+  \item Þegar við notum hugræna gagnagerð beitum við aðferðunum sem skil hennar skilgreina
+  \item Þegar við búum til útfærslu á hugrænni gagnagerð einbeitum við okkur að uppröðun gagnanna og gætum þess að skilin séu uppfyllt
+ \end{itemize}
+ \item Munum sjá mörg dæmi um hugrænar gagnagerðir!
+\end{itemize}
+\end{frame}
+
+\section{Lokaorð}
+
+\begin{frame}{Þessi glærupakki}
+Tengill á fyrirlestraræfingu: \url{https://goo.gl/forms/iuOvOdwwWohyPu6g2}
+\vspace{1cm}
+
+Öll nafngreind forrit í þessum glærupakka, ásamt glærupakkanum sjálfum, má finna á  \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w4}{Github}. 
+
+Fleiri forrit: \url{http://algs4.cs.princeton.edu/code/}
+\end{frame}
+
+
+\begin{frame}{Næst}
+Skjóður, biðraðir, hlaðar, greining reiknirita
+\end{frame}
+
+
+\end{document}
