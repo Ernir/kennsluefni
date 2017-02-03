@@ -1,0 +1,117 @@
+\documentclass{article}
+
+\input{../Vor2017skil.tex}
+
+\title{Tölvunarfræði 2, \semester \\ Skilaverkefni 4}
+\author{}
+
+\begin{document}
+\maketitle
+\hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 4}}
+
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+
+Í þessum verkefnum þarf að skrifa \texttt{Java}-klasa sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skrifa \texttt{main} fall sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu.
+\section{Spurning 1}
+
+Skrifið Java-klasann \texttt{Rational} sem táknar ræða tölu. Ræðu tölurnar skulu uppfylla eftirfarandi skil (e.\ \emph{Application Programming Interface}):
+\begin{center}
+\begin{tabular}{rll}
+\toprule
+Skilar&Notkun&Lýsing\\
+\midrule
+-&\texttt{Rational(int num, int denom)}& Smiður, tekur við teljara og nefnara\\
+\texttt{Rational}&\texttt{plus(Rational b)}&Summa þessarar tölu og \texttt{b}\\
+\texttt{Rational}&\texttt{minus(Rational b)}&Mismunur þessarar tölu og \texttt{b}\\
+\texttt{Rational}&\texttt{times(Rational b)}&Margfeldi þessarar tölu og \texttt{b}\\
+\texttt{Rational}&\texttt{divides(Rational b)}&Deiling þessarar tölu með \texttt{b}\\
+\texttt{boolean}&\texttt{equals(Rational b)}&Eru þessi tala og \texttt{b} jafngildar?\\
+\texttt{String}&\texttt{toString()}&Snyrtileg strengjaframsetning á þessari tölu\\
+\bottomrule
+\end{tabular}
+\end{center}
+Þessar aðferðir eiga að vera \texttt{public}. Allar aðrar aðferðir og eiginleikar eiga að vera \texttt{private}.
+
+\section{Spurning 2-3 (tvöfalt)}
+Stofnrænn (e. \emph{generic}) Java-klasi sem táknar hnút í eintengdum lista (sjá skilaverkefni 2) gæti verið eftirfarandi:
+
+\begin{minted}[frame=lines]{java}
+class Node<T> {
+
+    Node next;
+    T data;
+
+    Node(T data, Node next) {
+        this.data = data;
+        this.next = next;
+    }
+};
+\end{minted}
+
+Skrifið nú stofnræna Java-klasann \texttt{SinglyLinkedList} sem notar \texttt{Node} klasann til að búa til gagnagerð sem uppfyllir eftirfarandi skil:
+
+\begin{center}
+\begin{tabularx}{\linewidth}{rlX}
+\toprule
+Skilar&Notkun&Lýsing\\
+\midrule
+-&\texttt{SinglyLinkedList(Node<T> head)}& Smiður, tekur inn hnút sem skal vera haus listans\\
+\texttt{int}&\texttt{size()}&Skilar fjölda hnúta í þessum lista\\
+\texttt{int}&\texttt{search(T data)}&Skilar númeri þess hnúts listans sem inniheldur gögn sem eru jöfn (\texttt{equals}) \texttt{data}\\
+\texttt{String}&\texttt{toString()}&Skilar snyrtilegri framsetningu af gögnum allra hnúta listans\\
+\texttt{void}&\texttt{reverse()}&Snýr við röð hnúta í listanum\\
+\texttt{T}&\texttt{get(int n)}&Skilar gildi staks númer \texttt{n} í listanum\\
+\texttt{void}&\texttt{insert(int index, T data)}&Setur hnút með gögnin \texttt{data} á stað \texttt{index} í listanum, gögn sem á eftir koma hliðrast í átt að enda listans\\
+\texttt{void}&\texttt{delete(int index)}&Eyðir hnútnum á stað \texttt{index}\\
+\texttt{void}&\texttt{swap(int first, int second)}&Skiptir á staðsetningu hnútanna í sætum \texttt{first} og \texttt{second} í listanum\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Þessar aðferðir eiga að vera \texttt{public}. Allar aðrar aðferðir og eiginleikar eiga að vera \texttt{private}. 
+
+Listinn skal vera númeraður samfellt frá $0$ upp í \texttt{size()-1}. Gera má ráð fyrir að notandi reyni ekki að nota vísa í \texttt{get}, \texttt{delete} eða \texttt{swap} sem eru $\geq$ \texttt{size()}. \texttt{insert} má taka við vísum allt upp í \texttt{size()}, sem myndi þá bæta við hnúti aftast í listann.
+
+\paragraph{Ábendingar} 
+
+\begin{itemize}
+ \item Gögnin skal geyma í hnútum sem tengjast innbyrðis, ekki skal setja hnútana í fylki eða álíka
+ \item Í \texttt{swap} og \texttt{delete} aðferðunum skal vinna með hnútana sjálfa, ekki gögnin sem í þeim eru
+ \item Munum að í vinnslu með eintengda lista eru jaðartilvik, sem þarf að huga að
+\end{itemize}
+
+\section{Spurning 4}
+Við þekkjum \texttt{std::vector} gagnagerðina úr C++. Á bak við hana er fylki með breytilega rýmd, sjá \texttt{sizecapacity.cpp} úr viku tvö.
+
+Skrifið stofnræna Java-klasann \texttt{Vector} sem útfærir gagnagerð sem hegðar sér á svipaðan hátt. Hún skal uppfylla eftirfarandi skil:
+
+\begin{center}
+\begin{tabular}{rll}
+\toprule
+Skilar&Notkun&Lýsing\\
+\midrule
+-&\texttt{Vector<T>()}& Smiður\\
+\texttt{int}&\texttt{size()}&Skilar fjölda staka í vigrinum\\
+\texttt{int}&\texttt{capacity()}&Skilar fjölda staka sem rúmast í vigrinum\\
+\texttt{T}&\texttt{get(int n)}&Skilar gildi staks númer \texttt{n} $<$ \texttt{size} í vigrinum\\
+\texttt{void}&\texttt{pushBack(T data)}&Bætir \texttt{data} aftast í vigrinum\\
+\texttt{void}&\texttt{popBack()}&Fjarlægir aftasta stakið úr vigrinum\\
+\bottomrule
+\end{tabular}
+\end{center}
+Þessar aðferðir eiga að vera \texttt{public}. Allar aðrar aðferðir og eiginleikar eiga að vera \texttt{private}.
+
+Útfærslan skal hegða sér á eftirfarandi hátt: 
+\begin{itemize}
+ \item Þegar vigurinn er búinn til skal hann hafa rýmdina 2
+ \item Sé staki bætt við sem ekki rúmast innan fylkisins sem á bak við liggur skal tvöfalda stærð fylkisins
+ \item Sé minna en fjórðungur fylkisins nýttur eftir að stak er fjarlægt skal helminga stærð fylkisins, þó ekki svo hann rúmi minna en 2 stök
+\end{itemize}
+
+\paragraph{Ábending} Það er nokkrum vandkvæðum bundið að búa til fylki af stofnrænum breytum. Því má bjarga með 
+\begin{center}
+\texttt{T[] genericArray = (T[]) new Object[10];}
+\end{center}
+
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
+\end{document}
