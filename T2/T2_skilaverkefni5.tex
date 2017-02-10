@@ -1,0 +1,72 @@
+\documentclass{article}
+
+\input{../Vor2017skil.tex}
+
+\title{Tölvunarfræði 2, \semester \\ Skilaverkefni 5}
+\author{}
+
+\begin{document}
+\maketitle
+\hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 5}}
+
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+
+Í þessum verkefnum þarf að skrifa \texttt{Java}-klasa sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skrifa \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu.
+
+\section{Spurning 1}
+Gefinn er \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w5/SimpleSinglyLinkedList.java}{klasi \textbf{í Java}} sem táknar eintengdan lista. Betrumbætið klasann svo hann útfæri \texttt{Iterable}. Keyrsludæmið skal sýna notkun foreach lykkju.
+
+\section{Spurning 2}
+Turninn í Hanoi (e. \emph{Tower of Hanoi}) er stærðfræðiþraut sem gengur út á að færa skífur á milli þriggja hlaða. Sjá \href{https://www.tutorialspoint.com/data_structures_algorithms/images/tower_of_hanoi.gif}{hreyfimynd}.
+
+Í byrjun eru $n$ skífur á einum hlaðanum í stærðarröð, stærsta skífan neðst. Þrautin er unnin þegar allar skífurnar hafa verið færðar frá fyrsta hlaðanum yfir á annan hlaða, en fylgja þarf eftirfarandi reglum þegar skífurnar eru færðar:
+\begin{enumerate}
+ \item Einungis má færa eina skífu í einu
+ \item Þegar skífa er færð er hún tekinn efst af einum af hlaðanum og færð efst á annan hlaða
+ \item Aldrei má setja skífu ofan á minni skífu
+\end{enumerate}
+
+Skrifið forrit \textbf{í Java} sem skrifar út öll skref sem þarf til að leysa Turninn í Hanoi. Það skal tákna hlaðana þrjá með tilvikum af klasanum \texttt{Stack} úr \texttt{algs4.jar}. Notið beinagrindina í \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w5/Hanoi.java}{Hanoi.java}.
+
+
+\newpage
+
+\section{Spurning 3}
+Skrifið klasa \textbf{í C++} sem uppfyllir eftirfarandi skil fyrir biðröð heiltalna. 
+
+\begin{center}
+\begin{tabularx}{\textwidth}{rlX}
+\toprule
+\multicolumn{3}{c}{\texttt{public class Queue<int>}}\\
+\midrule
+-&\texttt{Queue()}& Smiður, býr til tóma biðröð\\
+\texttt{void}&\texttt{enqueue(int n)}&Bætir tölunni \texttt{n} í biðröðina\\
+\texttt{int}&\texttt{dequeue()}&Fjarlægir þá tölu sem lengst hefur verið í biðröðinni og skilar henni\\
+\texttt{int}&\texttt{size()}&Skilar fjölda talna í biðröðinni\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Notið \texttt{std::vector} breytu til að geyma gögn biðraðarinnar.
+
+\section{Spurning 4}
+Skrifið klasa \textbf{í C++} sem uppfyllir eftirfarandi skil fyrir hlaða heiltalna. 
+
+\begin{center}
+\begin{tabularx}{\textwidth}{rlX}
+\toprule
+\multicolumn{3}{c}{\texttt{public class Stack<int>}}\\
+\midrule
+-&\texttt{Stack()}& Smiður, býr til tóman hlaða\\
+\texttt{void}&\texttt{push(int n)}&Bætir tölunni \texttt{n} á hlaðann\\
+\texttt{int}&\texttt{pop()}&Fjarlægir þá tölu sem styst hefur verið á hlaðanum og skilar henni\\
+\texttt{int}&\texttt{peek()}&Skilar þeirri tölu sem styst hefur verið á hlaðanum en skilur við hlaðann í sama ástandi\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Notið eintengdan lista til að geyma gögn hlaðans.
+
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
+\end{document}
