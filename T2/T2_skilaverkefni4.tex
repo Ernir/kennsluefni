@@ -24,7 +24,7 @@ Skilar&Notkun&Lýsing\\
 \texttt{Rational}&\texttt{plus(Rational b)}&Summa þessarar tölu og \texttt{b}\\
 \texttt{Rational}&\texttt{minus(Rational b)}&Mismunur þessarar tölu og \texttt{b}\\
 \texttt{Rational}&\texttt{times(Rational b)}&Margfeldi þessarar tölu og \texttt{b}\\
-\texttt{Rational}&\texttt{divides(Rational b)}&Deiling þessarar tölu með \texttt{b}\\
+\texttt{Rational}&\texttt{divide(Rational b)}&Deiling þessarar tölu með \texttt{b} $\left(\frac{tala}{b}\right)$\\
 \texttt{boolean}&\texttt{equals(Rational b)}&Eru þessi tala og \texttt{b} jafngildar?\\
 \texttt{String}&\texttt{toString()}&Snyrtileg strengjaframsetning á þessari tölu\\
 \bottomrule
@@ -57,7 +57,7 @@ Skilar&Notkun&Lýsing\\
 \midrule
 -&\texttt{SinglyLinkedList(Node<T> head)}& Smiður, tekur inn hnút sem skal vera haus listans\\
 \texttt{int}&\texttt{size()}&Skilar fjölda hnúta í þessum lista\\
-\texttt{int}&\texttt{search(T data)}&Skilar númeri þess hnúts listans sem inniheldur gögn sem eru jöfn (\texttt{equals}) \texttt{data}\\
+\texttt{int}&\texttt{search(T data)}&Skilar númeri fremsta hnúts listans sem inniheldur gögn sem eru jöfn (\texttt{equals}) \texttt{data}\\
 \texttt{String}&\texttt{toString()}&Skilar snyrtilegri framsetningu af gögnum allra hnúta listans\\
 \texttt{void}&\texttt{reverse()}&Snýr við röð hnúta í listanum\\
 \texttt{T}&\texttt{get(int n)}&Skilar gildi staks númer \texttt{n} í listanum\\
@@ -107,10 +107,11 @@ Skilar&Notkun&Lýsing\\
  \item Sé minna en fjórðungur fylkisins nýttur eftir að stak er fjarlægt skal helminga stærð fylkisins, þó ekki svo hann rúmi minna en 2 stök
 \end{itemize}
 
-\paragraph{Ábending} Það er nokkrum vandkvæðum bundið að búa til fylki af stofnrænum breytum. Því má bjarga með 
+\paragraph{Ábending} Það er nokkrum vandkvæðum bundið að búa til fylki af stofnrænum breytum. Því má bjarga með línu á borð við
 \begin{center}
 \texttt{T[] genericArray = (T[]) new Object[10];}
 \end{center}
+sem býr til 10 staka fylki af gerðinni \texttt{T}.
 
 \vfill
 \includegraphics[width=0.5\linewidth]{hi-von-logo}
