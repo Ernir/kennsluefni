@@ -5,6 +5,8 @@
 \title{Tölvunarfræði 2, \semester \\ Skilaverkefni 6}
 \author{}
 
+\usepackage[normalem]{ulem}
+
 \begin{document}
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 6}}
@@ -24,14 +26,15 @@ Skrifið Java-forrit sem ber saman keyrslutíma útfærslu algs4.jar á innsetni
  \item Fyrstu 100000 tölurnar í 1Mints.txt
 \end{itemize}
 
-
 Forritið skal skrifa út niðurstöður samanburðanna.
+
+\paragraph{Ábending:} Hægt er að nota \href{https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#nanoTime--}{System.nanoTime} eða Stopwatch.java í algs4.jar til að mæla tíma.
 
 \section{Spurning 2}
 Ein leið til að raða spilum í spilastokki er að raða þeim þannig að fyrst komi öll hjörtu, svo allir spaðar, svo allir tíglar og að lokum öll lauf. 
 Innan hvers lits er spilunum svo raðað þannig að ásinn sé lægstur, svo tvisturinn, svo koll af kolli þar til kóngur viðkomandi lits kemur síðast.
 
-Klasinn \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/Card.java}{\texttt{Card.java}} táknar spil í spilastokki. 
+Klasinn \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/Card.java}{\texttt{Card.java}} táknar spil í spilastokki. Hann notar \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/Suit.java}{\texttt{Suit.java}}.
 Gerið spilin raðanleg með því að útfæra fyrir þau \texttt{\href{https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html}{Comparable}} skilin á viðeigandi hátt.
 
 \section{Spurning 3}
@@ -39,11 +42,11 @@ Skrifið C++ fall sem framkvæmir innsetningarröðun (e. \emph{insertion sort})
 
 Notið beinagrindina í  \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/InsertionSort.cpp}{InsertionSort.cpp}.
 \section{Spurning 4}
-Skrifið klasa \textbf{í C++} sem táknar sérhæfðan eintengdan lista sem sjálfkrafa geymir stök sín í stígandi röð.
+Skrifið klasa \sout{í C++} \textbf{í Java} sem táknar sérhæfðan eintengdan lista sem sjálfkrafa geymir stök sín í stígandi röð.
 
 Röð stakanna skal viðhaldið af innsetningaraðferð klasans. Hún skal gera ráð fyrir því að listinn sé nú þegar í stígandi röð. Þegar bæta skal við nýju gildi skal innsetningaraðferðin fara í gegnum listann og finna stað til að setja inn nýja gildið án þess að raska röðinni.
 
-Notið beinagrindina í  \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/SortedList.cpp}{SortedList.cpp}.
+Nota má beinagrindina í \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/SortedList.cpp}{SortedList.cpp} til hliðsjónar. {\color{red} Beinagrind í Java mun birtast undir \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/SortedList.java}{SortedList.java} von bráðar.}
 
 \vfill
 \includegraphics[width=0.5\linewidth]{hi-von-logo}
