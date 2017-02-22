@@ -121,9 +121,12 @@
 \begin{itemize}
  \item Innsetningarröðun \eng{insertion sort} er aðferð sem er lík þeirri sem fólk notar venjulega við að raða raunverulegum hlutum
  \item Lýsing:
- \begin{itemize}
-  \item Höldum utan um ``raðaðan hluta'' og ``óraðaðan hluta'' í safninu
- \end{itemize}
+ \begin{enumerate}
+  \item Höldum utan um ``raðaðan hluta'' til vinstri og ``óraðaðan hluta'' til hægri í safninu
+  \item Tökum það stak sem lengst er til vinstri í óraðaða hlutanum
+  \item Færum það lengra til vinstri þar til við rekumst á minna stak
+  \item Færum mörk undirsafnanna eitt stak til hægri og endurtökum
+ \end{enumerate}
  \item Mismunandi keyrslutími eftir tilvikum:
  \begin{itemize}
   \item $\sim \frac{N^2}{2}$ samanburðir og $\sim \frac{N^2}{2}$ víxlanir í versta tilvikinu
