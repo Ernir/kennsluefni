@@ -22,11 +22,11 @@ class PriQueueMerge {
         // Creating a PQ of even numbers
         MaxPQ<Integer> evens = new MaxPQ<>();
         for (Integer j = 0; j < 10; j += 2) {
-            odds.insert(j);
+            evens.insert(j);
         }
         // Performing the merger
         MaxPQ<Integer> numbersBelow10 = merge(odds, evens);
-        for (Integer key : numbersBelow10) {
+        while (!numbersBelow10.isEmpty()) {
             StdOut.print(numbersBelow10.delMax() + " ");
         }
         StdOut.println("");
