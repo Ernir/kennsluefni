@@ -1,3 +1,9 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
 void quicksort(vector<int> &v) {
 // Hingað þarf að koma útfærsla á quicksort!
 // Mælt er með því að fylgja hugmyndunum í Quick.java.
