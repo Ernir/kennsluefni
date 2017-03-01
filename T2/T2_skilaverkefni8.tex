@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\input{../Vor2017skil.tex}
+
+\title{Tölvunarfræði 2, \semester \\ Skilaverkefni 7}
+\author{}
+
+\begin{document}
+\maketitle
+\hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 7}}
+
+\paragraph{Skilavefur} Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}.
+
+\paragraph{Vinnubrögð og frágangur} Skrifa þarf forrit í Java og C++ sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skila \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu. Leitist við að nota beinagrindur óbreyttar þegar þær eru gefnar. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+
+\paragraph{Samþykki til dreifingar} Dæmatímakennarar velja framúrskarandi lausnir til birtingar undir nafni í lausnasafni. Sé þess óskað að einhverjar þinna úrlausna séu ekki birtar nema nafnlaust eða alls ekki birtar yfir höfuð skal taka slíkt fram í hverju dæmi sem takmörkunin á við.
+
+\section{Spurning 1}
+Gefið er forritið \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/NotQuick.java}{NotQuick.java}, sem er útgáfa af \texttt{Quick.java} sem sleppir því að stokka fylkið í upphafi.\footnote{Auk þess hefur pakkaskilgreiningu forritsins verið breytt svo hægt sé að afrita skrána beint inn í vinnumöppu.}
+
+Skrifið Java-forrit sem ber saman keyrslutíma á \texttt{Quick.java} og \texttt{NotQuick.java} á fylki sem inniheldur fyrstu 20000 tölurnar í \href{http://algs4.cs.princeton.edu/14analysis/1Mints.txt}{1Mints.txt}, annars vegar þegar fylkið er í þeirri röð sem það birtist í \texttt{1Mints.txt} og hins vegar þegar því hefur þegar verið raðað. 4 tilvik alls.
+
+Gefið líka stutt svör við eftirfarandi spurningum:
+
+\begin{enumerate}[a)]
+ \item \texttt{NotQuick.java} getur stundum verið fljótara en \texttt{Quick.java}. Hvernig stendur á því?
+ \item Af hverju getum við lent í því að \texttt{NotQuick.java} ljúki ekki keyrslu (hrynji) á stórum inntökum sem \texttt{Quick.java} ræður þó við?
+\end{enumerate}
+
+Nota má forritið í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/SortCompare.java}{SortCompare.java} til viðmiðunar.
+
+\section{Spurning 2}
+Skrifið aðferð í Java sem tekur inn tvær forgangsbiðraðir og sameinar þær. 
+Hún skal búa til nýja forgangsbiðröð sem inniheldur öll stök sem finna mátti í annarri hvorri forgangsbiðröðinni sem hún tók inn.
+
+Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/PriQueueMerge.java}{PriQueueMerge.java}.
+
+\section{Spurning 3}
+Útfærið quicksort reikniritið í C++ fyrir \texttt{std::vector}. Notið \texttt{Quick.java} til hliðsjónar.
+
+Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/quicksort.cpp}{quicksort.cpp}.
+
+\paragraph{Ábending 1:} Hægt er að stokka vigur með því að nota \href{http://www.cplusplus.com/reference/algorithm/random_shuffle/}{\texttt{std::random\_shuffle}}.
+\paragraph{Ábending 2:} \&-merkið í fallsinntakinu lætur fallið meðhöndla inntakið sem vísun, á \emph{svipaðan} hátt og við erum farin að venjast í Java.
+
+\section{Spurning 4}
+Skrifið klasa í Java sem uppfyllir hefðbundin skil fyrir hlaða:
+
+\begin{center}
+\begin{tabularx}{\textwidth}{rlX}
+\toprule
+\multicolumn{3}{c}{\texttt{public class Stack<Item>}}\\
+\midrule
+-&\texttt{Stack()}& Smiður, býr til tóman hlaða\\
+\texttt{void}&\texttt{push(Item item)}&Bæta \texttt{item} á hlaðann\\
+\texttt{Item}&\texttt{pop()}&Fjarlægja og skila því staki sem styst hefur verið á hlaðanum\\
+\texttt{boolean}&\texttt{isEmpty()}&Er hlaðinn tómur?\\
+\texttt{int}&\texttt{size()}&Fjöldi hluta á hlaðanum\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Notið forgangsbiðröðina \texttt{MaxPQ.java} að geyma gögn hlaðans. Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/Stack7.java}{Stack7.java} og klárið þær aðferðir sem merktar eru. Þegar aðferðirnar eru rétt útfærðar ætti \texttt{main} aðferðin að skrifa út \texttt{ANANASBANN!}.
+
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
+\end{document}
