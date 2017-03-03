@@ -3,7 +3,7 @@
 \input{../Vor2017glærur}
 
 \title{Tölvunarfræði 2}
-\subtitle{Vika 7}
+\subtitle{Vika 8}
 
 \begin{document}
 
@@ -12,6 +12,14 @@
 \end{frame}
 
 \section{Inngangur}
+
+\begin{frame}{Skoðanakönnun úr síðasta tíma}
+\begin{center}
+\includegraphics[width=\textwidth]{poll-results}
+\end{center}
+Í samræmi við niðurstöður - ræðum skil 7 undir lok tímans
+\end{frame}
+
 
 \begin{frame}{Upprifjun: Tré}
 \begin{columns}
@@ -140,9 +148,10 @@ Auk þess mætti skilgreina \texttt{delete(Key key)}, \texttt{contains(Key\ key)
 
 \begin{frame}{Útfærsla á nafnatöflu}
 \begin{itemize}
- \item Við gætum sett gögnin okkar í fylki eða eintengdan lista
+ \item Við gætum sett gögnin okkar í óraðað fylki eða eintengdan lista
  \begin{itemize}
-  \item Gerir leit í stórum töflum erfiða
+  \item Sjá: \href{http://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/SequentialSearchST.java.html}{SequentialSearchST.java}
+  \item Verður tímafrekt fyrir stórar töflur
  \end{itemize}
  \item Getum notað öflugri aðferðir ef við getum gert ráð fyrir meiru um lyklana
  \begin{itemize}
@@ -160,18 +169,90 @@ Auk þess mætti skilgreina \texttt{delete(Key key)}, \texttt{contains(Key\ key)
 \section{Helmingunarleit}
 
 \begin{frame}{Helmingunarleit}
-%TODO fjalla um helmingunarleit
+\begin{itemize}
+ \item Hingað til höfum við notað línulega leit til að finna staðsetningar í fylkjum og listum
+ \item Getum gert betur í röðuðum fylkjum, hugmyndin er:
+ \begin{itemize}
+  \item Berum ``miðju'' leitarbilsins saman við leitarstakið
+  \item Sé miðjan stærri en leitarstakið vitum við að stakið er ekki að finna í stærri helming leitarbilsins (og öfugt)
+  \item Notum helmingunarleit endurkvæmt á þann helming leitarbilsins sem eftir er
+ \end{itemize}
+ \item Leitaraðferðin er kölluð helmingunarleit \eng{binary search} því hún helmingar stærð leitarbilsins í hverri ítrun
+ \item Grundvallaraðferðafræði sem kemur víða við!
+ \item Skoðum \href{http://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/BinarySearchST.java.html}{BinarySearchST.java} vandlega
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Endurkvæm helmingunarleit}
+\begin{center}
+Möguleg endurkvæm útfærsla á helmingunarleit:
+
+\includegraphics[width=0.7\textwidth]{binary-search-algs4-380}
+\end{center}
+Sjá bls. 380 í Algorithms.
 \end{frame}
 
 
-\begin{frame}{Þessi glærupakki}
-Tengill á fyrirlestraræfingu: \url{}
-\vspace{1cm}
+\begin{frame}{Tími}
+\begin{itemize}
+ \item Getum lýst fjölda samanburða í helmingunarleit í $N$ staka fylki með rakningarvenslum:
+ \begin{itemize}
+  \item $C(0) = 0$, $C(1) = 1$ , $C(N) = C(\lfloor N \rfloor)+1$
+  \item Fáum $C(N) \sim \log N$
+ \end{itemize}
+ \item Útfærslan á nafnatöflunni í \texttt{BinarySearchST.java} leyfir skilvirkar uppflettingar (logratími)
+ \item Innsetningar og eyðingar krefjast hins vegar enn línulegs tíma
+\end{itemize}
+\end{frame}
 
-\texttt{} má finna á \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w8}{Github}. 
+\section{Tvíleitartré}
+
+\begin{frame}{Tvíleitartré}
+\begin{itemize}
+ \item Við getum auðveldað helmingunarleit með því að geyma gögnin í tvíundartré
+ \begin{itemize}
+  \item Í þetta skiptið - táknað með hnútum og bendum, líkt og við höfum gert þegar við höfum útfært eintengda lista
+ \end{itemize}
+ \item Til að útfæra nafnatöflu látum við hnúta innihalda samanburðarhæfan lykil, notum uppbyggingu trésins til að auðvelda leitina
+ \begin{itemize}
+  \item Látum vinstra barn hvers hnúts hafa minni lykil en hnúturinn, hægra barnið stærri lykil
+ \end{itemize}
+ \item Köllum þessi tvíundartré tvíleitartré \eng{binary search tree}
+ \item Skoðum nafnatöflu útfærða með tvíleitartré, \href{http://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/BST.java.html}{BST.java}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aðgerðir á tvíleitartré}
+\begin{itemize}
+ \item Til að uppfylla skil fyrir nafnatöflu þurfum við að geta:
+ \begin{itemize}
+  \item Leitað eftir lykli (\texttt{get})
+  \begin{itemize}
+   \item Berum leitarlykilinn saman við lykil hvers hnúts
+   \item Förum í vinstra eða hægra undirtré eftir hvern samanburð
+   \item Hættum þegar lykillinn finnst eða þegar við finnum \texttt{null}
+  \end{itemize}
+  \item Innsetning (\texttt{put})
+  \begin{itemize}
+   \item Svipað og leit, en þegar við finnum \texttt{null} setjum við stakið inn
+  \end{itemize}
+ \end{itemize}
+ \item Sjá glærur 4-10 í \href{http://algs4.cs.princeton.edu/lectures/32BinarySearchTrees.pdf}{BinarySearchTrees}
+ \item Eyðing er kafli út af fyrir sig (sjá glærur 31-34 í BinarySearchTrees)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Þessi glærupakki}
+Tengill á fyrirlestraræfingu: \url{https://goo.gl/forms/xgWGlDlmEvGlbcu93}
+\vspace{1cm}
 
 Kóða fyrir algs4 reiknirit má finna á \url{http://algs4.cs.princeton.edu/code/}
 \end{frame}
+
+\begin{frame}{Næst}
+Meira um tvíleitartré, hakkatöflur.
+\end{frame}
+
 
 
 \end{document}
