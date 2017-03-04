@@ -71,19 +71,19 @@ public class TreeHeapPriQueue {
                 StdOut.print(" ");
         }
 
-        if (node == null) {
+        if (node == null) { // Represent an empty node with "-"
             StdOut.println("-");
             return;
         }
 
         if (node.left != null || node.right != null) {
-            StdOut.println("(" + node.data);
+            StdOut.println("(" + node.data); // If the node has children, group them in parenthesis
 
-            showHeap(level + 1, node.left);
+            showHeap(level + 1, node.left); // Recursively display children
             showHeap(level + 1, node.right);
 
             for (int i = 0; i < level * 2; i++)
-                StdOut.print(" ");
+                StdOut.print(" "); // Print spaces for proper indentation
 
             StdOut.println(")");
 
