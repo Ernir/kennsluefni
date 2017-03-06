@@ -21,26 +21,25 @@ int main() {
     vector<int> noDescending = {};
 
     /*
-     * In every case, we should see a series of ascending integers of the same length as the vector in question
+     * In every case but the last, we should see a series of ascending integers of the same length as the vector in question
      */
-    for(int i: tenDescending) {
+    for (int i: tenDescending) {
         cout << descendingBinarySearch(tenDescending, i) << " ";
     }
     cout << endl;
-    for(int i: eightDescending) {
+    for (int i: eightDescending) {
         cout << descendingBinarySearch(eightDescending, i) << " ";
     }
     cout << endl;
-    for(int i: fiveDescending) {
+    for (int i: fiveDescending) {
         cout << descendingBinarySearch(fiveDescending, i) << " ";
     }
     cout << endl;
-    for(int i: oneDescending) {
+    for (int i: oneDescending) {
         cout << descendingBinarySearch(oneDescending, i) << " ";
     }
     cout << endl;
-    for(int i: noDescending) {
-        cout << descendingBinarySearch(noDescending, i) << " ";
-    }
-    cout << endl;
+
+    // This one should return -1 for every key.
+    cout << descendingBinarySearch(noDescending, 0) << " " << endl;
 }
