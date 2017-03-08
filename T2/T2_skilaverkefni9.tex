@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\input{../Vor2017skil.tex}
+
+\title{Tölvunarfræði 2, \semester \\ Skilaverkefni 8}
+\author{}
+
+\begin{document}
+\maketitle
+\hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 8}}
+
+\paragraph{Skilavefur} Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}.
+
+\paragraph{Vinnubrögð og frágangur} Skrifa þarf forrit í Java og C++ sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skila \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu. Leitist við að nota beinagrindur óbreyttar þegar þær eru gefnar. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+
+\paragraph{Samþykki til dreifingar} Dæmatímakennarar velja framúrskarandi lausnir til birtingar undir nafni í lausnasafni. Sé þess óskað að einhverjar þinna úrlausna séu ekki birtar nema nafnlaust eða alls ekki birtar yfir höfuð skal taka slíkt fram í hverju dæmi sem takmörkunin á við.
+
+\section{Spurning 1}
+Teiknið 2-3 tréð sem fæst eftir að stök með lyklana
+\begin{center}
+\texttt{E A S Y Q U T I O N} 
+\end{center}
+eru sett inn í það í röð, væri tréð tómt í upphafi. Látið gildi hvers staks vera númer lykilsins.
+
+\section{Spurning 2}
+% Tímamæla hakkatöflu vs. tvíleitartré.
+
+Við höfum séð nafnatöflur útfærðar í C++ með \texttt{std::unordered\_map} og \texttt{std::map}. Tilgreint er að uppfletting, innsetning og eyðing í \texttt{std::unordered\_map} skuli vera framkvæmanleg á föstum tíma að meðaltali, en á logratíma í \texttt{std::map}. Þetta gefur sterklega til kynna að \texttt{std::unordered\_map} sé útfært með hakkatöflu en \texttt{std::map} með tré.
+
+Framkvæmið tímamælingar á eftirfarandi aðgerðum fyrir hvora gagnagrind um sig:
+
+\begin{itemize}
+ \item Innsetningu á öllum orðunum í \href{http://introcs.cs.princeton.edu/java/data/words.txt}{\texttt{words.txt}} í slembinni röð
+ \item Leit að hverju orði um sig í \texttt{words.txt} í stafrófsröð
+ \item Innsetningu á fyrstu 20000 heiltölunum í slembinni röð
+ \item Leit að hverri af fyrstu 20000 heiltölunum í vaxandi röð
+\end{itemize}
+
+Samtals er því um 8 mælingar að ræða. Hægt er að mæla keyrslutíma forrits í C++ með \href{http://www.cplusplus.com/reference/ctime/clock/}{clock}.
+
+\section{Spurning 3}
+
+Bætið boolean-aðferðinni \texttt{is23()} við \texttt{RedBlackBST.java} sem athugar hvort allar rauðar tengingar í viðkomandi tré séu til vinstri og hvort allir hnútar trésins hafi að hámarki eina rauða tengingu.
+
+Aðferðin ætti að skila sönnu fyrir öll lögleg rauðsvört tré.
+
+% 3.3.33
+% Add to RedBlackBST a method is23() to check that no node is
+% connected to two red links and that there are no right-leaing red links and a method
+% isBalanced() to check that all paths from the root to a null link have the same number
+% of black links. Combine these methods with code from isBST() in Exercise 3.2.32 to
+% create a method isRedBlackBST() that checks that the tree is a red-black BST.
+
+\section{Spurning 4}
+
+Búið til útgáfu af \texttt{SeparateChainingHashST} sem notar \texttt{RedBlackBST.java} í stað \texttt{SequentialSearchST} til þess að útkljá árekstra.
+
+% 3.4.37
+% Run experimental studies to determine the effect of using RedBlackBST
+% instead of SequentialSearchST to handle collisions in SeparateChainingHashST .
+% This solution carries the advantage of guaranteeing logarithmic performance even for
+% a bad hash function and the disadvantage of necessitating maintenance of two different
+% symbol-table implementations. What are the practical effects?
+
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
+\end{document}
