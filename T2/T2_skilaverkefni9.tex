@@ -2,12 +2,12 @@
 
 \input{../Vor2017skil.tex}
 
-\title{Tölvunarfræði 2, \semester \\ Skilaverkefni 8}
+\title{Tölvunarfræði 2, \semester \\ Skilaverkefni 9}
 \author{}
 
 \begin{document}
 \maketitle
-\hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 8}}
+\hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 9}}
 
 \paragraph{Skilavefur} Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}.
 
@@ -16,33 +16,37 @@
 \paragraph{Samþykki til dreifingar} Dæmatímakennarar velja framúrskarandi lausnir til birtingar undir nafni í lausnasafni. Sé þess óskað að einhverjar þinna úrlausna séu ekki birtar nema nafnlaust eða alls ekki birtar yfir höfuð skal taka slíkt fram í hverju dæmi sem takmörkunin á við.
 
 \section{Spurning 1}
+Við höfum séð nafnatöflur útfærðar í C++ með \texttt{std::unordered\_map} og \texttt{std::map}. Tilgreint er að uppfletting, innsetning og eyðing í \texttt{std::unordered\_map} skuli vera framkvæmanleg á föstum tíma í meðaltilfellinu, en á logratíma í \texttt{std::map}.
+
+Framkvæmið tímamælingar á eftirfarandi aðgerðum fyrir hvora gagnagrind um sig:
+
+\begin{itemize}
+ \item Innsetningu þar sem orðin í \href{http://introcs.cs.princeton.edu/java/data/words.txt}{\texttt{words.txt}} eru notuð sem lyklar og sett inn í slembinni röð. Fyrsta innsetningin skal hafa heiltölugildið 0, næsta 1 og svo koll af kolli
+ \item Leit að hverju orði um sig í \texttt{words.txt} í stafrófsröð
+ \item Innsetningu þar sem fyrstu á fyrstu 20000 heiltölurnar eru notaðar sem lyklar og settar inn í slembinni röð. Fyrsta innsetningin skal hafa heiltölugildið 0, næsta 1 og svo koll af kolli
+ \item Leit að hverri af fyrstu 20000 heiltölunum, í vaxandi röð
+\end{itemize}
+Samtals er því um 8 mælingar að ræða. Hægt er að mæla keyrslutíma forrits í C++ með \href{http://www.cplusplus.com/reference/ctime/clock/}{clock}. Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w9/MapTime.cpp}{MapTime.cpp}.
+
+\newpage
+
+\section{Spurning 2}
 Teiknið 2-3 tréð sem fæst eftir að stök með lyklana
 \begin{center}
 \texttt{E A S Y Q U T I O N} 
 \end{center}
 eru sett inn í það í röð, væri tréð tómt í upphafi. Látið gildi hvers staks vera númer lykilsins.
 
-\section{Spurning 2}
-% Tímamæla hakkatöflu vs. tvíleitartré.
-
-Við höfum séð nafnatöflur útfærðar í C++ með \texttt{std::unordered\_map} og \texttt{std::map}. Tilgreint er að uppfletting, innsetning og eyðing í \texttt{std::unordered\_map} skuli vera framkvæmanleg á föstum tíma að meðaltali, en á logratíma í \texttt{std::map}. Þetta gefur sterklega til kynna að \texttt{std::unordered\_map} sé útfært með hakkatöflu en \texttt{std::map} með tré.
-
-Framkvæmið tímamælingar á eftirfarandi aðgerðum fyrir hvora gagnagrind um sig:
-
-\begin{itemize}
- \item Innsetningu á öllum orðunum í \href{http://introcs.cs.princeton.edu/java/data/words.txt}{\texttt{words.txt}} í slembinni röð
- \item Leit að hverju orði um sig í \texttt{words.txt} í stafrófsröð
- \item Innsetningu á fyrstu 20000 heiltölunum í slembinni röð
- \item Leit að hverri af fyrstu 20000 heiltölunum í vaxandi röð
-\end{itemize}
-
-Samtals er því um 8 mælingar að ræða. Hægt er að mæla keyrslutíma forrits í C++ með \href{http://www.cplusplus.com/reference/ctime/clock/}{clock}.
-
 \section{Spurning 3}
 
-Bætið boolean-aðferðinni \texttt{is23()} við \texttt{RedBlackBST.java} sem athugar hvort allar rauðar tengingar í viðkomandi tré séu til vinstri og hvort allir hnútar trésins hafi að hámarki eina rauða tengingu.
+Bætið tveimur boolean-aðferðum við \texttt{RedBlackBST.java}:
 
-Aðferðin ætti að skila sönnu fyrir öll lögleg rauðsvört tré.
+\begin{itemize}
+ \item Aðferðinni \texttt{is23()} sem athugar hvort allar rauðar tengingar í viðkomandi tré séu til vinstri og hvort allir hnútar trésins hafi að hámarki eina rauða tengingu
+ \item Aðferðinni \texttt{isBalanced()} sem athugar hvort alli vegir frá rót til tóms laufs innihaldi jafn margar svartar tengingar
+\end{itemize}
+
+Bætið prófunum á aðferðunum við \texttt{main}-aðferð klasans og sýnið dæmi um keyrslu.
 
 % 3.3.33
 % Add to RedBlackBST a method is23() to check that no node is
@@ -53,7 +57,11 @@ Aðferðin ætti að skila sönnu fyrir öll lögleg rauðsvört tré.
 
 \section{Spurning 4}
 
-Búið til útgáfu af \texttt{SeparateChainingHashST} sem notar \texttt{RedBlackBST.java} í stað \texttt{SequentialSearchST} til þess að útkljá árekstra.
+Búið til útgáfu af \texttt{SeparateChainingHashST} sem notar \texttt{RedBlackBST} í stað \texttt{SequentialSearchST} til þess að útkljá árekstra. Nefnið hana \texttt{RedBlackHashST}.
+
+Sýnið dæmi um keyrslu og tímamælingu þar sem keyrslutími \texttt{RedBlackHashST} er marktækt betri en keyrslutími \texttt{SeparateChainingHashST}. 
+
+Þið megið velja eða skrifa ykkar eigin gagnagerð til að setja inn í töflurnar.
 
 % 3.4.37
 % Run experimental studies to determine the effect of using RedBlackBST
