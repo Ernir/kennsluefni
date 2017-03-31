@@ -1,0 +1,42 @@
+\documentclass{article}
+
+\input{../Vor2017skil.tex}
+
+\title{Tölvunarfræði 2, \semester \\ Skilaverkefni 12}
+\author{}
+
+\begin{document}
+\maketitle
+\hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 12}}
+
+\paragraph{Skilavefur} Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}.
+
+\paragraph{Vinnubrögð og frágangur} Skrifa þarf forrit í Java og C++ sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skila \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu. Leitist við að nota beinagrindur óbreyttar þegar þær eru gefnar. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+
+\paragraph{Samþykki til dreifingar} Dæmatímakennarar velja framúrskarandi lausnir til birtingar undir nafni í lausnasafni. Sé þess óskað að einhverjar þinna úrlausna séu ekki birtar nema nafnlaust eða alls ekki birtar yfir höfuð skal taka slíkt fram í hverju dæmi sem takmörkunin á við.
+
+\section{Spurning 1}
+Hringsnúningur á streng er myndaður með því að taka fjarlægja annan ``enda'' strengs og splæsa honum við hinn enda strengsins. Þannig eru t.d. \texttt{sýnidæmi} og \texttt{nidæmisý} hringsnúningar hvors annars.
+
+Skrifið Java-forrit sem tekur inn tvo strengi og athugar hvort þeir séu hringsnúningar hvor á öðrum. Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w12/Cyclic.java}{Cyclic.java}.
+
+\section{Spurning 2}
+Skrifið Java-forrit sem ber saman keyrslutíma á \texttt{Quick.java} og \texttt{MSD.java} á tveimur strengjafylkjum. Annars vegar strengjafylki sem í upphafi inniheldur allar línurnar úr \href{http://introcs.cs.princeton.edu/java/data/commonwords.txt}{commonwords.txt} í slembinni röð, hins vegar strengjafylki sem inniheldur allar setningarnar úr \href{http://introcs.cs.princeton.edu/java/data/leipzig/leipzig100k.txt}{leipzig100k.txt}.
+
+Nota má forritið í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/SortCompare.java}{SortCompare.java} til viðmiðunar.
+
+\section{Spurning 3}
+Bætið \texttt{findAll()} aðferð við \texttt{RabinKarp.java}. Aðferðin skal skila \texttt{Iterable<Integer>} sem leyfir notanda forritsins að ítra yfir allar staðsetningar leitarmynstursins.
+
+Aðferðinni skal bera saman við \texttt{search()} aðferðina sem fyrir er í klasanum.
+
+\section{Spurning 4}
+Skrifið LSD-radix sort í C++. Fallið skal virka á \texttt{std::vector} af strengjum sem gera má ráð fyrir að séu allir af sömu lengd.
+
+Prófið forritið á skránni \href{http://introcs.cs.princeton.edu/java/data/words5-knuth.txt}{words5-knuth.txt}. Sýnið a.m.k. síðustu 10 línurnar í keyrsludæminu.
+
+Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w12/lsd.cpp}{lsd.cpp}.
+
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
+\end{document}
