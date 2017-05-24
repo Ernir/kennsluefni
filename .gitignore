@@ -32,8 +32,9 @@ T2/Code/Code.iml
 T2/Code/.idea/
 T2/Code/CMakeLists.txt
 T2/Code/cmake-build-debug/
-T2/Code/*/.vscode/
+T2/.vscode/
 T2/Code/*/*
+T2/vscode/
 !T2/Code/*/*.cpp
 !T2/Code/*/*.java
 !T2/Code/*/*.txt

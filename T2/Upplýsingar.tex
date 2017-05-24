@@ -12,11 +12,7 @@
 \section{Námsáætlun}
 \label{sec:schedule}
 
-Námskeiðið er tvískipt. 
-
-Fyrri hluti námskeiðsins er þrjár vikur. Í þeim hluta verður farið í grundvallaratriði forritunarmálsins C++.
-
-Aðalviðfangsefni námskeiðsins, gagnagrindur og reiknirit sem á þeim vinna, koma fyrir í seinni hluta. Forritun í Java og C++ kemur við sögu. Seinni hluti spannar afgang kennslumisserisins, samtals 11 vikur.
+Námskeiðið er framhaldsnámskeið Tölvunarfræði 1. Í upphafi námskeiðins er farið dýpra í hlutbundna forritun í Java-forritunarmálinu. Nemendur sem lærðu önnur forritunarmál en Java í sínu fyrsta forritunarnámskeiði eru hvattir til að kynna sér grundvallaratriði Java við fyrsta tækifæri. Aðalviðfangsefni námskeiðsins, gagnagrindur og reiknirit sem á þeim vinna, koma fyrir í framhaldinu. Sjá  töflu \ref{tab:schedule}.
 
 \begin{table}
 \caption{Námsáætlun eftir vikum}
@@ -27,10 +23,10 @@ Aðalviðfangsefni námskeiðsins, gagnagrindur og reiknirit sem á þeim vinna,
 \toprule
 Vika&Dagsetning&Námsefni&Kafli\\
 \midrule
-1	&13/1	& Kynning á námskeiðinu, kynning á C++, minnismeðhöndlun í C++&C++ 1\\
-2	&20/1	& Hlutbundin forritun í C++&C++ 2\\
-3	&21/1	& Staðalsafn C++ (STL)&C++ 3\\
-4	&27/9	& Uppbygging forrita, gagnagrindur/gagnatög&Alg 1\\
+1	&13/1	& Kynning á námskeiðinu, upprifjun á Java, minnismeðhöndlun, notkun safna, villumeðhöndlun&\\
+2	&20/1	& Hlutbundin forritun í Java, erfðir&\\
+3	&21/1	& Fjölnota klasar?&\\
+4	&27/9	& ?&\\
 5	&3/2	& Skjóður, biðraðir, hlaðar, greining reiknirita&Alg 1\\
 6	&10/2	& Röðunarreiknirit&Alg 2\\
 7	&17/2	& Röðunarreiknirit, forgangsbiðraðir&Alg 2\\
@@ -49,14 +45,14 @@ Vika&Dagsetning&Námsefni&Kafli\\
 \end{table}
 
 \section{Kennari}
-Aðalkennari er Eiríkur Ernir Þorsteinsson. Aðsetur er í Tæknigarði, 2. hæð, stofa 214. Sjá mynd \ref{fig:taeknigardur}.
+Aðalkennari er Eiríkur Ernir Þorsteinsson. Aðsetur er í Tæknigarði, 2. hæð, stofa 212. Sjá mynd \ref{fig:taeknigardur}.
 
-Til að hafa samband við kennara er ráðlagt að setja inn þráð á \href{https://piazza.com/hi.is/spring2017/tl203g/}{Piazza}. Allar fyrirspurnir sem ekki fela í sér persónulegar upplýsingar ættu að fara þangað. 
+Til að hafa samband við kennara er ráðlagt að setja inn þráð á \href{???}{Piazza}. Allar fyrirspurnir sem ekki fela í sér persónulegar upplýsingar ættu að fara þangað. 
 
 Tölvupóstfang er \href{mailto:ernir@hi.is}{ernir@hi.is}.
 
 \begin{figure}
-\caption{Önnur hæð í Tæknigarði. Kennara má finna í stofu 214.}
+\caption{Önnur hæð í Tæknigarði. Kennara má finna í stofu 212.}
 \label{fig:taeknigardur}
 \begin{center}
 \includegraphics[width=0.5\linewidth]{taeknigardur}
@@ -64,9 +60,9 @@ Tölvupóstfang er \href{mailto:ernir@hi.is}{ernir@hi.is}.
 \end{figure}
 
 \section{Tímar og námstilhögun}
-Aðalkennsla fer fram í vikulegum fyrirlestri. Fyrirlestrarnir eru á föstudögum frá 10:00 til 12:20 í Háskólabíói, sal 1.
+Aðalkennsla fer fram í vikulegum fyrirlestri. Fyrirlestrarnir eru %á föstudögum frá 10:00 til 12:20 í Háskólabíói, sal 1.
 
-Dæmatímar eru á mánudögum og þriðjudögum, ætlaðir til stuðnings fyrir skilaverkefni. Dæmahópum er úthlutað eftir fögum og stundatöflum, nemendur eru vinsamlegast beðnir um að mæta í úthlutaðan dæmatíma ef kostur er til að dreifingin á milli hópa sé sem jöfnust.
+%Dæmatímar eru á mánudögum og þriðjudögum, ætlaðir til stuðnings fyrir skilaverkefni. Dæmahópum er úthlutað eftir fögum og stundatöflum, nemendur eru vinsamlegast beðnir um að mæta í úthlutaðan dæmatíma ef kostur er til að dreifingin á milli hópa sé sem jöfnust.
 
 \subsection{Mætingaskylda}
 Ekki er skylda að mæta í fyrirlestra eða dæmatíma (en sjá \nameref{sec:lecture-exercises}). Nemendur eru ábyrgir fyrir því að forgangsraða tíma sínum.
@@ -74,21 +70,15 @@ Ekki er skylda að mæta í fyrirlestra eða dæmatíma (en sjá \nameref{sec:le
 Fyrirlestrar eru teknir upp þegar tæknin leyfir. Varað er við því að treysta á upptökur í stað mætingar í fyrirlestra.
 
 \section{Námsbækur}
-Aðalkennslubók er \emph{Algorithms}, fjórða útgáfa, eftir Sedgewick og Wayne. Kennsla eftir þeirri bók hefst í fjórðu kennsluviku, eftir kynningu á C++ (sjá \nameref{tab:schedule}). 
+Aðalkennslubók er \emph{Algorithms}, fjórða útgáfa, eftir Sedgewick og Wayne. %Kennsla eftir þeirri bók hefst í fjórðu kennsluviku, eftir kynningu á C++ (sjá \nameref{tab:schedule}). 
 
-Til stuðnings við er bent á \emph{C++ in One Hour a Day}, 8. útgáfa, eftir Siddhartha Rao. Litið verður til hennar við yfirferð á C++, en ekki verður vísað beint í bókina.
+%Til stuðnings við er bent á \emph{C++ in One Hour a Day}, 8. útgáfa, eftir Siddhartha Rao. Litið verður til hennar við yfirferð á C++, en ekki verður vísað beint í bókina.
 
 \begin{figure}
-\caption{Kennslubækur}
-\begin{multicols}{2}
+\caption{Kennslubók}
 \begin{center}
 \includegraphics[height=8cm]{algorithms4th}
 \end{center}
-
-\begin{center}
-\includegraphics[height=8cm]{teachyourself}
-\end{center}
-\end{multicols}
 \end{figure}
 
 \newpage
@@ -115,7 +105,9 @@ Vefkennslutól verða notað eftir föngum. Mælt er með að nemendur skrái si
  \item \href{https://piazza.com/hi.is/spring2017/tl203g/home}{Piazza} er fyrirspurnavefurinn sem notaður er í námskeiðinu. Skráningin í námskeiðið á að vera sjálfvirk, en hafi það misfarist á að vera hægt að skrá sig handvirkt. Allar spurningar sem snúa að námskeiðinu ættu að fara inn á Piazza frekar en í tölvupóst.
  \item \href{https://gradescope.com/courses/5640}{Gradescope.com} er vefkerfið sem notað er til að taka við skilaverkefnum. Nemendur þurfa að skrá sig sjálfir á þennan vef. Aðgangskóði námskeiðsins er \texttt{95434M}. Mikilvægt er að skrá sig á Gradescope með fullu nafni (íslenskir stafir eru leyfilegir) og með því að nota HÍ-netfang. Kerfið tekur við \texttt{.pdf} skrám.
 \end{itemize}
-Fyrir utan vefkennslutól er nauðsynlegt að nemendur setji upp þýðendur fyrir C++ og Java ásamt viðeigandi ritlum á eigin tölvum eða útvegi sér aðgang að slíkri vél.
+Fyrir utan vefkennslutól er nauðsynlegt að nemendur setji upp þýðanda fyrir Java ásamt viðeigandi ritli á eigin tölvu eða útvegi sér aðgang að slíkri vél.
+
+\section{Undanþágur og sérúrræði}
 
 \vfill
 \includegraphics[width=0.5\linewidth]{hi-von-logo}

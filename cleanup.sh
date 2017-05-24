@@ -14,5 +14,6 @@ do
   rm -f *.snm
   rm -f *.vrb
   rm -f *.backup
+  rm -f *.synctex.gz
   )
 done
