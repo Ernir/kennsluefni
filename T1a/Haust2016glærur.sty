@@ -1,0 +1,72 @@
+\usepackage[utf8]{inputenc} % Language and font encoding
+\usepackage[icelandic]{babel}
+\usepackage[T1]{fontenc}
+
+
+\usepackage{tikz}
+\usepackage[listings,theorems]{tcolorbox}
+\usepackage{booktabs}
+\usepackage{minted} %Minted and configuration
+\usemintedstyle{default}
+
+\renewcommand{\theFancyVerbLine}{\sffamily \arabic{FancyVerbLine}}
+%%%%%%%%%%%
+% More math
+%%%%%%%%%%%
+\newcommand{\Mod}[1]{\ \text{mod}\ #1}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Beamer configuration
+%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{navigation symbols}{}
+\usecolortheme{dove}
+\setbeamercolor{frametitle}{fg=white}
+
+\usebackgroundtemplate%
+{%
+\vbox to \paperheight{
+\includegraphics[width=\paperwidth]{Pics/hi-slide-head-2016}
+
+\vfill
+\hspace{0.5cm}\includegraphics[width=0.3\paperwidth]{Pics/hi-von-logo}
+\vspace{0.4cm}
+    }%
+}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Yfirlit}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\setbeamerfont{frametitle}{size=\normalsize}
+\addtobeamertemplate{frametitle}{}{\vspace*{0.5cm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% tcolorbox configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setup from: http://tex.stackexchange.com/a/43329/21638
+\tcbset{%
+    noparskip,
+    colback=gray!10, %background color of the box
+    colframe=gray!40, %color of frame and title background
+    coltext=black, %color of body text
+    coltitle=black, %color of title text 
+    fonttitle=\bfseries,
+    alerted/.style={coltitle=red, colframe=gray!40},
+    example/.style={coltitle=black, colframe=green!20, colback=green!5},
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Further configuration
+%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue}
+\graphicspath{{./Pics/}}
+
+\author{Eiríkur Ernir Þorsteinsson}
+\institute{Háskóli Íslands}
+\date{Haust 2016}

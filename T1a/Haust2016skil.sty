@@ -1,0 +1,44 @@
+% Encodings, page setup, paragraph formatting, font
+\usepackage[top=0.9in, bottom=1in, left=1.5in, right=1.5in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[icelandic]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+\usepackage[parfill]{parskip}
+% Tables and lists
+\usepackage{booktabs,tabularx}
+\usepackage{multirow}
+\usepackage{enumerate}
+% Math
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+% Graphics
+\usepackage{graphicx}
+\usepackage{tikz}
+% Code environment
+\usepackage{minted}
+% Hyperlinks and related
+\usepackage[pdftex,bookmarks=true,colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue]{hyperref}
+
+% Minted configuration
+\usemintedstyle{default}
+\renewcommand{\theFancyVerbLine}{\sffamily \arabic{FancyVerbLine}}
+
+\floatstyle{plaintop}
+\newfloat{program}{thp}{lop}
+\floatname{program}{Forrit}
+% End minted configuration
+
+% Picture locations
+\graphicspath{{./Pics/}}
+
+% Meta information
+\date{}
+\author{Eiríkur Ernir Þorsteinsson}
+\newcommand{\semester}{haust 2016}
+\newcommand{\Semester}{Haust 2016}
+
+% Hyphenation
+\hyphenpenalty=5000
+% Page and section numbering
+\setcounter{secnumdepth}{-1} 
+\pagenumbering{gobble}
