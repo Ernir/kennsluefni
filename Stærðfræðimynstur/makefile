@@ -6,7 +6,7 @@ build:
 	latexmk -pdf -quiet -pdflatex="pdflatex -shell-escape"
 
 clean: cleanjunk
-	-rm *.pdf
+	-rm -f *.pdf
 
 cleanjunk:
 	latexmk -c -quiet

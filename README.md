@@ -4,16 +4,18 @@ Hér má finna ýmist efni sem Eiríkur Ernir Þorsteinsson hefur notað við ke
 
 Þriðji aðili má nota efnið, sjá LEYFI.md.
 
+# Þýðing
 
-=======
-Keyrsla
-=======
+Kennsluefnið er að mestu leyti sett fram á [LaTeX](https://en.wikipedia.org/wiki/LaTeX) sniði. Sniðið er hrátextasnið sem þarfnast þýðingar. Útkoman er safn .pdf skráa.
 
-Gefnar eru eftirfarandi Unix-skipanaskrár til að þýða LaTeX-grunnskrárnar:
+Gefnar eru [make](https://en.wikipedia.org/wiki/Make_(software)) skrár til að aðstoða við þýðingu.
 
-  * `build.sh`, sem túlkar allar .tex skrár í 1. stigs undirmöppum.
-  * `cleanup.sh`, sem hreinsar upp hið ýmsa subb sem LaTeX þýðandinn býr til í undirmöppunum.
+Make skrárnar gera ráð fyrir að hjálparforritið `latexmk` sé uppsett, auk eðlilegra LaTeX-pakka. Á Ubuntu má setja upp `latexmk` með skipuninni `sudo apt-get install latexmk`.
 
-Báðar skipanaskrárnar gera ráð fyrir að hjálparforritið `latexmk` sé uppsett, auk, eðlilegra LaTeX-pakka.
+Að öllum forkröfum uppfylltum má þýða allt kennsluefnið með því að gefa skipunina
 
-Á Ubuntu má setja upp `latexmk` með skipuninni `sudo apt-get install latexmk`.
+```
+make
+```
+
+í þessari rótarmöppu. Einnig má keyra skipunina í undirmöppu einhvers ákveðins námskeiðs til að þýða eingöngu kennsluefni þess námskeiðs.

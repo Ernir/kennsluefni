@@ -11,6 +11,10 @@
 \usepackage{graphicx}
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
 \usepackage{tikz}
+\makeatletter % Fix due to (recent versions of?) minted containing their own framed definition
+\expandafter\providecommand\expandafter*\csname ver@framed.sty\endcsname
+{2003/07/21 v0.8a Simulated by exam}
+\makeatother
 \usepackage{minted} %Minted and configuration
 
 \usepackage[pdftex,bookmarks=true,colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue]{hyperref}
