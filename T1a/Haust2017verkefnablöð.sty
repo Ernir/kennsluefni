@@ -1,0 +1,104 @@
+% Grundvallaratriði
+\usepackage[utf8]{inputenc}
+\usepackage[icelandic]{babel}
+\usepackage{ifluatex} % Fyrir eina hjáleiðina
+% Stærðfræði
+\usepackage{amsfonts, amssymb, amsthm, amsmath}
+% Töflur og listar
+\usepackage{booktabs,tabularx}
+\usepackage{enumerate}
+% Myndir
+\usepackage{graphicx}
+\usepackage{tikz}
+% Kóðaframsetning
+\usepackage{minted}
+
+\usepackage{hyperref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lagfæringar/Hjáleiðir
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Lagfæring á leturskilgreiningum fyrir LuaLaTeX
+% http://tex.stackexchange.com/a/200725/21638
+\ifluatex
+  \newcommand{\textls}[2][5]{%
+    \begingroup\addfontfeatures{LetterSpace=#1}#2\endgroup
+  }
+  \renewcommand{\allcapsspacing}[1]{\textls[15]{#1}}
+  \renewcommand{\smallcapsspacing}[1]{\textls[10]{#1}}
+  \renewcommand{\allcaps}[1]{\textls[15]{\MakeTextUppercase{#1}}}
+  \renewcommand{\smallcaps}[1]{\smallcapsspacing{\scshape\MakeTextLowercase{#1}}}
+  \renewcommand{\textsc}[1]{\smallcapsspacing{\textsmallcaps{#1}}}
+\fi
+
+% Endurskilgreining á inndrætti
+% Uppruni: http://tex.stackexchange.com/questions/77999/remove-indent-of-paragraph-and-add-line-skip-with-tufte-latex
+\makeatletter
+\renewcommand{\@tufte@reset@par}{%
+  \setlength{\RaggedRightParindent}{0pt}%
+  \setlength{\JustifyingParindent}{0pt}%
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0.4\baselineskip}%
+}
+\@tufte@reset@par
+
+\renewcommand{\@tufte@margin@par}{%
+  \setlength{\RaggedRightParindent}{0pt}%
+  \setlength{\JustifyingParindent}{0pt}%
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0.3\baselineskip}%
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Upplýsingar og stillingar
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Stillingar á forritskóðaframsetningu
+
+\newcounter{example}[section]
+\newcommand\examplename{Sýnidæmi}
+\newcommand\listexamplename{Sýnidæmaskrá}
+\makeatletter
+\newcommand\listofexamples{%
+  \ifthenelse{\equal{\@tufte@class}{book}}%
+    {\chapter*{\listexamplename}}%
+    {\section*{\listexamplename}}%
+%  \begin{fullwidth}%
+    \@starttoc{loe}%
+%  \end{fullwidth}%
+}
+\renewcommand\theexample
+     {\@arabic\c@example}
+\def\fps@example{tbp}
+\def\ftype@example{1}
+\def\ext@example{loe}
+\def\fnum@example{\examplename\nobreakspace\theexample}
+\newenvironment{example}[1][htbp]
+  {\begin{@tufte@float}[#1]{example}{}}
+  {\end{@tufte@float}}
+\let\l@example\l@figure
+\makeatother
+
+\floatstyle{plaintop}
+\newfloat{program}{thp}{lop}
+\floatname{program}{Forrit}
+
+% Flýtiskipanir
+\newcommand{\eng}[1]{\footnote{e.\ #1}}
+\newmintedfile[matlabfile]{matlab}{frame=lines, linenos=true}
+
+% Staðsetning mynda
+\graphicspath{{./Pics/}}
+
+% Orðaskiptingar
+\hyphenpenalty=5000
+\hyphenation{}
+
+% Upplýsingar um skjalið
+\date{}
+\author{Eiríkur Ernir Þorsteinsson}
+\newcommand{\semester}{haust 2017}
+\newcommand{\Semester}{Haust 2017}
+\hypersetup{pdfencoding=auto, pdfauthor={Eirikur Ernir Þorsteinsson},linkcolor=blue,urlcolor=blue}

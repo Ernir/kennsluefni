@@ -26,13 +26,13 @@
 T1a/*verkefni*.tex
 Mynstur/*verkefni*.tex
 
-# Hunsa ruslskrár frá þróunarumhverfum í T2
+# Hunsa ruslskrár frá þróunarumhverfum
 
 T2/Code/Code.iml
 T2/Code/.idea/
 T2/Code/CMakeLists.txt
 T2/Code/cmake-build-debug/
-T2/.vscode/
+*/.vscode/
 T2/Code/*/*
 T2/vscode/
 !T2/Code/*/*.cpp
