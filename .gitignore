@@ -38,3 +38,7 @@ T2/vscode/
 !T2/Code/*/*.cpp
 !T2/Code/*/*.java
 !T2/Code/*/*.txt
+
+# Annað rusl
+
+T1a/.directory
