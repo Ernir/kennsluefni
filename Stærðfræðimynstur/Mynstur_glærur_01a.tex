@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
 \subtitle{Vika 1, fyrri fyrirlestur}
@@ -22,7 +22,7 @@ Yrðing (e. \emph{proposition}) er fullyrðing sem er áreiðanlega sönn eða �
 \begin{itemize}
  \item Dæmi um yrðingar:
  \begin{itemize}
-  \item Við erum stödd í stofu HT-105
+  \item Við erum stödd í Háskólabíói
   \item $2 + 2 = 4$
   \item $1 + 2 = 5$
  \end{itemize}
@@ -81,10 +81,13 @@ Yrðing (e. \emph{proposition}) er fullyrðing sem er áreiðanlega sönn eða �
 \end{itemize}
 \end{frame}
 
-\subsection{Rökvirkjar}
+\section{Rökvirkjar}
 
 \begin{frame}{Neitun}
-Dæmi um neitun: Ef $p$ stendur fyrir ``við erum stödd í stofu HT-105'', þá stendur $\lnot p$ fyrir ``það er ekki svo að við séum stödd í stofu HT-105'' (sem umorða má í ``við erum ekki stödd í stofu HT-105'').
+Neitun snýr við sanngildi yrðingar.
+\vspace{0.5cm}
+
+Dæmi um neitun: Ef $p$ stendur fyrir ``við erum stödd í Háskólabíói'', þá stendur $\lnot p$ fyrir\pause{} ``það er ekki svo að við séum stödd í Háskólabíói'' (sem umorða má í ``við erum ekki stödd í Háskólabíói'').
 
 \vspace*{0.5cm}
 Sanntafla (e. \emph{truth table}) neitunar:
@@ -107,7 +110,7 @@ $p$&$\lnot p$\\
 Samsett yrðing búin til með og-un er sönn þegar báðar yrðingarnar sem að henni koma eru sannar.
 
 \vspace*{0.5cm}
-Hvert er sanngildi samsettu yrðingarinnar ``við erum stödd í stofu HT-105 og við erum að læra Stærðfræðimynstur''? En yrðingarinnar ``við erum stödd í stofu HT-105 og við erum að læra Tölvutækni og samfélagið''?
+Hvert er sanngildi samsettu yrðingarinnar ``við erum stödd í Háskólabíói og við erum að læra Stærðfræðimynstur''?\pause En yrðingarinnar ``við erum stödd í Háskólabíói og við erum að læra Vefforritun''?
 \column{0.4\textwidth}
 Sanntafla og-unar:
 \begin{center}
@@ -131,7 +134,7 @@ $p$&$q$&$p \land q$ \\
 Samsett yrðing búin til með eð-un er sönn þegar a.m.k. önnur yrðingin sem að henni kemur er sönn.
 
 \vspace*{0.5cm}
-Hvert er sanngildi samsettu yrðingarinnar ``við erum stödd í stofu HT-105 eða við erum að læra Tölvutækni og samfélagið''?
+Hvert er sanngildi samsettu yrðingarinnar ``við erum stödd í Háskólabíói eða við erum að læra Vefforritun''? \pause
 \column{0.4\textwidth}
 Sanntafla eð-unar:
 \begin{center}
@@ -157,7 +160,7 @@ $p$&$q$&$p \lor q$ \\
   \item Væntanlega er átt við eitthvað á borð við ``með þessum rétti fylgja franskar eða hrísgrjón en ekki hvort tveggja''
   \item Einnig er væntanlega átt við að kúnninn skuli velja, frekar en að um sé að ræða yfirlýsingu sem hefur sanngildi \pause
  \end{itemize}
- \item Í stærðfræði/rökfræði: 
+ \item Í stærðfræði/rökfræði/forritun: 
  \begin{itemize}
   \item Merking og-unar og eð-unar er skýr og samkvæmt sanntöflum
   \item Yrðing hefur sanngildi
@@ -198,20 +201,21 @@ $p$&$q$&$p \oplus q$ \\
  \begin{itemize}
   \item ef $p$, þá $q$
   \item $q$ ef $p$
-  \item $q$ hvenær sem $p$
-  \item nægjanlegt skilyrði fyrir $q$ er $p$
+  \item $q$ þegar $p$
+  \item $q$ nema $\neg p$
  \end{itemize}
+ \item Stærðfræðileg afleiðing er oftar sönn en það sem daglegt tal gefur til kynna
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Aðgreind eðun}
+\begin{frame}{Afleiðing}
 \begin{columns}
 \column{0.6\textwidth}
 Samsetta yrðingin $p \to q$ er ósönn þegar $p$ er sönn og $q$ er ósönn, annars er hún sönn.
 
 \vspace*{0.5cm}
 
-Hver eru möguleg sanngildi yrðingarinnar ``ef ég er kosinn, þá mun ég lækka skatta''?
+Hver eru möguleg sanngildi yrðingarinnar ``ef ég hlýt kosningu, þá munu skattar lækka''?
 
 \column{0.4\textwidth}
 Sanntafla afleiðingar:
@@ -268,7 +272,7 @@ $p$&$q$&$p \to q$&$q \to p$&$p \leftrightarrow q$&$(p \to q) \land (q \to p)$\\
 \end{center}
 \end{frame}
 
-\subsection{Sísönnur, mótsagnir og jafngildi}
+\section{Sísönnur, mótsagnir og jafngildi}
 
 \begin{frame}{Sísönnur og mótsagnir}
 Við getum skilgreint hugtök sem tengjast samsettum yrðingum:
@@ -331,7 +335,7 @@ Virkja ofar í töflunni skal gilda á undan þeim sem eru neðar.
 \end{frame}
 
 \begin{frame}{Næst}
-Í næsta tíma verður farið yfir hagnýtingar á yrðingum (kafli 1.2), meira um jafngildi (kafli 1.3) og magnara (kafli 1.4).
+Í næsta tíma verður farið yfir hagnýtingar á yrðingum (kafli 1.2), meira um jafngildi (kafli 1.3), magnara (kafli 1.4) og framsetningu á stærðfræði með \LaTeX.
 \end{frame}
 
 
