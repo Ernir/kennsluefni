@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{Haust2017glærur}
 
@@ -24,7 +24,7 @@
 \end{itemize}
 \end{frame}
 
-\section{Hagnýting yrðinga}
+\section{Hagnýting yrðinga (1.2)}
 
 \subsection{Forritun}
 
@@ -76,16 +76,16 @@ public static void main(String []args) {
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Riddarar og ribbaldar á yrðingaformi}
+\begin{frame}{Riddarar, riddarar og yrðingar}
 \begin{itemize}
  \item Látum $p$ vera yrðinguna ``$A$ er riddari''
  \item Látum $q$ vera yrðinguna ``$B$ er riddari''
- \item Hvað getum við fullyrt út frá því sem $A$ sagði? \pause
+ \item Hvað getum við fullyrt út frá því sem $A$ sagði? (``$B$ er riddari.'') \pause
  \begin{itemize}
   \item Ef $p$ er satt, þá er $q$ satt
   \item Ef $q$ er ósatt, þá er $p$ ósatt
  \end{itemize}
- \item Hvað getum við fullyrt út frá því sem $B$ sagði? \pause
+ \item Hvað getum við fullyrt út frá því sem $B$ sagði? (``Við erum af mismunandi gerðum.'') \pause
  \begin{itemize}
   \item Ef $p \oplus q$ er satt, þá er $q$ satt
   \item Ef $p \oplus q$ er ósatt, þá er $q$ ósatt
@@ -95,7 +95,7 @@ public static void main(String []args) {
 \end{frame}
 
 \begin{frame}{Riddarar og ribbaldar - sanntafla}
-Komumst að sanngildi $(p \leftrightarrow q) \land ((p \oplus q) \leftrightarrow q)$ með sanntöflu:
+Komumst að sanngildi $(p \leftrightarrow q) \land ((p \oplus q) \leftrightarrow q)$ með sanntöflu: \pause
 \begin{center}
 \begin{tabular}{ccccc}
 \toprule
@@ -111,29 +111,18 @@ $p$&$q$&$p \leftrightarrow q$&$p \oplus q$& $(p \oplus q) \leftrightarrow q$\\
 Fullyrðingarnar standast einungis þegar bæði $A$ og $B$ eru ribbaldar.
 \end{frame}
 
-\subsection{Rökrásir}
-
-\begin{frame}{Rökrásir}
+\begin{frame}{Fleiri hagnýtingar}
 \begin{itemize}
- \item Stafrænar rásir eru byggðar upp eins og yrðingar
- \item Notum sanngildin $0$ og $1$ sem ``merki''
- \item Búum til rafrás sem tekur við merkjum $p_1, p_2, \ldots, p_n$ og skilar merkjum $s_1, s_2, \ldots s_n$
- 
- \item Notum rökhlið (e. \emph{logic gates}) til að breyta merkjunum
+  \item Bókin nefnir fleiri hagnýtingardæmi
+  \begin{itemize}
+    \item Kerfisskilgreiningar
+    \item Rökrásir
+    \item Skorðun í leitarvélum
+  \end{itemize}  
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Rökrásir}
-Getum við búið til rökrás sem táknar yrðinguna $(p \land \lnot q) \lor \lnot r$ með því að nota þessi grunnhlið?
-\begin{center}
-\includegraphics[width=0.8\textwidth]{logic-circuit}\\
-\pause
-\includegraphics[width=0.8\textwidth]{comi-circuit}
-\end{center}
-Mynd úr kafla 1.2 í bók
-\end{frame}
-
-\section{Jafngildi yrðinga}
+\section{Jafngildi yrðinga (1.3)}
 
 \begin{frame}{Jafngildi}
 Í síðasta tíma sáum við skilgreiningu á jafngildi:
@@ -159,7 +148,7 @@ Mikilvæg jafngildi sem oft koma upp eru reglur De Morgans, sem eru eftirfarandi
 \end{frame}
 
 \begin{frame}{De Morgan og sanntöflur}
-Sýnum fram á að $\lnot (p \lor q ) \equiv \lnot p \land \lnot q$ með sanntöflu:
+Sýnum fram á að $\lnot (p \lor q ) \equiv \lnot p \land \lnot q$ með sanntöflu: \pause
 \begin{center}
 \begin{tabular}{ccccccc}
 \toprule
@@ -189,7 +178,7 @@ Tafla úr kafla 1.3
 \end{frame}
 
 \begin{frame}{Sýnt fram á jafngildi}
-Við þurfum ekki að nota sanntöflur til að sýna fram á jafngildi. Einföldum ljóta yrðingu:
+Við þurfum ekki að nota sanntöflur til að sýna fram á jafngildi. Einföldum ljótu yrðinguna $\lnot (p \lor (\lnot p \land q))$: \pause
 \begin{align*}
 \lnot (p \lor (\lnot p \land q)) &\equiv \lnot p \land \lnot ( \lnot p \land q)\\
 &\equiv \lnot p \land (\lnot (\lnot p) \lor \lnot q)\\
@@ -200,7 +189,7 @@ Við þurfum ekki að nota sanntöflur til að sýna fram á jafngildi. Einföld
 \end{align*}
 \end{frame}
 
-\begin{frame}{Gerðir sönnunarverkefna}
+\begin{frame}<presentation:0>{Gerðir sönnunarverkefna}
 \begin{itemize}
  \item Oftast erum við að sanna jafngildi eða ``consequence'':
  \item Jafngildi:
@@ -217,7 +206,7 @@ Við þurfum ekki að nota sanntöflur til að sýna fram á jafngildi. Einföld
 \end{frame}
 
 
-\section{Staðalsnið}
+\subsection{Staðalsnið}
 
 \begin{frame}
 \begin{itemize}
@@ -271,7 +260,7 @@ og og-aða staðalsniðið
 \]
 \end{frame}
 
-\begin{frame}{Rökstytting til sönnunar}
+\begin{frame}<presentation:0>{Rökstytting til sönnunar}
 \begin{itemize}
  \item Rökstytting er notuð til að sanna $p \vdash q$ óbeint fyrir yrðingar $p$ og $q$
  \item Til að beita slíkri aðferð:
@@ -286,8 +275,9 @@ og og-aða staðalsniðið
 \end{itemize}
 \end{frame}
 
+\section{Umsagnir og magnarar (1.4)}
 
-\section{Umsagnir}
+\subsection{Umsagnir}
 
 \begin{frame}{Umsagnir}
 \begin{itemize}
@@ -312,14 +302,14 @@ Látum $P(x)$ áfram tákna ``$x > 3$''. Hvert er sanngildi $P(2)$? \pause
 Lausn: Látum $2$ í stað breytunnar $x$ til að fá út yrðingu. Þá er $P(2)$ yrðingin $2 > 3$, sem er ósönn.
 \end{frame}
 
-\begin{frame}{Dæmi um umsögn með meira en einni breytu}
+\begin{frame}{Annað dæmi um umsögn}
 Umsagnir geta innihaldið meira en eina breytu. Tákni $Q(x, y)$ staðhæfinguna $x = y + 3$, hvert er þá sanngildi $Q(3, 0)$? \pause
 \vspace{0.5cm}
 
 Lausn: $Q(3, 0)$ er yrðingin $3 = 0 + 3$, sem er sönn.
 \end{frame}
 
-\section{Magnarar}
+\subsection{Magnarar}
 
 \begin{frame}{Magnarar}
 \begin{itemize}
@@ -376,16 +366,11 @@ Neitun alvistar breytist í tilvist:
 \begin{frame}{Dæmi með mögnurum}
 \begin{itemize}
  \item Dæmi frá Lewis Caroll (Lísa í Undralandi)
- \item Gefið er:
  \begin{itemize}
   \item ``Öll ljón eru grimm''
   \item ``Sum ljón drekka ekki kaffi''
  \end{itemize}
- \item Viljum sanna:
- \begin{itemize}
-  \item ``Sumar grimmar skepnur drekka ekki kaffi''
- \end{itemize}
- \item Túlkum:
+ \item Skilgreinum:
  \begin{itemize}
   \item Óðalið er allar skepnur
   \item Táknum ``$x$ er ljón'' með $L(x)$
@@ -397,16 +382,16 @@ Neitun alvistar breytist í tilvist:
 
 \begin{frame}{Framsetning með mögnurum}
 \begin{itemize}
- \item Forsendur:
+ \item Getum þá sett fram yrðingar:
  \begin{itemize}
   \item $\forall x: L(x) \to G(x)$ (öll ljón eru grimm)
   \item $\exists x: L(x) \land \lnot K(x)$ (til er ljón sem ekki drekkur kaffi)
  \end{itemize}
- \item Afleiðing:
+ \item Með þessar yrðingar sem forsendu gætum við sýnt fram á afleiðingu:
  \begin{itemize}
   \item $\exists x: G(x) \land \lnot K(x)$ (til er grimm skepna sem ekki drekkur kaffi)
+  \item Hægt er að sýna fram á þessi tengsl með aðferðum úr kafla 1.6 (sleppt)
  \end{itemize}
- \item Hægt er að sýna fram á þessi tengsl með rökstyttingu
 \end{itemize}
 \end{frame}
 
@@ -427,7 +412,7 @@ Neitun alvistar breytist í tilvist:
 \end{frame}
 
 \begin{frame}{Næst}
-Í næsta tíma: Mengi og mengjaaðgerðir (kaflar 2.1 og 2.2)
+Í næsta tíma: Mengi og mengjaaðgerðir (kaflar 2.1 og 2.2), framsetning á stærðfræði með \LaTeX
 \end{frame}
 
 
