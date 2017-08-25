@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 1, seinni fyrirlestur}
@@ -22,56 +22,153 @@
   \item Hvernig gekk að setja það upp?
  \end{itemize}
  \item Bitar og tvíundartölur
- \item Breytur
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Bók}
-Bókin ku vera til í mismunandi útgáfum
+\section{Breytur}
+
+\begin{frame}{Breytur}
+\begin{itemize}
+ \item Gefum okkur að við höfum aðgang að minni í tölvu (samanstendur af bætum)
+ \item Breyta (e. \emph{variable}) er afmarkað minnishólf sem inniheldur gildi
+ \item Til að geta vísað í minnishólfið gefum við því nafn (breytuheiti, e. \emph{variable name})
+ \item Stærð breyta er mismunandi eftir því hvaða af hvaða tagi (e. \emph{type} eða \emph{class}) gögnin eru
+ \begin{itemize}
+  \item Dæmi um tög eru heiltölur, fleytitölur, bókstafir, \ldots
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Að búa til breytur}
+Dæmi um hvernig búa má til breytu:
+\begin{minted}[frame=lines]{matlab}
+>> myNumber = 6
+myNumber =  
+     6
+\end{minted}
+Merking skipunarinnar í efstu línunni er ``settu gildið $6$ í breytuna \texttt{myNumber}''. Matlab svarar með gildi nýju breytunnar.
+
+Sé semíkomma sett á eftir skipuninni svarar Matlab ekki:
+\begin{minted}[frame=lines]{matlab}
+>> myNumber = 6;
+\end{minted}
+\end{frame}
+
+\begin{frame}{Workspace-glugginn}
 \begin{columns}
 \column{0.5\textwidth}
-\begin{center}
-3. útgáfa
-
-\includegraphics[width=0.66\linewidth]{Pics/matlab_stormy}
-\end{center}
+\begin{itemize}
+ \item Workspace-glugginn sýnir ýmsar upplýsingar um skilgreindar breytur
+ \item Hægri-smella má á dálkana til að sýna fleiri
+\end{itemize}
 \column{0.5\textwidth}
-\begin{center}
-4. útgáfa
-
-\includegraphics[width=0.7\linewidth]{Pics/matlab_stormy_v4}
-\end{center}
+\includegraphics[width=\linewidth]{Pics/workspace-window}
 \end{columns}
-Munum gera ráð fyrir að báðar útgáfur séu í notkun
 \end{frame}
 
-\begin{frame}{Piazza!}
-\label{frame:piazza}
+\begin{frame}[fragile]{Breytan \texttt{ans}}
+Breytan \texttt{ans} er sjálfkrafa gefið gildi þegar reiknisetning er framkvæmd 
+\begin{minted}[frame=lines]{matlab}
+>> 2+3
+ans = 
+     5
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Að nota breytur}
+Breytur geymast, svo hægt er að nota þær áfram (annars væri lítið gagn í þeim)
+\begin{minted}[frame=lines]{matlab}
+>> x = 1;
+>> y = 2;
+>> x + y
+ans =
+     3
+\end{minted}
+Breyta helst skilgreind þar til henni er eytt eða þar til við förum út úr sviði (e. \emph{scope}) breytunnar (meira síðar)
+\end{frame}
+
+\begin{frame}{Breytuheiti}
 \begin{itemize}
- \item Spjallkerfið \href{piazza.com/hi.is/fall2016/tl105g}{Piazza} verður notað í þessu námskeiði
+ \item Allar breytur hafa nöfn
  \begin{itemize}
-  \item \url{piazza.com/hi.is/fall2016/tl105g}
- \end{itemize}
- \item Kerfið mun vera besta leiðin til að fá svör frá samnemendum, dæmatímakennurum og undirrituðum
- \item Piazza eða tölvupóstur?
- \begin{itemize}
-  \item Málið getur átt við fleiri $\to$ Piazza
+  \item Nöfnin verða að byrja á bókstaf (úr stafrófinu)
   \begin{itemize}
-   \item Spurningar um heimadæmi
-   \item Spurningar um tímasetningar
-   \item Spurningar um námskeiðið
+   \item \texttt{number123} er í lagi, en  \texttt{123number}  ekki í lagi
+   \item Breytuheiti mega ekki innihalda bil
   \end{itemize}
-  \item Málið er persónulegt $\to$ tölvupóstur
+  \item Engir séríslenskir stafir leyfðir
+  \begin{itemize}
+   \item \texttt{upphaed}  er í lagi, en  \texttt{upphæð}  ekki í lagi
+  \end{itemize}
+  \item Greinarmunur gerður á hástaf og lágstaf
+  \begin{itemize}
+   \item \texttt{mynumber}, \texttt{Mynumber} og \texttt{MYNUMBER} eru allt aðskildar breytur
+   \item Tillaga: Láta breytuheiti byrja á litlum staf, nota hástafi til að skilja á milli orða: \texttt{myNumber}
+  \end{itemize}
+  \item Nokkur lykilorð (key words) eru frátekin af Matlab og má ekki nota sem nöfn
+  \begin{itemize}
+   \item \texttt{>> if = 4;}    gefur villu
+  \end{itemize}
  \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Matlab-skipanaglugginn}
-\includegraphics[width=\textwidth]{Pics/command-window}
+\begin{frame}[fragile]{Meira um breytuheiti}
+\begin{itemize}
+ \item Reynum að hafa breytuheiti lýsandi
+ \begin{itemize}
+  \item \texttt{force = mass * acceleration} er skýrara en \texttt{z = x * y} 
+ \end{itemize}
+ \item Það að breytuheiti sé löglegt þýðir ekki endilega að það sé \emph{gott}
+ \begin{itemize}
+  \item T.d. er hægt að yfirskrifa innbyggðar breytur:
+\begin{minted}[frame=lines]{matlab}
+>> pi = 4;
+>> radius = 2;
+>> area = radius^2 * pi
+area = 
+      16
+\end{minted}
+ \end{itemize}
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Matlab-skipanaglugginn}
-\includegraphics[width=\textwidth]{Pics/command-window-hello-world}
+\begin{frame}{Skipanir tengdar breytum}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Skipun&Merking\\
+\midrule
+\texttt{who}&sýnir nöfn skilgreindra breyta\\
+\texttt{whos}&sýnir upplýsingar um breytur\\
+\texttt{clear}&eyðir öllum skilgreindum breytum\\
+\texttt{clear <breyta>}&eyðir tiltekinni breytu\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}{Tög breyta}
+\begin{itemize}
+ \item Allar breytur hafa tag
+ \item Matlab ákvarðar tag breytu sjálfkrafa út frá gildinu sem breytunni er gefið
+ \item Helstu tög eru:
+ \begin{itemize}
+  \item Kommutölur (e. \emph{floating point numbers}):  \texttt{single}, \texttt{double}
+  \begin{itemize}
+   \item \texttt{double} er sjálfgefna tagið fyrir tölur
+  \end{itemize}
+  \item Heiltölur (e. \emph{integers}): \texttt{int8}, \texttt{int16}, \texttt{int32}, \texttt{int64}
+  \item Bókstafir (e. \emph{characters}): \texttt{char}
+  \begin{itemize}
+   \item T.d. \texttt{'a'} og \texttt{'halló heimur'}
+  \end{itemize}
+  \item Rökgildi (e. \emph{logical} eða \emph{boolean}): \texttt{logical}
+  \begin{itemize}
+   \item Bara tvö möguleg gildi: \texttt{true} og \texttt{false} (eða 1 og 0)
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
 \end{frame}
 
 \section{Útreikningar}
@@ -203,6 +300,18 @@ ans =
 \begin{itemize}
  \item Einnig er til fallið \texttt{rem}, sem er svipað en höndlar neikvæðar tölur á annan hátt
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Fyrirlestraræfing}
+    \begin{enumerate}
+        \item Eru eftirfarandi breytuheiti lögleg í Matlab?
+        \begin{itemize}
+            \item 007JamesBond
+            \item batman
+            \item Leðurblökumaðurinn
+        \end{itemize}
+        \item Skrifið þrjár Matlab-skipanir. Þær skulu skilgreina breyturnar $G=9.8$, $L=10$ og reikna upp úr formúlunni $\sqrt{\frac{G}{L}}$.
+    \end{enumerate}
 \end{frame}
 
 \section{Slembitölur}
@@ -343,14 +452,6 @@ randomInteger =  6
 \column{0.4\textwidth}
 Heiltala á bilinu $[4; 8]$. (Hornklofarnir í Matlab-kóðanum skýrast seinna)
 \end{columns}
-\end{frame}
-
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu fjórar spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \section{Bókstafir}
@@ -603,11 +704,16 @@ Virkjar efst í töflunni eru framkvæmdir fyrst.
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið fyrirlestraræfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{enumerate}
+    \item Skrifið Matlab-skipanir sem búa til eftirfarandi (jafndreifðar) slembitölur:
+    \begin{itemize}
+        \item Kommutölur á bilinu $]0;\pi[$
+        \item Heiltölur á bilinu $[1;4]$
+        \item Heiltölurnar $0$ eða $1$.
+    \end{itemize}
+    \item Hvaða sanngildi hefur yrðingin \texttt{3 > 2 > 1}? (\emph{Hint}: Einn virki er athugaður í einu.)
+    \item Skrifið yrðingu sem er sönn þegar gildi breytunnar \texttt{a} er hvorki 0 né 10.
+\end{enumerate}
 \end{frame}
 
 
