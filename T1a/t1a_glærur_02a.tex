@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 2, fyrri fyrirlestur}
@@ -18,45 +18,6 @@
  \item Slembitölur
  \item Kóðun bókstafa
  \item Röksegðir
-\end{itemize}
-\end{frame}
-
-\subsection{Fyrri fyrirlestraæfingar}
-
-\begin{frame}{Hafið þið forritað?}
-\begin{center}
-\includegraphics[width=0.6\textwidth]{Pics/forritunarreynsla}
-\end{center}
-\end{frame}
-
-\begin{frame}{Gömul fyrirlestraræfing}
-\begin{itemize}
- \item Spurningin: Hvers vegna gefur \texttt{round(rand()*10)} ekki jafndreifðar slembitölur? \pause
- \item Hugmynd að lausn:
- \begin{itemize}
-  \item Við vitum (af fyrri glærum) að \texttt{rand()*10} gefur jafndreifðar slembi-kommutölur á bilinu $]0;10[$.
-  \item Þegar \texttt{round(}\ldots\texttt{)} er tekið af því fást vissulega heiltölur á bilinu $[0;10]$\ldots
-  \item En líklegra er að sumar komi upp en aðrar.
-  \begin{itemize}
-   \item $0$ kemur upp þegar \texttt{rand()*10} skilar gildi á bilinu $]0;0.5]$, $1$ á bilinu $[0.5;1.5[$, $2$ á bilinu $[1.5;2.5[$, o.s.frv.
-   \item Bilin eru mislöng, svo tölurnar eru ekki jafndreifðar!
-   \item Sama vandamál í kringum töluna 10
-  \end{itemize}
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Önnur gömul fyrirlestraræfingadæmi}
-\begin{itemize}
- \item Hvaða sanngildi hefur yrðingin \texttt{3 > 2 > 1}?\pause
- \begin{itemize}
-  \item Fyrst er \texttt{3 > 2} túlkað sem rökgildið $1$. Síðan er rökgildið $1$ borið saman við töluna $1$ líkt og það væri tala. $1$ er ekki stærri en $1$, svo heildarútkoman er $0$.
- \end{itemize} \pause
- \item Skrifið yrðingu sem er sönn þegar gildi breytunnar \texttt{a} er hvorki 0 né 10. \pause
- \begin{itemize}
-  \item Skrifum fyrst tvær aðskildar yrðingar sem eru sannar þegar $a$ er ekki $0$ annars vegar og þegar $a$ er ekki $10$ hins vegar: \texttt{a \~{}= 0} er önnur og \texttt{a \~{}= 10} er hin.
-  \item Tengjum þær svo saman með \texttt{\&\&}, svo heildarsegðin sé ósönn þegar önnur hvor segðanna er ósönn. \texttt{a \~{}= 0 \&\& a \~{}= 10}
- \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -286,14 +247,6 @@ ans =  6
 \end{columns}
 \end{frame}
 
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu þrjár spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-\end{frame}
-
 \subsection{Víddir fylkja}
 
 \begin{frame}[fragile]{Víddir og stærðir}
@@ -306,6 +259,7 @@ Notendanafn = HÍ-tölvupóstfang
   \item Sem sagt, lengd vigurs
  \end{itemize}
  \item \texttt{numel(x)} gefur fjölda staka
+ \item Hægt er að gera fylki með fleiri víddum (sleppt)
 \end{itemize}
 \column{0.5\textwidth}
 \begin{minted}[frame=lines]{matlab}
@@ -347,31 +301,8 @@ ans =
    1   2
 \end{minted}
 \end{columns}
-\end{frame}
-
-\begin{frame}[fragile]{Snúningur}
-\vspace{\baselineskip}
-Fallið \texttt{rot90} snýr stökum fylkis rangsælis um $90^\circ$. Hægt er að fá snúning um $k\cdot90^\circ$ með viðfangi $k$ í fallið.
-\begin{columns}
-\column{0.5\textwidth}
-\begin{minted}[frame=lines]{matlab}
->> a = [1, 2; 3, 4];
->> rot90(a)
-ans =
-   2   4
-   1   3
-\end{minted}
-\column{0.5\textwidth}
-\begin{minted}[frame=lines]{matlab}
->> a = [1, 2; 3, 4];
->> rot90(a,2)
-ans =
-   4   3
-   2   1
-\end{minted}
-\end{columns}
-\vspace{\baselineskip}
-Helst er þetta notað þegar fylkið táknar mynd.
+\vspace{0.5\baselineskip}
+Fallið \texttt{rot90} getur framkvæmt aðra snúninga.
 \end{frame}
 
 \section{Notkun falla á fylki}
@@ -431,31 +362,6 @@ v =
 Ath. að vegna þess að jafn mörg stök verða að vera í hverri línu og hverjum dálki er ekki hægt að eyða einstökum stökum úr fylkjum. Eyða þarf heilli línu eða heilum dálki í einu.
 \end{frame}
 
-\section{Margvíð fylki}
-
-\begin{frame}[fragile]{Margvíð föll}
-\begin{columns}
-\column{0.5\textwidth}
-Hægt er að búa til fylki af meira en tveimur víddum (þrívíð, fjórvíð, $n$-víð)
-\begin{minted}[frame=lines]{matlab}
->> a = ones(2,3,2)
-a =
-ans(:,:,1) =
-   1   1   1
-   1   1   1
-ans(:,:,2) =
-   1   1   1
-   1   1   1
-\end{minted}
-\column{0.5\textwidth}
-\begin{itemize}
- \item Hér er fylkið $a$ þrívítt, með víddir $2$, $3$ og $2$
- \item Fylkið er hér sýnt ``lag fyrir lag''
- \item \texttt{ones}, \texttt{zeros} og \texttt{rand} virka öll til að gera margvíð fylki
-\end{itemize}
-\end{columns}
-\end{frame}
-
 \section{Föll fyrir fylki og vigra}
 
 \begin{frame}[fragile]{Föll fyrir vigra}
@@ -496,11 +402,12 @@ ans =
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið seinni þrjár spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+    \begin{enumerate}
+        \item Hvaða vigur er skilgreindur með \texttt{7:-2:3}? (Hint: Skoðið \texttt{3:2:7})
+        \item Búið til slembið $4 \times 4$ fylki með heiltölum á bilinu 5 til 20 og setjið í breytuna $a$
+        \item Takið $2 \times 2$ hlutfylki úr $a$ og setjið það í breytuna $b$
+        \item Finnið summu allra talna í fylkinu $b$
+    \end{enumerate}
 \end{frame}
 
 
