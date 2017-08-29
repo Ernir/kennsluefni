@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
 \subtitle{Vika 2, fyrri fyrirlestur}
@@ -8,286 +8,247 @@
 \begin{document}
 
 \begin{frame}
-\titlepage
+    \titlepage
 \end{frame}
 
 \section{Inngangur}
 
 \begin{frame}{Í síðasta tíma}
-\begin{itemize}
- \item Skoðuðum hagnýtingar á yrðingum
- \item Sáum staðalsnið fyrir yrðingar
- \begin{itemize}
-  \item Eð-að staðalsnið
-  \item Og-að staðalsnið
- \end{itemize}
- \item Kynntumst umsögnum
- \item Kynntumst mögnurum
-\end{itemize}
+    \begin{itemize}
+        \item Skoðuðum hagnýtingar á yrðingum
+        \item Sáum staðalsnið fyrir yrðingar
+        \begin{itemize}
+            \item Eð-að staðalsnið
+            \item Og-að staðalsnið
+        \end{itemize}
+        \item Kynntumst umsögnum
+        \item Kynntumst mögnurum
+    \end{itemize}
 \end{frame}
 
-\section{Mengi}
+\section{Kynning á sönnunum (1.7)}
 
-\begin{frame}{Mengi}
-\begin{itemize}
- \item Mengi (e. \emph{set}) er grundvallareining í strjálli stærðfræði
- \item Skyld hugmynd ``hópur'':
- \begin{itemize}
-  \item Mengi eru notuð til að ``hópa'' hluti saman
-  \item ``Hópur'' af hlutum myndar mengi
- \end{itemize}
- \item ``Hlutur'' í mengi er kallaður stak (e. \emph{member} eða \emph{element})
- \item Hlutir í sama mengi eiga oftast eitthvað sameiginlegt
- \item Dæmi um mengi: Allar heiltölur, allir nemendur í þessu námskeiði
-\end{itemize}
+\begin{frame}{Sannanir}
+    \begin{itemize}
+        \item Setning (e. \emph{theorem}) er staðhæfing sem hægt er að sýna fram á að sé sönn
+        \begin{itemize}
+            \item Sönnun (e. \emph{proof}) er sú sýning
+        \end{itemize}
+        \item Setningar og sannanir á þeim eru ær og kýr stærðfræðinga
+        \item Í tölvunarfræði rekumst við á sannanir og eðlislíkar aðferðir m.a. í formlegum skilgreiningum og lýsingum
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Skilgreining á mengi}
-
-Klassísk skilgreining á mengi er eftirfarandi:
-\begin{tcolorbox}[title=Mengi]
-Mengi er óraðað samansafn hluta. Hlutur í mengi er kallaður stak þess. Mengi inniheldur stök sín. $a \in A$ táknar að stakið $a$ sé í menginu $A$. $a \notin A$ táknar að $a$ sé ekki í $A$.
-\end{tcolorbox}
-
+\begin{frame}{Orðaforði}
+    \begin{itemize}
+        \item Frumsenda (e. \emph{axiom}) er staðhæfing sem gert er ráð fyrir að sé sönn og notuð til frekari rökleiðslu
+        \item Hjálparsetning (e. \emph{lemma}) er setning sem fyrst og fremst er notuð við sönnun á annarri setningu sem álitin er merkilegri
+        \item Fylgisetning (e. \emph{corollary}) er setning sem er bein afleiðing annarrar setningar
+        \item Tilgáta (e. \emph{conjecture}) er staðhæfing sem sett er fram án sönnunar, venjulega byggt á einhvers konar hyggjuviti
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Að tilgreina mengi}
-\begin{itemize}
- \item Slaufusvigar eru oftast notaðir til að afmarka mengi
- \item Nokkrar leiðir eru algengar þegar kemur að því að tilgreina stök mengis
- \begin{itemize}
-  \item Að telja upp öll stökin: 
-  \begin{itemize}
-   \item Mengi enskra sérhljóða: $\{a, e, i, o, u\}$ \pause
-  \end{itemize}
-  \item Að sýna mynstur og láta þrípunkt tákna ``augljósa'' endurtekningu:
-  \begin{itemize}
-   \item Mengi jákvæðra heiltalna minni en 100: $\{1, 2, 3,\ldots, 100\}$ \pause
-  \end{itemize}
-  \item Að tilgreina skilyrði sem stök þurfa að uppfylla:
-  \begin{itemize}
-   \item $\{x \in \mathbf{Z^+} | x < 100\}$ \pause
-  \end{itemize}
- \end{itemize}
- \item Sum mengi hafa stöðluð nöfn: $\mathbf{R}$ (mengi rauntalna), $\mathbf{Z^+}$ (mengi jákvæðra heiltalna), \ldots
-\end{itemize}
+\section{Aðferðir til sannana}
+
+\begin{frame}{Sannanir}
+    \begin{itemize}
+        \item Margar leiðir eru færar þegar sanna á nýjar setningar
+        \item Sannanir eiga það sameiginlegt að nota
+        \begin{itemize}
+            \item Skilgreiningar
+            \item Frumsendur
+            \item Aðrar setningar sem hafa verið sannaðar
+        \end{itemize}
+        \item Algeng villa: Gert ráð fyrir of miklu
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Hvað má fara í mengi?}
-\begin{itemize}
- \item Skilgreiningin okkar á mengjum leyfir ýmislegt
- \begin{itemize}
-  \item Mengi af mengjum: $\{\mathbf{N}, \mathbf{Z}, \mathbf{Q}, \mathbf{R}\}$
- \end{itemize}
- \item Tómt mengi, táknað $\emptyset$
- \begin{itemize}
-  \item Mengi sem inniheldur tóma mengið $\{\emptyset\}$
- \end{itemize}
- \item Þessi opna skilgreining veldur tæknilegum vandræðum
-\end{itemize}
+\subsection{Bein sönnun}
+
+\begin{frame}{Bein sönnun}
+    \begin{itemize}
+        \item Algengt vandamál: Sýna að eitt leiði af öðru
+        \item Bein sönnun (e. \emph{direct proof}) á afleiðingu sýnir að $p \to q$
+        \begin{itemize}
+            \item Sýnum þá að ef $p$ er satt er $q$ það líka
+            \item Oft þarf að sýna fram á yrðingar á forminu \[\forall x (P(x) \to Q(x))\]
+        \end{itemize}
+        \item Margar beinar sannanir eru einfaldar aflesturs, en þarfnast ákveðins innsæis til að finna til að byrja með
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Vandræði}
-\begin{itemize}
- \item Látum $S$ vera mengið sem inniheldur þau mengi $x$ sem ekki innihalda sig sjálf, þ.e.a.s.
-\end{itemize}
-\[
- S = \{x | x \notin x\}
-\]
-\begin{itemize}
- \item Er $S$ í sjálfu sér? \pause
- \begin{itemize}
-  \item Ef já, þá verður það að uppfylla það skilyrði að vera ekki í sjálfu sér \pause
-  \item Ef nei, þá uppfyllir það skilyrðið sem það þarf að uppfylla til að vera í sjálfu sér \pause
- \end{itemize}
- \item Þversögn. Leiddi til frumsendulegrar mengjafræði (e. \emph{axiomatic set theory}), sem er strangari
- \begin{itemize}
-  \item Þversögnin er kennd við Russell, Russell's Paradox
- \end{itemize}
-
-\end{itemize}
+\begin{frame}{Dæmi um beina sönnun}
+    Byrjum á skilgreiningu:
+    \begin{tcolorbox}[title=Oddatölur og sléttar tölur]
+        Heiltala $n$ er slétt tala sé til heiltala $k$ svo að $n = 2k$ og oddatala sé til heiltala $k$ svo að $n = 2k+1$. Sérhver heiltala er slétt tala eða oddatala en aldrei hvort tveggja.
+    \end{tcolorbox}
+    Við getum með beinum hætti sannað eftirfarandi:
+    \begin{tcolorbox}
+        Sé $n$ oddatala, þá er $n^2$ oddatala.
+    \end{tcolorbox}
 \end{frame}
 
-\section{Skilgreiningar sem tengjast mengjum}
-
-\begin{frame}{Jöfn mengi}
-\begin{tcolorbox}[title=Jöfn mengi]
-Tvö mengi eru jöfn (e. \emph{equal}) ef þau innihalda sömu stök, þ.e.a.s. $\forall x (x \in A \leftrightarrow x \in B ) $. Við skrifum $A = B$ ef mengin $A$ og $B$ eru jöfn.
-\end{tcolorbox}
-Til dæmis eru mengin $\{a, b, c\}$ og $\{b, c, a\}$ jöfn. Sömuleiðis $\{a, b, c\}$ og $\{a, a, b, c\}$.
+\begin{frame}{Dæmi um beina sönnun}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}[<+->]
+            \item Látum $p$ vera forsenduna ``$n$ er oddatala'', viljum sýna afleiðinguna $q$ sem er ``$n^2$ er oddatala''
+            \item Gerum ráð fyrir því að $p$ sé sönn
+            \item Út frá skilgreiningu á oddatölum er $n = 2k+1$, þar sem $k$ er heiltala
+        \end{itemize}
+        \column{0.5\linewidth}
+        \begin{itemize}[<+->]
+            \item Skv. þekktum reiknireglum:
+            \begin{align*}
+                n^2 &= (2k+1)^2\\
+                &=4k^2+4k+1\\
+                &=2(2k^2+2k)+1
+            \end{align*}
+            \item Þar sem $2k^2+2k$ er heiltala er $n^2$ þá oddatala skv. skilgreiningu
+            \item Höfum þá sannað að ef $p$, þá $q$
+        \end{itemize}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Hlutmengi}
-\begin{tcolorbox}[title=Hlutmengi]
-Mengið $A$ er hlutmengi í (e. \emph{subset of}) $B$ þá og því aðeins að hvert stak í $A$ sé einnig í $B$, þ.e.a.s. $\forall x (x \in A \to x \in B)$. Við skrifum $A \subseteq B$ ef $A$ er hlutmengi í $B$.
-\end{tcolorbox}
+\subsection{Sönnun með mótskilyrðingu}
 
-Athugum að séu tvö mengi jöfn, þá er $A \subseteq B$ og $B \subseteq A$.
+\begin{frame}{Sönnun með mótskilyrðingu}
+    Önnur leið til að sanna staðhæfingu á forminu $\forall x (P(x) \to Q(x))$ er að nota mótskilyrðingu (e. \emph{contraposition}). Athugum að $p \to q$ er jafngilt $\lnot q \to \lnot p$:
+    \begin{center}
+        \begin{tabular}{cccccc}
+            \toprule
+            $p$&$q$&$p \to q$&$\lnot p$&$\lnot q$&$\lnot q \to \lnot p$\\
+            \midrule
+            0&0&1&1&1&1\\
+            1&0&0&0&1&0\\
+            0&1&1&1&0&1\\
+            1&1&1&0&0&1\\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    Ef við getum sýnt fram á $\lnot q \to \lnot p$ er $p \to q$ þar með sannað.
 \end{frame}
 
-\begin{frame}{Tóma mengið sem hlutmengi}
-\begin{itemize}
- \item Er tóma mengið hlutmengi í öllum mengjum? \pause
- \item Athugum skilgreininguna:
- \begin{itemize}
-  \item Látum $S$ vera mengi. Gildir $\forall x (x \in \emptyset \to x \in S)$? \pause
-  \item $x \in \emptyset$ er alltaf ósatt \pause
-  \item $p \to q$ er alltaf satt þegar $p$ er ósatt
- \end{itemize}
-\end{itemize}
+\begin{frame}{Dæmi um sönnun með mótskilyrðingu}
+    Notum mótskilyrðingu til að sanna eftirfarandi:
+    \begin{tcolorbox}
+        Sé $n$ heiltala og $3n+2$ oddatala, þá er $n$ oddatala.
+    \end{tcolorbox}
+    Getum séð að $3n + 2 = 2k+1$, en hvað svo?
 \end{frame}
 
-\begin{frame}{Fjöldatala mengis}
-\begin{tcolorbox}[title=Fjöldatala]
-Látum $S$ vera mengi. Séu $n$ mismunandi stök í $S$ og $n \in \mathbf{Z^+}$, þá er $S$ endanlegt mengi (e. \emph{finite set}) og $n$ er fjöldatala (e. \emph{cardinality}) mengisins $S$. Fjöldatala (eða stærð) mengisins $S$ er táknuð með $|S|$.
-\end{tcolorbox}
-Hægt er að skilgreina fjöldatölur fyrir mengi sem eru ekki endanleg.
+\begin{frame}{Dæmi um beina sönnun}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}[<+->]
+            \item Látum $p$ vera forsenduna ``$3n+2$ er oddatala'', viljum sýna afleiðinguna $q$ sem er ``$n$ er oddatala''
+            \item Gerum ráð fyrir því að $q$ sé ósönn, að $n$ sé slétt tala
+            \item Út frá skilgreiningu á oddatölum er $n = 2k$, þar sem $k$ er heiltala
+        \end{itemize}
+        \column{0.5\linewidth}
+        \begin{itemize}[<+->]
+            \item Skv. þekktum reiknireglum:
+            \begin{align*}
+                3n+2 &= 3(2k)+2\\
+                &=6k+2\\
+                &=2(3k+1)
+            \end{align*}
+            \item Þar sem $(3k+1)$ er heiltala er $3n+2$ þá slétt tala skv. skilgreiningu, sem er staðhæfingin $\lnot p$
+            \item Höfum þá sannað $\lnot q \to \lnot p$ og þar með $p \to q$
+        \end{itemize}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Veldismengi mengis}
-\begin{tcolorbox}[title=Veldismengi]
-Látum $S$ vera mengi. Þá er veldismengi (e. \emph{power set}) $S$ mengi allra hlutmengja $S$. Veldismengi $S$ er táknað með $\mathbf{P}(S)$.
-\end{tcolorbox}
-Dæmi: \[\mathbf{P}(\{0, 1\}) = \pause \{\emptyset, \{0\}, \{1\}, \{0, 1\}\}\]
+\subsection{Sönnun með mótsögn}
 
-Athugum að tóma mengið og mengið sjálft eru alltaf stök í veldismengi mengis.
+\begin{frame}{Sönnun með mótsögn}
+    \begin{itemize}
+        \item Mótsagnir geta verið gagnlegar til sannana. Látum $p$ vera staðhæfingu sem sanna skal
+        \item Til þess dugar að finna mótsögn $q$ sem er þeim eiginleikum gædd að $\lnot p \to q$ er sönn
+        \begin{itemize}
+            \item $q$ er ósönn, svo ef $\lnot p \to q$ er sönn þá hlýtur $p$ að vera sönn
+        \end{itemize}
+        \item Algeng aðferðafræði:
+        \begin{itemize}
+            \item Finna staðhæfingu $r$ svo að $\lnot p \to (r \land \lnot r)$ sé sönn
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Mengjamargfeldi}
-\begin{tcolorbox}[title=Mengjamargfeldi]
-Látum $A$ og $B$ vera mengi. Mengjamargfeldi $A$ og $B$ er mengi allra raðaðra para $(a, b)$ þar sem $a \in A$ og $b \in B$, þ.e.a.s. mengið $\{(a, b) | a \in A \land b \in B\}$. Mengjamargfeldi $A$ og $B$ er táknað með $A \times B$.
-\end{tcolorbox}
-Dæmi:
-\[
- \{1, 2\} \times \{a, b\} = \pause \{(1, a), (1, b), (2, a), (2, b)\}
-\]
-Athugum að almennt gildir ekki að $A \times B$ sé jafnt $B \times A$.
+\begin{frame}{Dæmi um sönnun með mótsögn}
+    Byrjum á skilgreiningu:
+    \begin{tcolorbox}[title=Ræðar og óræðar tölur]
+        Rauntalan $r$ er ræð (e. \emph{rational}) séu til heiltölur $p$ og $q$, $q \neq 0$ svo að $r = \frac{p}{q}$. Rauntala sem er ekki ræð er óræð (e. \emph{irrational}).
+    \end{tcolorbox}
+    Notum mótsögn til að sanna að $\sqrt{2}$ sé óræð tala.
 \end{frame}
 
-\begin{frame}{Sammengi}
-\begin{tcolorbox}[title=Sammengi]
-Látum $A$ og $B$ vera mengi. 
-Sammengi (e. \emph{union}) mengjanna er mengið sem inniheldur stökin sem eru í $A$ eða $B$, 
-þ.e.a.s. mengið $\{x | x \in A \lor x \in B \}$. 
-Sammengi $A$ og $B$ er táknað með $A\cup B$.
-\end{tcolorbox}
-Dæmi:
-\[
- \{1, 3\} \cup \{1, 2, 4\} = \pause \{1, 2, 3, 4\}
-\]
+\begin{frame}{Dæmi um sönnun með mótsögn}
+    \begin{columns}
+        \column{0.5\linewidth}
+        \begin{itemize}[<+->]
+            \item Látum $p$ vera yrðinguna ``$\sqrt{2}$ er óræð tala''
+            \item Gerum ráð fyrir $\lnot p$, ``$\sqrt{2}$ er óræð tala''
+            \item Veljum gildi á heiltölum $a$ og $b$, $b \neq 0$ svo að $\sqrt{2} = \frac{a}{b}$ sé fullstytt brot
+        \end{itemize}
+        \column{0.5\linewidth}
+        \begin{itemize}[<+->]
+            \item Skv. þekktum reiknireglum:
+            \begin{align*}
+                \sqrt{2} &= \frac{a}{b}\\
+                \text{svo } 2 &= \frac{a^2}{b^2}\\
+                \text{svo } 2b^2 &= a^2
+            \end{align*}
+            \item Þá er $a^2$ slétt tala. Skrifum $a = 2c$, þar sem $c$ er heiltala, fáum 
+            \begin{align*}
+                2b^2 &= (2c)^2\\
+                \text{svo } b^2 &= 2c^2
+            \end{align*}
+            \item Þá er $b^2$ líka slétt tala
+        \end{itemize}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Sniðmengi}
-\begin{tcolorbox}[title=Sniðmengi]
-Látum $A$ og $B$ vera mengi.
-Sniðmengi (e. \emph{intersection}) mengjanna er mengið sem inniheldur stökin sem eru í $A$ og $B$, 
-þ.e.a.s. mengið $\{x | x \in A \land x \in B \}$. 
-Sniðmengi $A$ og $B$ er táknað með $A\cap B$.
-\end{tcolorbox}
-Mengi eru kölluð sundurlæg (e. \emph{disjoint}) ef sniðmengi þeirra er tóma mengið.
-
-Dæmi um sniðmengi:
-\[
- \{1, 3\} \cap \{1, 2, 4\} = \pause \{1\}
-\]
+\begin{frame}{Dæmi um sönnun með mótsögn}
+    \begin{itemize}
+        \item Þekkt er að ef heiltala $n^2$ er slétt, þá er $n$ slétt \pause
+        \begin{itemize}
+            \item Contrapositive ``Sé $n$ oddatala, þá er $n^2$ oddatala''
+        \end{itemize}
+        \item En nú er $\frac{a}{b}$ fullstytt brot \emph{og} $a$ og $b$ eru bæði slétt
+        \item Sléttar tölur eru deilanlegar með 2, svo fullstytta brotið er styttanlegt. Mótsögn.
+        \item $\lnot p$ er þá ósatt, svo $p$, ``$\sqrt{2}$ er óræð tala'' er satt
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Mengjamismunur}
-\begin{tcolorbox}[title=Mengjamismunur]
-Mismunur mengjanna $A$ og $B$ er mengi þeirra staka sem eru í $A$ en ekki í $B$, þ.e.a.s. mengið $\{x | x \in A \land x \notin B\}$.
-Mengjamismunur $A$ og $B$ er táknaður með $A - B$ eða $A \setminus B$.
-\end{tcolorbox}
-\end{frame}
+\section{Fleiri gerðir sannana (1.8)}
 
-\begin{frame}{Almengi og fyllimengi}
-Fyrir mengi er hægt að skilgreina mengi allra mögulegra staka, kallað almengi (e. \emph{universal set}) oft táknað með $U$. Þá má skilgreina:
-
-\begin{tcolorbox}[title=Fyllimengi]
-Látum $A$ vera mengi og $U$ almengi þess. Þá er fyllimengi $A$ m.t.t. $U$ mengið $U \setminus A$. Fyllimengi $A$ er táknað með $\overline{A}$.
-\end{tcolorbox}
-
-Algengt er að nefnd mengi á borð við $\mathbf{R}$ eða $\mathbf{N}$ þjóni sem almengi.
-\end{frame}
-
-\section{Mengjajafngildi}
-
-\begin{frame}{Mengjajafngildi}
-\begin{columns}
-\column{0.3\textwidth}
-Með þessum skilgreiningum má rökstyðja ýmis jafngildi fyrir mengi.
-
-\vspace*{0.5cm}
-Tafla úr kafla 2.2.
-\column{0.7\textwidth}
-\begin{center}
-\includegraphics[height=0.8\textheight]{set-equivalences}
-\end{center}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Útleiðsla á De Morgan fyrir mengi}
-Viljum sýna að $\overline{A \cap B} = \overline{A} \cup \overline{B}$.
-
-\begin{align*}
-\overline{A \cap B} &= \{x | x \notin A \cap B\}\\ 
-&= \{x | \lnot ( x \in A \cap B)\}\\ 
-&= \{x | \lnot ( x \in A \land x \in B)\}\\ 
-&= \{x | \lnot ( x \in A) \lor \lnot (x \in B)\}\\ 
-&= \{x | x \notin A \lor x \notin B\}\\ 
-&= \{x | x \in \overline{A} \lor x \in \overline{B}\}\\ 
-&= \{x | x \in \overline{A} \cup \overline{B}\}\\ 
-&= \overline{A} \cup \overline{B}
-\end{align*}
-\end{frame}
-
-\begin{frame}{Meðlimatöflur}
-Hægt er að kanna jafngildi með meðlimatöflu, sem svipar til sanntöflu:
-\begin{center}
-\includegraphics[width=\textwidth]{membership-table}
-\end{center}
-\end{frame}
-
-\begin{frame}{Útvíkkun}
-Sammengi margra mengja er mengi þeirra staka sem er í a.m.k. einu mengjanna:
-\[
- A_1 \cup A_2 \cup \ldots \cup A_n = \bigcup_{i=1}^n A_i
-\]
-Sniðmengi margra mengja er mengi þeirra staka sem er í öllum mengjunum:
-\[
- B_1 \cap B_2 \cap \ldots \cap B_n = \bigcap_{i=1}^n B_i
-\]
-\end{frame}
-
-\section{Mengi í tölvum}
-
-\begin{frame}[fragile]{Gagnagerðir sem mengi}
- \begin{itemize}
-  \item Hugmyndin um gagnagerð (e. \emph{data type}) byggir á mengjum
-  \item Gagnagerð samanstendur af mengi mögulegra gilda og aðgerðum á þau
-  \item Gagnagerðin \texttt{Boolean} í Java skilgreinist af:
-  \begin{itemize}
-   \item Menginu \{\texttt{true},\texttt{false}\}
-   \item Aðgerðum: Og (\verb|&&|), eða (\verb&||&), \ldots
-  \end{itemize}
- \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Tölvuframsetning á mengjum}
-Hægt er að tákna mengi með bitastrengjum.
-
-Gerum ráð fyrir að $U$ hafi fjöldatöluna $n$ og skilgreinum fyrir það röðun. Setjum stök þess í rununa $a_1, a_2, \ldots a_n$.
-
-Táknum þá hlutmengi $A$ í $U$ með því að að nota $n$ bita runu, þar sem $i$-ti bitinn er 1 sé $a_i$ í $A$, annars 0.
-\end{frame}
-
-\begin{frame}[fragile]{Dæmi um bitaframsetningu}
-Látum $U = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$. Þá er mengi oddatalna í $U$ mengið $\{1, 3, 5, 7, 9\}$, sem við getum táknað með bitarununni $1010101010$. 
-
-Getum séð að fyllimengi oddatalnanna er $0101010101$. Hægt er að nota bitaaðferðir til að reikna út sniðmengi og sammengi.
+\begin{frame}{Fleiri gerðir sannana}
+    \begin{itemize}
+        \item Erum ekki alltaf að sýna fram á afleiðingu
+        \item Jafngildissannanir (e. \emph{proofs of equivalence})
+        \begin{itemize}
+            \item Sýnt fram á $p \to q \land q \to p$
+            \item Mikilvægt að sýna fram á ``báðar áttir''!
+        \end{itemize}
+        \item Þaulleitarsannanir (e. \emph{exhaustive proof})
+        \begin{itemize}
+            \item Sísanna: $(p_1 \lor p_2 \lor \ldots \lor p_n) \to q \leftrightarrow (p_1 \to q) \land \ldots \land (p_n \to q)$
+            \item Hvert tilvik rannsakað fyrir sig
+        \end{itemize}
+        \item Tilvistarsannanir (e. \emph{existence proof})
+        \begin{itemize}
+            \item $\exists x P(x)$
+        \end{itemize}
+        \item Ótvíræðnisannanir (e. \emph{uniqueness proof})
+        \begin{itemize}
+            \item Tilvistarsönnun á staki $x$, svo sýnt að ef $x \neq y$ þá uppfylli $y$ ekki skilyrðin
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Næst}
-Föll (kafli 2.3), rakningavensl (kafli 2.4), reiknanleiki (kafli 2.5), fylki (kafli 2.6)
+Í næsta tíma: Mengi og mengjaaðgerðir (kaflar 2.1 og 2.2)
 \end{frame}
 
 

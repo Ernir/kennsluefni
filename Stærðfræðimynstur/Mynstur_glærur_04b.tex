@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{Haust2016glærur}
 
@@ -16,313 +16,277 @@
 
 \begin{frame}{Í síðasta tíma}
 \begin{itemize}
- \item Reikniflækja
- \item Tímaflækjur nokkurra reiknirita
- \item Mengin $P$ og $NP$
+ \item Stöðvunarvandamálið
+ \item Vöxtur falla
+ \begin{itemize}
+  \item Stóra O ritháttur
+  \item Aðrir rithættir - $\Theta$, $\Omega$
+ \end{itemize}
 \end{itemize}
 \end{frame}
 
-\section{Talnafræði}
+\begin{frame}{Leiðrétting!}
+Í heimadæmum 3, spurningu 2 er sýnd stígandi runa:
+\[
+ c_1 = 1, c_2 = 5, c_3 = 10, c_4 = 25
+\]
+Til samræmis við reiknirit á glærum og í bók ætti runan að vera lækkandi:
+\[
+ c_1 = 25, c_2 = 10, c_3 = 5, c_4 = 1
+\]
+\end{frame}
 
-\begin{frame}{Talnafræði}
+\section{Reikniflækja}
+
+\begin{frame}{Reikniflækja}
 \begin{itemize}
- \item Stærðfræði heiltalna kallast talnafræði
- \item Löng og mikil saga
+ \item Höfum lýst því hvernig hægt er að nota stóra-O rithátt til að tákna vöxt falla
+ \item Notum nú föll til að tákna hegðun reiknirita
+ \item Getum táknað hegðunina með falli af inntaksstærð reikniritsins
  \begin{itemize}
-  \item Fræg forn-grísk nöfn sem koma við sögu: Evklíð, Eratosþenes
+  \item Sé reiknirit að vinna með inntak af stærð $n$ getum við táknað ákveðna hegðunareiginleika þess með falli $f(n)$
  \end{itemize}
- \item Stærðfræði prímtalna fellur undir talnafræði
+ \item Talað er um reikniflækju eða lausnarflækjustig (e. \emph{computational complexity})
 \end{itemize}
 \end{frame}
 
-\section{Deiling og afgangur}
-
-\begin{frame}{Deilanleiki}
-Ýmis hugtök í talnafræði krefjast skilnings á deilanleika (e. \emph{divisibility})
-
-\begin{tcolorbox}[title=Deilanleiki]
-Séu $a$ og $b$ heiltölur, $a \neq 0$, segjum við að $a$ deili (e. \emph{divides}) $b$ ef til er heiltala $c$ svo að $b = ac$, þ.e.a.s. ef $\frac{b}{a}$ er heiltala.
-
-Þegar $a$ deilir $b$ segjum við að $a$ sé deilir (e. \emph{divisor} eða \emph{factor}) $b$ og að $b$ sé margfeldi (e. \emph{multiple}) af $a$.
-
-Við skrifum $a | b$ þegar $a$ deilir $b$, annars $a \nmid b$.
-\end{tcolorbox}
-\end{frame}
-
-\begin{frame}{Deilanleiki - dæmi}
-Er $3|7$? \pause
-
-Nei, $7/3$ er ekki heiltala. \pause
-
-\vspace{0.5cm}
-Er $3|12$? \pause
-
-Já, $12/3$ er heiltalan $4$.
-\end{frame}
-
-\begin{frame}{Eiginleikar deilanleika}
-Heiltöludeiling hefur nokkra áhugaverða eiginleika
-\begin{tcolorbox}[title=Eiginleikar deilanleika]
-Séu $a$, $b$ og $c$ heiltölur, $a \neq 0$, þá gildir:
-\begin{enumerate}
- \item Sé $a|b$ og $a|c$, þá $a|(b+c)$
- \item Sé $a|b$, þá $a|b\cdot c$
- \item Sé $a|b$ og $b|c$, þá $a|c$
-\end{enumerate}
-\end{tcolorbox}
-\end{frame}
-
-\begin{frame}{Deilingarreikniritið}
-Deilingarreikniritið er ekki reiknirit, heldur setning.
-
-\begin{tcolorbox}[title=Deilingarreikniritið]
-Látum $a$ og $d$ vera heiltölur, $d > 0$. 
-Þá eru til heiltölur $q$ og $r$, $0 \leq r < d$ svo að $a = dq +r$.
-\end{tcolorbox}
-
-Hér er $d$ deilir, $a$ deilistofn (e. \emph{dividend}), $q$ kvóti (e. \emph{quotient}) og $r$ afgangur (e. \emph{remainder}).
-\end{frame}
-
-
-\begin{frame}{Kvóti og afgangur}
-Um deilinn $d$, deilistofninn $a$, kvótann $q$ og afganginn $r$ má rita:
-\[
- q = a \text{ div } d
-\]
-og
-\[
- r = a \text{ mod } d
-\]
-\end{frame}
-
-\begin{frame}{Dæmi um deilingu}
-Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $101$ og deilirinn $11$ (þ.e.a.s. reiknum 101/11)? \pause
-
-Höfum
-\[
- 101 = 11 \cdot 9 + 2
-\]
-
-Svo kvótinn er $101 \text{ div } 11 = 9$ og afgangurinn $101 \Mod 11 = 2$.
-
-\end{frame}
-
-\begin{frame}{Dæmi um deilingu}
-Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $-11$ og deilirinn $3$ (þ.e.a.s. reiknum 11/3)? \pause
-
-Höfum
-\[
- -11 = 3 \cdot (-4) + 1
-\]
-
-Svo kvótinn er $-11 \text{ div } 3 = -4$ og afgangurinn $-11 \Mod 3 = 1$.
-
-\vspace{0.5cm}
-Athugum að þó að $-11 = 3(-3) - 2$ sé satt, þá uppfyllir jafnan ekki $0 \leq r < 3$.
-\end{frame}
-
-\begin{frame}{Varúð - forritunarmál}
+\begin{frame}{Reikniflækja}
 \begin{itemize}
- \item Forritunarmál meðhöndla deilingarafgang á ýmsa vegu
+ \item Skoðum fyrst og fremst tímaflækju (e. \emph{time complexity}) reiknirita
  \begin{itemize}
-  \item Stundum virki (\%)
-  \item Stundum föll (\texttt{mod} eða \texttt{rem})
-  \item Stundum meira en eitt fall\ldots
+  \item Lýsum keyrslutíma reiknirits sem falli af inntaksstærð
+  \item Venjulega er keyrslutímafallið síðan sett fram með stóra-O eða stóra-$\Theta$ rithætti
  \end{itemize}
- \item Neikvæðar tölur sérstaklega varhugaverðar
+ \item Einnig er til minnisflækja (e. \emph{space complexity})
  \begin{itemize}
-  \item Stundum er deilingarafganginum leyft að vera neikvæður
-  \item Stundum er $a \Mod m$ skilgreint jafnvel þó að $m$ sé neikvætt eða 0
+  \item Ekki fjallað um í bók, sleppum
+  \item Minnisflækja og tímaflækja eru tengd - til að skrifa í minni þarf tíma
  \end{itemize}
 \end{itemize}
 \end{frame}
 
-\section{Framsetning heiltalna}
-
-\begin{frame}{Framsetning heiltalna}
+\begin{frame}{Tímaflækja}
 \begin{itemize}
- \item Fólk í flestum menningarheimum notar tugakerfið til að setja fram tölur
+ \item Til að kvarða tímaflækju reiknirits eru grunnaðgerðir þess taldar
  \begin{itemize}
-  \item Líklega vegna þess að við höfum 10 fingur
-  \item Hafa eiginleika sem byggjast á tölunni 10: $965 = 9\cdot10^2+6\cdot10^1+5\cdot10^0$
+  \item Dæmi um grunnaðgerðir: Breyta búin til, samlagning tveggja talna, samanburður á breytum
  \end{itemize}
- \item Tölvuútreikningar byggjast oftast á grunntölunni 2 (tvíundarkerfi)
+ \item Fallið sem lýsir keyrslutíma er þá í raun fall sem lýsir fjölda grunnaðgerða
+ \item Varnagli: Tímaflækja hunsar ýmis praktísk atriði sem koma við sögu í raunverulegum tölvum
  \begin{itemize}
-  \item Einnig til áttundakerfi (e. \emph{octal}) með grunntöluna 8 og sextándakerfi (e. \emph{hexadecimal}) með grunntöluna 16
-  \item Áttunda- og sextándakerfistölur eru oftast notaðar til að setja tvíundarkerfistölur fram fyrir fólk
+  \item Minni er ekki allt jafn hraðvirkt
+  \item Grunnaðgerðir taka mis langan tíma
  \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Framsetning heiltalna}
-Um framsetningu heiltalna gildir:
+\begin{frame}{Tímaflækja max reikniritsins}
+Lítum aftur á \texttt{max} reikniritið. Hver er tímaflækja þess á $\Theta$-sniði?
 
-\begin{tcolorbox}[title=Framsetning heiltalna]
-Látum $b$ vera heiltölu, $b > 1$. Þá getum við sett fram jákvæðu heiltöluna $n$ á sniðinu
-\[
- n = a_kb^k + a_{k-1}b^{k-1} + \ldots + a_1b + a_0
-\]
-þar sem $k$ er ekki-neikvæð heiltala, $a_0, a_1, \ldots, a_k$ eru ekki-neikvæðar heiltölur minni en $b$ og $a_k \neq 0$.
-\end{tcolorbox}
-Talað er um framsetningu með grunntölunni $b$.
+\includegraphics[width=\linewidth]{max-element} \pause
+
+Alltaf þarf að gefa hágildinu upphafsgildi og skila. Fyrir hvern lið í rununni þurfum við að framkvæma tvo samanburði. Í eitt eða fleiri skipti þarf að uppfæra hágildið. Tímaflækjan er $\approx 2n$ sem er $\Theta(n)$.
 \end{frame}
 
-\begin{frame}{Reiknirit til grunntöluskipta}
-Gráðugt reiknirit má nota til að skipta um grunntölu:
+\begin{frame}{Versti- besti og meðalkeyrslutími}
+\begin{itemize}
+ \item Keyrslutími reiknirita er oft mismunandi eftir gerð inntaka
+ \item Þá setjum við fram keyrslutíma fyrir mismunandi tilfelli
+ \item Mikilvægasta tilfellið er oftast versti keyrslutíminn (e. \emph{worst-case complexity})
+ \item Önnur tilfelli eru meðalkeyrslutími (oft erfitt að reikna) og besta tilfellið (oft lítið gagn í þeim upplýsingum)
+ \item Athugum að rugla ekki saman hugtökunum um efri og neðri mörk á vexti falla og hugtökunum um besta og versta keyrslutíma
+\end{itemize}
+\end{frame}
+
+\section{Tímaflækjur ýmissa reiknirita}
+
+\subsection{Leitarreiknirit}
+
+\begin{frame}{Línuleg leit}
+Upprifjun: Línuleg leit
+
 \begin{center}
-\includegraphics[width=\textwidth]{base-conversion-algorithm}
+\includegraphics[width=\textwidth]{linear-search}
 \end{center}
 \end{frame}
 
-\begin{frame}{Grunntöluskipti - dæmi}
-\vspace{0.5cm}
-Setjum tugakerfistöluna $(241)_{10}$ fram sem tvíundakerfistölu.
-\begin{align*}
-241 &= 2 \cdot 120 + 1\\
-120 &= 2 \cdot 60 + 0\\
-60 &= 2 \cdot 30 + 0\\
-30 &= 2 \cdot 15 + 0\\
-15 &= 2 \cdot 7 + 1\\
-3 &= 2 \cdot 1 + 1\\
-1&= 2 \cdot 0 + 1\\
-\end{align*}
-
-\vspace{-0.8cm}
-Fáum afgangana $1, 0, 0, 0, 1, 1, 1, 1$ svo
-\[
- (241)_{10} = (11110001)_2
-\]
-\end{frame}
-
-\begin{frame}{Samlagning tvíundartalna}
-Reikniaðgerðir með heiltölur fara fram með svipuðum hætti óháð framsetningu þeirra.
-\begin{center}
-\includegraphics[width=0.9\textwidth]{binary-addition}
-\end{center}
-\end{frame}
-
-\begin{frame}{Veldishafning og afgangar}
+\begin{frame}{Versti og besti keyrslutími}
 \begin{itemize}
- \item Stundum þarf að reikna út $b^n \Mod m$, þar sem $b$, $n$ og $m$ eru stórar heiltölur
- \item Ekki er skilvirkt að reikna fyrst út $b^n$ og svo afganginn þegar deilt er með $m$, því $b^n$ verður risastór tala
- \item Til að einfalda útreikninga notum við tvíundarframsetningu á $n$, $n = (a_{k-1}\ldots a_1 a_0)_2$ til að setja fram $b^n$
-\end{itemize}
-\[
- b_n = b^{a_{k-1}\cdot 2^{k-1} + \ldots + a_1\cdot 2^1 + a_0 \cdot 2^0} = b^{a_{k-1}\cdot2^{k-1}\cdot \ldots \cdot b^{a_1\cdot 2} \cdot b^{a_0}}
-\]
-Margföldum saman þá liði þar sem tvíundarframsetningin á $n$ er með 1.
-\end{frame}
-
-\begin{frame}{Dæmi: Framsetning á $3^{11}$}
-Athugum að $(11)_{10} = (1011)_2$ og sjáum:
-\begin{align*}
-3^{11} &= 3^8\cdot 3^2 \cdot 3^1\\
-&=6561 \cdot 9 \cdot 3\\
-&=177147
-\end{align*}
-
-\end{frame}
-
-\begin{frame}{Modular exponentiation}
-Notum þessa innsýn til að setja fram reiknirit til að reikna $b^n \Mod m$:
-\begin{center}
-\includegraphics[width=0.9\textwidth]{modular-exponentiation}
-\end{center}
-\end{frame}
-
-\section{Prímtölur}
-
-\begin{frame}{Prímtölur}
-\begin{tcolorbox}[title=Prímtölur]
-Heiltala $p$ stærri en 1 er prímtala (e. \emph{prime}) ef einu deilar $p$ eru 1 og $p$ sjálft. Heiltala stærri en 1 sem ekki er prímtala er samsett tala (e. \emph{composite}).
-\end{tcolorbox}
-\end{frame}
-
-
-\begin{frame}{Grundvallarsetning}
-``The fundamental theorem of arithmetic'' er eftirfarandi:
-
-\begin{tcolorbox}[title=Fundamental theorem of arithmetic]
-Hver heiltala stærri en 1 er prímtala eða margfeldi tveggja eða fleiri prímtalna sem skrifa má í stígandi röð.
-\end{tcolorbox}
-
-Það að finna prímtölurnar sem mynda samsetta tölu þegar þær eru margfaldaðar saman kallast að finna prímtöluþætti samsettu tölunnar.
-\end{frame}
-
-\begin{frame}{Að finna prímtöluþætti}
-Erfitt verk er að finna prímtöluþætti. Einfaldasta leiðin er að prófa margar deilingar. Þá er eftirfarandi staðreynd gagnleg:
-\begin{tcolorbox}
-Sé $n$ samsett heiltala, þá á $n$ prímtöluþátt minni en eða jafnan $\sqrt{n}$
-\end{tcolorbox}
-\end{frame}
-
-\begin{frame}{Prímtöluþáttun: Dæmi}
-Sýnum að 101 sé prímtala.
-
-Einu prímtölurnar sem eru minni en $\sqrt{101}$ eru $2, 3, 5$ og $7$. Þar sem engin þessara talna myndar heiltölukvóta þegar $101$ er deilt með þeim er $101$ prímtala.
-\end{frame}
-
-\begin{frame}{Prímtöluþáttun: Dæmi}
-Finnum prímtöluþáttun 7007. Prófum að deila með prímtölum í vaxandi röð.
-
-2, 3 og 5 ganga ekki upp í 7007, en 7 gerir það og gefur kvótann 1001. Byrjum aftur á að deila með 7 og fáum 1001/7 = 143. 7 gengur ekki upp í 143, en 143/11 = 13. 13 er prímtala, svo við erum búin. Prímtöluþáttunin er $7 \cdot 7 \cdot 11 \cdot 13$.
-\end{frame}
-
-\begin{frame}{Prímtöluþáttun - hversu erfið?}
-Deiling verður mjög þung aðgerð þegar fjöldi bita er stór, endurteknar deilingar þeim mun verri. M.t.t. fjölda bita vex keyrslutíminn veldisvexti. Ekkert reiknirit er til sem finnur prímtöluþáttun á margliðutíma.
-
-Skilvirkasta þáttunarreiknritið sem þekkt er, GNFS, þáttar $b$ bita heiltölu á 
-\[
- O \left(exp\left(\sqrt[3]{\frac{64}{9}b(\log b)^2}\right)\right)
-\]
-sem er samt ekki margliðutími. Þetta atriði er mikilvægt í dulkóðun.
-\end{frame}
-
-\begin{frame}{Prímtölutékk - hversu erfitt?}
-\begin{itemize}
- \item Hægt er að nota endurtekna deilingu til að athuga hvort að tala sé prímtala
+ \item Dæmi: Línuleg leit þarf mjög mismunandi tíma
+ \item Keyrslutíminn fer eftir staðsetningu liðarins sem leita á að
  \begin{itemize}
-  \item Veldisvísistími
- \end{itemize}
- \item Ýmis góð reiknirit til
- \item Hægt er að komast að því hvort að tala sé prímtala eða ekki á margliðutíma
- \begin{itemize}
-  \item Agrawal-Kayal-Saxena (AKS) primality test, 2002
-  \item Merkileg niðurstaða!
+  \item Versta tilfellið: Liðurinn er ekki til eða úti á enda, þurfum að skoða alla \pause
+  \begin{itemize}
+   \item $\Theta(n)$
+  \end{itemize}
+  \item Besta tilfellið: Liðurinn er fremst í rununni \pause
+  \begin{itemize}
+   \item $\Theta(1)$
+  \end{itemize}
+  \item Meðaltilfellið: Jafn líklegt að liðurinn sé hvar sem er \pause
+  \begin{itemize}
+   \item $\Theta(n)$
+  \end{itemize}
  \end{itemize}
 \end{itemize}
 \end{frame}
 
-\section{Stærsti samdeilir og minnsta samfeldi}
+\begin{frame}{Helmingunarleit}
+Upprifjun: Helmingunarleit
 
-\begin{frame}{Stærsti samdeilir}
-\begin{tcolorbox}[title=Stærsti samdeilir]
-Látum $a$ og $b$ vera heiltölur, ekki báðar núll. Stærsta heiltala $d$ svo að $d|a$ og $d|b$ er kölluð stærsti samdeilir (e. \emph{greatest common divisor}) $a$ og $b$ og táknuð með $gcd(a, b)$.
-\end{tcolorbox}
-Dæmi: $gcd(24, 36) = 12$
-
-Tvær tölur með stærsta samdeilinn 1 eru ósamþátta (e. \emph{relatively prime}). Hægt er að reikna út stærsta samdeili með reikniriti Evklíðs (sjá bók).
+\begin{center}
+\includegraphics[width=\textwidth]{binary-search}
+\end{center}
 \end{frame}
 
-\begin{frame}{Minnsta samfeldi}
-\begin{tcolorbox}[title=Minnsta samfeldi]
-Minnsta samfeldi (e. \emph{least common multiple}) jákvæðra heiltalna $a$ og $b$ er minnsta jákvæða heiltala sem er deilanleg með bæði $a$ og $b$. Hún er táknuð $lcm(a, b)$.
-\end{tcolorbox}
-Dæmi: $lcm(4, 6) = 12$.
+\begin{frame}{Tímaflækja helmingunarleitar}
+\begin{itemize}
+ \item Gerum ráð fyrir að lengd rununnar sem helmingunarleit á að leita í sé $n = 2^k$ þar sem $k \in Z^+$
+ \begin{itemize}
+  \item Sé lengd rununnar ekki veldi af $2$ gerum við ráð fyrir að um sé að ræða hlutrunu í lengri runu 
+ \end{itemize}
+ \item Leitarbilið minnkar niður í stærð $2^{k-1}$ eftir fyrstu ítrun, $2^{k-2}$ eftir aðra ítrun\ldots
+ \item Fastur fjöldi aðgerða í hverri ítrun \pause
+ \begin{itemize}
+  \item Þurfum $k$ skref og $n = 2^k$, svo um er að ræða $\Theta(\log(n))$ reiknirit
+ \end{itemize}
+\end{itemize}
 \end{frame}
 
-\begin{frame}{Tengsl GCD og LCM}
-\begin{tcolorbox}[title=GCD og LCM]
-Látum $a$ og $b$ vera jákvæðar heiltölur. Þá er $a\cdot b = gcd(a, b) \cdot lcm(a, b)$.
-\end{tcolorbox}
+\begin{frame}{Lograr í tímaflækjum}
+Í tölvunarfræði fáumst við oftast við logrann með grunntöluna 2. Grunntalan skiptir ekki máli í stóra-$\Theta$ framsetningu (og tengdum ritháttum) vegna þess að lograr eru fast margfeldi hver af öðrum.
+
+\[
+ \log_b(x) = \frac{\log_k(x)}{\log_k(b)}
+\]
+
 \end{frame}
 
+\subsection{Röðun}
+
+\begin{frame}{Innsetningarröðun}
+Upprifjun - innsetningarröðun
+\begin{center}
+\includegraphics[width=\textwidth]{insertion-sort}
+\end{center}
+\end{frame}
+
+\begin{frame}{Tímaflækja innsetningarröðunar}
+\begin{itemize}
+ \item Innsetningarröðun notar línulega leitaraðferð til að finna stað fyrir hvert stak \pause
+ \begin{itemize}
+  \item $O(n)$ tími
+ \end{itemize}
+ \item Öllum stökum er svo hliðrað \pause
+ \begin{itemize}
+  \item $O(n)$ tími
+ \end{itemize}
+ \item Þetta þarf að gera $n-1$ sinni
+ \begin{itemize}
+  \item Heildarkeyrslutími í versta tilfellinu $\Theta(n^2)$
+ \end{itemize}
+ \item Til eru almenn röðunarreiknirit sem virka á $\Theta(n\log(n))$ tíma
+\end{itemize}
+\end{frame}
+
+\subsection{Fylkjamargföldun}
+
+\begin{frame}{Fylkjamargföldun}
+Skoðum reiknirit sem framkvæmir fylkjamargföldun á $m \times k$ fylkinu $A$ og $k \times n$ fylkinu $B$:
+\begin{center}
+\includegraphics[width=0.8\textwidth]{matrix-multiplication}
+\end{center}
+\end{frame}
+
+\begin{frame}{Tímaflækja fylkjamargföldunar}
+\begin{itemize}
+ \item Um er að ræða $m \cdot n$ stök, til að mynda hvert þeirra þarf $k$ samlagningar \pause
+ \begin{itemize}
+  \item Heildartímaflækja: $O(kmn)$
+  \item Verður $O(n^3)$ þegar $m = n = k$ (tvö ferningsfylki)
+ \end{itemize}\pause
+ \item Til eru reiknirit með lægri tímaflækjur fyrir tvö ferningsfylki
+ \begin{itemize}
+  \item Strassen-reikniritið: $\approx O(2.81)$
+  \item Coppersmith-Winograd reikniritið: $O(n^{2.375477}$)
+  \begin{itemize}
+   \item Nýrri útgáfur: $O(n^{2.374})$ (Stothers, 2010) \pause, $O(n^{2.3728642})$ (Williams, 2011), \pause $O(n^{2.3728639})$ (Le Gall, 2014)
+  \end{itemize}
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tímaflækjur - raunveruleg áhrif}
+Keyrslutími reiknirita á tölvu þar sem ein bitaaðgerð tekur $10^{-11}s$.
+\begin{center}
+\includegraphics[width=\textwidth]{time-table}
+\end{center}
+Hér er $* > 10^{100}$ ár.
+\end{frame}
+
+\begin{frame}{Keyrslutímar - hugtök}
+\begin{center}
+\includegraphics[width=\textwidth]{complexity-terminology}
+\end{center}
+\end{frame}
+
+
+\section{P = NP}
+
+\begin{frame}{Meðfærileiki vandamála}
+\begin{itemize}
+ \item Mjög mikill munur er á vexti veldisvísisfalla og margliða
+ \item Skipta má vandamálum í meðfærileg (e. \emph{tractable}) og ómeðfærileg (e. \emph{intractable})
+ \item Flest vandamál sem eru leysanleg með reikniriti sem keyrir á margliðutíma eru meðfærileg
+ \begin{itemize}
+  \item Leit í runu, röðun, fylkjamargföldun\ldots
+ \end{itemize}
+ \item Flest vandamál sem ekki hafa þekkt reiknirit sem leysir þau á margliðutíma eru ómeðfærileg
+ \begin{itemize}
+  \item Skák á $n \times n$ borði, stöðvast gefið forrit með gefið inntak í $k$ skrefum?
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{P og NP}
+\begin{itemize}
+ \item Sum vandamál eru þess eðlis að hægt er að leysa þau á margliðutíma í versta tilfellinu, mengi slíkra vandamála er kallað $P$
+ \item Sum vandamál eru þess eðlis að hægt er að staðfesta eða hafna gefinni lausn á þeim á margliðutíma í versta tilfellinu, mengi slíkra vandamála er kallað $NP$
+ \item Stærsta opna spurningin í tölvunarfræði:
+\end{itemize}
+\[
+ \text{er } P = NP \text { eða } P \neq NP \text{ ? }
+\]
+\end{frame}
+
+\begin{frame}{NP-complete vandamál}
+\begin{itemize}
+ \item $NP$-complete vandamál eru flokkur vandamála innan $NP$ sem hefur merkilegan eiginleika:
+ \begin{itemize}
+  \item Sé til reiknirit sem leysir eitthvert $NP$-complete vandamál á margliðutíma er til reiknirit sem leysir öll $NP$-vandamál á margliðutíma
+ \end{itemize}
+ \item Yfir 3000 þekkt $NP$-complete vandamál
+ \item Fyrsta sannanlega $NP$-complete vandamálið var ``boolean satisfiability problem''
+ \begin{itemize}
+  \item Er til ákvörðun á $n$ rökbreytum svo að gefin yrðing sé sönn?
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Samband mengjanna (Wikipedia)}
+\begin{center}
+\includegraphics[width=\textwidth]{P-NP}
+\end{center}
+\end{frame}
 
 
 \begin{frame}{Næst}
-Dulkóðun (4.6)
+\begin{itemize}
+ \item 4.1 (Deiling og deilingarafgangur)
+ \item 4.2 (Mismunandi grunntölur)
+ \item 4.3 (Prímtölur)
+\end{itemize}
 
-Seinni helmingur tímans er stoðtími.
 \end{frame}
 
 

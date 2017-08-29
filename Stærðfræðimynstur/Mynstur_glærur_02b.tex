@@ -3,7 +3,7 @@
 \usepackage{Haust2016glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 2, seinni fyrirlestur}
+\subtitle{Vika 2, fyrri fyrirlestur}
 
 \begin{document}
 
@@ -15,307 +15,279 @@
 
 \begin{frame}{Í síðasta tíma}
 \begin{itemize}
- \item Mengi!
+ \item Skoðuðum hagnýtingar á yrðingum
+ \item Sáum staðalsnið fyrir yrðingar
  \begin{itemize}
-  \item Stök í mengjum
-  \item Hlutmengi
-  \item Veldismengi og mengjamargfeldi
-  \item Sniðmengi og sammengi
+  \item Eð-að staðalsnið
+  \item Og-að staðalsnið
  \end{itemize}
+ \item Kynntumst umsögnum
+ \item Kynntumst mögnurum
 \end{itemize}
 \end{frame}
 
-\section{Föll}
+\section{Mengi}
 
-\begin{frame}{Föll}
+\begin{frame}{Mengi}
 \begin{itemize}
- \item Fall er hugtak sem er mörgum kunnuglegt úr stærðfræðigreiningu
+ \item Mengi (e. \emph{set}) er grundvallareining í strjálli stærðfræði
+ \item Skyld hugmynd ``hópur'':
  \begin{itemize}
-  \item $f(x) = x^2$ er fall
-  \item $\sin(x)$ er fall
+  \item Mengi eru notuð til að ``hópa'' hluti saman
+  \item ``Hópur'' af hlutum myndar mengi
  \end{itemize}
- \item Oftast hefur verið um að ræða föll sem taka inn eina rauntölu og skila annarri rauntölu
- \begin{itemize}
-  \item Við notum opnari skilgreiningu
- \end{itemize}
+ \item ``Hlutur'' í mengi er kallaður stak (e. \emph{member} eða \emph{element})
+ \item Hlutir í sama mengi eiga oftast eitthvað sameiginlegt
+ \item Dæmi um mengi: Allar heiltölur, allir nemendur í þessu námskeiði
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Skilgreining á falli}
-\begin{tcolorbox}[title=Fall]
-Látum $A$ og $B$ vera mengi sem eru ekki tóm. Fall (e. \emph{function}) $f$ frá $A$ til $B$ er ákvörðun á nákvæmlega einu staki í $B$ fyrir sérhvert stak í $A$.
+\begin{frame}{Skilgreining á mengi}
 
-Við skrifum $f(a) = b$ þegar $b$ er stakið sem fallið $f$ ákvarðar fyrir stakið $a$.
-
-Við skrifum $f: A \to B$ þegar $f$ er fall frá $A$ til $B$.
+Klassísk skilgreining á mengi er eftirfarandi:
+\begin{tcolorbox}[title=Mengi]
+Mengi er óraðað samansafn hluta. Hlutur í mengi er kallaður stak þess. Mengi inniheldur stök sín. $a \in A$ táknar að stakið $a$ sé í menginu $A$. $a \notin A$ táknar að $a$ sé ekki í $A$.
 \end{tcolorbox}
 
-Föll eru líka kölluð varpanir (e. \emph{mapping} eða \emph{transformation}). Fall $f: A \to B$ varpar stökum úr mengi $A$ yfir í mengi $B$.
 \end{frame}
 
-\begin{frame}{Dæmi um föll}
+\begin{frame}{Að tilgreina mengi}
 \begin{itemize}
- \item Föll sem skilgreind eru með formúlu, föll með þekkt nöfn
+ \item Slaufusvigar eru oftast notaðir til að afmarka mengi
+ \item Nokkrar leiðir eru algengar þegar kemur að því að tilgreina stök mengis
  \begin{itemize}
-  \item $f(x) = x^2$ er $\mathbf{R} \to \mathbf{R}$
-  \item $\sin(x)$ er líka $\mathbf{R} \to \mathbf{R}$
- \end{itemize}
- \item Ákvörðun einkunna í þessu námskeiði má tákna með falli
- \item Ákvörðun nafna út frá kennitölum má tákna með falli \pause
- \begin{itemize}
-  \item Ákvörðun kennitala út frá nöfnum er ekki fall!
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Formengi og bakmengi}
-\begin{tcolorbox}[title=Formengi og bakmengi]
-Sé $f$ fall frá $A$ til $B$ kallast $A$ formengi (e. \emph{domain}) fallsins og $B$ bakmengi (e. \emph{codomain}) þess. Sé $f(a) = b$ er sagt að $b$ sé mynd (e. \emph{image}) $a$ og að $a$ sé formynd (e. \emph{preimage}) $a$.
-\end{tcolorbox}
-Sum föll eru hlutskilgreind (e. \emph{partial functions}), þ.e.a.s. að þau eru ekki skilgreind fyrir öll stök í formengi sínu. Dæmi: $f(x) = 1/x$.
-\end{frame}
-
-\begin{frame}[fragile]{Föll í forritun}
-\begin{itemize}
- \item Föll eru gríðarlega mikið notuð í forritun, í ýmsum myndum
- \begin{itemize}
-  \item Dæmigert fall í forritun:
+  \item Að telja upp öll stökin: 
   \begin{itemize}
-   \item Tekur inn breytur
-   \item Framkvæmir reikniaðgerðir
-   \item Skilar niðurstöðu í samræmi við inntakið 
+   \item Mengi enskra sérhljóða: $\{a, e, i, o, u\}$ \pause
+  \end{itemize}
+  \item Að sýna mynstur og láta þrípunkt tákna ``augljósa'' endurtekningu:
+  \begin{itemize}
+   \item Mengi jákvæðra heiltalna minni en 100: $\{1, 2, 3,\ldots, 100\}$ \pause
+  \end{itemize}
+  \item Að tilgreina skilyrði sem stök þurfa að uppfylla:
+  \begin{itemize}
+   \item $\{x \in \mathbf{Z^+} | x < 100\}$ \pause
   \end{itemize}
  \end{itemize}
- \item Í mörgum forritunarmálum eru formengi og bakmengi tilgreind þegar fall er skilgreint
+ \item Sum mengi hafa stöðluð nöfn: $\mathbf{R}$ (mengi rauntalna), $\mathbf{Z^+}$ (mengi jákvæðra heiltalna), \ldots
 \end{itemize}
-\begin{minted}[frame=lines]{java}
-// Fall frá mengi strengja til mengi heiltalna
-public static int f (String s) {
-  ...
-}
-\end{minted}
-
 \end{frame}
 
-\begin{frame}{Eintæk föll}
-\begin{tcolorbox}[title=Eintækt fall]
-Fall er eintækt (e. \emph{injective} eða \emph{one-to-one}) ef það varpar engum tveimur stökum í formengi sínu í sama stak bakmengisins, þ.e.a.s. ef \[\forall a \forall b (f(a) = f(b) \to a = b)\] og þar með \[\forall a \forall b (a \neq b \to f(a) \neq f(b))\].
+\begin{frame}{Hvað má fara í mengi?}
+\begin{itemize}
+ \item Skilgreiningin okkar á mengjum leyfir ýmislegt
+ \begin{itemize}
+  \item Mengi af mengjum: $\{\mathbf{N}, \mathbf{Z}, \mathbf{Q}, \mathbf{R}\}$
+ \end{itemize}
+ \item Tómt mengi, táknað $\emptyset$
+ \begin{itemize}
+  \item Mengi sem inniheldur tóma mengið $\{\emptyset\}$
+ \end{itemize}
+ \item Þessi opna skilgreining veldur tæknilegum vandræðum
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Vandræði}
+\begin{itemize}
+ \item Látum $S$ vera mengið sem inniheldur þau mengi $x$ sem ekki innihalda sig sjálf, þ.e.a.s.
+\end{itemize}
+\[
+ S = \{x | x \notin x\}
+\]
+\begin{itemize}
+ \item Er $S$ í sjálfu sér? \pause
+ \begin{itemize}
+  \item Ef já, þá verður það að uppfylla það skilyrði að vera ekki í sjálfu sér \pause
+  \item Ef nei, þá uppfyllir það skilyrðið sem það þarf að uppfylla til að vera í sjálfu sér \pause
+ \end{itemize}
+ \item Þversögn. Leiddi til frumsendulegrar mengjafræði (e. \emph{axiomatic set theory}), sem er strangari
+ \begin{itemize}
+  \item Þversögnin er kennd við Russell, Russell's Paradox
+ \end{itemize}
+
+\end{itemize}
+\end{frame}
+
+\section{Skilgreiningar sem tengjast mengjum}
+
+\begin{frame}{Jöfn mengi}
+\begin{tcolorbox}[title=Jöfn mengi]
+Tvö mengi eru jöfn (e. \emph{equal}) ef þau innihalda sömu stök, þ.e.a.s. $\forall x (x \in A \leftrightarrow x \in B ) $. Við skrifum $A = B$ ef mengin $A$ og $B$ eru jöfn.
+\end{tcolorbox}
+Til dæmis eru mengin $\{a, b, c\}$ og $\{b, c, a\}$ jöfn. Sömuleiðis $\{a, b, c\}$ og $\{a, a, b, c\}$.
+\end{frame}
+
+\begin{frame}{Hlutmengi}
+\begin{tcolorbox}[title=Hlutmengi]
+Mengið $A$ er hlutmengi í (e. \emph{subset of}) $B$ þá og því aðeins að hvert stak í $A$ sé einnig í $B$, þ.e.a.s. $\forall x (x \in A \to x \in B)$. Við skrifum $A \subseteq B$ ef $A$ er hlutmengi í $B$.
 \end{tcolorbox}
 
-Er fallið $f: \mathbf{R} \to \mathbf{R}$, $f(x) = x + 1$ eintækt? \pause
-
-Já, athugum að sé $x \neq y$, þá $x + 1 \neq y + 1$.
+Athugum að séu tvö mengi jöfn, þá er $A \subseteq B$ og $B \subseteq A$.
 \end{frame}
 
-\begin{frame}{Átæk föll}
-\begin{tcolorbox}[title=Átækt fall]
-Fall $f$ er átækt (e. \emph{surjective} eða \emph{onto}) ef það ``þekur'' bakmengi sitt, þ.e.a.s. að fyrir hvert stak $b$ í bakmenginu er til stak í formenginu $a$ svo að $f(a) = b$, \[\forall b \exists a (f(a) = b)\].
+\begin{frame}{Tóma mengið sem hlutmengi}
+\begin{itemize}
+ \item Er tóma mengið hlutmengi í öllum mengjum? \pause
+ \item Athugum skilgreininguna:
+ \begin{itemize}
+  \item Látum $S$ vera mengi. Gildir $\forall x (x \in \emptyset \to x \in S)$? \pause
+  \item $x \in \emptyset$ er alltaf ósatt \pause
+  \item $p \to q$ er alltaf satt þegar $p$ er ósatt
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fjöldatala mengis}
+\begin{tcolorbox}[title=Fjöldatala]
+Látum $S$ vera mengi. Séu $n$ mismunandi stök í $S$ og $n \in \mathbf{Z^+}$, þá er $S$ endanlegt mengi (e. \emph{finite set}) og $n$ er fjöldatala (e. \emph{cardinality}) mengisins $S$. Fjöldatala (eða stærð) mengisins $S$ er táknuð með $|S|$.
 \end{tcolorbox}
-Er fallið $f: \mathbf{Z} \to \mathbf{Z}$, $f(x) = x^2$ átækt? \pause
-
-Nei, engin heiltala gefur $f(x) = -1$, til dæmis.
+Hægt er að skilgreina fjöldatölur fyrir mengi sem eru ekki endanleg.
 \end{frame}
 
-\begin{frame}{Eintækni og átækni}
+\begin{frame}{Veldismengi mengis}
+\begin{tcolorbox}[title=Veldismengi]
+Látum $S$ vera mengi. Þá er veldismengi (e. \emph{power set}) $S$ mengi allra hlutmengja $S$. Veldismengi $S$ er táknað með $\mathbf{P}(S)$.
+\end{tcolorbox}
+Dæmi: \[\mathbf{P}(\{0, 1\}) = \pause \{\emptyset, \{0\}, \{1\}, \{0, 1\}\}\]
+
+Athugum að tóma mengið og mengið sjálft eru alltaf stök í veldismengi mengis.
+\end{frame}
+
+\begin{frame}{Mengjamargfeldi}
+\begin{tcolorbox}[title=Mengjamargfeldi]
+Látum $A$ og $B$ vera mengi. Mengjamargfeldi $A$ og $B$ er mengi allra raðaðra para $(a, b)$ þar sem $a \in A$ og $b \in B$, þ.e.a.s. mengið $\{(a, b) | a \in A \land b \in B\}$. Mengjamargfeldi $A$ og $B$ er táknað með $A \times B$.
+\end{tcolorbox}
+Dæmi:
+\[
+ \{1, 2\} \times \{a, b\} = \pause \{(1, a), (1, b), (2, a), (2, b)\}
+\]
+Athugum að almennt gildir ekki að $A \times B$ sé jafnt $B \times A$.
+\end{frame}
+
+\begin{frame}{Sammengi}
+\begin{tcolorbox}[title=Sammengi]
+Látum $A$ og $B$ vera mengi. 
+Sammengi (e. \emph{union}) mengjanna er mengið sem inniheldur stökin sem eru í $A$ eða $B$, 
+þ.e.a.s. mengið $\{x | x \in A \lor x \in B \}$. 
+Sammengi $A$ og $B$ er táknað með $A\cup B$.
+\end{tcolorbox}
+Dæmi:
+\[
+ \{1, 3\} \cup \{1, 2, 4\} = \pause \{1, 2, 3, 4\}
+\]
+\end{frame}
+
+\begin{frame}{Sniðmengi}
+\begin{tcolorbox}[title=Sniðmengi]
+Látum $A$ og $B$ vera mengi.
+Sniðmengi (e. \emph{intersection}) mengjanna er mengið sem inniheldur stökin sem eru í $A$ og $B$, 
+þ.e.a.s. mengið $\{x | x \in A \land x \in B \}$. 
+Sniðmengi $A$ og $B$ er táknað með $A\cap B$.
+\end{tcolorbox}
+Mengi eru kölluð sundurlæg (e. \emph{disjoint}) ef sniðmengi þeirra er tóma mengið.
+
+Dæmi um sniðmengi:
+\[
+ \{1, 3\} \cap \{1, 2, 4\} = \pause \{1\}
+\]
+\end{frame}
+
+\begin{frame}{Mengjamismunur}
+\begin{tcolorbox}[title=Mengjamismunur]
+Mismunur mengjanna $A$ og $B$ er mengi þeirra staka sem eru í $A$ en ekki í $B$, þ.e.a.s. mengið $\{x | x \in A \land x \notin B\}$.
+Mengjamismunur $A$ og $B$ er táknaður með $A - B$ eða $A \setminus B$.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Almengi og fyllimengi}
+Fyrir mengi er hægt að skilgreina mengi allra mögulegra staka, kallað almengi (e. \emph{universal set}) oft táknað með $U$. Þá má skilgreina:
+
+\begin{tcolorbox}[title=Fyllimengi]
+Látum $A$ vera mengi og $U$ almengi þess. Þá er fyllimengi $A$ m.t.t. $U$ mengið $U \setminus A$. Fyllimengi $A$ er táknað með $\overline{A}$.
+\end{tcolorbox}
+
+Algengt er að nefnd mengi á borð við $\mathbf{R}$ eða $\mathbf{N}$ þjóni sem almengi.
+\end{frame}
+
+\section{Mengjajafngildi}
+
+\begin{frame}{Mengjajafngildi}
+\begin{columns}
+\column{0.3\textwidth}
+Með þessum skilgreiningum má rökstyðja ýmis jafngildi fyrir mengi.
+
+\vspace*{0.5cm}
+Tafla úr kafla 2.2.
+\column{0.7\textwidth}
 \begin{center}
-\includegraphics[width=\textwidth]{function-types}
+\includegraphics[height=0.8\textheight]{set-equivalences}
 \end{center}
-Fall sem er bæði eintækt og átækt er kallað gagntækt (e. \emph{bijective}).
+\end{columns}
 \end{frame}
 
-\begin{frame}{Andhverfanleg föll}
-\begin{tcolorbox}[title=Andhverfanlegt fall]
-Látum $f$ vera gagntækt fall frá $A$ til $B$. Þá er andhverfa fallsins $f$ fallið sem varpar $b \in B$ í stakið $a \in A$ sem um gildir að $f(a) = b$.
-
-Andhverfa fallsins $f$ er táknuð með $f^{-1}$. Um $f^{-1}$ gildir:
-
-\[
- f(a) = b \equiv f^{-1}(b) = a
-\]
-
-\end{tcolorbox}
-Fall sem er ekki gagntækt er óandhverfanlegt. Hægt er að búa til andhverfanlegt fall úr óandhverfanlegu með því að takmarka formengi þess.
-\end{frame}
-
-\begin{frame}{Samantekt}
-\begin{itemize}
- \item Látum $f: A \to B$
- \begin{itemize}
-  \item Til að sýna að fall sé eintækt: Sýna að sé $f(x) = f(y)$ fyrir ótilgreind $x, y \in A$, þá sé $x = y$.
-  \item Til að sýna að fall sé átækt: Athuga ótilgreint $y \in B$ og finna $x \in A$ svo að $f(x) = y$
- \end{itemize}
- \item Til að sýna fram á hið gagnstæða, finnið mótdæmi
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Samskeyting falla}
-\begin{tcolorbox}[title=Samskeyting falla]
-Látum $g$ vera fall frá menginu $A$ til mengisins $B$ og látum $f$ vera fall frá menginu $B$ til mengisins $C$. Samskeyting (e. \emph{composition}) fallanna $f$ og $g$, fyrir $a \in A$ er þá táknuð með $f \circ g$ og skilgreinist af
-
-\[
- (f \circ g)(a) = f(g(a))
-\]
-
-\end{tcolorbox}
-Oft er hægt að einfalda föll með því að skrifa þau sem samskeytingar. Við forritun kemur þetta sérstaklega við í fallsforritunarmálum og skeljaskipunum.
-\end{frame}
-
-\section{Fylki}
-
-\begin{frame}{Fylki}
-\begin{tcolorbox}[title=Fylki]
-Fylki (e. \emph{matrix}) er ferhyrnt safn af tölum sem raðast í línur og dálka. Fylki með $m$ línum og $n$ dálkum er kallað $m \times n$ fylki.
-\end{tcolorbox}
-Fylki og aðgerðir á þau koma mikið við sögu í forritun sem tengist vísindalegum útreikningum og í tölvugrafík.
-
-Dæmi um fylki: Fylkið
-\[
-\begin{bmatrix}
-1&1\\0&2\\1&4
-\end{bmatrix}
-\]
-er $3 \times 2$ fylki.
-\end{frame}
-
-\begin{frame}{Fylkjamargföldun}
-Hægt er að skilgreina margar reikniaðgerðir fyrir fylki. Aðgerð sem oft kemur við sögu er fylkjamargföldun.
-
-\begin{tcolorbox}[title=Fylkjamargföldun]
-Látum $A$ vera $m \times k$ fylki og $B$ vera $k \times n$ fylki. Margfeldi $A$ og $B$, táknað með $AB$, er $m \times n$ fylki þar sem stak $i, j$ er summa margfelda staka úr $i$-tu línu $A$ og $j$-ta dálks $B$. Þ.e.a.s. fyrir stak $c_{ij}$ í $AB$ gildir:
-
-\[
- c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{ij}b_{kj}
-\]
-\end{tcolorbox}
-\end{frame}
-
-\begin{frame}{Fylkjamargföldun - dæmi}
-\[
-\begin{bmatrix}
-1&0&4\\2&1&1\\3&1&0\\0&2&2
-\end{bmatrix}
-\begin{bmatrix}
-2&4\\
-1&1\\
-3&0\\
-\end{bmatrix}
-=
-\begin{bmatrix}
-14&4\\
-8&9\\
-7&13\\
-8&2\\
-\end{bmatrix}
-\]
-
-\end{frame}
-
-
-\section{Runur og rakningarvensl}
-
-\begin{frame}{Runur}
-\begin{tcolorbox}[title=Runur]
-Runa (e. \emph{sequence}) er fall frá hlutmengi heiltalna (oftast mengi jákvæðra heiltalna) til annars mengis $S$. Mynd heiltölunnar $n$ er táknuð með $a_n$. Sagt er að $a_n$ sé liður (e. \emph{term}) í rununni.
-\end{tcolorbox}
-Bókin táknar runur með slaufusvigum, t.d. $\{a_n\}$. Runur eru samt ekki mengi.
-
-Dæmi um runu:
-\[
- \{a_n\} = a_1, a_2, a_3 \ldots = 1, \frac{1}{2}, \frac{1}{3}
-\]
-\[
- a_n = \frac{1}{n}
-\]
-\end{frame}
-
-\begin{frame}[fragile]{Strengir}
-\begin{itemize}
- \item Sérstök, mikið notuð gerð af runum kallast strengur (e. \emph{string})
- \item Strengur er endanleg runa af stöfum, úr endanlegu mengi (stafrófinu)
- \begin{itemize}
-  \item Stafrófið getur verið hvaða mengi sem er, en algeng stafróf eru \texttt{\{'a', 'b', 'c', \ldots\}} og \texttt{\{0, 1\}}
- \end{itemize}
-\end{itemize}
-
-\begin{minted}[frame=lines]{java}
-// Gagnagerðin String í Java í notkun
-String s = "Ég er strengur!";
-String b = "01010110";
-\end{minted}
-\end{frame}
-
-\begin{frame}{Rakningarvensl}
-\begin{tcolorbox}[title=Rakningarvensl]
-Rakningarvensl (e. \emph{recurrence relation}) fyrir runu $\{a_n\}$ er jafna sem skilgreinir $a_n$ sem fall af einum eða fleiri fyrri liðum rununnar, þ.e.a.s. $a_0, a_1, \ldots, a_{n-1}$ fyrir öll $n > n_0$, þar sem $n_0$ er ekki-neikvæð heiltala.
-\end{tcolorbox}
-Runa er lausn (e. \emph{solution}) á rakningarvenslum ef liðir hennar uppfylla venslin. Liðirnir sem eru fyrir framan fyrsta liðinn sem rankningarvenslin tilgreina eru upphafsskilyrði (e. \emph{initial conditions}) þeirra.
-\end{frame}
-
-\begin{frame}{Dæmi um rakningarvensl}
-Látum $\{a_n\}$ vera runu sem uppfyllir $a_n = a_{n-1} + 3$ fyrir $n=1, 2, 3, \ldots$ og setjum $a_0 = 2$. Hvað eru þá $a_1, a_2$ og $a_3$? \pause
+\begin{frame}{Útleiðsla á De Morgan fyrir mengi}
+Viljum sýna að $\overline{A \cap B} = \overline{A} \cup \overline{B}$.
 
 \begin{align*}
-a_1 &= a_0 + 3 = 2 + 3 = 5\\
-a_2 &= 5 + 3 = 8\\
-a_3 &= 8 + 3 = 11\\
+\overline{A \cap B} &= \{x | x \notin A \cap B\}\\ 
+&= \{x | \lnot ( x \in A \cap B)\}\\ 
+&= \{x | \lnot ( x \in A \land x \in B)\}\\ 
+&= \{x | \lnot ( x \in A) \lor \lnot (x \in B)\}\\ 
+&= \{x | x \notin A \lor x \notin B\}\\ 
+&= \{x | x \in \overline{A} \lor x \in \overline{B}\}\\ 
+&= \{x | x \in \overline{A} \cup \overline{B}\}\\ 
+&= \overline{A} \cup \overline{B}
 \end{align*}
-
 \end{frame}
 
-\begin{frame}{Dæmi um rakningarvensl}
-\begin{itemize}
- \item Fibonacci-rununa $f_0, f_1, f_2, \ldots$ má skilgreina með rakningavenslum
+\begin{frame}{Meðlimatöflur}
+Hægt er að kanna jafngildi með meðlimatöflu, sem svipar til sanntöflu:
+\begin{center}
+\includegraphics[width=\textwidth]{membership-table}
+\end{center}
+\end{frame}
+
+\begin{frame}{Útvíkkun}
+Sammengi margra mengja er mengi þeirra staka sem er í a.m.k. einu mengjanna:
+\[
+ A_1 \cup A_2 \cup \ldots \cup A_n = \bigcup_{i=1}^n A_i
+\]
+Sniðmengi margra mengja er mengi þeirra staka sem er í öllum mengjunum:
+\[
+ B_1 \cap B_2 \cap \ldots \cap B_n = \bigcap_{i=1}^n B_i
+\]
+\end{frame}
+
+\section{Mengi í tölvum}
+
+\begin{frame}[fragile]{Gagnagerðir sem mengi}
  \begin{itemize}
-  \item Upphafsskilyrði: $f_0 = 0, f_1 = 1$
-  \item Rakningavensl: $f_n = f_{n-1} + f_{n-2}$
+  \item Hugmyndin um gagnagerð (e. \emph{data type}) byggir á mengjum
+  \item Gagnagerð samanstendur af mengi mögulegra gilda og aðgerðum á þau
+  \item Gagnagerðin \texttt{Boolean} í Java skilgreinist af:
+  \begin{itemize}
+   \item Menginu \{\texttt{true},\texttt{false}\}
+   \item Aðgerðum: Og (\verb|&&|), eða (\verb&||&), \ldots
+  \end{itemize}
  \end{itemize}
-\end{itemize}
 \end{frame}
 
-\begin{frame}{Að leysa rakningarvensl}
-\begin{itemize}
- \item Oft er nauðsynlegt að finna formúlu fyrir liði runu sem skilgreind er með rakningarvenslum
- \item Formúlan er sögð vera á lokuðu sniði (e. \emph{closed form}) ef hún inniheldur einungis ``einfaldar'' grunnaðgerðir og föll
- \item Algengt: Giska á rétta formúlu, sem síðan er sannreynd með þrepun (e. \emph{induction})
- \begin{itemize}
-  \item Gerum líklega meira af því síðar
- \end{itemize}
-\end{itemize}
+\begin{frame}[fragile]{Tölvuframsetning á mengjum}
+Hægt er að tákna mengi með bitastrengjum.
+
+Gerum ráð fyrir að $U$ hafi fjöldatöluna $n$ og skilgreinum fyrir það röðun. Setjum stök þess í rununa $a_1, a_2, \ldots a_n$.
+
+Táknum þá hlutmengi $A$ í $U$ með því að að nota $n$ bita runu, þar sem $i$-ti bitinn er 1 sé $a_i$ í $A$, annars 0.
 \end{frame}
 
+\begin{frame}[fragile]{Dæmi um bitaframsetningu}
+Látum $U = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$. Þá er mengi oddatalna í $U$ mengið $\{1, 3, 5, 7, 9\}$, sem við getum táknað með bitarununni $1010101010$. 
 
-\section{Fjöldatölur og reiknanleiki}
-
-\begin{frame}{Fjöldatölur}
-Við höfum áður kynnst fjöldatölum. Útvíkkum nú hugtakið:
-
-\begin{tcolorbox}[title=Eins fjöldatölur]
-Mengin $A$ og $B$ hafa sömu fjöldatölu ef til er gagntækt fall frá $A$ til $B$.
-\end{tcolorbox}
-
-Þá má einnig skilgreina:
-
-\begin{tcolorbox}[title=Teljanleiki]
-Mengi sem er endanlegt eða hefur sömu fjöldatölu og mengi jákvæðra heiltalna er teljanlegt (e. \emph{countable}). Þegar óendanlegt mengi $S$ er teljanlegt skilgreinum við fjöldatölu þess sem $|S| = \aleph_0$.
-\end{tcolorbox}
-\end{frame}
-
-\begin{frame}{Reiknanleiki}
-\begin{itemize}
- \item Til að fall sé reiknanlegt (e. \emph{computable}) þarf að vera til forrit í einhverju forritunarmáli sem finnur gildi þess
- \item Til eru óreiknanleg föll!
- \item Þekkt atriði:
- \begin{itemize}
-  \item Fjöldi forrita er teljanlega óendanlegur
-  \item Fjöldi falla frá teljanlega óendanlegu mengi yfir í sjálft sig er óteljanlegur
- \end{itemize}
-\end{itemize}
+Getum séð að fyllimengi oddatalnanna er $0101010101$. Hægt er að nota bitaaðferðir til að reikna út sniðmengi og sammengi.
 \end{frame}
 
 \begin{frame}{Næst}
-Reiknirit (kafli 3.1) og vöxtur falla (kafli 3.2)
+Föll (kafli 2.3), rakningavensl (kafli 2.4), reiknanleiki (kafli 2.5), fylki (kafli 2.6)
 \end{frame}
 
 

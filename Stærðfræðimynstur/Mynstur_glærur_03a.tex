@@ -3,7 +3,7 @@
 \usepackage{Haust2016glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 3, fyrri fyrirlestur}
+\subtitle{Vika 2, seinni fyrirlestur}
 
 \begin{document}
 
@@ -15,324 +15,307 @@
 
 \begin{frame}{Í síðasta tíma}
 \begin{itemize}
- \item Föll
- \item Fylki
- \item Runur og rakningarvensl
- \item Fjöldatölur og reiknanleiki
-\end{itemize}
-\end{frame}
-
-\section{Skilgreining reiknirits}
-
-\begin{frame}{Vandamál í tölvunarfræði}
-\begin{itemize}
- \item Tölvunarfræði felur í sér ýmis vandamál, sum þeirra koma oft fyrir
+ \item Mengi!
  \begin{itemize}
-  \item Finnum stærstu töluna í þessari runu heiltalna
-  \item Tökum þessa runu heiltalna og endurröðum henni í hækkandi röð
-  \item Finnum stystu leið á milli þessara tveggja hnúta í neti
+  \item Stök í mengjum
+  \item Hlutmengi
+  \item Veldismengi og mengjamargfeldi
+  \item Sniðmengi og sammengi
  \end{itemize}
- \item Til að tákna vandamálin notum við mengi, runur, föll, net, tré, endanlegar stöðuvélar\ldots
- \item Til að leysa vandamálin notum við \emph{reiknirit}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Reiknirit}
-Hvað er reiknirit? \pause
+\section{Föll}
 
-Úr bók:
-\begin{tcolorbox}[title=Reiknirit]
-Reiknirit (e. \emph{algorithm}) er endanleg runa vel skilgreindra aðgerða sem reikna út lausn á skilgreindu vandamáli.
+\begin{frame}{Föll}
+\begin{itemize}
+ \item Fall er hugtak sem er mörgum kunnuglegt úr stærðfræðigreiningu
+ \begin{itemize}
+  \item $f(x) = x^2$ er fall
+  \item $\sin(x)$ er fall
+ \end{itemize}
+ \item Oftast hefur verið um að ræða föll sem taka inn eina rauntölu og skila annarri rauntölu
+ \begin{itemize}
+  \item Við notum opnari skilgreiningu
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Skilgreining á falli}
+\begin{tcolorbox}[title=Fall]
+Látum $A$ og $B$ vera mengi sem eru ekki tóm. Fall (e. \emph{function}) $f$ frá $A$ til $B$ er ákvörðun á nákvæmlega einu staki í $B$ fyrir sérhvert stak í $A$.
+
+Við skrifum $f(a) = b$ þegar $b$ er stakið sem fallið $f$ ákvarðar fyrir stakið $a$.
+
+Við skrifum $f: A \to B$ þegar $f$ er fall frá $A$ til $B$.
 \end{tcolorbox}
 
-Orðið ``algorithm'' er afleiða latneskunar á nafinu al-Khowarizmi, sem skrifaði um hindú-arabíska talnakerfið. Bók hans, \emph{Kitab al-jabr w'al muquabala}, er þekkt grundvallarrit.
-
-\pause
-Orðið kemur fram í \href{https://en.wikipedia.org/wiki/Hauksb\%C3\%B3k}{Hauksbók}!
+Föll eru líka kölluð varpanir (e. \emph{mapping} eða \emph{transformation}). Fall $f: A \to B$ varpar stökum úr mengi $A$ yfir í mengi $B$.
 \end{frame}
 
-\section{Lýsing og eiginleikar reiknirita}
-
-\begin{frame}{Eiginleikar reiknirita}
+\begin{frame}{Dæmi um föll}
 \begin{itemize}
- \item Nokkrir eiginleikar eru flestum reikniritum sameiginlegir
- \item Koma fyrir aftur og aftur í lýsingum reiknirita
+ \item Föll sem skilgreind eru með formúlu, föll með þekkt nöfn
  \begin{itemize}
-  \item Vandamál sem leysa skal
-  \item Inntak (e. \emph{input})
+  \item $f(x) = x^2$ er $\mathbf{R} \to \mathbf{R}$
+  \item $\sin(x)$ er líka $\mathbf{R} \to \mathbf{R}$
+ \end{itemize}
+ \item Ákvörðun einkunna í þessu námskeiði má tákna með falli
+ \item Ákvörðun nafna út frá kennitölum má tákna með falli \pause
+ \begin{itemize}
+  \item Ákvörðun kennitala út frá nöfnum er ekki fall!
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Formengi og bakmengi}
+\begin{tcolorbox}[title=Formengi og bakmengi]
+Sé $f$ fall frá $A$ til $B$ kallast $A$ formengi (e. \emph{domain}) fallsins og $B$ bakmengi (e. \emph{codomain}) þess. Sé $f(a) = b$ er sagt að $b$ sé mynd (e. \emph{image}) $a$ og að $a$ sé formynd (e. \emph{preimage}) $a$.
+\end{tcolorbox}
+Sum föll eru hlutskilgreind (e. \emph{partial functions}), þ.e.a.s. að þau eru ekki skilgreind fyrir öll stök í formengi sínu. Dæmi: $f(x) = 1/x$.
+\end{frame}
+
+\begin{frame}[fragile]{Föll í forritun}
+\begin{itemize}
+ \item Föll eru gríðarlega mikið notuð í forritun, í ýmsum myndum
+ \begin{itemize}
+  \item Dæmigert fall í forritun:
   \begin{itemize}
-   \item Reiknirit tekur við gildum úr skilgreindu mengi, gildin eru inntak þess
-   \item Inntak reiknirits inniheldur upplýsingar sem viðkoma vandamálinu
-  \end{itemize}
-  \item Úttak (e. \emph{output})
-  \begin{itemize}
-   \item Úttak reiknirits tilheyrir skilgreindu mengi
-   \item Úttakið lýsir niðurstöðum reikniritsins, sem er lausn á vandamáli
+   \item Tekur inn breytur
+   \item Framkvæmir reikniaðgerðir
+   \item Skilar niðurstöðu í samræmi við inntakið 
   \end{itemize}
  \end{itemize}
+ \item Í mörgum forritunarmálum eru formengi og bakmengi tilgreind þegar fall er skilgreint
 \end{itemize}
+\begin{minted}[frame=lines]{java}
+// Fall frá mengi strengja til mengi heiltalna
+public static int f (String s) {
+  ...
+}
+\end{minted}
+
 \end{frame}
 
-\begin{frame}{Fleiri atriði í reikniritalýsingum}
-\begin{itemize}
- \item Fleiri atriði:
- \begin{itemize}
-  \item Sé hvert skref reiknirits vel skilgreint og ákvarðanlegt er það skýrt (e. \emph{definite})
-  \item Skili reiknirit væntri niðurstöðu fyrir sérhvert inntak er það rétt (e. \emph{correct})
-  \item Skili reiknirit niðurstöðu á endanlegum tíma er það endanlegt (e. \emph{finite})
-  \item Virki reiknirit á öll tilvik vandamálsins er það almennt (e. \emph{general})
- \end{itemize}
- \item Oftast viljum við að reiknirit hafi alla þessa eiginleika
-\end{itemize}
+\begin{frame}{Eintæk föll}
+\begin{tcolorbox}[title=Eintækt fall]
+Fall er eintækt (e. \emph{injective} eða \emph{one-to-one}) ef það varpar engum tveimur stökum í formengi sínu í sama stak bakmengisins, þ.e.a.s. ef \[\forall a \forall b (f(a) = f(b) \to a = b)\] og þar með \[\forall a \forall b (a \neq b \to f(a) \neq f(b))\].
+\end{tcolorbox}
+
+Er fallið $f: \mathbf{R} \to \mathbf{R}$, $f(x) = x + 1$ eintækt? \pause
+
+Já, athugum að sé $x \neq y$, þá $x + 1 \neq y + 1$.
 \end{frame}
 
-\begin{frame}{Lýsing reiknirita}
-Hægt er að nota orð til að lýsa reikniritum. Dæmi úr bók til að finna stærstu heiltölu í runu:
+\begin{frame}{Átæk föll}
+\begin{tcolorbox}[title=Átækt fall]
+Fall $f$ er átækt (e. \emph{surjective} eða \emph{onto}) ef það ``þekur'' bakmengi sitt, þ.e.a.s. að fyrir hvert stak $b$ í bakmenginu er til stak í formenginu $a$ svo að $f(a) = b$, \[\forall b \exists a (f(a) = b)\].
+\end{tcolorbox}
+Er fallið $f: \mathbf{Z} \to \mathbf{Z}$, $f(x) = x^2$ átækt? \pause
 
-\begin{enumerate}
- \item Set the temporary maximum equal to the first integer in the sequence.
- \item Compare the next integer in the sequence to the temporary maximum, and if it is larger
-than the temporary maximum, set the temporary maximum equal to this integer.
- \item Repeat the previous step if there are more integers in the sequence.
- \item Stop when there are no integers left in the sequence. The temporary maximum at this
-point is the largest integer in the sequence.
-\end{enumerate}
+Nei, engin heiltala gefur $f(x) = -1$, til dæmis.
 \end{frame}
 
-\begin{frame}{Sauðakóði}
-\begin{itemize}
- \item Orðalýsing á reikniritum er oft mjög löng og óþægileg
- \item Til að auðvelda lýsingar nota ýmsir höfundar oft svokallaðan sauðakóða (e. \emph{pseudocode})
- \item Sauðakóði á að vera ``auðveldur aflestrar''
- \begin{itemize}
-  \item Í sauðakóða vantar ýmis útfærsluatriði sem algeng eru í forritunarmálum
-  \item Í sauðakóða er leyfilegt að lýsa atriðum sem myndu taka margar aðgerðir í tölvu með því að nota setningar
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Reiknirit með sauðakóða}
-Reiknirit sem finnur stærsta stak í runu, sett fram með sauðakóða
-
-\includegraphics[width=\linewidth]{max-element}
-\end{frame}
-
-
-\begin{frame}{Rétt reiknirit}
-\begin{columns}
-\column{0.5\textwidth}
-Hægt er að nota fastayrðingar\\
-(e. \emph{invariants}) til að sanna réttleika forrita
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{invariants}
-\end{columns}
-\end{frame}
-
-\section{Leitarreiknirit}
-
-\begin{frame}{Leitarreiknirit}
-\begin{itemize}
- \item Leit að lið í runu kemur víða við
- \begin{itemize}
-  \item Er þessi nemandi í námskeiðinu? 
-  \item Er þetta orð rétt skrifað?
- \end{itemize}
- \item Getum skilgreint leitarvandamálið fyrir runur:
- \begin{itemize}
-  \item Gefið er $x$ og runa $a_1, a_2, \ldots, a_n$
-  \item Þurfum að finna $i$ svo að $x = a_i$ sé það til
-  \item Sé slíkt $i$ ekki til segjum við $i = 0$
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Línuleg leit}
-Línuleg leit er reiknirit sem leysir leitarvandamálið fyrir runur:
-
+\begin{frame}{Eintækni og átækni}
 \begin{center}
-\includegraphics[width=\textwidth]{linear-search}
+\includegraphics[width=\textwidth]{function-types}
 \end{center}
+Fall sem er bæði eintækt og átækt er kallað gagntækt (e. \emph{bijective}).
 \end{frame}
 
-\begin{frame}{Getum við gert betur?}
+\begin{frame}{Andhverfanleg föll}
+\begin{tcolorbox}[title=Andhverfanlegt fall]
+Látum $f$ vera gagntækt fall frá $A$ til $B$. Þá er andhverfa fallsins $f$ fallið sem varpar $b \in B$ í stakið $a \in A$ sem um gildir að $f(a) = b$.
+
+Andhverfa fallsins $f$ er táknuð með $f^{-1}$. Um $f^{-1}$ gildir:
+
+\[
+ f(a) = b \equiv f^{-1}(b) = a
+\]
+
+\end{tcolorbox}
+Fall sem er ekki gagntækt er óandhverfanlegt. Hægt er að búa til andhverfanlegt fall úr óandhverfanlegu með því að takmarka formengi þess.
+\end{frame}
+
+\begin{frame}{Samantekt}
 \begin{itemize}
- \item Línuleg leit virkar oft ágætlega
+ \item Látum $f: A \to B$
  \begin{itemize}
-  \item Hún er einföld
-  \item Virkar á allar runur
+  \item Til að sýna að fall sé eintækt: Sýna að sé $f(x) = f(y)$ fyrir ótilgreind $x, y \in A$, þá sé $x = y$.
+  \item Til að sýna að fall sé átækt: Athuga ótilgreint $y \in B$ og finna $x \in A$ svo að $f(x) = y$
  \end{itemize}
- \item Ef við vitum meira um rununa getum við oft notað öflugri aðferðir
- \item Ef runan er röðuð getum við notað helmingunarleit
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Helmingunarleit}
-Helmingunarleit er afar skilvirkt leitarreiknirit sem virkar á raðaðar runur.
-
-\begin{center}
-\includegraphics[width=\textwidth]{binary-search}
-\end{center}
-\end{frame}
-
-\section{Röðunarreiknirit}
-
-\begin{frame}{Röðunarreiknirit}
-\begin{itemize}
- \item Annar flokkur vandamála sem oft kemur við sögu er röðunarvandamál
- \begin{itemize}
-  \item Búa til orðabók
-  \item Setja fram vörulista\ldots
- \end{itemize}
- \item Röðunarvandamálið hefur fengið mikla athygli
- \begin{itemize}
-  \item Yfir 100 þekkt reiknirit
-  \item $\approx$400 blaðsíður um efnið í \emph{The Art of Computer Programming} eftir Donald Knuth
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Röðunarvandamálið}
-Lausn á röðunarvandamáli fyrir runu talna $a_1, a_2, \ldots, a_n$ felur í sér að finna endurröðun $a'_1, a'_2, \ldots, a'_n$ á rununni svo að $a'_1 \leq a'_2 \leq \ldots \leq a'_n$.
-\end{frame}
-
-
-\begin{frame}{Innsetningarröðun}
-\begin{itemize}
- \item Reikniritið innsetningarröðun (e. \emph{insertion sort}) leysir röðunarvandamálið
- \item Lýsing úr bók
- \begin{itemize}
-  \item Byrjum að skoða $a_2$, berum það saman við $a_1$
-  \begin{itemize}
-   \item Sé $a_2 < a_1$ skiptum við á staðsetningum þeirra
-   \item Eftir þetta skref eru fyrstu tvö stökin í innbyrðis réttri röð
-  \end{itemize}
-  \item $a_3$ er borið saman við $a_1$
-  \begin{itemize}
-   \item Sé það stærra en $a_1$ er það borið saman við $a_2$
-   \item Sett á réttan stað í fyrstu þrenndinni
-  \end{itemize}
-  \item Almennt er stak númer $j$ borið saman við öll $j-1$ stökin sem á undan koma
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Innsetningarröðun - sauðakóði}
-\begin{center}
-\includegraphics[width=\textwidth]{insertion-sort}
-\end{center}
-\end{frame}
-
-\section{Gráðug reiknirit}
-
-\begin{frame}{Bestunarreiknirit}
-\begin{itemize}
- \item Stór flokkur vandamála sem leysa þarf við raunverulegar aðstæður er bestunarvandamál (e. \emph{optimization problems})
- \item Í bestunarvandamáli höfum við mengi mögulegra lausna, þurfum að finna þá bestu m.t.t. gefins viðmiðs
- \item Einn einfaldasti flokkur reiknirita sem leysir bestunarvandamál er gráðug reiknirit (e. \emph{greedy algorithms})
- \begin{itemize}
-  \item Gráðugt reiknirit leysir bestunarvandamál sem skipta má upp í skref með því að velja bestu
-  \item Sum gráðug reiknirit finna alltaf bestu lausn með þessum hætti, sum ekki
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Gráðugt reiknirit fyrir skiptimynt}
-\begin{itemize}
- \item Athugum skiptimyntarvandamálið
- \begin{itemize}
-  \item Algengt vandamál þangað til á þessari öld
- \end{itemize}
- \item Erum með endanlegan fjölda mismunandi mynta
- \item Viljum rétta manneskju upphæðina $n$
- \item Viljum rétta eins fáar myntir og við getum
- \item Þetta vandamál má leysa á gráðugan máta
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Gráðug myntskipti}
-\begin{itemize}
- \item Gráðug aðferð: Teljum til myntir, í hvert skipti veljum við stærstu mynt $\leq n$
- \begin{itemize}
-  \item Drögum verðgildi myntarinnar frá $n$
-  \item Veljum aftur stærstu mynt sem ekki er stærri en ``nýja $n$''
-  \item Endurtökum
- \end{itemize}
- \item Þessi aðferð skilar stundum bestu lausn, fer eftir verðgildum myntanna
- \begin{itemize}
-  \item Alltaf besta lausn fyrir myntgildin $25, 10, 5, 1$
-  \item Ekki alltaf besta lausn fyrir myntgildin $25, 10, 1$
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Gráðug myntskipti}
-\begin{center}
-\includegraphics[width=\textwidth]{coin-change}
-\end{center}
-\end{frame}
-
-\section{Stöðvunarvandamálið}
-
-\begin{frame}{Stöðvunarvandamálið}
-\begin{itemize}
- \item Áður hefur verið haldið fram að óákvarðanleg föll séu til
- \item Sýnum nú að til sé vandamál sem ekkert forrit getur leyst
- \item Dæmi um slíkt vandamál er stöðvunarvandamálið (e. \emph{the halting problem})
- \begin{itemize}
-  \item Forrit sem leysir stöðvunarvandamálið myndi geta tekið inn annars vegar forrit og hins vegar inntak í forritið og svarað hvort að forritið muni ná að ljúka keyrslu eða ekki 
- \end{itemize}
- \item Alan Turing sýndi að ekki er til forrit sem leysir stöðvunarvandamálið árið 1936
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Aths. um stöðvunarvandamálið}
-\begin{itemize}
- \item Athugum: Það dugar ekki einfaldlega að keyra forritið $P$ með inntakinu $I$ til að ákvarða vandamálið
- \begin{itemize}
-  \item Ef $P$ klárar vitum við vissulega svarið\ldots
-  \item \ldots en meðan það er enn að keyra vitum við ekki hvort það mun klára eftir eina sekúndu, eftir milljarð ára eða aldrei
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Sönnun með mótsögn}
-\begin{itemize}
- \item Gerum ráð fyrir að við séum með forrit $H$ sem leysir stöðvunarvandamálið fyrir forrit $P$ og inntak $I$
- \begin{itemize}
-  \item $H$ skilar strengnum ``stoppar'' ef $P$ stoppar gefið $I$ sem inntak, annars ``keyrir endalaust'' \pause
- \end{itemize}
- \item Athugum að forrit er safn tákna, svo forrit er strengur, streng má nota sem inntak
- \item Leysi $H$ stöðvunarvandamálið á það því að geta svarað því hvort $P$ stoppar þegar $P$ sjálft er notað sem inntak
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Sönnun með mótsögn}
-\begin{itemize}
- \item Búum nú til forrit $K(P)$ sem notar $H(P, P)$
- \begin{itemize}
-  \item Skili $H(P, P)$ strengnum ``keyrir endalaust'' stoppar $K(P)$ 
-  \item Skili $H(P, P)$ strengnum ``stoppar'' fer $K(P)$ í endalausa lykkju
-  \item $K(P)$ gerir sem sagt það gagnstæða við $H(P, P)$
- \end{itemize}
- \item Hvað gerist ef við köllum á $K(K)$?
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Sönnun með mótsögn}
-\begin{itemize}
- \item Ef $H(K, K)$ segir að $K(K)$ ljúki keyrslu, þá lýkur $K(K)$ ekki keyrslu
- \item Ef $H(K, K)$ segir að $K(K)$ ljúki ekki keyrslu, þá lýkur $K(K)$ keyrslu
- \item Mótsögn!
- \begin{itemize}
-  \item Ekki er til $H$ sem leysir stöðvunarvandamálið fyrir öll forrit
- \end{itemize}
+ \item Til að sýna fram á hið gagnstæða, finnið mótdæmi
 \end{itemize}
 
 \end{frame}
 
+
+\begin{frame}{Samskeyting falla}
+\begin{tcolorbox}[title=Samskeyting falla]
+Látum $g$ vera fall frá menginu $A$ til mengisins $B$ og látum $f$ vera fall frá menginu $B$ til mengisins $C$. Samskeyting (e. \emph{composition}) fallanna $f$ og $g$, fyrir $a \in A$ er þá táknuð með $f \circ g$ og skilgreinist af
+
+\[
+ (f \circ g)(a) = f(g(a))
+\]
+
+\end{tcolorbox}
+Oft er hægt að einfalda föll með því að skrifa þau sem samskeytingar. Við forritun kemur þetta sérstaklega við í fallsforritunarmálum og skeljaskipunum.
+\end{frame}
+
+\section{Fylki}
+
+\begin{frame}{Fylki}
+\begin{tcolorbox}[title=Fylki]
+Fylki (e. \emph{matrix}) er ferhyrnt safn af tölum sem raðast í línur og dálka. Fylki með $m$ línum og $n$ dálkum er kallað $m \times n$ fylki.
+\end{tcolorbox}
+Fylki og aðgerðir á þau koma mikið við sögu í forritun sem tengist vísindalegum útreikningum og í tölvugrafík.
+
+Dæmi um fylki: Fylkið
+\[
+\begin{bmatrix}
+1&1\\0&2\\1&4
+\end{bmatrix}
+\]
+er $3 \times 2$ fylki.
+\end{frame}
+
+\begin{frame}{Fylkjamargföldun}
+Hægt er að skilgreina margar reikniaðgerðir fyrir fylki. Aðgerð sem oft kemur við sögu er fylkjamargföldun.
+
+\begin{tcolorbox}[title=Fylkjamargföldun]
+Látum $A$ vera $m \times k$ fylki og $B$ vera $k \times n$ fylki. Margfeldi $A$ og $B$, táknað með $AB$, er $m \times n$ fylki þar sem stak $i, j$ er summa margfelda staka úr $i$-tu línu $A$ og $j$-ta dálks $B$. Þ.e.a.s. fyrir stak $c_{ij}$ í $AB$ gildir:
+
+\[
+ c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \ldots + a_{ij}b_{kj}
+\]
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Fylkjamargföldun - dæmi}
+\[
+\begin{bmatrix}
+1&0&4\\2&1&1\\3&1&0\\0&2&2
+\end{bmatrix}
+\begin{bmatrix}
+2&4\\
+1&1\\
+3&0\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+14&4\\
+8&9\\
+7&13\\
+8&2\\
+\end{bmatrix}
+\]
+
+\end{frame}
+
+
+\section{Runur og rakningarvensl}
+
+\begin{frame}{Runur}
+\begin{tcolorbox}[title=Runur]
+Runa (e. \emph{sequence}) er fall frá hlutmengi heiltalna (oftast mengi jákvæðra heiltalna) til annars mengis $S$. Mynd heiltölunnar $n$ er táknuð með $a_n$. Sagt er að $a_n$ sé liður (e. \emph{term}) í rununni.
+\end{tcolorbox}
+Bókin táknar runur með slaufusvigum, t.d. $\{a_n\}$. Runur eru samt ekki mengi.
+
+Dæmi um runu:
+\[
+ \{a_n\} = a_1, a_2, a_3 \ldots = 1, \frac{1}{2}, \frac{1}{3}
+\]
+\[
+ a_n = \frac{1}{n}
+\]
+\end{frame}
+
+\begin{frame}[fragile]{Strengir}
+\begin{itemize}
+ \item Sérstök, mikið notuð gerð af runum kallast strengur (e. \emph{string})
+ \item Strengur er endanleg runa af stöfum, úr endanlegu mengi (stafrófinu)
+ \begin{itemize}
+  \item Stafrófið getur verið hvaða mengi sem er, en algeng stafróf eru \texttt{\{'a', 'b', 'c', \ldots\}} og \texttt{\{0, 1\}}
+ \end{itemize}
+\end{itemize}
+
+\begin{minted}[frame=lines]{java}
+// Gagnagerðin String í Java í notkun
+String s = "Ég er strengur!";
+String b = "01010110";
+\end{minted}
+\end{frame}
+
+\begin{frame}{Rakningarvensl}
+\begin{tcolorbox}[title=Rakningarvensl]
+Rakningarvensl (e. \emph{recurrence relation}) fyrir runu $\{a_n\}$ er jafna sem skilgreinir $a_n$ sem fall af einum eða fleiri fyrri liðum rununnar, þ.e.a.s. $a_0, a_1, \ldots, a_{n-1}$ fyrir öll $n > n_0$, þar sem $n_0$ er ekki-neikvæð heiltala.
+\end{tcolorbox}
+Runa er lausn (e. \emph{solution}) á rakningarvenslum ef liðir hennar uppfylla venslin. Liðirnir sem eru fyrir framan fyrsta liðinn sem rankningarvenslin tilgreina eru upphafsskilyrði (e. \emph{initial conditions}) þeirra.
+\end{frame}
+
+\begin{frame}{Dæmi um rakningarvensl}
+Látum $\{a_n\}$ vera runu sem uppfyllir $a_n = a_{n-1} + 3$ fyrir $n=1, 2, 3, \ldots$ og setjum $a_0 = 2$. Hvað eru þá $a_1, a_2$ og $a_3$? \pause
+
+\begin{align*}
+a_1 &= a_0 + 3 = 2 + 3 = 5\\
+a_2 &= 5 + 3 = 8\\
+a_3 &= 8 + 3 = 11\\
+\end{align*}
+
+\end{frame}
+
+\begin{frame}{Dæmi um rakningarvensl}
+\begin{itemize}
+ \item Fibonacci-rununa $f_0, f_1, f_2, \ldots$ má skilgreina með rakningavenslum
+ \begin{itemize}
+  \item Upphafsskilyrði: $f_0 = 0, f_1 = 1$
+  \item Rakningavensl: $f_n = f_{n-1} + f_{n-2}$
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Að leysa rakningarvensl}
+\begin{itemize}
+ \item Oft er nauðsynlegt að finna formúlu fyrir liði runu sem skilgreind er með rakningarvenslum
+ \item Formúlan er sögð vera á lokuðu sniði (e. \emph{closed form}) ef hún inniheldur einungis ``einfaldar'' grunnaðgerðir og föll
+ \item Algengt: Giska á rétta formúlu, sem síðan er sannreynd með þrepun (e. \emph{induction})
+ \begin{itemize}
+  \item Gerum líklega meira af því síðar
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\section{Fjöldatölur og reiknanleiki}
+
+\begin{frame}{Fjöldatölur}
+Við höfum áður kynnst fjöldatölum. Útvíkkum nú hugtakið:
+
+\begin{tcolorbox}[title=Eins fjöldatölur]
+Mengin $A$ og $B$ hafa sömu fjöldatölu ef til er gagntækt fall frá $A$ til $B$.
+\end{tcolorbox}
+
+Þá má einnig skilgreina:
+
+\begin{tcolorbox}[title=Teljanleiki]
+Mengi sem er endanlegt eða hefur sömu fjöldatölu og mengi jákvæðra heiltalna er teljanlegt (e. \emph{countable}). Þegar óendanlegt mengi $S$ er teljanlegt skilgreinum við fjöldatölu þess sem $|S| = \aleph_0$.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Reiknanleiki}
+\begin{itemize}
+ \item Til að fall sé reiknanlegt (e. \emph{computable}) þarf að vera til forrit í einhverju forritunarmáli sem finnur gildi þess
+ \item Til eru óreiknanleg föll!
+ \item Þekkt atriði:
+ \begin{itemize}
+  \item Fjöldi forrita er teljanlega óendanlegur
+  \item Fjöldi falla frá teljanlega óendanlegu mengi yfir í sjálft sig er óteljanlegur
+ \end{itemize}
+\end{itemize}
+\end{frame}
 
 \begin{frame}{Næst}
-Vöxtur falla (kafli 3.2)
+Reiknirit (kafli 3.1) og vöxtur falla (kafli 3.2)
 \end{frame}
 
 

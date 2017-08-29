@@ -1,9 +1,9 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
 \usepackage{Haust2016glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 5, fyrri fyrirlestur}
+\subtitle{Vika 4, fyrri fyrirlestur}
 
 \begin{document}
 
@@ -16,245 +16,314 @@
 
 \begin{frame}{Í síðasta tíma}
 \begin{itemize}
- \item Talnafræði
- \item Deiling og afgangur
- \item Framsetning heiltalna
- \begin{itemize}
-  \item Tvíundarkerfið og önnur kerfi
- \end{itemize}
- \item Prímtölur
- \item Stærsti samdeilir og minnsta samfeldi
+ \item Reikniflækja
+ \item Tímaflækjur nokkurra reiknirita
+ \item Mengin $P$ og $NP$
 \end{itemize}
 \end{frame}
 
-\section{Klassísk dulkóðun}
+\section{Talnafræði}
 
-\begin{frame}{Klassísk dulkóðun}
+\begin{frame}{Talnafræði}
 \begin{itemize}
- \item Ein elsta þekkta leiðin til að dulkóða skilaboð er kennd við Júlíus Sesar
- \item Sesar gerði skilaboðin sín ólæsileg með því að skipta hverjum bókstaf í skilaboðunum út fyrir þann bókstaf sem er þremur sætum aftar í stafrófinu
+ \item Stærðfræði heiltalna kallast talnafræði
+ \item Löng og mikil saga
  \begin{itemize}
-  \item $B$ verður að $E$, $N$ verður að $Q$
+  \item Fræg forn-grísk nöfn sem koma við sögu: Evklíð, Eratosþenes
  \end{itemize}
- \item Það að gera skilaboð ólæsileg á kerfisbundinn, afkallanlegan máta kallast dulkóðun (e. \emph{encryption})
- \item Það að ná upprunalegu skilaboðunum aftur úr dulkóðuninni kallast afkóðun (e. \emph{decryption})
+ \item Stærðfræði prímtalna fellur undir talnafræði
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Reikniritið hans Sesars}
-\begin{itemize}
- \item Í klassíska latneska stafrófinu eru 23 bókstafir
- \begin{itemize}
-  \item $A	B	C	D	E	F	G	H	 I	K	L	M	N	O	P	Q	R	S	T	V	X	Y	Z$
- \end{itemize}
- \item Sesar hefur því séð fyrir sér að hvern staf megi tákna með heiltölu $p$, þar sem $0 \leq p \leq 22$
- \item Sesar hefur næst skilgreint fall til dulkóðunar:
-\end{itemize}
+\section{Deiling og afgangur}
+
+\begin{frame}{Deilanleiki}
+Ýmis hugtök í talnafræði krefjast skilnings á deilanleika (e. \emph{divisibility})
+
+\begin{tcolorbox}[title=Deilanleiki]
+Séu $a$ og $b$ heiltölur, $a \neq 0$, segjum við að $a$ deili (e. \emph{divides}) $b$ ef til er heiltala $c$ svo að $b = ac$, þ.e.a.s. ef $\frac{b}{a}$ er heiltala.
+
+Þegar $a$ deilir $b$ segjum við að $a$ sé deilir (e. \emph{divisor} eða \emph{factor}) $b$ og að $b$ sé margfeldi (e. \emph{multiple}) af $a$.
+
+Við skrifum $a | b$ þegar $a$ deilir $b$, annars $a \nmid b$.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Deilanleiki - dæmi}
+Er $3|7$? \pause
+
+Nei, $7/3$ er ekki heiltala. \pause
+
+\vspace{0.5cm}
+Er $3|12$? \pause
+
+Já, $12/3$ er heiltalan $4$.
+\end{frame}
+
+\begin{frame}{Eiginleikar deilanleika}
+Heiltöludeiling hefur nokkra áhugaverða eiginleika
+\begin{tcolorbox}[title=Eiginleikar deilanleika]
+Séu $a$, $b$ og $c$ heiltölur, $a \neq 0$, þá gildir:
+\begin{enumerate}
+ \item Sé $a|b$ og $a|c$, þá $a|(b+c)$
+ \item Sé $a|b$, þá $a|b\cdot c$
+ \item Sé $a|b$ og $b|c$, þá $a|c$
+\end{enumerate}
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Deilingarreikniritið}
+Deilingarreikniritið er ekki reiknirit, heldur setning.
+
+\begin{tcolorbox}[title=Deilingarreikniritið]
+Látum $a$ og $d$ vera heiltölur, $d > 0$. 
+Þá eru til heiltölur $q$ og $r$, $0 \leq r < d$ svo að $a = dq +r$.
+\end{tcolorbox}
+
+Hér er $d$ deilir, $a$ deilistofn (e. \emph{dividend}), $q$ kvóti (e. \emph{quotient}) og $r$ afgangur (e. \emph{remainder}).
+\end{frame}
+
+
+\begin{frame}{Kvóti og afgangur}
+Um deilinn $d$, deilistofninn $a$, kvótann $q$ og afganginn $r$ má rita:
 \[
- f(p) = (p + 3) \Mod 23
+ q = a \text{ div } d
+\]
+og
+\[
+ r = a \text{ mod } d
 \]
 \end{frame}
 
-\begin{frame}{Dulkóðun}
-Latína er lítið notuð í dag. Notum frekar enska stafrófið (sem er af lengd 26) og dulkóðum skilaboðin \texttt{MEET YOU IN THE PARK} með reikniriti Sesars. \pause
+\begin{frame}{Dæmi um deilingu}
+Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $101$ og deilirinn $11$ (þ.e.a.s. reiknum 101/11)? \pause
 
-\texttt{MEET YOU IN THE PARK} má setja fram með tölum:
+Höfum
+\[
+ 101 = 11 \cdot 9 + 2
+\]
+
+Svo kvótinn er $101 \text{ div } 11 = 9$ og afgangurinn $101 \Mod 11 = 2$.
+
+\end{frame}
+
+\begin{frame}{Dæmi um deilingu}
+Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $-11$ og deilirinn $3$ (þ.e.a.s. reiknum 11/3)? \pause
+
+Höfum
+\[
+ -11 = 3 \cdot (-4) + 1
+\]
+
+Svo kvótinn er $-11 \text{ div } 3 = -4$ og afgangurinn $-11 \Mod 3 = 1$.
+
+\vspace{0.5cm}
+Athugum að þó að $-11 = 3(-3) - 2$ sé satt, þá uppfyllir jafnan ekki $0 \leq r < 3$.
+\end{frame}
+
+\begin{frame}{Varúð - forritunarmál}
+\begin{itemize}
+ \item Forritunarmál meðhöndla deilingarafgang á ýmsa vegu
+ \begin{itemize}
+  \item Stundum virki (\%)
+  \item Stundum föll (\texttt{mod} eða \texttt{rem})
+  \item Stundum meira en eitt fall\ldots
+ \end{itemize}
+ \item Neikvæðar tölur sérstaklega varhugaverðar
+ \begin{itemize}
+  \item Stundum er deilingarafganginum leyft að vera neikvæður
+  \item Stundum er $a \Mod m$ skilgreint jafnvel þó að $m$ sé neikvætt eða 0
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Framsetning heiltalna}
+
+\begin{frame}{Framsetning heiltalna}
+\begin{itemize}
+ \item Fólk í flestum menningarheimum notar tugakerfið til að setja fram tölur
+ \begin{itemize}
+  \item Líklega vegna þess að við höfum 10 fingur
+  \item Hafa eiginleika sem byggjast á tölunni 10: $965 = 9\cdot10^2+6\cdot10^1+5\cdot10^0$
+ \end{itemize}
+ \item Tölvuútreikningar byggjast oftast á grunntölunni 2 (tvíundarkerfi)
+ \begin{itemize}
+  \item Einnig til áttundakerfi (e. \emph{octal}) með grunntöluna 8 og sextándakerfi (e. \emph{hexadecimal}) með grunntöluna 16
+  \item Áttunda- og sextándakerfistölur eru oftast notaðar til að setja tvíundarkerfistölur fram fyrir fólk
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Framsetning heiltalna}
+Um framsetningu heiltalna gildir:
+
+\begin{tcolorbox}[title=Framsetning heiltalna]
+Látum $b$ vera heiltölu, $b > 1$. Þá getum við sett fram jákvæðu heiltöluna $n$ á sniðinu
+\[
+ n = a_kb^k + a_{k-1}b^{k-1} + \ldots + a_1b + a_0
+\]
+þar sem $k$ er ekki-neikvæð heiltala, $a_0, a_1, \ldots, a_k$ eru ekki-neikvæðar heiltölur minni en $b$ og $a_k \neq 0$.
+\end{tcolorbox}
+Talað er um framsetningu með grunntölunni $b$.
+\end{frame}
+
+\begin{frame}{Reiknirit til grunntöluskipta}
+Gráðugt reiknirit má nota til að skipta um grunntölu:
 \begin{center}
-\texttt{12 4 4 19\quad
-24 14 20\quad
-8 13\quad
-19 7 4\quad
-15 0 17 10}
-\end{center}\pause
-skiptum svo hverri tölu $p$ út fyrir $f(p) = (p+3) \Mod 26$:
-\begin{center}
-\texttt{
-15 7 7 22\quad
-1 17 23\quad
-11 16\quad
-22 10 7\quad
-18 3 20 13}
+\includegraphics[width=\textwidth]{base-conversion-algorithm}
 \end{center}
-sem má lesa sem \texttt{PHHW BRX LQ WKH SDUN}.
 \end{frame}
 
-\begin{frame}{Afkóðun}
-Til að afkóða þarf að hliðra stöfunum til baka niður stafrófið. Þetta má gera með andhverfu dulkóðunarfallsins, andhverfa dulkóðunarfallsins á glærunni á undan er:
+\begin{frame}{Grunntöluskipti - dæmi}
+\vspace{0.5cm}
+Setjum tugakerfistöluna $(241)_{10}$ fram sem tvíundakerfistölu.
+\begin{align*}
+241 &= 2 \cdot 120 + 1\\
+120 &= 2 \cdot 60 + 0\\
+60 &= 2 \cdot 30 + 0\\
+30 &= 2 \cdot 15 + 0\\
+15 &= 2 \cdot 7 + 1\\
+3 &= 2 \cdot 1 + 1\\
+1&= 2 \cdot 0 + 1\\
+\end{align*}
 
+\vspace{-0.8cm}
+Fáum afgangana $1, 0, 0, 0, 1, 1, 1, 1$ svo
 \[
- f^{-1}(p) = (p-3)\Mod 26
+ (241)_{10} = (11110001)_2
 \]
 \end{frame}
 
-\begin{frame}{Almennari hliðrunardulkóðun}
-Almennt má fá fram dulkóðun með því að hliðra hverjum staf í stafrófinu um $k$ sæti:
-\[
- f(p) = (p + k) \Mod 26
-\]
-og afkóðun með
-\[
- f^{-1}(p) = (p - k) \Mod 26
-\]
-Hér er $k$ lykill (e. \emph{key}) fyrir dulkóðunina.
+\begin{frame}{Samlagning tvíundartalna}
+Reikniaðgerðir með heiltölur fara fram með svipuðum hætti óháð framsetningu þeirra.
+\begin{center}
+\includegraphics[width=0.9\textwidth]{binary-addition}
+\end{center}
 \end{frame}
 
-\begin{frame}{Betri hliðrunardulkóðun}
-Hægt er að gera hliðrunardulkóðun minna óörugga með því að nota fall:
-\[
- f(p) = (ap + b)\Mod 26
-\]
-þar sem $a$ og $b$ eru heiltölur og $gcd(a,26) = 1$. Þegar $gcd(a,26) = 1$ er vörpunin gagntæk. Vörpun af þessu tagi kallast vildarvörpun (e. \emph{affine transformation}).
-\end{frame}
-
-\begin{frame}{Að brjóta hliðrunardulkóðun}
+\begin{frame}{Veldishafning og afgangar}
 \begin{itemize}
- \item Hliðrunardulkóðun er viðkvæm fyrir tíðnigreiningu
- \item Tökum dulkóðaðan texta af góðri lengd
- \item Skoðum hvaða stafir koma oftast fyrir í textanum
- \item Berum saman við hvaða stafir eru algengastir í viðkomandi máli
- \item Prófa sig áfram
-\end{itemize}
-\end{frame}
-
-\section{Blokkardulkóðun}
-
-\begin{frame}{Blokkardulkóðun}
-\begin{itemize}
- \item Við getum verndað okkur gegn tíðnigreiningu með því að skipta ekki út einum staf í einu, heldur mörgum stöfum
- \item Skiptum textanum upp í blokkir
- \item Skiptum blokkunum út í heilu lagi
- \item Kallast \emph{block cypher} (ísl. \emph{blokkardulkóðun}?)
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Blokkardulkóðun}
-\begin{itemize}
- \item Skoðum umskiptingardulkóðun (e. \emph{transposition cypher})
- \item Notum umröðun $\sigma$ á hlutmengi í jákvæðu heiltölunum $\{1, 2, \ldots, m\}$
- \item Látum $\sigma$ sem sagt vera gagntæka vörpun frá $\{1, 2, \ldots, m\}$ í sjálft sig
- \item Til dulkóðunar skiptum við textanum upp í blokkir af stærð $m$
+ \item Stundum þarf að reikna út $b^n \Mod m$, þar sem $b$, $n$ og $m$ eru stórar heiltölur
+ \item Ekki er skilvirkt að reikna fyrst út $b^n$ og svo afganginn þegar deilt er með $m$, því $b^n$ verður risastór tala
+ \item Til að einfalda útreikninga notum við tvíundarframsetningu á $n$, $n = (a_{k-1}\ldots a_1 a_0)_2$ til að setja fram $b^n$
 \end{itemize}
 \[
- p_1p_2\ldots p_m = c_1c_2\ldots c_m = p_{\sigma(1)}p_{\sigma(2)}\ldots p_{\sigma(m)}
+ b_n = b^{a_{k-1}\cdot 2^{k-1} + \ldots + a_1\cdot 2^1 + a_0 \cdot 2^0} = b^{a_{k-1}\cdot2^{k-1}\cdot \ldots \cdot b^{a_1\cdot 2} \cdot b^{a_0}}
 \]
+Margföldum saman þá liði þar sem tvíundarframsetningin á $n$ er með 1.
+\end{frame}
+
+\begin{frame}{Dæmi: Framsetning á $3^{11}$}
+Athugum að $(11)_{10} = (1011)_2$ og sjáum:
+\begin{align*}
+3^{11} &= 3^8\cdot 3^2 \cdot 3^1\\
+&=6561 \cdot 9 \cdot 3\\
+&=177147
+\end{align*}
 
 \end{frame}
 
-\begin{frame}{Dæmi um blokkardulkóðun}
-Gefin er blokkarstærðin $m=4$ með $\sigma(1) = 3, \sigma(2) = 1, \sigma(3) = 4$ og $\sigma(4) = 2$.
-
-Dulkóðum strenginn \texttt{PIRATE ATTACK}. Fáum grunntextann \texttt{PIRA TEAT TACK}.
-
-Í samræmi við $\sigma$, setjum fyrsta stafinn í þriðja sætið, annan stafinn í fyrsta sætið\ldots
-
-Fáum \texttt{IAPR ETTA AKTC}.
+\begin{frame}{Modular exponentiation}
+Notum þessa innsýn til að setja fram reiknirit til að reikna $b^n \Mod m$:
+\begin{center}
+\includegraphics[width=0.9\textwidth]{modular-exponentiation}
+\end{center}
 \end{frame}
 
-\begin{frame}{Dæmi um blokkarafkóðun}
-Gefin er blokkarstærðin $m=4$ með $\sigma(1) = 3, \sigma(2) = 1, \sigma(3) = 4$ og $\sigma(4) = 2$.
+\section{Prímtölur}
 
-Afkóðum strenginn \texttt{SWUETRAEOEHS}. Athugum að $\sigma^{-1}$ varpar $3$ í $1$, $1$ í $2$, \ldots
-
-Fáum strenginn \texttt{USEW ATER HOSE}. Störum og sjáum að hér stendur \texttt{USE WATER HOSE}.
+\begin{frame}{Prímtölur}
+\begin{tcolorbox}[title=Prímtölur]
+Heiltala $p$ stærri en 1 er prímtala (e. \emph{prime}) ef einu deilar $p$ eru 1 og $p$ sjálft. Heiltala stærri en 1 sem ekki er prímtala er samsett tala (e. \emph{composite}).
+\end{tcolorbox}
 \end{frame}
 
-\section{Public Key Cryptography}
 
-\begin{frame}{Public Key Cryptography}
+\begin{frame}{Grundvallarsetning}
+``The fundamental theorem of arithmetic'' er eftirfarandi:
+
+\begin{tcolorbox}[title=Fundamental theorem of arithmetic]
+Hver heiltala stærri en 1 er prímtala eða margfeldi tveggja eða fleiri prímtalna sem skrifa má í stígandi röð.
+\end{tcolorbox}
+
+Það að finna prímtölurnar sem mynda samsetta tölu þegar þær eru margfaldaðar saman kallast að finna prímtöluþætti samsettu tölunnar.
+\end{frame}
+
+\begin{frame}{Að finna prímtöluþætti}
+Erfitt verk er að finna prímtöluþætti. Einfaldasta leiðin er að prófa margar deilingar. Þá er eftirfarandi staðreynd gagnleg:
+\begin{tcolorbox}
+Sé $n$ samsett heiltala, þá á $n$ prímtöluþátt minni en eða jafnan $\sqrt{n}$
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Prímtöluþáttun: Dæmi}
+Sýnum að 101 sé prímtala.
+
+Einu prímtölurnar sem eru minni en $\sqrt{101}$ eru $2, 3, 5$ og $7$. Þar sem engin þessara talna myndar heiltölukvóta þegar $101$ er deilt með þeim er $101$ prímtala.
+\end{frame}
+
+\begin{frame}{Prímtöluþáttun: Dæmi}
+Finnum prímtöluþáttun 7007. Prófum að deila með prímtölum í vaxandi röð.
+
+2, 3 og 5 ganga ekki upp í 7007, en 7 gerir það og gefur kvótann 1001. Byrjum aftur á að deila með 7 og fáum 1001/7 = 143. 7 gengur ekki upp í 143, en 143/11 = 13. 13 er prímtala, svo við erum búin. Prímtöluþáttunin er $7 \cdot 7 \cdot 11 \cdot 13$.
+\end{frame}
+
+\begin{frame}{Prímtöluþáttun - hversu erfið?}
+Deiling verður mjög þung aðgerð þegar fjöldi bita er stór, endurteknar deilingar þeim mun verri. M.t.t. fjölda bita vex keyrslutíminn veldisvexti. Ekkert reiknirit er til sem finnur prímtöluþáttun á margliðutíma.
+
+Skilvirkasta þáttunarreiknritið sem þekkt er, GNFS, þáttar $b$ bita heiltölu á 
+\[
+ O \left(exp\left(\sqrt[3]{\frac{64}{9}b(\log b)^2}\right)\right)
+\]
+sem er samt ekki margliðutími. Þetta atriði er mikilvægt í dulkóðun.
+\end{frame}
+
+\begin{frame}{Prímtölutékk - hversu erfitt?}
 \begin{itemize}
- \item Galli við klassíska dulkóðun: Sami lykill er notaður til að dulkóða og til að afkóða
- \item Komist einhver að lyklinum til að framkvæma dulkóðun má líka framkvæma afkóðun
+ \item Hægt er að nota endurtekna deilingu til að athuga hvort að tala sé prímtala
  \begin{itemize}
-  \item Slíkt kerfi er kallað ``private key'' dulkóðunarkerfi
-  \item Góð private key kerfi eru til, t.d. AES
+  \item Veldisvísistími
  \end{itemize}
- \item Á 8. áratugnum voru ``public key'' dulkóðunarkerfi búin til
+ \item Ýmis góð reiknirit til
+ \item Hægt er að komast að því hvort að tala sé prímtala eða ekki á margliðutíma
  \begin{itemize}
-  \item Mismunandi dulkóðunar- og afkóðunarlyklar, einungis afkóðunarlyklinum haldið leyndum
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{RSA kerfið}
-\begin{itemize}
- \item Í RSA kerfinu er hver aðili með opinberan dulkóðunarlykil og leynilegan afkóðunarlykil
- \item Hluti af opinbera lyklinum er margfeldi tveggja prímtalna
- \item Hluti af leynilega lyklinum eru prímtölurnar sjálfar
- \item Þáttun er erfitt verkefni, svo leynilegi lykillinn er öruggur svo lengi sem prímtölurnar eru sæmilega stórar
-\end{itemize}
-\end{frame}
-
-\begin{frame}{RSA kerfið}
-\begin{itemize}
- \item Nokkrir hlutir koma við sögu í RSA dulkóðun
- \begin{itemize}
-  \item Stórar prímtölur $p$ og $q$ (haldið leyndum)
-  \item Veldisvísir $e$ (gerður opinber)
-  \begin{itemize}
-   \item $e$ og $(p-1)(q-1)$ þurfa að vera ósamþátta, þ.e.a.s. $gcd(e, (p-1)(q-1)) = 1$
-   \item $1 < e < n$
-  \end{itemize}
-  \item Margfeldi prímtalnanna, $n = pq$ (gert opinbert)
-  \item $d$, tala svo að $(d\cdot e) \Mod (p-1)(q-1) = 1$ (haldið leyndri)
-  \begin{itemize}
-   \item Reiknað út
-   \item Aðferðir í kafla 4.4 (var sleppt)
-  \end{itemize}
+  \item Agrawal-Kayal-Saxena (AKS) primality test, 2002
+  \item Merkileg niðurstaða!
  \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Einföld dulkóðun og afkóðun}
-Gerum ráð fyrir að skilaboðin $m$ séu heiltala, $0 \leq m < n$ og $gcd(m, n) = 1$. Þá má búa til dulkóðuð skilaboð $c$ með
-\[
-c = m^e \Mod n
-\]
-og afkóða með 
-\[
- m = c^d \Mod n
-\]
-Opinberi lykillinn er þá tvenndin $(n, e)$ og leyndi lykillinn talan $d$.
+\section{Stærsti samdeilir og minnsta samfeldi}
 
-Munum að hægt er að reikna út deilingarafganga stórra veldisvísistalna á skilvirkan hátt!
+\begin{frame}{Stærsti samdeilir}
+\begin{tcolorbox}[title=Stærsti samdeilir]
+Látum $a$ og $b$ vera heiltölur, ekki báðar núll. Stærsta heiltala $d$ svo að $d|a$ og $d|b$ er kölluð stærsti samdeilir (e. \emph{greatest common divisor}) $a$ og $b$ og táknuð með $gcd(a, b)$.
+\end{tcolorbox}
+Dæmi: $gcd(24, 36) = 12$
+
+Tvær tölur með stærsta samdeilinn 1 eru ósamþátta (e. \emph{relatively prime}). Hægt er að reikna út stærsta samdeili með reikniriti Evklíðs (sjá bók).
 \end{frame}
 
-\begin{frame}{Af hverju virkar þetta?}
-Það er talan $d$ sem er notuð til afkóðunar. $d$ er reiknað með því að leysa jöfnuna $(d\cdot e) \Mod (p-1)(q-1) = 1$.
-
-Tölurnar $n = pq$ og $e$ eru gerðar opinberar. Væri hægt að reikna $p$ og $q$ út frá $n$ þegar $n$ er mjög stórt (meira en 300-400 stafir) væri RSA óöruggt, en það virðist vera erfitt verkefni.
+\begin{frame}{Minnsta samfeldi}
+\begin{tcolorbox}[title=Minnsta samfeldi]
+Minnsta samfeldi (e. \emph{least common multiple}) jákvæðra heiltalna $a$ og $b$ er minnsta jákvæða heiltala sem er deilanleg með bæði $a$ og $b$. Hún er táknuð $lcm(a, b)$.
+\end{tcolorbox}
+Dæmi: $lcm(4, 6) = 12$.
 \end{frame}
 
-\begin{frame}{Dulkóðun og afkóðun - dæmi}
-Byrjum á að finna tölurnar sem til þarf. Veljum $p=61$, $q = 53$ svo $n = 3233$. Fáum $(61 - 1)(53 - 1) = 3120$. Veljum okkur prímtölu sem veldisvísi $e$ svo auðveldara sé að sannfæra okkur um að $gcd(e,3120)=1$. Veljum $e = 17$. Leysum $d \cdot 17 \Mod 3120 = 1$, fáum $d = 2753$.
-
-Dulkóðum töluna 65.
-\[
- c = 65^{17} \Mod 3233 = 2790
-\]
-Afkóðum töluna 2790 með sama reikniriti.
-\[
- m = 2790^{2753} \Mod 3233 = 65
-\]
+\begin{frame}{Tengsl GCD og LCM}
+\begin{tcolorbox}[title=GCD og LCM]
+Látum $a$ og $b$ vera jákvæðar heiltölur. Þá er $a\cdot b = gcd(a, b) \cdot lcm(a, b)$.
+\end{tcolorbox}
 \end{frame}
 
-\begin{frame}{Meira um RSA}
-\begin{itemize}
- \item Til að dulkóða texta með RSA má skipta textanum upp í blokkir, tákna hverja blokk með heiltölu og dulkóða hverja tölu um sig
- \begin{itemize}
-  \item Sýnidæmi 8 í kafla 4.6 í bók
- \end{itemize}
- \item Hægt er að nota RSA til að skiptast á lyklum þó að allar boðleiðir séu óöruggar
- \begin{itemize}
-  \item ``Cryptographic Protocols'' í bók
-  \item Eftir að public key dulkóðun hefur verið notuð til að skiptast á lyklum má skipta yfir í private key dulkóðunarkerfi
- \end{itemize}
-\end{itemize}
-\end{frame}
+
 
 \begin{frame}{Næst}
-Snorri Agnarsson tekur tímann á föstudaginn!
-\end{frame}
+Dulkóðun (4.6)
 
+Seinni helmingur tímans er stoðtími.
+\end{frame}
 
 
 \end{document}
