@@ -28,6 +28,10 @@
 \floatname{program}{Forrit}
 % End minted configuration
 
+% Mimicking the exam class
+\newcounter{questioncounter}[section]
+\newcommand{\question}{\refstepcounter{questioncounter} \subsection{Verkefni \thequestioncounter }}
+
 % Picture locations
 \graphicspath{{./Pics/}}
 
