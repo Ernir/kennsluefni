@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 3, fyrri fyrirlestur}
@@ -27,23 +27,6 @@
  \end{itemize}
 \end{itemize}
 \end{frame}
-
-\begin{frame}{Matlab-leyfi}
-\begin{itemize}
- \item Nokkur ykkar hafa lent í vandræðum með Matlab-leyfi
- \item Séuð þið beðin um \emph{activation key}:
- \begin{itemize}
-  \item \texttt{05226-45858-01826-26094-59607}
- \end{itemize}
- \item Séuð þið beðin um \emph{file installation key}:
- \begin{itemize}
-  \item R2016a: {\scriptsize \texttt{21138-57626-18349-64703-45527-05546-36337-15390-27602-18969-28816 } }
-  \item R2015b : {\scriptsize \texttt{48568-38634-00620-27726-05580-48643-44090-25848-24305-28470-14612 } }
- \end{itemize}
-\end{itemize}
-\includegraphics[width=0.3\textwidth]{license}
-\end{frame}
-
 
 \begin{frame}{Forrit í Matlab}
 \begin{itemize}
@@ -99,7 +82,7 @@ Alvöru reiknirit, á íslensku. Engu að síður er ákveðið skipulag á lýs
  \item Röðun n-staka vigurs er vel þekkt vandamál
  \begin{itemize}
   \item Til yfir hundrað ólík reiknirit fyrir röðun
-  \item Það er ekkert eitt besta reikniritið
+  \item Ekkert eitt reiknirit er hið besta í öllum tilfellum
   \item Þau hafa sín sérkenni og henta fyrir mismunandi gerðir gagna
  \end{itemize}
 \end{itemize}
@@ -144,19 +127,15 @@ Alvöru reiknirit, á íslensku. Engu að síður er ákveðið skipulag á lýs
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu spurninguna
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-
-Reiknirit:
-
-\vspace{0.5cm}
- Gefinn er vigur $v$ af tölum og tala $x$\\
- Skoðum hverja tölu í $v$.\\
- \textbf{Ef} talan í sæti $i$ er jöfn $x$\\
- \quad skila i
+\begin{enumerate}
+    \item Hvað gerir eftirfarandi reiknirit?\\
+    \vspace{\baselineskip}
+    Gefinn er vigur $v$ af tölum og tala $x$\\
+    Skoðum hverja tölu í $v$.\\
+    \textbf{Ef} talan í sæti $i$ er jöfn $x$\\
+    \quad skila i
+    \item Berðu saman innsetningarröðun og Quicksort. Nefndu kost við hvora aðferð um sig.
+\end{enumerate}
 \end{frame}
 
 \section{Undir Húddinu (3.2)}
@@ -251,11 +230,11 @@ Reiknirit:
   \item Kostir:
   \begin{itemize}
    \item Þýðandinn sér allt forritið og getur bestað millikóðann
-   \item Millimálið er einskonar vélarmál fyrir sýndarvél (e. \emph{virtual machine})
+   \item Millimálið er einskonar vélarmál fyrir sýndarvél (e. \emph{virtual machine}) sem getur t.d. unnið eins þó undirliggjandi vél breytist
   \end{itemize}
   \item Gallar:
   \begin{itemize}
-   \item Millimálið er ennþá túlkað og keyrsla er því hægvirkari en á þýddu forrit
+   \item Sýndarvélin og millimálið fela í sér ``overhead''
   \end{itemize}
  \end{itemize}
  \item Þetta er mjög algeng aðferð
@@ -293,11 +272,10 @@ Reiknirit:
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið næstu spurningu
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+    \begin{enumerate}
+    \setcounter{enumi}{2}
+     \item Hvaða leið (þýðing, túlkun, \ldots) frá æðra stigs forritunarmáli að raunverulegri keyrslu líst þér best á? Af hverju?
+    \end{enumerate}
 \end{frame}
 
 \section{Skipanaskrár (3.2)}
@@ -399,11 +377,11 @@ function skilabreyta = nafn(stiki1, stiki2, ...)
    skipanir
 end
 \end{minted}
-Dæmi (sett í skrá \texttt{calculateArea.m}):
+Dæmi (sett í skrá \texttt{calculatearea.m}):
 \begin{minted}[frame=lines]{matlab}
-function area = calculateArea(radius)
-% calculateArea reiknar flatarmál hrings út frá radíus
-% Notkun:  calculateArea(radius)
+function area = calculatearea(radius)
+% calculatearea reiknar flatarmál hrings út frá radíus
+% Notkun:  calculatearea(radius)
 
    area = pi * radius*radius;
 end
@@ -414,7 +392,7 @@ end
 \begin{frame}[fragile]{Notkun falla}
 Notendaskilgreind föll eru notuð á sama hátt og innbyggð föll
 \begin{minted}[frame=lines]{matlab}
->> calculateArea(4)
+>> calculatearea(4)
 ans =
    50.2655
 \end{minted}
@@ -422,11 +400,14 @@ Algengt mynstur er að nota skipanaskrár til að kalla á föll. Þá eru útre
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+    
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item Skrifið Matlab fall sem reiknar út flatarmál kúlu ($A = 4\pi r^2$)
+    \item Búið til skipanaskrá sem kallar tvisvar á fallið úr fyrri lið, með mismunandi inntökum
+    \item Lifa breytur sem skipanaskrá býr til áfram í skipanaglugganum eftir að keyrslu skráarinnar lýkur? En breytur sem fall býr til?
+\end{enumerate}
+    
 \end{frame}
 
 
