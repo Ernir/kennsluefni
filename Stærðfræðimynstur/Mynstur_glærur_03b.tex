@@ -1,9 +1,9 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 3, fyrri fyrirlestur}
+\subtitle{Vika 3, seinni fyrirlestur}
 
 \begin{document}
 
@@ -15,7 +15,6 @@
 
 \begin{frame}{Í síðasta tíma}
 \begin{itemize}
- \item Föll
  \item Fylki
  \item Runur og rakningarvensl
  \item Fjöldatölur og reiknanleiki
@@ -45,6 +44,7 @@ Hvað er reiknirit? \pause
 Reiknirit (e. \emph{algorithm}) er endanleg runa vel skilgreindra aðgerða sem reikna út lausn á skilgreindu vandamáli.
 \end{tcolorbox}
 
+\pause
 Orðið ``algorithm'' er afleiða latneskunar á nafinu al-Khowarizmi, sem skrifaði um hindú-arabíska talnakerfið. Bók hans, \emph{Kitab al-jabr w'al muquabala}, er þekkt grundvallarrit.
 
 \pause
@@ -52,39 +52,6 @@ Orðið kemur fram í \href{https://en.wikipedia.org/wiki/Hauksb\%C3\%B3k}{Hauks
 \end{frame}
 
 \section{Lýsing og eiginleikar reiknirita}
-
-\begin{frame}{Eiginleikar reiknirita}
-\begin{itemize}
- \item Nokkrir eiginleikar eru flestum reikniritum sameiginlegir
- \item Koma fyrir aftur og aftur í lýsingum reiknirita
- \begin{itemize}
-  \item Vandamál sem leysa skal
-  \item Inntak (e. \emph{input})
-  \begin{itemize}
-   \item Reiknirit tekur við gildum úr skilgreindu mengi, gildin eru inntak þess
-   \item Inntak reiknirits inniheldur upplýsingar sem viðkoma vandamálinu
-  \end{itemize}
-  \item Úttak (e. \emph{output})
-  \begin{itemize}
-   \item Úttak reiknirits tilheyrir skilgreindu mengi
-   \item Úttakið lýsir niðurstöðum reikniritsins, sem er lausn á vandamáli
-  \end{itemize}
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Fleiri atriði í reikniritalýsingum}
-\begin{itemize}
- \item Fleiri atriði:
- \begin{itemize}
-  \item Sé hvert skref reiknirits vel skilgreint og ákvarðanlegt er það skýrt (e. \emph{definite})
-  \item Skili reiknirit væntri niðurstöðu fyrir sérhvert inntak er það rétt (e. \emph{correct})
-  \item Skili reiknirit niðurstöðu á endanlegum tíma er það endanlegt (e. \emph{finite})
-  \item Virki reiknirit á öll tilvik vandamálsins er það almennt (e. \emph{general})
- \end{itemize}
- \item Oftast viljum við að reiknirit hafi alla þessa eiginleika
-\end{itemize}
-\end{frame}
 
 \begin{frame}{Lýsing reiknirita}
 Hægt er að nota orð til að lýsa reikniritum. Dæmi úr bók til að finna stærstu heiltölu í runu:
@@ -117,16 +84,39 @@ Reiknirit sem finnur stærsta stak í runu, sett fram með sauðakóða
 \includegraphics[width=\linewidth]{max-element}
 \end{frame}
 
-
-\begin{frame}{Rétt reiknirit}
-\begin{columns}
-\column{0.5\textwidth}
-Hægt er að nota fastayrðingar\\
-(e. \emph{invariants}) til að sanna réttleika forrita
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{invariants}
-\end{columns}
-\end{frame}
+\begin{frame}{Eiginleikar reiknirita}
+    \begin{itemize}
+     \item Nokkrir eiginleikar eru flestum reikniritum sameiginlegir
+     \item Koma fyrir aftur og aftur í lýsingum reiknirita
+     \begin{itemize}
+      \item Vandamál sem leysa skal
+      \item Inntak (e. \emph{input})
+      \begin{itemize}
+       \item Reiknirit tekur við gildum úr skilgreindu mengi, gildin eru inntak þess
+       \item Inntak reiknirits inniheldur upplýsingar sem viðkoma vandamálinu
+      \end{itemize}
+      \item Úttak (e. \emph{output})
+      \begin{itemize}
+       \item Úttak reiknirits tilheyrir skilgreindu mengi
+       \item Úttakið lýsir niðurstöðum reikniritsins, sem er lausn á vandamáli
+      \end{itemize}
+     \end{itemize}
+    \end{itemize}
+    \end{frame}
+    
+    \begin{frame}{Fleiri atriði í reikniritalýsingum}
+    \begin{itemize}
+     \item Fleiri atriði:
+     \begin{itemize}
+      \item Sé hvert skref reiknirits vel skilgreint og ákvarðanlegt er það skýrt (e. \emph{definite})
+      \item Skili reiknirit væntri niðurstöðu fyrir sérhvert inntak er það rétt (e. \emph{correct})
+      \item Skili reiknirit niðurstöðu á endanlegum tíma er það endanlegt (e. \emph{finite})
+      \item Sé hægt að útfæra hvert skref reikniritsins á endanlegum tíma er það nýtanlegt (e. \emph{effective})
+      \item Virki reiknirit á öll tilvik vandamálsins er það almennt (e. \emph{general})
+     \end{itemize}
+     \item Oftast viljum við að reiknirit hafi alla þessa eiginleika
+    \end{itemize}
+    \end{frame}
 
 \section{Leitarreiknirit}
 
@@ -230,7 +220,7 @@ Lausn á röðunarvandamáli fyrir runu talna $a_1, a_2, \ldots, a_n$ felur í s
  \item Í bestunarvandamáli höfum við mengi mögulegra lausna, þurfum að finna þá bestu m.t.t. gefins viðmiðs
  \item Einn einfaldasti flokkur reiknirita sem leysir bestunarvandamál er gráðug reiknirit (e. \emph{greedy algorithms})
  \begin{itemize}
-  \item Gráðugt reiknirit leysir bestunarvandamál sem skipta má upp í skref með því að velja bestu
+  \item Gráðugt reiknirit leysir bestunarvandamál sem skipta má upp í skref með því að velja besta valkostinn í hverju skrefi
   \item Sum gráðug reiknirit finna alltaf bestu lausn með þessum hætti, sum ekki
  \end{itemize}
 \end{itemize}
@@ -240,7 +230,7 @@ Lausn á röðunarvandamáli fyrir runu talna $a_1, a_2, \ldots, a_n$ felur í s
 \begin{itemize}
  \item Athugum skiptimyntarvandamálið
  \begin{itemize}
-  \item Algengt vandamál þangað til á þessari öld
+  \item Algengt vandamál þangað til á þessari öld \pause
  \end{itemize}
  \item Erum með endanlegan fjölda mismunandi mynta
  \item Viljum rétta manneskju upphæðina $n$
@@ -286,13 +276,14 @@ Lausn á röðunarvandamáli fyrir runu talna $a_1, a_2, \ldots, a_n$ felur í s
 \end{frame}
 
 \begin{frame}{Aths. um stöðvunarvandamálið}
-\begin{itemize}
- \item Athugum: Það dugar ekki einfaldlega að keyra forritið $P$ með inntakinu $I$ til að ákvarða vandamálið
- \begin{itemize}
-  \item Ef $P$ klárar vitum við vissulega svarið\ldots
-  \item \ldots en meðan það er enn að keyra vitum við ekki hvort það mun klára eftir eina sekúndu, eftir milljarð ára eða aldrei
- \end{itemize}
-\end{itemize}
+    \begin{itemize}
+    \item Athugum: Það dugar ekki einfaldlega að keyra forritið $P$ með inntakinu $I$ til að ákvarða vandamálið
+    \begin{itemize}
+    \item Ef $P$ klárar vitum við vissulega svarið\ldots
+    \item \ldots en meðan það er enn að keyra vitum við ekki hvort það mun klára eftir eina sekúndu, eftir milljarð ára eða aldrei
+    \end{itemize}
+    \item Gerum kröfu um að forritið sé rétt, endanlegt og almennt
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Sönnun með mótsögn}
@@ -314,8 +305,11 @@ Lausn á röðunarvandamáli fyrir runu talna $a_1, a_2, \ldots, a_n$ felur í s
   \item Skili $H(P, P)$ strengnum ``stoppar'' fer $K(P)$ í endalausa lykkju
   \item $K(P)$ gerir sem sagt það gagnstæða við $H(P, P)$
  \end{itemize}
- \item Hvað gerist ef við köllum á $K(K)$?
 \end{itemize}
+\includegraphics[width=\textwidth]{haltingproblem}
+
+\pause
+En hvað gerist ef við köllum á $K(K)$?
 \end{frame}
 
 \begin{frame}{Sönnun með mótsögn}
@@ -327,7 +321,13 @@ Lausn á röðunarvandamáli fyrir runu talna $a_1, a_2, \ldots, a_n$ felur í s
   \item Ekki er til $H$ sem leysir stöðvunarvandamálið fyrir öll forrit
  \end{itemize}
 \end{itemize}
+\end{frame}
 
+\begin{frame}{Af hverju?}
+    \begin{itemize}
+        \item Gagnlegt er að vita af óleysanlegum vandamálum
+        \item Til að sýna að vandamál sé óleysanlegt dugar að sýna að lausn á því myndi duga til að leysa stöðvunarvandamálið
+    \end{itemize}
 \end{frame}
 
 
