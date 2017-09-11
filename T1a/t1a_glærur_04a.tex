@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 4, fyrri fyrirlestur}
@@ -29,7 +29,7 @@
 Kaflar: 3.3 til 3.5
 \end{frame}
 
-\section{Inntak og úttak með skrám}
+\section{Inntak og úttak með skrám (3.6)}
 
 \begin{frame}{Einfalt inntak og útták með skrám}
 \begin{itemize}
@@ -61,139 +61,7 @@ gogn =
 \end{minted}
 \end{frame}
 
-
-\begin{frame}{Gömul fyrirlestraræfing}
-\begin{columns}
-\column{0.6\textwidth}
-\begin{enumerate}
-\setcounter{enumi}{2}
- \item Hér til hliðar eru hitamælingar fyrir septemberdag í Reykjavík. Sýnið snyrtilegt línurit fyrir hitastigið þennan dag.
- \item Vistið þessar upplýsingar í skrá.
-\end{enumerate}
-\column{0.4\textwidth}
-\begin{center}
-\begin{tabular}{ll}
-\toprule
-Klst&$C^\circ$\\
-\midrule
-0&12.5\\
-3&12.4\\
-6&12.3\\
-9&12.8\\
-12&13.4\\
-15&14\\
-18&13.1\\
-21&12.8\\
-\bottomrule
-\end{tabular}
-\end{center}
-\end{columns}
-\end{frame}
-
-\begin{frame}[fragile]{Gömul fyrirlestrarræfing}
-\begin{center}
-\includegraphics[width=0.9\textwidth]{Pics/septemberhitiscript}
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]{Gömul fyrirlestrarræfing}
-\begin{center}
-\includegraphics[width=0.7\textwidth]{Pics/septemberhiti}
-\end{center}
-\end{frame}
-
-\section{Föll (3.7)}
-
-\begin{frame}{Upprifjun á fallshugtakinu}
-\begin{itemize}
- \item Föll eru notuð til að framkvæma ákveðna útreikninga sem \emph{byggja á inntaksgildum}
- \begin{itemize}
-  \item Föllin taka inn gildi, reikna með gildunum, og skila niðurstöðu.
-  \item Oftast er útkoman eitt gildi, niðurstaða útreikninga
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Hagnýt atriði}
-\begin{itemize}
- \item Hafið hvert fall eitt og sér í skrá
- \begin{itemize}
-  \item Nefnið skrána sama nafni og fallið, nema skráin hefur endinguna \texttt{.m}
- \end{itemize}
- \item Breyturnar og geta verið með jafn fjölskrúðug nöfn og aðrar breytur í Matlab
- \item Ekki nefna breytur og skipanaskrár sama heiti
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Dæmi}
-Dæmi: Fallið \texttt{distance}, sett í skrána \texttt{distance.m}.
-\begin{minted}[frame=lines]{matlab}
-function d = distance(v, t)
-  d = v*t;
-end  
-\end{minted}
-Þetta fall heitir \texttt{distance}, tekur inn breytu $v$ sem táknar (meðal)hraða, lengd tímabils $t$ og skilar fjarlægð. Eftir að það hefur verið skilgreint má nota það alls staðar í sömu Matlab-möppu (í skipanaglugga, í skipanaskrám, í öðrum föllum).
-\end{frame}
-
-\begin{frame}{Föll vs. skipanaskrár}
-\begin{itemize}
- \item \emph{Mjög auðvelt} er að rugla saman hugtökunum um föll og skipanaskrár
- \begin{itemize}
-  \item Hvort tveggja er geymt í skrá
- \end{itemize}
- \item Fall er safn af skipunum sem táknar ákveðna gerð af útreikningum
- \begin{itemize}
-  \item Fyrsta orðið er \texttt{function}
-  \item Inntök og úttök skilgreind í haus fallsins
- \end{itemize}
- \item Skipanaskrá er samansafn af hvaða Matlab-skipunum sem er
- \begin{itemize}
-  \item Venjulega er inntak skilgreint með \texttt{input} og útskrift með \texttt{disp} eða \texttt{fprintf}
-  \item Skipanaskrá \emph{skilar} ekki gildi!
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Föll og skipanaskrár eru vinir}
-Algengt mynstur:
-\begin{itemize}
- \item Skipanaskrár lesa inntak og skrifa úttakið
- \item Föll framkvæma útreikninga
-\end{itemize}
-
-\includegraphics[width=\textwidth]{Pics/skripta-og-fall}
-\end{frame}
-
-\begin{frame}[fragile]{Forritunarvenjur}
-\begin{columns}
-\column{0.5\textwidth}
-\begin{itemize}
- \item Algengt: Skjölun (e. \emph{documentation}), þ.e.a.s. staðlaðar athugasemdir efst í falli
- \begin{itemize}
-  \item Lýsing á því hvað fallið gerir
-  \item Hvernig á að kalla á fallið
-  \item Form inntaksbreyta (stika)
-  \item Form skilagildis
-  \item Breytingasaga
- \end{itemize}
- \item Inndráttur
- \begin{itemize}
-  \item Smart Indent (ctrl+i) í Matlab ritli gerir þetta fyrir okkur
- \end{itemize}
-\end{itemize}
-\column{0.5\textwidth}
-\begin{minted}[frame=lines]{matlab}
-function c = fahrToCelc(f)
-% fahrToCelc breytir úr F í C
-% Notkun:  fahrToCelc(fhiti)
-   c = (f-32)*5/9;
-end
-\end{minted}
-
-\end{columns}
-\end{frame}
-
-\subsection{Staðværar breytur}
+\section{Breytur inni í föllum (3.7)}
 
 \begin{frame}{Staðværar breytur}
 \begin{itemize}
@@ -229,14 +97,6 @@ end
 \end{frame}
 \begin{frame}{Framkvæmd}
 \includegraphics[width=\textwidth]{Pics/framkvaemd-falls-7}
-\end{frame}
-
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu spurninguna
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \section{Stýrisetningar}
@@ -355,7 +215,8 @@ num = input('Sláið inn tölu: ');
 
 % Ef talan er neikvæð, þá breyta henni
 if num < 0
-    num = 0;
+    disp('Varúð, útreikningar miðast við tölugildi')
+    num = -num;
 end
 fprintf('Kvaðratrót %.1f er %.1f\n', num, sqrt(num));
 \end{minted}
@@ -370,7 +231,7 @@ disp('Já, þetta er satt')
 end
 Já, þetta er satt
 \end{minted}
-Ath: Slæm hugmynd að notfæra sér þetta viljandi.
+Ath: Venjulega slæm hugmynd að notfæra sér þetta viljandi.
 \end{frame}
 
 \begin{frame}{Algeng villa}
@@ -430,45 +291,25 @@ end
 \end{minted}
 \end{frame}
 
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið næstu tvær spurningar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{frame}{fyrirlestrarræfing}
+    \begin{enumerate}
+        \item Skrifið \texttt{if}-setningu sem prentar út villuskilaboð ef breytan \texttt{x} er minni en 0 (hægt er að nota föllin \texttt{disp} eða \texttt{error} til að skrifa villuskilaboð)
+        \item Skrifið \texttt{if}-setningu sem skrifar út hvort nemandi hafi fallið í námskeiði eða ekki (tvö mismunandi skilaboð).  Nemandi fellur ef prófeinkunn (\texttt{profeinkunn}) er lægri en 5.0
+    \end{enumerate}
 \end{frame}
 
-\subsection{Hreiðraðar if-setningar (4.3)}
-
-\begin{frame}[fragile]{Upprifjun og lausn á fyrirlestraræfingu}
-\texttt{if} skipun er notuð eigi að keyra ``blokk'' af skipunum þá og því aðeins að ákveðið \emph{skilyrði} hafi sanngildið ``satt''.
-\begin{minted}[frame=lines]{matlab}
-if x < 0 % Hér er skilyrðið ``x minna en 0''
-    disp('Villa! x má ekki vera neikvæð.')
-end
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Upprifjun og lausn á fyrirlestraræfingu}
-\texttt{if} og \texttt{else} má nota saman til að velja á milli tveggja blokka.
-\begin{minted}[frame=lines]{matlab}
-if grade >= 5
-    disp('Nemandinn nær prófinu!')
-else
-    disp('Nemandinn fellur á prófinu.')
-end
-\end{minted}
-\end{frame}
+\subsection{Hreiðruð if og elseif (4.3)}
 
 \begin{frame}{Flóknari skilyrði}
 \begin{itemize}
- \item Hvað ef möguleikarnir eru fleiri? \pause
- \begin{itemize}
-  \item Nota margar \texttt{if}-setningar
-  \item Nota hreiðraðar (e. \emph{nested}) \texttt{if}-setningar
-  \item Nota \texttt{elseif}
-  \item Nota \texttt{switch}-setningu
- \end{itemize}
+    \item \texttt{if} og \texttt{else} má nota saman til að velja á milli tveggja blokka
+    \item Hvað ef möguleikarnir eru fleiri? \pause
+    \begin{itemize}
+        \item Nota margar \texttt{if}-setningar
+        \item Nota hreiðraðar (e. \emph{nested}) \texttt{if}-setningar
+        \item Nota \texttt{elseif}
+        \item Nota \texttt{switch}-setningu
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -645,7 +486,7 @@ end
 \end{columns}
 \end{frame}
 
-\section{is-föll (4.6)}
+\section{is-föll (4.5)}
 
 \begin{frame}{is-Föll í Matlab}
 \begin{itemize}
@@ -752,12 +593,27 @@ Fall&Spurning\\
 \end{center}
 \end{frame}
 
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið fyrirlestraræfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{frame}[fragile]{Fyrirlestraræfing}
+    \begin{columns}
+    \column{0.5\textwidth}
+        \begin{enumerate}
+            \setcounter{enumi}{2}
+            \item Hver eru lokagildi breytanna \texttt{a} og \texttt{b} í forritsbútnum hér til hliðar?
+            \item Skrifið ykkar eigin útgáfu af \texttt{isrow} fallinu. Nota má innbyggð föll önnur en \texttt{isrow} sjálft. (Ráðlegging: notið \texttt{size} fallið)
+        \end{enumerate}
+    \column{0.5\textwidth}
+\begin{minted}[frame=lines]{matlab}
+a = 2; 
+b = 5;
+if a < b
+    a = b; 
+    b = a;
+end
+if a > b
+    a = 2;
+end
+\end{minted}
+    \end{columns}
 \end{frame}
 
 
