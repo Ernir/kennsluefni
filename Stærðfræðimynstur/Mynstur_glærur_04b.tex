@@ -1,9 +1,9 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 4, fyrri fyrirlestur}
+\subtitle{Vika 4, seinni fyrirlestur}
 
 \begin{document}
 
@@ -25,17 +25,6 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Leiðrétting!}
-Í heimadæmum 3, spurningu 2 er sýnd stígandi runa:
-\[
- c_1 = 1, c_2 = 5, c_3 = 10, c_4 = 25
-\]
-Til samræmis við reiknirit á glærum og í bók ætti runan að vera lækkandi:
-\[
- c_1 = 25, c_2 = 10, c_3 = 5, c_4 = 1
-\]
-\end{frame}
-
 \section{Reikniflækja}
 
 \begin{frame}{Reikniflækja}
@@ -55,7 +44,7 @@ Til samræmis við reiknirit á glærum og í bók ætti runan að vera lækkand
  \item Skoðum fyrst og fremst tímaflækju (e. \emph{time complexity}) reiknirita
  \begin{itemize}
   \item Lýsum keyrslutíma reiknirits sem falli af inntaksstærð
-  \item Venjulega er keyrslutímafallið síðan sett fram með stóra-O eða stóra-$\Theta$ rithætti
+  \item Venjulega er keyrslutímafallið síðan sett fram með stóra-O eða stóra-$\Theta$ rithætti \pause
  \end{itemize}
  \item Einnig er til minnisflækja (e. \emph{space complexity})
  \begin{itemize}
@@ -153,6 +142,20 @@ Upprifjun: Helmingunarleit
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Lograr}
+    Lograr koma víða við í stærðfræði. $b$-logrinn af $x$ (logrinn með grunntöluna $b$) er andhverfa þess að hefja $b$ í veldið $x$.
+    \[
+        x = \log_b(b^x)
+    \]
+    eða
+    \[
+        x = b^{\log_b x}
+    \]
+    
+    \vspace{0.5cm}
+    Dæmi: $2^3 = 8$ svo $\log_2 8 = 3$
+\end{frame}
+
 \begin{frame}{Lograr í tímaflækjum}
 Í tölvunarfræði fáumst við oftast við logrann með grunntöluna 2. Grunntalan skiptir ekki máli í stóra-$\Theta$ framsetningu (og tengdum ritháttum) vegna þess að lograr eru fast margfeldi hver af öðrum.
 
@@ -172,30 +175,31 @@ Upprifjun - innsetningarröðun
 \end{frame}
 
 \begin{frame}{Tímaflækja innsetningarröðunar}
-\begin{itemize}
- \item Innsetningarröðun notar línulega leitaraðferð til að finna stað fyrir hvert stak \pause
- \begin{itemize}
-  \item $O(n)$ tími
- \end{itemize}
- \item Öllum stökum er svo hliðrað \pause
- \begin{itemize}
-  \item $O(n)$ tími
- \end{itemize}
- \item Þetta þarf að gera $n-1$ sinni
- \begin{itemize}
-  \item Heildarkeyrslutími í versta tilfellinu $\Theta(n^2)$
- \end{itemize}
- \item Til eru almenn röðunarreiknirit sem virka á $\Theta(n\log(n))$ tíma
-\end{itemize}
+    \begin{itemize}
+        \item Innsetningarröðun notar línulega leitaraðferð til að finna stað fyrir hvert stak \pause
+        \begin{itemize}
+            \item $O(n)$ tími
+        \end{itemize}
+            \item Öllum stökum er svo hliðrað \pause
+            \begin{itemize}
+                \item $O(n)$ tími
+                \begin{itemize}
+                    \item Þetta þarf að gera $n-1$ sinni
+                \end{itemize}
+            \end{itemize}
+        \item Heildarkeyrslutími í versta tilfellinu $\Theta(n^2)$
+        \item Til eru almenn röðunarreiknirit sem virka á $\Theta(n\log(n))$ tíma
+    \end{itemize}
 \end{frame}
 
 \subsection{Fylkjamargföldun}
 
 \begin{frame}{Fylkjamargföldun}
-Skoðum reiknirit sem framkvæmir fylkjamargföldun á $m \times k$ fylkinu $A$ og $k \times n$ fylkinu $B$:
-\begin{center}
-\includegraphics[width=0.8\textwidth]{matrix-multiplication}
-\end{center}
+    \vspace{0.5cm}
+    Skoðum reiknirit sem framkvæmir fylkjamargföldun á $m \times k$ fylkinu $A$ og $k \times n$ fylkinu $B$:
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{matrix-multiplication}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Tímaflækja fylkjamargföldunar}
@@ -208,10 +212,11 @@ Skoðum reiknirit sem framkvæmir fylkjamargföldun á $m \times k$ fylkinu $A$ 
  \item Til eru reiknirit með lægri tímaflækjur fyrir tvö ferningsfylki
  \begin{itemize}
   \item Strassen-reikniritið: $\approx O(2.81)$
-  \item Coppersmith-Winograd reikniritið: $O(n^{2.375477}$)
+  \item Coppersmith-Winograd reikniritið: $O(n^{2.375477}$) \pause
   \begin{itemize}
    \item Nýrri útgáfur: $O(n^{2.374})$ (Stothers, 2010) \pause, $O(n^{2.3728642})$ (Williams, 2011), \pause $O(n^{2.3728639})$ (Le Gall, 2014)
   \end{itemize}
+  \item Talið líklegt að lægsti mögulegi veldisvísirinn sé 2
  \end{itemize}
 \end{itemize}
 \end{frame}
@@ -251,7 +256,7 @@ Hér er $* > 10^{100}$ ár.
 \begin{frame}{P og NP}
 \begin{itemize}
  \item Sum vandamál eru þess eðlis að hægt er að leysa þau á margliðutíma í versta tilfellinu, mengi slíkra vandamála er kallað $P$
- \item Sum vandamál eru þess eðlis að hægt er að staðfesta eða hafna gefinni lausn á þeim á margliðutíma í versta tilfellinu, mengi slíkra vandamála er kallað $NP$
+ \item Sum vandamál eru þess eðlis að hægt er að staðfesta gefna lausn á þeim á margliðutíma í versta tilfellinu, mengi slíkra vandamála er kallað $NP$
  \item Stærsta opna spurningin í tölvunarfræði:
 \end{itemize}
 \[
@@ -279,6 +284,16 @@ Hér er $* > 10^{100}$ ár.
 \end{center}
 \end{frame}
 
+\begin{frame}{Nýjustu fréttir}
+    \begin{itemize}
+        \item 11. ágúst 2017 sendi tölvunarfræðingurinn \href{http://theory.cs.uni-bonn.de/blum/blum.var}{Norbert Blum} inn sönnun um $P \neq NP$ á \href{https://arxiv.org/abs/1708.03486}{arXiv} \pause
+        \item 30. ágúst 2017 var sönnunin dregin til baka
+    \end{itemize}
+
+    \begin{quote}
+        The proof is wrong. I shall elaborate precisely what the mistake is. For doing this, I need some time.
+    \end{quote}
+\end{frame}
 
 \begin{frame}{Næst}
 \begin{itemize}
@@ -286,7 +301,6 @@ Hér er $* > 10^{100}$ ár.
  \item 4.2 (Mismunandi grunntölur)
  \item 4.3 (Prímtölur)
 \end{itemize}
-
 \end{frame}
 
 
