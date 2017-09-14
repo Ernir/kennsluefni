@@ -1,9 +1,9 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 3, seinni fyrirlestur}
+\subtitle{Vika 4, fyrri fyrirlestur}
 
 \begin{document}
 
@@ -23,6 +23,7 @@
 \end{itemize}
 \end{frame}
 
+
 \section{Stöðvunarvandamálið}
 
 \begin{frame}{Stöðvunarvandamálið}
@@ -38,13 +39,14 @@
 \end{frame}
 
 \begin{frame}{Aths. um stöðvunarvandamálið}
-\begin{itemize}
- \item Athugum: Það dugar ekki einfaldlega að keyra forritið $P$ með inntakinu $I$ til að ákvarða vandamálið
- \begin{itemize}
-  \item Ef $P$ klárar vitum við vissulega svarið\ldots
-  \item \ldots en meðan það er enn að keyra vitum við ekki hvort það mun klára eftir eina sekúndu, eftir milljarð ára eða aldrei
- \end{itemize}
-\end{itemize}
+    \begin{itemize}
+    \item Athugum: Það dugar ekki einfaldlega að keyra forritið $P$ með inntakinu $I$ til að ákvarða vandamálið
+    \begin{itemize}
+    \item Ef $P$ klárar vitum við vissulega svarið\ldots
+    \item \ldots en meðan það er enn að keyra vitum við ekki hvort það mun klára eftir eina sekúndu, eftir milljarð ára eða aldrei
+    \end{itemize}
+    \item Gerum kröfu um að forritið sé rétt, endanlegt og almennt
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Sönnun með mótsögn}
@@ -66,8 +68,11 @@
   \item Skili $H(P, P)$ strengnum ``stoppar'' fer $K(P)$ í endalausa lykkju
   \item $K(P)$ gerir sem sagt það gagnstæða við $H(P, P)$
  \end{itemize}
- \item Hvað gerist ef við köllum á $K(K)$?
 \end{itemize}
+\includegraphics[width=\textwidth]{haltingproblem}
+
+\pause
+En hvað gerist ef við köllum á $K(K)$?
 \end{frame}
 
 \begin{frame}{Sönnun með mótsögn}
@@ -81,10 +86,16 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Af hverju?}
+    \begin{itemize}
+        \item Gagnlegt er að vita af óleysanlegum vandamálum
+        \item Til að sýna að vandamál sé óleysanlegt dugar að sýna að lausn á því myndi duga til að leysa stöðvunarvandamálið
+    \end{itemize}
+\end{frame}
+
 \section{Stóra-O ritháttur}
 
 \begin{frame}{Vöxtur falla}
-\pause
 \begin{itemize}
  \item Í stærðfræði dugar oft ágætlega að ákvarða hvort reiknirit leysi vandamál rétt á endanlegum tíma eða ekki
  \item Í tölvunarfræði þurfum við oftast líka að hugsa um hversu hratt er hægt að leysa þau
@@ -177,7 +188,6 @@ Gerum ráð fyrir að til séu fastar $C > 0$ og $k > 0$ svo að $x^2 \leq C x$ 
 \begin{tcolorbox}[title=Margliður og stóra O]
 Látum $f(x) = a_n x^n + a_{n-1}x^{n-1} + \ldots + a_1x + a_0$, þar sem $a_0, a_1, \ldots, a_n$ eru rauntölur. Þá er $f(x) \in O(x^n)$.
 \end{tcolorbox}
-Þetta má sanna með því að taka $x^n$ út fyrir sviga og beita þríhyrningsójöfnunni. (Gert í bók)
 
 Þessi ritháttur gefur venju fyrir margliður. Allar margliður af stigi $n$ eru venjulega sagðar vera $O(x^n)$
 \end{frame}
@@ -210,6 +220,8 @@ Stóra-O rithátturinn er oft notaður til að lýsa keyrslutíma. Algengustu f�
 \]
 
 Þessi föll eru hér í ``vaxandi röð''. Hvert fall er í stóra O af föllunum til hægri.
+
+Einnig má segja að föll ríki yfir (e. \emph{of higher order}) þeim sem lengra eru til vinstri í þessari runu.
 \end{frame}
 
 \begin{frame}{Stærðfræðigreining og vöxtur}
@@ -255,7 +267,7 @@ Stóra-O og stóra-Omega eru nátengd. $f(x)$ er $\Omega(g(x))$ þá og því a�
 Út frá stóra-$\Omega$ og stóra-O fáum við strangari rithátt, stóra-$\Theta$:
 
 \begin{tcolorbox}[title=$\Theta$ ritháttur]
-Látum $f$ og $g$ vera föll frá $Z$ eða $R$ til $R$. Við segjum að $f(x)$ sé $\Theta(x)$ þegar $f(x)$ er bæði $O(g(x)$ og $\Omega(x)$.
+Látum $f$ og $g$ vera föll frá $Z$ eða $R$ til $R$. Við segjum að $f(x)$ sé $\Theta(x)$ þegar $f(x)$ er bæði $O(g(x))$ og $\Omega(g(x))$.
 \end{tcolorbox}
 Þegar $f(x)$ er í $\Theta(g(x))$ getum við fullyrt að $f(x)$ og $g(x)$ ``vaxi eins''. Þá getum við líka fundið fasta $C_1, C_2, k > 0$ svo að:
 
