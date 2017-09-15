@@ -1,9 +1,9 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
-\subtitle{Vika 5, fyrri fyrirlestur}
+\subtitle{Vika 4, seinni fyrirlestur}
 
 \begin{document}
 
@@ -15,16 +15,14 @@
 
 \begin{frame}{Í síðasta þætti\ldots}
 \begin{itemize}
- \item Föll
- \item \texttt{if}
- \begin{itemize}
-  \item \texttt{if-else}
-  \item Hreiðruð \texttt{if}
- \end{itemize}
- \item \texttt{switch}
- \item \texttt{is}-föll
+    \item \texttt{if}
+    \begin{itemize}
+        \item \texttt{if-else}
+        \item Hreiðruð \texttt{if}
+    \end{itemize}
+    \item \texttt{switch}
+    \item \texttt{is}-föll
 \end{itemize}
-Kaflar: 4.3, 4.4, 4.6
 \end{frame}
 
 \begin{frame}[fragile]{Gömul fyrirlestraæfing}
@@ -204,23 +202,22 @@ end
 
 \end{frame}
 
-\begin{frame}{Fyrirlestraæfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-
-Lagið:
-
-
-\emph{\small 99 bottles of beer on the wall, 99 bottles of beer.
-
-Take one down and pass it around, 98 bottles of beer on the wall.
-
-98 bottles of beer on the wall, 98 bottles of beer.
-
-Take one down and pass it around, 97 bottles of beer on the wall.}
+\begin{frame}{Fyrirlestraræfing}
+    \vspace{\baselineskip}
+    \begin{enumerate}
+     \item Skrifið Matlab-skipanaskrána \texttt{say5} sem biður notanda um streng og skrifar hann út fimm sinnum.
+     \item Skrifið Matlab-fall sem tekur inn tölur $m$ og $n$ og skilar summunni $m + (m+1) + \ldots + n$.
+     \item Skrifið Matlab-skipanaskrá sem skrifar út öll 99 erindin í laginu ``99 Bottles of Beer on the Wall''.
+     \vspace{\baselineskip}
+     
+     \emph{\small 99 bottles of beer on the wall, 99 bottles of beer.
+    
+    Take one down and pass it around, 98 bottles of beer on the wall.
+    
+    98 bottles of beer on the wall, 98 bottles of beer.
+    
+    Take one down and pass it around, 97 bottles of beer on the wall.}
+    \end{enumerate}
 \end{frame}
 
 \subsection{Forúthlutun í lykkju}
@@ -448,11 +445,23 @@ save mymulttable.dat multmatrix -ascii
 \end{frame}
 
 \begin{frame}[fragile]{Fyrirlestraæfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+    \begin{columns}
+        \column{0.7\textwidth}
+        \begin{enumerate}
+            \setcounter{enumi}{3}
+            \item Skrifið fall sem notar for-lykkju til að finna \emph{stærsta} gildi í vigri
+            \item Skrifið forrit til að prenta út þríhyrning
+            af stjörnum með 4 línum
+            \item Skrifið forrit sem notar hreiðraðar lykkjur til að reikna út summu staka allra í fylki.
+        \end{enumerate}
+    \column{0.3\textwidth}
+        \begin{verbatim}
+        *
+        **
+        ***
+        ****
+        \end{verbatim}
+    \end{columns}
 \end{frame}
 
 
