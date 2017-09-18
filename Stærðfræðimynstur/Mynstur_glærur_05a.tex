@@ -1,9 +1,9 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 4, fyrri fyrirlestur}
+\subtitle{Vika 5, fyrri fyrirlestur}
 
 \begin{document}
 
@@ -45,17 +45,17 @@ Séu $a$ og $b$ heiltölur, $a \neq 0$, segjum við að $a$ deili (e. \emph{divi
 
 Þegar $a$ deilir $b$ segjum við að $a$ sé deilir (e. \emph{divisor} eða \emph{factor}) $b$ og að $b$ sé margfeldi (e. \emph{multiple}) af $a$.
 
-Við skrifum $a | b$ þegar $a$ deilir $b$, annars $a \nmid b$.
+Við skrifum $a \mid b$ þegar $a$ deilir $b$, annars $a \nmid b$.
 \end{tcolorbox}
 \end{frame}
 
 \begin{frame}{Deilanleiki - dæmi}
-Er $3|7$? \pause
+Er $3\mid 7$? \pause
 
 Nei, $7/3$ er ekki heiltala. \pause
 
 \vspace{0.5cm}
-Er $3|12$? \pause
+Er $3\mid 12$? \pause
 
 Já, $12/3$ er heiltalan $4$.
 \end{frame}
@@ -65,15 +65,15 @@ Heiltöludeiling hefur nokkra áhugaverða eiginleika
 \begin{tcolorbox}[title=Eiginleikar deilanleika]
 Séu $a$, $b$ og $c$ heiltölur, $a \neq 0$, þá gildir:
 \begin{enumerate}
- \item Sé $a|b$ og $a|c$, þá $a|(b+c)$
- \item Sé $a|b$, þá $a|b\cdot c$
- \item Sé $a|b$ og $b|c$, þá $a|c$
+ \item Sé $a\mid b$ og $a\mid c$, þá $a\mid (b+c)$
+ \item Sé $a\mid b$, þá $a\mid b\cdot c$
+ \item Sé $a\mid b$ og $b\mid c$, þá $a\mid c$
 \end{enumerate}
 \end{tcolorbox}
 \end{frame}
 
 \begin{frame}{Deilingarreikniritið}
-Deilingarreikniritið er ekki reiknirit, heldur setning.
+Deilingarreikniritið (e. \emph{the division algorithm}) er ekki reiknirit, heldur setning.
 
 \begin{tcolorbox}[title=Deilingarreikniritið]
 Látum $a$ og $d$ vera heiltölur, $d > 0$. 
@@ -93,10 +93,11 @@ og
 \[
  r = a \text{ mod } d
 \]
+Athugum að div og mod eru föll.
 \end{frame}
 
 \begin{frame}{Dæmi um deilingu}
-Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $101$ og deilirinn $11$ (þ.e.a.s. reiknum 101/11)? \pause
+Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $101$ og deilirinn $11$?\pause
 
 Höfum
 \[
@@ -108,7 +109,7 @@ Svo kvótinn er $101 \text{ div } 11 = 9$ og afgangurinn $101 \Mod 11 = 2$.
 \end{frame}
 
 \begin{frame}{Dæmi um deilingu}
-Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $-11$ og deilirinn $3$ (þ.e.a.s. reiknum 11/3)? \pause
+Hverjir eru kvótinn og afgangurinn þegar deilistofninn er $-11$ og deilirinn $3$?\pause
 
 Höfum
 \[
@@ -269,13 +270,13 @@ Finnum prímtöluþáttun 7007. Prófum að deila með prímtölum í vaxandi r�
 \end{frame}
 
 \begin{frame}{Prímtöluþáttun - hversu erfið?}
-Deiling verður mjög þung aðgerð þegar fjöldi bita er stór, endurteknar deilingar þeim mun verri. M.t.t. fjölda bita vex keyrslutíminn veldisvexti. Ekkert reiknirit er til sem finnur prímtöluþáttun á margliðutíma.
+    Endurtekin deiling er erfið þegar tölur verða stórar.
+    \[
+        \frac{2^{n/2}}{\left(\frac{n}{2}\right)\ln 2}
+    \]
+    deilingar þarf til að vinna frá 2 upp í $\sqrt{a}$ þegar $a$ er $n$ stafa tvíundartala.
 
-Skilvirkasta þáttunarreiknritið sem þekkt er, GNFS, þáttar $b$ bita heiltölu á 
-\[
- O \left(exp\left(\sqrt[3]{\frac{64}{9}b(\log b)^2}\right)\right)
-\]
-sem er samt ekki margliðutími. Þetta atriði er mikilvægt í dulkóðun.
+    Til eru betri reiknirit sem eru skilvirkari en endurtekin deiling, en ekkert þekkt reiknirit finnur prímtöluþáttun á margliðutíma.
 \end{frame}
 
 \begin{frame}{Prímtölutékk - hversu erfitt?}
@@ -284,11 +285,9 @@ sem er samt ekki margliðutími. Þetta atriði er mikilvægt í dulkóðun.
  \begin{itemize}
   \item Veldisvísistími
  \end{itemize}
- \item Ýmis góð reiknirit til
- \item Hægt er að komast að því hvort að tala sé prímtala eða ekki á margliðutíma
+ \item Betri reiknirit eru til fyrir tékk en fyrir þáttun, hægt er að komast að því hvort að tala sé prímtala eða ekki á margliðutíma
  \begin{itemize}
   \item Agrawal-Kayal-Saxena (AKS) primality test, 2002
-  \item Merkileg niðurstaða!
  \end{itemize}
 \end{itemize}
 \end{frame}
@@ -297,11 +296,11 @@ sem er samt ekki margliðutími. Þetta atriði er mikilvægt í dulkóðun.
 
 \begin{frame}{Stærsti samdeilir}
 \begin{tcolorbox}[title=Stærsti samdeilir]
-Látum $a$ og $b$ vera heiltölur, ekki báðar núll. Stærsta heiltala $d$ svo að $d|a$ og $d|b$ er kölluð stærsti samdeilir (e. \emph{greatest common divisor}) $a$ og $b$ og táknuð með $gcd(a, b)$.
+Látum $a$ og $b$ vera heiltölur, ekki báðar núll. Stærsta heiltala $d$ svo að $d\mid a$ og $d\mid b$ er kölluð stærsti samdeilir (e. \emph{greatest common divisor}) $a$ og $b$ og táknuð með $gcd(a, b)$.
 \end{tcolorbox}
 Dæmi: $gcd(24, 36) = 12$
 
-Tvær tölur með stærsta samdeilinn 1 eru ósamþátta (e. \emph{relatively prime}). Hægt er að reikna út stærsta samdeili með reikniriti Evklíðs (sjá bók).
+Tvær tölur með stærsta samdeilinn 1 eru ósamþátta (e. \emph{relatively prime}).
 \end{frame}
 
 \begin{frame}{Minnsta samfeldi}
@@ -311,18 +310,46 @@ Minnsta samfeldi (e. \emph{least common multiple}) jákvæðra heiltalna $a$ og 
 Dæmi: $lcm(4, 6) = 12$.
 \end{frame}
 
-\begin{frame}{Tengsl GCD og LCM}
-\begin{tcolorbox}[title=GCD og LCM]
-Látum $a$ og $b$ vera jákvæðar heiltölur. Þá er $a\cdot b = gcd(a, b) \cdot lcm(a, b)$.
-\end{tcolorbox}
+\begin{frame}{Útreikningar GCD og LCM}
+    Hægt er að nota prímtöluþáttanir til að reikna út \emph{gcd} og \emph{lcm}. Séu $a$ og $b$ með prímtöluþáttanir
+    \[
+        a = p_1^{a_1}p_2^{a_2}\cdots p_n^{a^n},b = p_1^{b_1}p_2^{b_2}\cdots p_n^{b^n}
+    \]
+    er
+    \[
+        gcd(a,b) = p_1^{\min(a_1,a_1)}p_2^{\min(a_2,b_2)} \cdots p_n^{\min(a_n,b_n)}
+    \]
+    og
+    \[
+        lcm(a,b) = p_1^{\max(a_1,a_1)}p_2^{\max(a_2,b_2)} \cdots p_n^{\max(a_n,b_n)}
+    \]
+    Ath. að veldísvísarnir eru ekki-neikvæðar heiltölur og geta verið 0
 \end{frame}
 
+\begin{frame}{Reiknireglur}
+    \begin{tcolorbox}[title=GCD og LCM]
+        Látum $a$ og $b$ vera jákvæðar heiltölur. Þá er $a\cdot b = gcd(a, b) \cdot lcm(a, b)$.
+    \end{tcolorbox}
 
+    \begin{tcolorbox}[title=GCD og deilingarafgangur]
+        Séu $a,b,q$ og $r$ heiltölur og $a = bq + r$, þá er $gcd(a,b) = gcd(b,r)$
+    \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Reiknirit Evklíðs}
+    Hægt er að reikna \emph{gcd} án þess að finna prímtöluþáttun með reikniriti Evklíðs
+
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{euclids-algorithm}
+    \end{center}
+
+    Fjöldi deilinga sem reiknirit Evklíðs þarf til að reikna \emph{gcd(a,b)} þar sem $a \geq b$ er $O(\log b)$.
+\end{frame}
 
 \begin{frame}{Næst}
-Dulkóðun (4.6)
+    Á föstudag: Forfallafyrirlestur Snorra Agnarssonar
 
-Seinni helmingur tímans er stoðtími.
+    Á þriðjudag eftir viku: Dulkóðun (4.6), e.t.v. valið efni um leifareikning (4.4)
 \end{frame}
 
 
