@@ -1,11 +1,11 @@
 \documentclass{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
-\author{Matthías Jónsson}
+\author{Eiríkur Ernir Þorsteinsson}
 
 \title{Tölvunarfræði 1a}
-\subtitle{Vika 5, seinni fyrirlestur}
+\subtitle{Vika 5, fyrri fyrirlestur}
 
 \begin{document}
 
@@ -140,12 +140,7 @@ end
 
 \begin{frame}[fragile]{Hermun á for-lykkju}
 \vspace{\baselineskip}
-\begin{itemize}
- \item \texttt{while}-lykkjur eru almennari en \texttt{for}-lykkjur í Matlab
- \begin{itemize}
-  \item Hægt er að herma eftir for-lykkju með \texttt{while}
- \end{itemize}
-\end{itemize}
+Hægt er að herma eftir for-lykkju með \texttt{while}
 \begin{columns}
 \column{0.5\textwidth}
 \begin{minted}[frame=lines]{matlab}
@@ -277,11 +272,10 @@ end
 \begin{frame}[fragile]{Fyrirlestraræfing}
 \begin{columns}
 \column{0.6\textwidth}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{enumerate}
+    \item Hvert er gildi \texttt{y} í lok lykkjunnar hér til hliðar? ( Reynið að leysa án þess að slá inn)
+    \item Skrifið \texttt{while}-lykkju sem er jafngild \texttt{for}-lykkjunni hér til hliðar
+\end{enumerate}
 \column{0.4\textwidth}
 \begin{minted}[frame=lines]{matlab}
 x = 0; y = 13;
@@ -436,31 +430,31 @@ Elapsed time is 0.281674 seconds
 \end{frame}
 
 \begin{frame}{Um það að gera kóða hraðvirkari}
-\begin{center}
-\large \textbf{Réttur kóði er betri en hraður kóði}
-\end{center}
-\begin{itemize}
- \item Gerið forritið rétt \emph{áður} en þið reynið að gera það hraðvirkt
- \begin{itemize}
-  \item \emph{``Premature optimization is the root of all evil''} - Donald Knuth
- \end{itemize}
- \item Skrifið það fyrst svo það sé einfalt/læsilegt
- \item Ef kóðinn er of hægur, \emph{mælið} og reynið svo að bæta
- \begin{itemize}
-  \item ``Run and Time'' í Matlab editor
- \end{itemize}
-\end{itemize}
+    \pause
+    \begin{center}
+        \large \textbf{Réttur kóði er mikilvægari en hraður kóði}
+    \end{center}
+    \pause
+    \begin{itemize}
+        \item Gerið forritið rétt \emph{áður} en þið reynið að gera það hraðvirkt
+        \begin{itemize}
+            \item \emph{``Premature optimization is the root of all evil''} - Donald Knuth
+        \end{itemize}
+        \item Skrifið það fyrst svo það sé einfalt/læsilegt
+        \item Ef kóðinn er of hægur, \emph{mælið} og reynið svo að bæta
+    \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Fyrirlestraræfing}
 \vspace{\baselineskip}
 \begin{columns}
 \column{0.5\textwidth}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{enumerate}
+    \setcounter{enumi}{3}
+     \item Skrifið Matlab-skipun eða skipanir sem finnur hversu margar tölur í vigri eru neikvæðar
+     \item Tímamælið forritsbútana tvo hér til hliðar. Hvor er hraðvirkari og af hverju?
+     \item Skrifið eina Matlab-skipun sem framkvæmir sömu útreikninga og forritsbútarnir, nema hraðar
+\end{enumerate}
 \column{0.5\textwidth}
 \begin{minted}[frame=lines]{matlab}
 n = 100000; v = zeros(1,n);
