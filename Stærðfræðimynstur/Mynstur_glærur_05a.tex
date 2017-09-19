@@ -195,39 +195,22 @@ Fáum afgangana $1, 0, 0, 0, 1, 1, 1, 1$ svo
 \]
 \end{frame}
 
+\begin{frame}{Grunntölurnar 2, 8 og 16}
+    Mjög einfalt er að breyta á milli grunntalnanna 2, 8 og 16 beint.
+    \vspace{0.5cm}
+
+    \includegraphics[width=\textwidth]{binary-equiv}
+
+    Dæmi: $(765)_8$ inniheldur blokkirnar $111$, $110$ og $101$.\\
+    \[
+        (765)_8 = (111 110 101)_2
+    \]
+\end{frame}
+
 \begin{frame}{Samlagning tvíundartalna}
-Reikniaðgerðir með heiltölur fara fram með svipuðum hætti óháð framsetningu þeirra.
+Hægt er að skilgreina reiknirit til samlagningar á tvíundartölum
 \begin{center}
 \includegraphics[width=0.9\textwidth]{binary-addition}
-\end{center}
-\end{frame}
-
-\begin{frame}{Veldishafning og afgangar}
-\begin{itemize}
- \item Stundum þarf að reikna út $b^n \Mod m$, þar sem $b$, $n$ og $m$ eru stórar heiltölur
- \item Ekki er skilvirkt að reikna fyrst út $b^n$ og svo afganginn þegar deilt er með $m$, því $b^n$ verður risastór tala
- \item Til að einfalda útreikninga notum við tvíundarframsetningu á $n$, $n = (a_{k-1}\ldots a_1 a_0)_2$ til að setja fram $b^n$
-\end{itemize}
-\[
- b_n = b^{a_{k-1}\cdot 2^{k-1} + \ldots + a_1\cdot 2^1 + a_0 \cdot 2^0} = b^{a_{k-1}\cdot2^{k-1}\cdot \ldots \cdot b^{a_1\cdot 2} \cdot b^{a_0}}
-\]
-Margföldum saman þá liði þar sem tvíundarframsetningin á $n$ er með 1.
-\end{frame}
-
-\begin{frame}{Dæmi: Framsetning á $3^{11}$}
-Athugum að $(11)_{10} = (1011)_2$ og sjáum:
-\begin{align*}
-3^{11} &= 3^8\cdot 3^2 \cdot 3^1\\
-&=6561 \cdot 9 \cdot 3\\
-&=177147
-\end{align*}
-
-\end{frame}
-
-\begin{frame}{Modular exponentiation}
-Notum þessa innsýn til að setja fram reiknirit til að reikna $b^n \Mod m$:
-\begin{center}
-\includegraphics[width=0.9\textwidth]{modular-exponentiation}
 \end{center}
 \end{frame}
 
@@ -238,7 +221,6 @@ Notum þessa innsýn til að setja fram reiknirit til að reikna $b^n \Mod m$:
 Heiltala $p$ stærri en 1 er prímtala (e. \emph{prime}) ef einu deilar $p$ eru 1 og $p$ sjálft. Heiltala stærri en 1 sem ekki er prímtala er samsett tala (e. \emph{composite}).
 \end{tcolorbox}
 \end{frame}
-
 
 \begin{frame}{Grundvallarsetning}
 ``The fundamental theorem of arithmetic'' er eftirfarandi:
