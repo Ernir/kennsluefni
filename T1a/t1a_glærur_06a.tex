@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 6, fyrri fyrirlestur}
@@ -25,123 +25,6 @@
 \end{itemize}
 Kaflar: 5.3 til 5.5
 \end{frame}
-
-\section{Meira um vigurkóðun (5.4)}
-
-\begin{frame}{Hvað var þessi vigurkóðun aftur?}
-\begin{itemize}
- \item Vigurkóðun er að nýta sér innbyggða eiginleika Matlab til að vinna með vigra og fylki til að leysa vandamál (oft vandamál sem annars væru leyst með lykkjum)
- \item Lærum að ``hugsa með fylkjum''!
- \item Helstu verkfæri sem við höfum:
- \begin{itemize}
-  \item Skalar- og vigurvirkjar
-  \item Vigur- og fylkjavísanir
-  \item Rökvigrar/Rökvísanir
-  \item Innbyggð Matlab-föll
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\subsection{Ýmis verkfæri í vigurkóðun}
-
-\begin{frame}[fragile]{Notkunardæmi: Skalar - og vigurvirkjar}
-\vspace{\baselineskip}
-Dæmi: Viljum margfalda öll stök vigurs \texttt{v} með þremur. Í Matlab getum við gert það svona:
-\begin{minted}[frame=lines]{matlab}
-v = v*3;
-\end{minted}
-Í öðrum málum værum við oft föst með eitthvað á borð við þetta:
-\begin{minted}[frame=lines]{matlab}
-for i = 1:length(v)
-    v(i) = v(i)*3;
-end
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Notkunardæmi: Vigurvísanir}
-Munum að við getum notað vigur til að vísa í vigur
-\begin{minted}[frame=lines]{matlab}
->> v = randi(6, 1, 5)
-v =
-   4   6   3   4   1
->> v(1:2:5)
-ans =
-   4   3   1
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Notkunardæmi: Rökvigrar}
-\vspace{\baselineskip}
-Hægt er að beita samanburðaraðgerðum á vigra (mjög sveigjanlegt!)
-\begin{minted}[frame=lines]{matlab}
->> v
-v =
-   4   6   3   4   1
->> rv = v > 3
-rv =
-   1   1   0   1   0
->> v(rv)
-ans =
-   4   6   4
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Notkunardæmi: Rökvigrar}
-Að henda neikvæðum stökum úr vigri:
-\begin{columns}
-\column{0.5\textwidth}
-\begin{minted}[frame=lines]{matlab}
->> v = [11 -5 33 2 8 -4 25];
->> v(v<0) = []
-v =
-    11    33    2    8    25
-\end{minted}
-\column{0.5\textwidth}
-\begin{minted}[frame=lines]{matlab}
->> v = [11 -5 33 2 8 -4 25];
->> v = v(v>=0)
-v =
-    11    33    2    8    25
-\end{minted}
-\end{columns}
-\end{frame}
-
-
-\begin{frame}[fragile]{Notkunardæmi: Innbyggð Matlab-föll}
-Innbyggð föll í Matlab eru oftast hönnuð til þess að vinna með vigra.
-
-Dæmi: Reikna $n$ hrópmerkt. Gætum notað lykkju, eða margfaldað saman vigur:
-\begin{minted}[frame=lines]{matlab}
->> prod(1:n)
-\end{minted}
-\pause Reyndar er Matlab líka með innbyggt fall sem heitir einfaldlega \texttt{factorial}
-\end{frame}
-\begin{frame}{Nokkur nytsamleg Matlab-föll}
-\begin{center}
-\begin{tabular}{ll}
-\toprule
-Fall			&Virkni\\
-\midrule
-\texttt{sum}		&Finnur summu vigurs (dálka í fylki)\\
-\texttt{prod}		&Finnur margfeldi vigur (dálka í fylki)\\
-\texttt{min}		&Finnur minnsta gildi vigurs (dálka í fylki)\\
-\texttt{max}		&Finnur stærsta gildi vigurs (dálka í fylki)\\
-\texttt{any}		&Athugar hvort að eitthvert stak rökvigurs sé satt\\
-\texttt{all}		&Athugar hvort að öll stök rökvigurs séu sönn\\
-\texttt{find}		&Skilar sætisnúmerum allra ekki-núll staka\\
-\bottomrule
-\end{tabular}
-\end{center}
-\end{frame}
-
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-\end{frame}
-
 
 \section{Meira um föll (6.1)}
 
@@ -262,16 +145,17 @@ s =
 
 \begin{frame}{Föll án skilabreyta}
 \begin{itemize}
- \item Föll sem hafa ekkert skilagildi eru oft kölluð stef (e. \emph{procedures})
+ \item Hægt er að skrifa föll sem hafa engar skilabreytur
  \item Þau eru notuð vegna hliðaráhrifa sem þau hafa, t.d.
  \begin{itemize}
   \item Teikna línurit
-  \item Skrifa í skrá \pause
-  \item Skrifa út texta
+  \item Skrifa í skrá 
+  \item Skrifa út texta \pause
  \end{itemize}
- \item Munum samt að það er mikill munur á að \emph{skrifa} og \emph{skila} gildi
- \begin{itemize}
-  \item Það er \emph{góð venja} að framkvæma útreikninga og skrifa þá út í aðskildum ``einingum''
+ \item Munum samt:
+  \begin{itemize}
+  \item Mikill munur er á að \emph{skrifa} gildi og \emph{skila} gildi
+  \item Góð venja er að að framkvæma útreikninga og skrifa þá út í aðskildum ``einingum''
  \end{itemize}
 \end{itemize}
 \end{frame}
@@ -468,16 +352,14 @@ end
 \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Fyrirlestraæfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-
-\textbf{Spurningar 3-6 eru tengdar, munið nöfnin á skránum sem þið skrifið!}
-
-Formúla: $\pi$ radíanar = $180^\circ$
+\begin{frame}{Fyrirlestraræfing}
+  \begin{enumerate}
+      \item Skrifið skipanaskrá sem kallar á föllin í liðum 2-4.
+      \item Fall sem biður notandann um að slá inn horn í gráðum
+      \item Fall sem reiknar út og skilar sama horni í radíönum\\ ($\pi$ radíanar = $180^\circ$)
+      \item Fall sem skrifar út niðurstöðurnar
+  \end{enumerate}
+  Þetta verða fjórar .m skrár alls.
 \end{frame}
 
 
