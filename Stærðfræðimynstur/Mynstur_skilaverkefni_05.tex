@@ -1,0 +1,210 @@
+\documentclass{article}
+    
+\usepackage{Haust2017skil}
+
+\title{Stærðfræðimynstur í tölvunarfræði \\ Skilaverkefni 5}
+\author{}
+
+\hyphenation{rökstuddir}
+
+\begin{document}
+\maketitle
+
+Skila skal þessu verkefni á vefnum \href{https://gradescope.com/courses/9487}{Gradescope}. Aðgangskóði fyrir námskeiðið er \textbf{9N834D}. 
+
+Gradescope tekur við .pdf skjölum. Frágangur á þeim skiptir máli. Þau skulu vera hreinskrifuð í tölvu. Kerfi eins og \LaTeX, Google Docs og Microsoft Word geta búið til .pdf skjöl. Mikilvægt er að merkja á hvaða blaðsíðu .pdf skjalsins hver lausn kemur fyrir, ekki er hægt að gera ráð fyrir að dæmatímakennarar geti farið yfir ómerkt dæmi.
+
+Samvinna á milli nemenda er eðlileg og æskileg. Hins vegar er afritun það aldrei. Miklu gagnlegra er að reyna við dæmin upp á eigin spýtur en að reyna að hala inn hærri einkunn með því að skila inn lausnum annarra.
+
+Telji nemandi að mistök hafi verið gerð við yfirferð skal tilkynna slíkt á Gradescope.
+
+\section{Kafli 4.1}
+
+\question
+
+Hver eru kvótinn og afgangurinn þegar
+
+\begin{itemize}
+    \item[b)] -111 er deilt með 11?
+    \item[c)] 789 er deilt með 23?
+\end{itemize}
+
+\paragraph{Í bók:} 4.1.10 í Icelandic/International. Ekki til staðar í Global, svipar til 4.1.9
+
+\section{Kafli 4.2}
+
+\question
+
+\textbf{(Ísl)} Framkvæmið eftirfarandi grunntölubreytingar og sýnið útreikninga:
+\begin{itemize}
+    \item[a)] Setjið $(231)_{10}$ fram sem tvíundartölu
+    \item[b)] Setjið $(101010101)_2$ fram sem tugakerfistölu
+    \item[c)] Setjið $(80E)_{16}$ fram sem tvíundartölu
+\end{itemize}
+
+\textbf{(En)} Perform the following expansions. Show your work.
+
+\begin{itemize}
+    \item[a)] The binary expansion of $(231)_{10}$
+    \item[b)] The decimal expansion of $(101010101)_2$
+    \item[c)] The binary expansion of $(80E)_{16}$
+\end{itemize}
+
+\question 
+
+Spurning af miðmisserisprófi 2016.
+
+\textbf{(Ísl)} Gefin er tvíundarkerfisframsetning á jákvæðu heiltölunni $n$. Útskýrið hvernig má strax sjá hvort að $n$ sé deilanleg með 8 með því að skoða tvíundarkerfisframsetninguna.
+
+\textbf{(En)} Given the binary expansion of a positive integer $n$, explain how we can immediately see whether $n$ is divisible by the number 8 by looking at the binary expansion.
+
+\section{Kafli 4.3}
+
+\question 
+
+\textbf{(Ísl)} Finnið $gcd(1000,625)$ og $lcm(1000,625)$ með því að nota prímtöluþáttun. Staðfestið svo að $gcd(1000,625) \cdot lcm(1000,625) = 1000 \cdot 625$.
+
+\textbf{(En)} Calculate $gcd(1000,625)$ and $lcm(1000,625)$ by using prime factorization. Then confirm that $gcd(1000,625) \cdot lcm(1000,625) = 1000 \cdot 625$.
+
+\newpage
+\section{Kafli 5.5/Fyrirlestur Snorra}
+
+\question
+
+\textbf{(Ísl)} Hverjir af eftirfarandi rökstuddum forritstextum í sauðakóða eru rétt rökstuddir?
+
+\textbf{(En)} Which of the following pseudocode program segments are correct with respect to their assertions?
+
+\begin{enumerate}[a)]
+\item
+\begin{verbatim}
+{ x er heiltala, x>=0 }
+x := x+1
+{ x er heiltala, x>=0}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=0 }
+x := x+1
+{ x er heiltala, x>=1}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=0 }
+x := x+1
+{ x er heiltala, x>=2}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=0 }
+x := x+1
+{ x er heiltala, x>=1 }
+x := x+1
+{ x er heiltala, x>=2}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=0 }
+x := x+1
+{ x er heiltala, x>=0 }
+x := x+1
+{ x er heiltala, x>=2}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+x := x*10
+{ x er heiltala, x>=10}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+x := x*10
+{ x er heiltala, x>=1}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+x := x*10
+{ x er heiltala, x>=20}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+x := x*10
+{ x er heiltala, x>=10 }
+x := x*10
+{ x er heiltala, x>=100}
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+x := x*10
+{ x er heiltala, x>=1 }
+x := x*10
+{ x er heiltala, x>=100}
+\end{verbatim}
+\end{enumerate}
+
+\question
+
+\textbf{(Ísl)} Hverjir eftirfarandi forritskafla eru rétt rökstuddir?
+Athugið að það dugar ekki að eftirskilyrðið sé satt
+eftir að forritskaflanum lýkur heldur verður sú niðurstaða
+að vera afleiðing röksemdafærslu eins og lýst er í glærunum
+um rökstudda forritun, þar sem fyrir forskilyrði $F$, lykkjuskilyrði
+$C$, fastayrðingu $I$, eftirskilyrði $E$ og stofn lykkju $S$ þarf að
+gilda:
+
+\begin{itemize}
+\item $F\rightarrow I$
+\item $\{I \wedge C\}S\{I\}$
+\item $I\wedge\neg C\rightarrow E$
+\end{itemize}
+
+\textbf{(En)} Which of the following program segments are correct with respect to their assertions? Note that it is not sufficient for the postcondition to be true at the conclusion of the program segment, it must be the conclusion of a rule of inference as described in the slides, the assertions above must hold for the precondition $F$, loop condition $C$, invariant $I$, postcondition $E$ and loop contents $S$.
+
+\begin{enumerate}[a)]
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+meðan x>10
+{ x>10 }
+x := x-1
+{ x er heiltala, x<=10 }
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+meðan x>10
+{ x>=10 }
+x := x-1
+{ x er heiltala, x<=10 }
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+meðan x>10
+{ x>=1 }
+x := x-1
+{ x er heiltala, x<=10 }
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+meðan x>10
+{ x>=1 }
+x := x-1
+{ x er heiltala, 1<=x<=10 }
+\end{verbatim}
+\item
+\begin{verbatim}
+{ x er heiltala, x>=1 }
+meðan x>10
+{ x>10 }
+x := x-1
+{ x er heiltala, 1<=x<=10 }
+\end{verbatim}
+\end{enumerate}
+
+\end{document}
