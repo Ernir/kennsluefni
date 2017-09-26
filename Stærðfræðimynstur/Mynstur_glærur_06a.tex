@@ -81,9 +81,11 @@
     \[
         ax = b(\Mod m)
     \]
-    þar sem $x$ er breyta, $a$, $b$ og $m$ eru heiltölur ($m$ jákvæð) er viðfangsefni kafla 4.4. Ein leið er að finna heiltölu $\overline{a}$ svo að $\overline{a}a \equiv 1 (\Mod m)$. 
-    
-    Slík tala er til séu $a$ og $a$ ósamþátta.
+    þar sem $x$ er breyta, $a$, $b$ og $m$ eru heiltölur ($m$ jákvæð) er viðfangsefni kafla 4.4, sem við sleppum.
+
+    \vspace{0.5cm}
+
+    Mikilvæg niðurstaða: Þessar jöfnur eru leysanlegar séu $a$ og $m$ ósamþátta.
 \end{frame}
 
 \section{Klassísk dulkóðun}
@@ -163,6 +165,8 @@ Hægt er að gera hliðrunardulkóðun minna óörugga með því að nota fall:
  f(p) = (ap + b)\Mod 26
 \]
 þar sem $a$ og $b$ eru heiltölur og $gcd(a,26) = 1$. 
+
+\vspace{0.5cm}
 
 Þegar $gcd(a,26) = 1$ er vörpunin gagntæk.
 \end{frame}
@@ -250,16 +254,15 @@ Fáum strenginn \texttt{USEW ATER HOSE}. Störum og sjáum að hér stendur \tex
  \item Nokkrir hlutir koma við sögu í RSA dulkóðun
  \begin{itemize}
   \item Stórar prímtölur $p$ og $q$ (haldið leyndum)
+  \item Margfeldi prímtalnanna, $n = pq$ (gert opinbert)
   \item Veldisvísir $e$ (gerður opinber)
   \begin{itemize}
    \item $e$ og $(p-1)(q-1)$ þurfa að vera ósamþátta, þ.e.a.s. $gcd(e, (p-1)(q-1)) = 1$
    \item $1 < e < n$
   \end{itemize}
-  \item Margfeldi prímtalnanna, $n = pq$ (gert opinbert)
-  \item $d$, tala svo að $(d\cdot e) \Mod (p-1)(q-1) = 1$ (haldið leyndri)
+  \item $d$, tala svo að $de \equiv 1 (\Mod (p-1)(q-1))$ (haldið leyndri)
   \begin{itemize}
-   \item Reiknað út
-   \item Aðferðir í kafla 4.4 (var sleppt)
+   \item Þetta má reikna út (með aðferðum úr kafla 4.4) ef $p$ og $q$ eru þekktar
   \end{itemize}
  \end{itemize}
 \end{itemize}
@@ -279,13 +282,13 @@ Opinberi lykillinn er þá tvenndin $(n, e)$ og leyndi lykillinn talan $d$.
 \end{frame}
 
 \begin{frame}{Af hverju virkar þetta?}
-Það er talan $d$ sem er notuð til afkóðunar. $d$ er reiknað með því að leysa jöfnuna $(d\cdot e) \Mod (p-1)(q-1) = 1$.
+Það er talan $d$ sem er notuð til afkóðunar. $d$ er reiknað með því að leysa $de \equiv 1 (\Mod (p-1)(q-1))$.
 
 Tölurnar $n = pq$ og $e$ eru gerðar opinberar. Væri hægt að reikna $p$ og $q$ út frá $n$ þegar $n$ er mjög stórt (meira en 300-400 stafir) væri RSA óöruggt, en það virðist vera erfitt verkefni.
 \end{frame}
 
 \begin{frame}{Dulkóðun og afkóðun - dæmi}
-Byrjum á að finna tölurnar sem til þarf. Veljum $p=61$, $q = 53$ svo $n = 3233$. Fáum $(61 - 1)(53 - 1) = 3120$. Veljum okkur prímtölu sem veldisvísi $e$ svo auðveldara sé að sannfæra okkur um að $gcd(e,3120)=1$. Veljum $e = 17$. Leysum $d \cdot 17 \Mod 3120 = 1$, fáum $d = 2753$.
+Byrjum á að finna tölurnar sem til þarf. Veljum $p=61$, $q = 53$ svo $n = 3233$. Fáum $(61 - 1)(53 - 1) = 3120$. Veljum okkur prímtölu sem veldisvísi $e$ svo auðveldara sé að sannfæra okkur um að $gcd(e,3120)=1$. Veljum $e = 17$. Leysum fyrir $d$, fáum $d = 2753$.
 
 Dulkóðum töluna 65.
 \[
