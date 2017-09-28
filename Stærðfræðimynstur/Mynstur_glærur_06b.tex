@@ -15,264 +15,198 @@
 \section{Inngangur}
 
 \begin{frame}{Í síðasta tíma}
-\begin{itemize}
- \item Upprifjun á rakningarvenslum
- \item Endurkvæmar skilgreiningar
- \begin{itemize}
-  \item Föll
-  \item Mengi
- \end{itemize}
-\end{itemize}
+    \begin{itemize}
+        \item Leifajöfnur
+        \item Dulkóðun
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Áréttun - af hverju virkar þrepun?}
-\begin{itemize}
- \item Þrepun er ekki göldrótt!
- \item Í hefðbundnu grunnskrefi þrepunarsönnunar sýnum við að staðhæfing $P(1)$ sé sönn
- \item Við gerum svo ráð fyrir að $P(k)$ sé satt fyrir ótilgreinda jákvæða heiltölu $k$ og sýnum að $P(k) \to P(k+1)$ fyrir allar jákvæðar heiltölur $k$
- \item Þá getum við séð fyrir okkur að $P(n)$ gildi fyrir allar jákvæðar heiltölur $n$
- \begin{itemize}
-  \item Af hverju?
-  \item $P(1)$ er satt og við vitum að ef $P(1)$ er satt þá er $P(2)$ líka satt
-  \item Þá er $P(2)$ satt og við vitum að ef $P(2)$ er satt þá er $P(3)$ líka satt\ldots
- \end{itemize}
- \item Sönnun í bók
-\end{itemize}
+\section{Þrepasannanir (5.1)}
+
+\begin{frame}{Hugmyndin}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Getum við klifrað upp óendanlegan stiga?
+            \item Getum sannfært okkur um að við komumst í hvaða þrep sem er ef
+            \begin{enumerate}
+                \item Við komumst í fyrsta þrep stigans
+                \item Ef við komumst í tiltekið þrep stigans komumst við í næsta þrep
+            \end{enumerate}
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{center}
+            \includegraphics[width=0.8\linewidth]{induction-stairs}
+        \end{center}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Áréttun - sterk þrepun}
-\begin{itemize}
- \item Sterk þrepun er sönnunaraðferð sem er jafngild ``venjulegri'' þrepun
- \begin{itemize}
-  \item Þ.e.a.s. ef hægt er að nota aðra sönnunaraðferðina má nota hina líka
- \end{itemize}
- \item Þá er ekki sýnt fram á að $P(k) \to P(k+1)$, heldur að \[[P(1) \land P(2) \land \ldots \land P(k)] \to P(k+1)\]
- \item Sterka þrepun er betra að nota þegar ljósara er að $[P(1) \land \ldots \land P(k)] \to P(k+1)$ heldur en að einungis $P(k) \to P(k+1)$
-\end{itemize}
+\begin{frame}{Skilgreiningar}
+    \begin{tcolorbox}[title=Sönnun með þrepun]
+        Til að sanna að fyrir umsögn $P$ að $P(n)$ gildi fyrir allar jákvæðar heiltölur $n$ er nægjanlegt að framkvæma tvö skref:
+        \begin{itemize}
+            \item Grunnskref (e. \emph{basis step}): Sannreynum að $P(1)$ sé satt
+            \item Þrepunarskref (e. \emph{inductive step}): Sýnum að afleiðingin $P(k) \to P(k+1)$ sé sönn fyrir allar jákvæðar heiltölur $k$
+        \end{itemize}
+    \end{tcolorbox}
+    Í þrepuninni gerum við ráð fyrir að $P(k)$ sé satt fyrir ótiltekna heiltölu $k$ og sönnum að $P(k+1)$ sé satt. Þá er $P(k)$ þrepunarforsendan (e. \emph{inductive hypothesis}).
 \end{frame}
 
-
-\section{Endurkvæm reiknirit}
-
-\begin{frame}{Endurkvæm reiknirit}
-\begin{itemize}
- \item Munum að reiknirit er endanleg runa vel skilgreindra aðgerða sem reikna út lausn á skilgreindu vandamáli
- \item Reiknirit hefur inntak, sem lýsir tilviki af vandamálinu sem það leysir
- \item Reiknirit er kallað endurkvæmt ef það leysir vandamálið með því að smætta það niður í smærra tilvik af sama vandamáli
-\end{itemize}
+\begin{frame}{Sönnun summuformúlu með þrepun}
+    Notum þrepun til að sýna að sé $n$ jákvæð heiltala, þá sé
+    \[
+        1 + 2 + \ldots + n = \frac{n(n+1)}{2}
+    \]
+    \pause
+    (Example 1 í kafla 5.1 í bók)
 \end{frame}
 
-\begin{frame}{Endurkvæmt hrópmerkt}
-Hrópmerkt hentar vel til endurkvæms útreiknings.
-\begin{center}
-\includegraphics[width=\textwidth]{factorial-algorithm}
-\end{center}
-\[
-3! = 3\cdot 2! = 3 \cdot 2 \cdot 1! = 3 \cdot 2 \cdot 1 \cdot 0! = 3 \cdot 2 \cdot 1 \cdot 1
-\]
+\begin{frame}{Nokkur mikilvæg atriði}
+    \begin{itemize}
+        \item Við getum sett grunnregluna um þrepun fram sem röksemdareglu sem gildir fyrir allar umsagnir $P$ sem hafa mengi jákvæðra heiltalna sem óðal
+        \[
+            \left(P(1) \land \forall k: (P(k) \to P(k+1))\right) \to \forall n: P(n)
+        \] \pause
+        \item Í þrepuninni er þrepunarforsendan ekki að staðhæfingin gildi fyrir allar jákvæðar heiltölur, heldur að hún gildi fyrir einhverja tölu $k$ og að hún gildi þá líka fyrir næstu tölu, $k+1$ \pause
+        \item Þrepunarsannanir þurfa ekki að byrja í heiltölunni 1, getum byrjað í heiltölu $b$ og sýnt fram á að eitthvað gildi fyrir heiltölur $\geq b$
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Endurkvæmt GCD}
-\begin{columns}
-\column{0.5\textwidth}
-Við getum reiknað stærsta samdeili (gcd) með endurkvæmu reikniriti sem byggir á því að 
-\[
- gcd(a,b) = gcd(b \Mod a, a)
-\]
-og að 
-\[
- gcd(0,b) = b
-\]
-þegar $b > 0$.
-\column{0.5\textwidth}
+\begin{frame}{Af hverju virkar þrepun?}
+    \begin{itemize}
+        \item Þrepun virkar vegna frumsendu um velröðun (e. \emph{well-ordering}) jákvæðu heiltalnanna
+        \begin{itemize}
+            \item Sérhvert hlutmengi í jákvæðu heiltölunum sem ekki er tómt hefur minnsta stak
+            \item Fjallað um í viðauka 1
+        \end{itemize}
+        \item Getum þá sannað með mótsögn
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Af hverju virkar þrepun?}
+    \begin{itemize}
+        \item Látum $P(1)$ vera satt og $P(k) \to P(k+1)$ vera satt fyrir allar jákvæðar heiltölur $k$ en að til sé jákvæð heiltala $n$ svo að $P(n)$ sé ósatt
+        \item Þá er mengi þeirra heiltalna sem gerir $P(n)$ ósatt ekki tómt og hefur þar með minnsta stak, sem við köllum $m$ \pause
+        \begin{itemize}
+            \item $m$ getur ekki verið 1, því $P(1)$ er satt \pause
+            \item $m$ er jákvætt og hærra en 1, so $m-1$ er jákvæð heiltala \pause
+        \end{itemize}
+        \item $m-1$ er minna en $m$, svo $P(m-1)$ er satt \pause
+        \item Þar sem $P(m-1) \to P(m)$ er satt hlýtur $P(m)$ þá að vera satt \pause
+        \item Mótsögn í vali á $m$, $P(n)$ er satt fyrir allar jákvæðar heiltölur $n$ 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Takmarkanir þrepunar}
+    \begin{itemize}
+        \item Kostur við þrepun er að hún býður upp á kerfisbundna leið til að sannreyna tilgátur
+        \item Galli við þrepun er að við þurfum að vera með hugmynd að tilgátu til að staðfesta áður en hafist er handa
+        \item Takmörkuð innsýn fæst í vandamálið
+    \end{itemize}
+\end{frame}
+
+\section{Þrepunardæmi}
+
+\begin{frame}{Summa fyrstu n jákvæðu oddatalnanna}
+    \begin{itemize}
+        \item Getum við giskað á formúlu fyrir $1+3+5+\ldots +(2n-1)$?
+        \begin{itemize}
+            \item $1=1$, $1+3=4$, $1+3+5=9$, $1+3+5+7=16$, $\ldots$\pause
+        \end{itemize}
+        \item Giskum á að $\sum_{i=1}^n(2i-1)=n^2$, látum $P(n)$ vera þá staðhæfingu að formúlan haldi fyrir allar jákvæðar heiltölur $n$
+        \item Sönnum með þrepun
+        \begin{itemize}
+            \item Example 2 í kafla 5.1
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sönnun á ójöfnu}
+    \begin{itemize}
+        \item Notum þrepun til að sanna að $n < 2^n$ fyrir allar jákvæðar heiltölur $n$
+        \item Example 5 í kafla 5.1 í bók
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sönnun á deilanleika}
+    \begin{itemize}
+        \item Notum þrepun til að sanna að $n^3-n$ er deilanlegt með 3 fyrir allar jákvæðar heiltölur $n$
+        \item Example 8 í kafla 5.1 í bók
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sönnun á fjölda hlutmengja}
+    \begin{itemize}
+        \item Notum þrepun til að sanna setningu um fjölda hlutmengja endanlegs mengis
+        \item Látum $P(n)$ tákna fullyrðinguna ``mengi með $n$ stök hefur $2^n$ hlutmengi''
+        \item Example 10 í kafla 5.1 í bók
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sönnun á fjölda hlutmengja}
+    \begin{itemize}
+        \item Grunnur: Mengi með 0 stök er tóma mengið sem hefur einungis eitt ($=2^0$) hlutmengi, tóma mengið sjálft.
+        \item Þrepun:
+        \begin{itemize}
+            \item Þrepunarforsenda: G.r.f.a. mengi $S$ með $n$ stök hafi $2^n$ hlutmengi
+            \begin{itemize}
+                \item Viljum sanna að mengi með $n+1$ stak hafi $2^{n+1}$ hlutmengi
+            \end{itemize}
+            \item Þrepunarskref: Látum $T$ vera mengi með $n+1$ stak og $S$ mengi með $n$ stök. Getum skrifað $T = S \cup \{a\}$ fyrir sérhvert $a \in T$. Þá inniheldur hvert hlutmengi $T$ stakið $a$ eða ekki. Fyrir hvert hlutmengi $X$ í $T$ sem inniheldur $a$ er til eitt hlutmengi $X - \{a\}$ sem inniheldur ekki $a$. En öll hlutmengi í $T$ sem ekki innihalda $a$ eru líka hlutmengi $S$. Fjöldi hlutmengja $T$ er þá tvöfaldur fjöldi hlutmengja $S$, sem skv. þrepunarforsendu er $2 \cdot 2^n = 2^{n+1}$, sem sanna átti 
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Ráðlögð uppbygging}
+Auðvelt er að gera mistök þegar þrepasönnun er skrifuð. Ráðlögð uppbygging er:
 
 \vspace{0.5cm}
-Þannig getum við reiknað stærsta samdeili 5 og 8:
-\begin{align*}
-gcd(5,8) &= gcd(8 \Mod 5, 5)\\
-&= gcd(3,5)\\
-&= gcd(5 \Mod 3, 3)\\
-&= gcd(2,3)\\
-&= gcd(3 \Mod 2, 2)\\
-&= gcd(1,2)\\
-&= gcd(2 \Mod 1, 1)\\
-&= gcd(0,1)\\
-&= 1
-\end{align*}
 
-\end{columns}
-\end{frame}
+\textbf{Setning:} Fyrir öll $n \geq b$ gildir $P(n)$
 
-\begin{frame}{Endurkvæmt GCD}
-Við getum skrifað reiknirit út frá þessari innsýn:
-\begin{center}
-\includegraphics[width=\textwidth]{gcd-recursive}
-\end{center}
-\end{frame}
-
-\begin{frame}{Línuleg leit}
-Rifjum upp línulega leit:
-\begin{center}
-\includegraphics[width=\textwidth]{linear-search}
-\end{center}
-\end{frame}
-
-\begin{frame}{Endurkvæm línuleg leit?}
-Getum við gert endurkvæma útgáfu af línulegri leit?\pause
-
-Já, við getum það:
-\begin{center}
-\includegraphics[width=\textwidth]{linear-search-recursive}
-\end{center}
-\end{frame}
-
-\begin{frame}{Helmingunarleit}
-Rifjum upp helmingunarleit:
-\begin{center}
-\includegraphics[width=\textwidth]{binary-search}
-\end{center}
-\end{frame}
-
-\begin{frame}{Endurkvæm helmingunarleit?}
-Getum við gert endurkvæma útgáfu af helmingunarleit?\pause
-
-Já, við getum það:
-\begin{center}
-\includegraphics[width=0.8\textwidth]{binary-search-recursive}
-\end{center}
-\end{frame}
-
-\section{Endurkvæmni og ítrun}
-
-\begin{frame}{Endurkvæmni og ítrun}
+\textbf{Sönnun með þrepun:}
 \begin{itemize}
- \item Höfum séð endurkvæm reiknirit sem byrja á að skoða heildarmyndina og brjóta hana svo niður í smærri tilvik
- \item Gætum þess í stað séð fyrir okkur að við byrjum á að skoða smáu tilvikin og ``byggjum svo upp'' í þau stóru
- \begin{itemize}
-  \item Slíka aðferðafræði köllum við ítrun
-  \item Ítrun er venjulega framkvæmd með lykkjum
- \end{itemize}
- \item Ítrun og endurkvæmni framkvæma hliðstæða útreikninga!
+    \item Grunnur: Sýnum að $P(b)$ gildir
+    \item Þrepun: 
+    \begin{itemize}
+        \item Þrepunarforsenda: Gerum ráð fyrir að $P(n)$ gildi fyrir eitthvert $n \geq b$, viljum sanna $P(n+1)$
+        \item Þrepunarskref: Notum $P(n)$ til að sanna að $P(n+1)$ gildir
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Endurkvæmni og ítrun}
+\section{Sterk þrepun (5.2)}
+
+\begin{frame}{Sterk þrepun}
 \begin{itemize}
- \item Hvenær á að nota endurkvæmni og hvenær á að nota ítrun við forritun? \pause
- \begin{itemize}
-  \item Ráðlegging undirritaðs: Notið það sem ykkur finnst lýsa vandamálinu best
-  \begin{itemize}
-   \item Tími forritarans er verðmætur
-   \item Getið síðan breytt úr einu í annað ef \emph{mælingar} sýna að upprunalega nálgunin er ekki skilvirk
-  \end{itemize}
-  \item Þekkið forritunarmálin sem þið eruð að nota - styðja þau endurkvæmni vel?
- \end{itemize}
+    \item Sterk þrepun er sönnunaraðferð sem er jafngild ``venjulegri'' þrepun
+    \begin{itemize}
+        \item Þ.e.a.s. ef hægt er að nota aðra sönnunaraðferðina má nota hina líka
+    \end{itemize}
+    \item Þá er ekki sýnt fram á að $P(k) \to P(k+1)$, heldur að \[[P(1) \land P(2) \land \ldots \land P(k)] \to P(k+1)\]
+    \item Sterka þrepun er betra að nota þegar ljósara er að $[P(1) \land \ldots \land P(k)] \to P(k+1)$ heldur en að einungis $P(k) \to P(k+1)$
 \end{itemize}
 \end{frame}
 
-\section{Merge Sort}
+\begin{frame}{Þáttun prímtalna}
+    Höfum séð staðreynd um þáttun prímtalna, hluti af ``the fundamental theorem of arithmetic'':
 
-\begin{frame}{Röðun}
-\begin{itemize}
- \item Höfum áður séð innsetningarröðun
- \begin{itemize}
-  \item Keyrslutími innsetningarröðunar á runu af lengd $n$ er $O(n^2)$ í versta tilfellinu
- \end{itemize}
- \item Skoðum nú endurkvæma lýsingu á reikniriti sem raðar á $O(n\log(n))$ tíma í versta tilfellinu
-\end{itemize}
+    \begin{tcolorbox}
+        Hver heiltala stærri en 1 er prímtala eða margfeldi tveggja eða fleiri prímtalna
+    \end{tcolorbox}
+
+    Getum sannað hana með sterkri þrepun.
 \end{frame}
 
-\begin{frame}{Merge sort}
-\begin{itemize}
- \item Hugmyndin að baki merge sort er eftirfarandi:
- \begin{itemize}
-  \item Heildarrununni er skipt upp í tvær hlutrunur af jafnri (eða næstum jafnri) lengd
-  \begin{itemize}
-   \item Hverri hlutrunu er svo skipt upp í tvær hluthlutrunur, o.s.frv.
-   \item Uppskiptingunni er haldið áfram þar til runurnar eru af lengdinni 1
-  \end{itemize}
-  \item Þegar uppskiptingunni er lokið eru runurnar sameinaðar tvær og tvær svo að úr verði röðuð runa
-  \begin{itemize}
-   \item Þegar síðustu sameiningunni er lokið er runan röðuð!
-  \end{itemize}
-  \item Merge sort var fundið upp af John von Neumann (1945)
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Keyrsla merge sort}
-\vspace{0.5cm}
-\begin{center}
-\includegraphics[width=0.5\textwidth]{merge-sort-visual}
-\end{center}
-\end{frame}
-
-\begin{frame}{Merge reikniritið}
-Mikið af vinnunni sem fer fram í merge sort felst í því að sameina listana:
-\begin{center}
-\includegraphics[width=\textwidth]{merge}
-\end{center}
-\end{frame}
-
-\begin{frame}{Merge sort}
-Merge sort er síðan lýst endurkvæmt:
-\begin{center}
-\includegraphics[width=0.9\textwidth]{merge-sort}
-\end{center}
-\end{frame}
-
-\section{Rökstudd forritun}
-
-\begin{frame}{Rökstudd forritun}
-\begin{itemize}
- \item Bókin inniheldur vísi að umfjöllun um rökstudda forritun
- \item Sýnir að hægt er að tengja saman rökfræði og reiknirit
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Hugtök úr rökstuddri forritun}
-\begin{itemize}
- \item Forrit er naumrétt (e. \emph{partially correct} eða \emph{weakly correct}) skili það ``réttri niðurstöðu'' þegar forritið er ``rétt notað'' og lýkur keyrslu
- \item Til skilgreiningar á því hvað teljist rétt eru hugtökin forskilyrði (e. \emph{precondition} eða \emph{initial assertion}) og eftirskilyrði (e. \emph{postcondition} eða \emph{final assertion}) notuð
- \begin{itemize}
-  \item Forskilyrði lýsa þeim aðstæðum sem þurfa að gilda áður en forrit keyrir (venjulega lýsing eiginleikum inntaks)
-  \item Eftirskilyrði lýsir þeim aðstæðum sem gilda eftir að forrit keyrir (venjulega lýsing á eiginleikum skilagildis)
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Naumrétt forrit}
-\begin{tcolorbox}[title=Naumrétt forrit]
-Forrit eða forritsbútur $S$ er naumréttur með tilliti til forskilyrðisins $p$ og eftirskilyrðisins $q$ ef $q$ er satt hvenær sem $p$ er satt og $S$ lýkur keyrslu.
-
-Rithátturinn $p\{S\}q$ táknar að $S$ sé naumrétt með tilliti til forskilyrðisins $p$ og eftirskilyrðisins $q$.
-\end{tcolorbox}
-Sé forrit naumrétt m.t.t. gefinna skilyrða og auk þess er tryggt að það ljúki alltaf keyrslu við gefin skilyrði er það rammrétt (e. \emph{correct} eða \emph{strongly correct}).
-
-Rithátturinn $p\{S\}q$ er kallaður Hoare þrennd (e. \emph{Hoare triple}).
-\end{frame}
-
-\begin{frame}{Rökstutt forrit}
-Sýnum að forritsbúturinn
-\begin{align*}
-y &:= 2\\
-z &:= x + y
-\end{align*}
-sé naumréttur m.t.t. upphafsskilyrðisins $p: x = 1$ og eftirskilyrðisins $q: z = 3$. \pause
-
-G.r.f.a. $p$ sé satt. $y$ fær gildið 2. Þar sem $p$ er satt fær $z$ gildið $1+2 = 3$. Þá er $q$ satt, svo $p\{S\}q$ er satt.
-\end{frame}
-
-\begin{frame}{Lengri rökstudd forrit}
-\begin{itemize}
- \item Við getum rökstutt lengri forrit með því að brjóta þau niður í rökstudda forritsbúta
- \item Við getum skilgreint leiðir til að rökstyðja forritsbúta sem fela í sér algeng forritunarhugtök:
- \begin{itemize}
-  \item Lykkjur
-  \item Stýrisetningar
- \end{itemize}
- \item Gildi, fyrir gefna forritsbúta $S_1$ og $S_1$ bæði $p\{S_1\}q$ og $q\{s_2\}r$, þá má fyrir samsetta forritið $S = S_1;S_2$ skrifa $p\{S_1; S_2\}r$ eða einfaldlega $p\{S\}r$
-\end{itemize}
+\begin{frame}{Þáttun prímtalna}
+    \begin{itemize}
+        \item Grunnur: Fyrir $n=2$ gildir setningin því 2 er prímtala
+        \item Þrepun:
+        \begin{itemize}
+            \item Þrepunarforsenda: G.r.f.a. fyrir sérhvert $n \geq 2$ sé hægt að rita sérhverja heiltölu $k$ þannig að $1 < k \leq n$ sem margfeldi primtalna. \pause
+            \item Þrepunarskref: Skoðum $n+1$. Ef $n+1$ er prímtala þarf ekkert að sanna. Ef $n+1$ er ekki prímtala er skv. skilgreiningu hægt að rita $n +1 = x\cdot y$, þar sem $x$ og $y$ eru jákvæðar heiltölur. Bæði $x$ og $y$ eru þá minni en $n+1$. Skv. þrepunarforsendu er þá hægt að rita bæði $x$ og $y$ sem margfeldi prímtalna og þá má rita $n+1$ sem margfeldi sömu prímtalna.
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 

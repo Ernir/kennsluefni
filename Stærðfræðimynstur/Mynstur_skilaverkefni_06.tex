@@ -1,0 +1,76 @@
+\documentclass{article}
+    
+\usepackage{Haust2017skil}
+
+\title{Stærðfræðimynstur í tölvunarfræði \\ Skilaverkefni 6}
+\author{}
+
+\hyphenation{rökstuddir}
+
+\begin{document}
+\maketitle
+
+Skila skal þessu verkefni á vefnum \href{https://gradescope.com/courses/9487}{Gradescope}. Aðgangskóði fyrir námskeiðið er \textbf{9N834D}. 
+
+Gradescope tekur við .pdf skjölum. Frágangur á þeim skiptir máli. Þau skulu vera hreinskrifuð í tölvu. Kerfi eins og \LaTeX, Google Docs og Microsoft Word geta búið til .pdf skjöl. Mikilvægt er að merkja á hvaða blaðsíðu .pdf skjalsins hver lausn kemur fyrir, ekki er hægt að gera ráð fyrir að dæmatímakennarar geti farið yfir ómerkt dæmi.
+
+Samvinna á milli nemenda er eðlileg og æskileg. Hins vegar er afritun það aldrei. Miklu gagnlegra er að reyna við dæmin upp á eigin spýtur en að reyna að hala inn hærri einkunn með því að skila inn lausnum annarra.
+
+Telji nemandi að mistök hafi verið gerð við yfirferð skal tilkynna slíkt á Gradescope.
+
+\section{Kafli 4.6}
+
+\question Dulkóðið skilaboðin \texttt{STOP} með því að varpa bókstöfunum í sætisnúmer í enska stafrófinu, beita viðkomandi dulkóðunarfalli og varpa tölustöfunum aftur í bókstafi.
+
+\begin{itemize}
+    \item[a)] $f(p) = (p + 4) \text{ mod } 26$
+    \item[c)] $f(p) = (17p + 22) \text{ mod } 26$
+\end{itemize}
+
+\paragraph{Í bók:} Hluti af exercise 4.6.2 í Icelandic/International, svipar til 4.6.1 og 4.6.2 í Global
+
+\question Dulkóðið skilaboðin GRIZZLY BEARS með því að nota umskiptingardulkóðun með blokkarstærð 5 og umröðunarfallið $\sigma$ á mengið $\{1,2,3,4,5\}$, með
+\[
+    \sigma(1) = 3, \sigma(2) = 5, \sigma(3) = 1, \sigma(4) = 2 \text{ og } \sigma(5) = 4
+\]
+Fyllið upp í síðustu blokkina með stafnum $X$ til að uppfylla blokkarstærðina.
+
+Hvert er afkóðunarfallið $\sigma^{-1}$?
+
+\paragraph{Í bók:} Byggt á exercise 4.6.14 í Icelandic/International, 4.6.8 í Global
+
+\question Dulkóðið skilaboðin \texttt{ATTACK} með RSA-reikniritinu, með $n = 43\cdot 59$ og $e=13$. Nota má tölvu til útreikninga á stórum tölum.
+
+Notið aðferð úr bók til að breyta bókstöfunum í tölustafi til dulkóðunar. Hún er (hér) eftirfarandi: Breytið hverjum bókstaf í skilaboðunum í tölu skv. enskri stafrófsröð. Ef sú tala er minni en 10 er núlli bætt fyrir framan svo að framsetningin á öllum tölunum verði af sömu lengd, þannig verður t.d. $A$ að $00$. Hópið tölurnar saman tvær og tvær svo úr verði þrír hópar af tölustöfum (hóparnir eru þrír því að bókstafirnir í skilaboðunum eru sex). Meðhöndlið hvern hóp um sig sem eina tölu og dulkóðið þær tölur.
+
+\paragraph{Í bók:} Exercise 4.6.24.
+
+\section{Kafli 5.1}
+
+\question Látum $P(n)$ vera þá staðhæfingu að $1^3+2^3+\ldots + n^2 = \left( \frac{n(n+1)}{2} \right)^2$ þar sem $n$ er jákvæð heiltala.
+
+Sýnið þetta með þrepun, með því að útskýra og reikna eftirfarandi:
+
+\begin{enumerate}[a)]
+    \item Hvaða staðhæfing væri $P(1)$?
+    \item Sýnið að $P(1)$ sé satt.
+    \item Hver er þrepunarforsendan (e. \emph{inductive hypothesis})?
+    \item Hvað þarf að sanna í þrepunarskrefinu (e. \emph{inductive step})?
+    \item Klárið þrepunarskrefið, þar sem tekið er fram hvar þrepunarforsendan er notuð.
+\end{enumerate}
+
+\paragraph{Í bók:} Exercise 5.1.4 í báðum útgáfum
+
+\question Finnið formúlu fyrir 
+\[
+ \frac{1}{1\cdot 2} + \frac{1}{2 \cdot 3} + \ldots + \frac{1}{n(n+1)}
+\]
+með því að skoða summuna fyrir lítil gildi á $n$. Sannið formúluna svo með þrepun.
+
+\paragraph{Í bók:} Exercise 5.1.10 í báðum útgáfum
+
+\question Notið þrepun til að sanna að $3^n < n!$ sé $n$ heiltala stærri en 6.
+
+\paragraph{Í bók:} Exercise 5.1.20 í báðum útgáfum
+
+\end{document}
