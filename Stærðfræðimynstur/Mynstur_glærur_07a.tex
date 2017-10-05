@@ -1,6 +1,6 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
 \subtitle{Vika 7, fyrri fyrirlestur}
@@ -15,14 +15,9 @@
 \section{Inngangur}
 
 \begin{frame}{Í síðasta tíma}
-\begin{itemize}
- \item Endurkvæm reiknirit
- \begin{itemize}
-  \item Endurkvæmni og ítrun
-  \item Merge sort reikniritið
- \end{itemize}
- \item Rökstudd forritun
-\end{itemize}
+    \begin{itemize}
+        \item Þrepun
+    \end{itemize}
 \end{frame}
 
 \section{Talning}
@@ -129,7 +124,20 @@ Sem kemur ekki á óvart því að
 \[
  |A \cup B| = |A| + |B| - |A \cap B|
 \]
+\end{frame}
 
+\begin{frame}{Dæmi}
+    \begin{itemize}
+        \item Hversu margir bitastrengir  af lengd 8 byrja á 1 eða enda á 00?        
+        \pause
+        \item Hægt er að búa til bitastreng af lengd 8 sem byrjar á 1 á $2^7=128$ vegu    
+        \pause
+        \item Hægt er að búa til bitastreng af lengd 8 sem endar á 00 á $2^6=64$ vegu    
+        \pause     
+        \item Sumir strengir byrja á 1 og enda á 00. Fjöldi slíkra bitastrengja af lengd 8 er $2^5=32$.    
+        \pause    
+        \item Skv. frádráttarreglunni er fjöldi bitastrengja af lengd 8 sem byrja á 1 og enda á 00 þá $128+64-32=160$
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Deilingarreglan}
