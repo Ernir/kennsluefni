@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 6, seinni fyrirlestur}
@@ -15,12 +15,10 @@
 
 \begin{frame}{Í síðasta þætti\ldots}
 \begin{itemize}
- \item Meira um vigurkóðun, 
  \item Föll með mörgum skilagildum
  \item Föll með engum skilagildum
  \item Skipulag stærri forrita
 \end{itemize}
-Kaflar: 5.4, 6.1, 6.2
 \end{frame}
 
 
@@ -200,21 +198,20 @@ ans =
 
 \begin{frame}{Villuleit}
 \begin{itemize}
- \item Oftast auðvelt að laga málfræði- og keyrsluvillur, en getur verið erfitt að finna rökvillur
- \item  Nokkrar leiðir:
- \begin{itemize}
-  \item Rekja sig í gegnum forritið
-  \begin{itemize}
-   \item Setja inn \texttt{disp}-skipanir í kóðann
-  \end{itemize}
- \end{itemize}
- \begin{itemize}
-  \item Ákveða \underline{for}- og \underline{eftir}skilyrði
-  \begin{itemize}
-   \item Hvað á að gilda við upphaf fallsins (forskilyrði) og hvað á að gildi í lokin (eftirskilyrði)
-   \item Stundum eru forskilyrði ekki uppfyllt, t.d. fallið ræður aðeins við jákvæðar tölur, en fær inn neikvæða tölu
-  \end{itemize}
- \end{itemize}
+    \item Oftast auðvelt að laga málfræði- og keyrsluvillur, en getur verið erfitt að finna rökvillur
+    \item Aðalleiðin (förum yfir)
+    \begin{itemize}
+        \item Rekja sig í gegnum forritið
+        \begin{itemize}
+            \item Setja inn \texttt{disp}-skipanir í kóðann
+            \item Nota ``debugger''
+        \end{itemize}
+    \end{itemize}
+    \item Aðrar leiðir (sleppt í T1a)
+    \begin{itemize}
+        \item Skrifa einingaprófanir
+        \item Ákveða for- og eftirskilyrði fyrir forritsbúta
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -376,22 +373,23 @@ ans =
 \end{frame}
 
 \begin{frame}[fragile]{Fyrirlestraræfing}
-\begin{columns}
-\column{0.5\textwidth}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-\column{0.5\textwidth}
-\begin{minted}[frame=lines]{matlab}
-i = input('i: ');
-while i > 0
-    k = i*i;
-end
-disp(k)
-\end{minted}
-\end{columns}
+    \begin{columns}
+    \column{0.5\textwidth}
+    \begin{enumerate}
+     \item Getur komið villa vegna kóðans til hliðar? Ef svo er, hver er þá villan?
+     \item Hvort getur \texttt{int64} eða \texttt{double} geymt stærri tölur? Hvort hefur meiri nákvæmni?
+     \item Við getum framkvæmt samanburðinn \texttt{x == Inf} og fengið satt/ósatt, en þar sem allur samanburður við \texttt{NaN} gefur ósatt, er hægt að komast að því hvort breyta innihaldi \texttt{NaN}?
+    \end{enumerate}
+    \column{0.5\textwidth}
+    \begin{minted}[frame=lines]{matlab}
+    i = input('i: ');
+    while i > 0
+        k = i*i;
+    end
+    disp(k)
+    \end{minted}
+    
+    \end{columns}
 \end{frame}
 
 
