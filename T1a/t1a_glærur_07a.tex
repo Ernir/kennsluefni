@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 7, fyrri fyrirlestur}
@@ -39,7 +39,7 @@ Kafli: 6.5
 
 \begin{frame}[fragile]{Strengjafastar}
 \begin{itemize}
- \item Þó að strengir séu vigrar þá líta strengjafastar ekki neitt sérstaklega mikið út eins og vigrar
+ \item Þó að strengir séu vigrar þá líta strengjafastar (e. \emph{string literals}) ekki neitt sérstaklega mikið út eins og vigrar
  \begin{itemize}
   \item Byrja og enda á einfaldri gæsalöpp
  \end{itemize}
@@ -86,13 +86,8 @@ ans =  2
 \end{frame}
 
 \begin{frame}[fragile]{Að búa til strengjabreytur}
-\begin{columns}
-\column{0.3\textwidth}
-\begin{itemize}
- \item Að nota gildisveitingu
- \item Lesa inn í breytu með \texttt{input}-falli
-\end{itemize}\pause
-\column{0.7\textwidth}
+
+Hægt er að nota strengjafasta eða innlestur með \texttt{input} falli til að búa til strengjabreytur.  
 \begin{minted}[frame=lines]{matlab}
 >> text = 'Yes, this is dog';
 >> name = input('Sláið inn nafn: ', 's')
@@ -102,12 +97,11 @@ name = DOG
 Sláið inn nafn:      DOG
 name2 =      DOG
 \end{minted}
-\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Strengir eru vigrar}
 \begin{columns}
-\column{0.5\textwidth}
+\column{0.4\textwidth}
 \begin{itemize}
  \item Í Matlab eru strengir vigrar af bókstöfum
  \item Við getum unnið með strengi eins og vigra
@@ -119,7 +113,7 @@ name2 =      DOG
 
 \end{itemize}
 \pause
-\column{0.5\textwidth}
+\column{0.6\textwidth}
 \begin{minted}[frame=lines]{matlab}
 >> s = ['a', 'b', 'c'];
 >> s(2)
@@ -175,14 +169,14 @@ Galli: Allar línur í stafafylki þurfa að vera jafn langar!
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+    \begin{enumerate}
+        \item Höfum strengbreyturnar \texttt{fornafn} og \texttt{eftirnafn}. Hvernig má búa til mannsnafn úr þeim?
+        \item Sýnið skipanir til að búa til notendanafn úr fyrstu tveimur stöfum í \texttt{fornafn} og fyrstu tveimur stöfum í \texttt{eftirnafn} (t.d. \texttt{'ErÞo'})
+        \item Sýnið skipanir sem býr til notendanafn að viðbættu númeri sem geymt er í breytunni \texttt{number} (t.d. \texttt{'ErÞo31'} ef \texttt{number} er 31)
+    \end{enumerate}    
 \end{frame}
 
-\subsection{Strengjaföll og sérsmíðun}
+\section{Strengjaföll og sérsmíðun}
 
 \begin{frame}{Að sérsmíða strengi}
 \vspace{\baselineskip}
@@ -233,7 +227,7 @@ Fall&Merking\\
 \end{frame}
 
 
-\subsection{Samanburður strengja}
+\section{Samanburður strengja}
 
 \begin{frame}[fragile]{Samanburður strengja}
 Vegna þess að strengir eru vigrar er venjulegur samanburður framkvæmdur ``stak fyrir stak'':
@@ -277,7 +271,7 @@ Fall&Merking\\
 \end{center}
 \end{frame}
 
-\subsection{Leit og útskipting}
+\section{Leit og útskipting}
 
 \begin{frame}[fragile]{Leit í strengjum}
 \begin{itemize}
@@ -302,11 +296,12 @@ ans = abcdxabcdx
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+    \begin{enumerate}
+        \setcounter{enumi}{3}
+        \item Notið \texttt{strfind} til að finna staðsetningu allra \texttt{A} í strengnum \texttt{GATTACA}.
+        \item Í streng nokkrum stendur \texttt{'Tölvunarfræði er erfið'}. Notið \texttt{strrep} til að laga strenginn svo í honum standi að tölvunarfræði sé frábær.
+        \item Notið vigurkóðun og \texttt{isspace}-fallið til að henda út öllum eyðum í strengnum \texttt{s}.
+    \end{enumerate}
 \end{frame}
 
 
