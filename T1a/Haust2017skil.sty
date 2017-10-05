@@ -16,12 +16,18 @@
 \usepackage{tikz}
 % Code environment
 \usepackage{minted}
+% For toggles
+\usepackage{etoolbox}
 % Hyperlinks and related
 \usepackage[pdftex,bookmarks=true,colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue]{hyperref}
 
 % Minted configuration
 \usemintedstyle{default}
 \renewcommand{\theFancyVerbLine}{\sffamily \arabic{FancyVerbLine}}
+
+% Mimicking the exam class
+\newcounter{questioncounter}[section]
+\newcommand{\question}{\refstepcounter{questioncounter} \subsection{Verkefni \thequestioncounter }}
 
 \floatstyle{plaintop}
 \newfloat{program}{thp}{lop}
