@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
 \subtitle{Vika 7, seinni fyrirlestur}
@@ -37,7 +37,7 @@
 \begin{frame}{Umröðun}
 \begin{itemize}
  \item Umröðun (e. \emph{permutation}) á mengi er runa sem inniheldur öll stök mengisins
- \item Umröðun $r$ staka úr menginu er kölluð $r$-umröðun (e. \emph{r-permutation}) á menginu
+ \item Umröðun á $r$ staka hlutmengi mengis $S$ er kölluð $r$-umröðun (e. \emph{r-permutation}) á $S$
  \item Dæmi: Látum $S = \{1, 2, 3\}$
  \begin{itemize}
   \item Runan $3, 1, 2$ er umröðun á $S$
@@ -87,7 +87,7 @@ sem passar vel við skilning okkar á margfeldisreglu.
 \end{frame}
 
 \begin{frame}{Dæmi}
-Á hversu marga vegu getum við valið þá sem fá gull, silfur og brons í 100 manna keppni? \pause
+Á hversu marga vegu getum við valið vinningshafa sem fá gull, silfur og brons í 100 einstaklinga keppni? \pause
 
 Erum að velja þrjá einstaklinga úr 100 staka mengi. Röð einstaklinga skiptir máli. Fáum
 \[
@@ -98,7 +98,7 @@ Erum að velja þrjá einstaklinga úr 100 staka mengi. Röð einstaklinga skipt
 \begin{frame}{Dæmi}
 Sölukona þarf að fara til átta mismunandi borga. Fyrsta borgin er föst, en hún má ráða í hvaða röð hún ferðast til hinna borganna. Á hversu marga vegu getur sölukonan valið leið sína, ef hún þarf að fara einu sinni í hverja borg? \pause
 
-Við getum ekki tekið neinar ákvarðanir um fyrstu borgina, en allar mögulegar umraðanir af hinum sjö eru gjaldgengar, svo hún hefur $7! = 5040$ möguleika.
+Eftir að við höfum valið fyrstu borgina eru allar mögulegar umraðanir af hinum sjö gjaldgengar, svo hún hefur $7! = 5040$ möguleika.
 
 Erfitt vandamál sem tengist þessu: Travelling Salesman Problem.
 \end{frame}
@@ -123,7 +123,8 @@ Af því að stafirnir $ABC$ þurfa að vera samliggjandi og stafirnir $DEFGH$ e
  \end{itemize}
  \item Samantekt hunsar röð hlutanna
  \begin{itemize}
-  \item Þannig ætti ekki að koma á óvart að til séu færri $r$-samantektir fyrir hvert mengi heldur en $r$-umraðanir (þegar $r$ er ekki örsmátt)
+    \item Hvort hefur mengi fleiri $r$-samantektir eða $r$-umraðanir? \pause
+    \item Svar: $r$-umraðanir eru fleiri (þegar $r$ er ekki örsmátt), hver samantekt getur samsvarað mörgum umröðunum
  \end{itemize}
  \item Við táknum fjölda $r$-samantekta $n$ staka mengis með $C(n,r)$
 \end{itemize}
@@ -134,7 +135,7 @@ Látum $S$ vera mengið $\{a, b, c, d\}$. Þá eru 2-samantektir $S$ sex talsins
 \end{frame}
 
 \begin{frame}{Formúla fyrir fjölda samantekta}
-Við getum notað deilireglu til að búa til formúlu fyrir fjölda samantekta út frá formúlu fyrir fjölda umraðana ($P(n,r) = \frac{n!}{(n-r)!}$).
+Við getum notað deilireglu til að búa til formúlu fyrir fjölda samantekta út frá formúlu fyrir fjölda umraðana $\left(P(n,r) = \frac{n!}{(n-r)!}\right)$.
 
 Til að finna allar $r$-samantektir getum við fyrst fundið allar $r$-umraðanir og athugað að röðunin skiptir ekki máli. Til eru $P(r,r)$ leiðir til að umraða $r$ stökum, svo hver $r$-samantekt samsvarar $P(r,r)$ mismunandi $r$-umröðunum og deiliregla gefur:
 \[
@@ -143,7 +144,7 @@ Til að finna allar $r$-samantektir getum við fyrst fundið allar $r$-umraðani
 \end{frame}
 
 \begin{frame}{Dæmi}
-Hversu margir bitastrengir af lengd $n$ innihalda nákvæmlega $r$ ása? \pause
+Hversu margir bitastrengir af lengd $n$ innihalda nákvæmlega $r$ ``ása'' (1)? \pause
 
 Staðsetningar ásanna í bitastrengnum eru $r$-samantekt af menginu $\{1,2,\ldots,n\}$, svo fjöldi bitastrengja af lengd $n$ með nákvæmlega $r$ ása er $C(n, r)$.
 \end{frame}
@@ -160,10 +161,12 @@ En hversu margar 47 spila hendur væri hægt að mynda?
 \end{frame}
 
 \begin{frame}{Regla}
-Séu $n$ og $r$ ekki-neikvæðar heiltölur, $r \leq n$, þá er
-\[
- C(n,r) = C(n,n-r)
-\]
+    \begin{tcolorbox}
+        Séu $n$ og $r$ ekki-neikvæðar heiltölur, $r \leq n$, þá er
+        \[
+            C(n,r) = C(n,n-r)
+        \]
+    \end{tcolorbox}
 Þetta má sjá með innsetningu í formúluna 
 \[
  C(n,r) = \frac{n!}{r!(n-r)!}
@@ -172,12 +175,12 @@ Séu $n$ og $r$ ekki-neikvæðar heiltölur, $r \leq n$, þá er
 
 \begin{frame}{Talningarsannanir}
 \begin{itemize}
- \item Hægt er að rökstyðja $C(n,r) = C(n,n-r)$ með bókstafareikningi
- \item Svona jöfnur mætti líka rökstyðja með talningu:
- \begin{itemize}
-  \item Sönnun með tvöfaldri talningu (e. \emph{double counting proof}): Notum talningu til að sýna að báðar hliðar jöfnu gefi sama fjölda
-  \item Sönnun með gagntæku falli (e. \emph{bijective proof}): Sýnum að til sé gagntækt fall milli þeirra hluta sem taldir eru öðru megin jöfnu og þeirra hluta sem taldir eru á hinni hliðinni
- \end{itemize}
+    \item Hægt er að rökstyðja $C(n,r) = C(n,n-r)$ með bókstafareikningi
+    \item Svona jöfnur mætti líka rökstyðja með talningu:
+    \begin{itemize}
+        \item Sönnun með tvöfaldri talningu (e. \emph{double counting proof}): Notum talningu til að sýna að báðar hliðar jöfnu gefi sama fjölda
+        \item Sönnun með gagntæku falli (e. \emph{bijective proof}): Sýnum að til sé gagntækt fall milli þeirra hluta sem taldir eru öðru megin jöfnu og þeirra hluta sem taldir eru á hinni hliðinni
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -189,15 +192,15 @@ Séu $n$ og $r$ ekki-neikvæðar heiltölur, $r \leq n$, þá er
  \item Tvíliða (e. \emph{binomial expression}) er summa tveggja liða, t.d. $x + y$
  \item Tvíliðustuðlar koma fram þegar tvíliða er hafin í veldi
  \begin{itemize}
-  \item Stuðullinn við $x^ry^{n-k}$ er $C(n,k) = \binom{n}{k}$ þegar $(x + y)^n$ er reiknað út
+  \item Stuðullinn við $x^{n-k}y^{k}$ er $C(n,k) = \binom{n}{n-k} = \binom{n}{k}$ þegar $(x + y)^n$ er reiknað út
  \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Dæmi}
-Reglan: Stuðullinn við $x^ry^{n-k}$ er $C(n,k) = \binom{n}{k}$ þegar $(x + y)^n$ er reiknað út
+Reglan: Stuðullinn við $x^{n-k}y^{k}$ er $C(n,k) = \binom{n}{k}$ þegar $(x + y)^n$ er reiknað út
 
-Fáum:
+Dæmi:
 \begin{align*}
 (x+y)^3 &= \binom{3}{0} x^3 + \binom{3}{1}x^2y + \binom{3}{2}xy^2 + \binom{3}{3}y^3\\
 &= x^3 + 3x^2y + 3xy^2 + y^3
@@ -217,12 +220,13 @@ Fáum:
 \end{frame}
 
 \begin{frame}{Tvíliðusetningin}
-\begin{tcolorbox}[title=Tvíliðusetningin]
+\begin{tcolorbox}[title=Tvíliðusetningin (e. \emph{the binomial theorem})]
 Látum $x$ og $y$ vera liði og $n$ vera ekki-neikvæða heiltölu. Þá
 \[
- (x + y)^n = \sum_{r=0}^n \binom{n}{r} n^{n-r} y^r
+ (x + y)^n = \sum_{j=0}^n \binom{n}{j} x^{n-j} y^j
 \]
 \end{tcolorbox}
+Sönnun: Aðeins seinna!
 \end{frame}
 
 \begin{frame}{Fylgisetning}
@@ -243,44 +247,71 @@ Tvíliðustuðlar uppfylla margar jöfnur, sú frægasta er jafna Pascals (1623-
 þar sem $n$ og $k$ eru jákvæðar heiltölur, $n \geq k$. Þetta má rökstyðja með bókstafareikningi eða talningu.
 \end{frame}
 
-\begin{frame}{Þríhyrningur Pascals}
-\begin{center}
-\includegraphics[width=\textwidth]{pascal}
-\end{center}
+\begin{frame}{Regla Pascals - talningasönnun}
+    \begin{itemize}
+        \item Viljum sýna $\binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}$ \pause
+        \item Látum $T$ vera $n+1$ staka mengi, $a \in T$ og $S = T - \{a\}$ \pause
+        \item Vinstri hlið:
+        \begin{itemize}
+            \item $T$ hefur $\binom{n+1}{k}$ hlutmengi með $k$ stökum \pause
+        \end{itemize}
+        \item Hægri hlið:
+        \begin{itemize}
+            \item Hlutmengi $T$ með $k$ stökum annaðhvort inniheldur $a$ ásamt $k-1$ stökum $S$ eða þá það inniheldur $k$ stök úr $S$ og ekki $a$
+            \item Höfum í huga samlagningarreglu og athugum: \pause
+            \begin{itemize}
+                \item Höfum $\binom{n}{k-1}$ leiðir til að velja $k-1$ stök úr $S$, svo það er líka fjöldi leiða til að velja $k$ staka hlutmengi $T$ sem innihalda $a$
+                \item Höfum $\binom{n}{k}$ leiðir til að velja $k$ stök úr $S$
+                \item Heildarfjöldi möguleika $\binom{n}{k-1} + \binom{n}{k}$
+            \end{itemize}
+        \end{itemize} \pause
+        \item Höfum sýnt að báðar hliðar jöfnurnar lýsa sama fjölda
+    \end{itemize}
 \end{frame}
 
+\begin{frame}{Þríhyrningur Pascals}
+    \begin{center}
+    \includegraphics[width=\textwidth]{pascal}
+    \end{center}
+\end{frame}
+    
 \begin{frame}{Þríhyrningur Yanghuis}
-\begin{columns}
-\column{0.3\textwidth}
-Þríhyrningur Yanghuis, frá 1303.
-\column{0.7\textwidth}
-\begin{center}
-\includegraphics[width=0.5\linewidth]{yanghui}
-\end{center}
-\end{columns}
+    \begin{columns}
+    \column{0.3\textwidth}
+    Þríhyrningur Yanghuis, frá 1303.
+    \column{0.7\textwidth}
+    \begin{center}
+    \includegraphics[width=0.5\linewidth]{yanghui}
+    \end{center}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Sierpinski þríhyrningurinn}
-\begin{columns}
-\column{0.3\textwidth}
-Séu oddatölurnar í Pascal-þríhyrningnum litaðar fæst mynstur líkt fraktanum sem kallaður er þríhyrningur Sierpinskis.
-\column{0.7\textwidth}
-\begin{center}
-\includegraphics[width=\linewidth]{sierpinski}
-\end{center}
-
-\end{columns}
-
+    \begin{columns}
+        \column{0.3\textwidth}
+        Séu oddatölurnar í Pascal-þríhyrningnum litaðar fæst mynstur líkt fraktanum sem kallaður er þríhyrningur Sierpinskis.
+        \column{0.7\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{sierpinski}
+        \end{center}    
+    \end{columns}
+\end{frame}
+    
+\begin{frame}{Þríhyrningur Pascals}
+    \begin{center}
+        \includegraphics[width=\textwidth]{pascal-bands}
+    \end{center}
 \end{frame}
 
-\begin{frame}{Þríhyrningur Pascals}
-\begin{center}
-\includegraphics[width=\textwidth]{pascal-bands}
-\end{center}
+\begin{frame}{Sönnun á tvíliðusetningunni}
+    Getum notað þrepun og jöfnu Pascals til að sanna tvíliðusetninguna.
+
+    \vspace{1cm}
+    Látum $P(n)$ vera þá fullyrðingu að \[(x + y)^n = \sum_{j=0}^n \binom{n}{j} n^{n-j} y^j\] gildi fyrir ekki-neikvæða heiltölu $n$.
 \end{frame}
 
 \begin{frame}{Næst}
-Talning fyrir lengra komna. Kaflar 8.1, 8.2, mögulega 8.3.
+Vensl (9.1 og e.t.v. 9.2)
 \end{frame}
 
 \end{document}
