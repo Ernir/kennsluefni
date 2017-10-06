@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 7, seinni fyrirlestur}
@@ -111,27 +111,13 @@ John von Neumann (1903-1957)
 
 \section{Meira um strengi}
 
-\begin{frame}[fragile]{Is-föll fyrir strengi}
-\begin{center}
-\begin{tabular}{ll}
-\toprule
-Fall&Merking\\
-\midrule
-\texttt{isletter}&Satt ef stafur (char) er bókstafur\\
-\texttt{isspace}&Satt ef stafur er biltákn\\
-\texttt{ischar}&Satt ef gefin breyta er af taginu \texttt{char}\\
-\bottomrule
-\end{tabular}
-\end{center}
-\end{frame}
-
 \begin{frame}[fragile]{\texttt{isstrprop} fallið}
 \vspace{1.5\baselineskip}
 Getum notað fallið \texttt{istrpprop} til að athuga hvort að stafir strengs séu af ákveðinni gerð\footnote{Fleiri möguleikar eru til. Sjá \texttt{help isstrprop}.}.
 \begin{minted}[frame=lines]{matlab}
->> isstrprop('Jón','lower')
+>> isstrprop('Jón', 'lower')
 ans =
-   0   0   0   1
+   0   1   1
 >> isstrprop('Ha!?','punct')
 ans =
    0   0   1   1
@@ -177,7 +163,7 @@ for i = 9:11
 end
 disp(usernames)
 \end{minted}
-Útkoman: $3\times 5$ strengjafylki.
+Útkoman:\pause $3\times 5$ strengjafylki.
 \end{frame}
 
 \begin{frame}[fragile]{Oft gagnlegt: Að skipta upp streng}
@@ -185,6 +171,9 @@ disp(usernames)
   \item \texttt{strtok} skiptir streng upp í tvo búta, ``haus'' og ``hala''
   \begin{itemize}
    \item Leitar að ``skiptitákni'' - allt sem er fyrir framan táknið er hausinn, afgangur strengsins er halinn
+   \begin{itemize}
+       \item Undantekning: Skiptitákn fremst í strengnum eru hunsuð
+   \end{itemize}
    \item Sjálfgefið skiptitákn er bilstafur
   \end{itemize}
 \end{itemize}
@@ -200,11 +189,12 @@ hali =
 
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið spurningarnar tvær.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+    \begin{enumerate}
+        \item Hvað gerir eftirfarandi skipun?\\
+        \texttt{eval('eval(''b = 4'')')}
+        \item Notið vigurkóðun og \texttt{isstrprop} fallið til að hreinsa allt nema tölur úr strengnum \texttt{s}.
+        \item Notið \texttt{strtok} fallið til að skipta strengnum \texttt{'Fyrsta annað þriðja'} niður í þrjár aðskildar breytur.
+    \end{enumerate}
 \end{frame}
 
 \section{Miðmisserispróf}
@@ -232,7 +222,7 @@ Notendanafn = HÍ-tölvupóstfang
  \item Vigrar og fylki
  \item Föll og skipanaskrár
  \item \texttt{if}, \texttt{elseif} og \texttt{else}
- \item Lykkjur
+ \item Lykkjur (\texttt{for} og \texttt{while})
  \item Vigurkóðun
  \item Inntak og úttak
  \item Gagnagerðir
