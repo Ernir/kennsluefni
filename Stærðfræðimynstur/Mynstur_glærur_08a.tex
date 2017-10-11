@@ -22,6 +22,67 @@
     \end{itemize}
 \end{frame}
 
+\section{Miðmisseriskönnun og viðbrögð}
+
+\begin{frame}{Miðmisseriskönnun}
+    \begin{center}
+        \includegraphics[width=\textwidth]{Dreifing2017}
+    \end{center}
+    121 af 229 tóku þátt ($\approx 53\%$). Meðaleinkunn 6.93 (Meðaleinkunn IVT 7.8).
+\end{frame}
+
+\begin{frame}{Almenn ánægja}
+    \begin{itemize}
+        \item Fleiri jákvæðar en neikvæðar athugasemdir bárust um
+        \begin{itemize}[<+->]
+            \item Upptökur
+            \item Dæmatímakennarana
+            \item Skilaverkefnin (mikil bót frá í fyrra)
+            \item Piazza og Connect
+            \item Persónu aðalkennarans
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Skiptar skoðanir}
+    \begin{itemize}[<+->]
+        \item Gradescope
+        \begin{itemize}
+            \item Kerfið er frábært
+            \item Kerfið er meingallað
+            \begin{itemize}
+                \item Regrade requests skila sér ekki
+            \end{itemize}
+        \end{itemize}
+        \item Sýnidæmi
+        \begin{itemize}
+            \item Ættu ekki að vera öll úr bókinni
+            \item Tengjast dæmunum úr bókinni ekki nóg
+        \end{itemize}
+        \item Hraði yfirferðar
+        \begin{itemize}
+            \item Of hröð
+            \item Of hæg
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Má betur fara}
+    \begin{itemize}
+        \item Yfirferð á skilaverkefnum
+        \item Þurrt efni
+        \item Samhengisleysi, vaðið úr einu í annað
+        \item Hentar ekki fólki með stærðfræðibakgrunn
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Hugmyndir að aðgerðum}
+    \begin{itemize}
+        \item Dæmayfirferðin verður skoðuð á fundi með dæmatímakennurum
+        \item Staða stærðfræðinema innan námskeiðsins verður skoðuð með námsbrautarformönnum
+    \end{itemize}
+\end{frame}
+
 \section{Vensl}
 
 \begin{frame}{Upprifjun - Mengjamargfeldi}
@@ -42,6 +103,10 @@ Getum skilgreint vensl (e. \emph{relation}) frá einu mengi til annars.
 Látum $A$ og $B$ vera mengi. Tvíundarvensl (e. \emph{binary relation}) frá $A$ til $B$ er hlutmengi í $A \times B$.
 \end{tcolorbox}
 Sé $a \in A$, $b \in B$ og $R$ vensl frá $A$ til $B$ skrifum við $a$ $R$ $b$ sé $(a,b) \in R$.
+
+\vspace{0.5cm}
+
+Hugmyndin - venslin mynda einhvers konar ``tengingu'' á milli mengjanna
 \end{frame}
 
 \begin{frame}{Dæmi}
@@ -70,7 +135,6 @@ Við getum sett þessi vensl fram með t.d. örvamynd eða töflu.
   \item Graf fallsins (e. \emph{the graph of the function}) $f$ er þá mengi raðaðra para $(a, b)$ svo að $f(a) = b$.
   \item Graf fallsins er þá hlutmengi $A\times B$, svo það er vensl frá $A$ til $B$
  \end{itemize}
- \item Fall á milli tveggja mengja er þannig vensl sem tengja stak í $B$ við nákvæmlega eitt stak í $A$
  \item Vensl geta lýst sambandi þar sem hvert stak í $A$ tengist meira en einu staki í $B$
  \begin{itemize}
   \item Vensl geta lýst almennara sambandi en fall (eða öllu heldur graf falls)
@@ -86,6 +150,15 @@ Vensl á mengi (e. \emph{relation on a set}) $A$ eru vensl frá menginu $A$ til 
 \end{tcolorbox}
 
 Sem sagt, vensl á mengi $A$ er hlutmengi í $A \times A$.
+\end{frame}
+
+\begin{frame}{Fjöldi vensla á mengi}
+    \begin{itemize}
+        \item Hversu mörg vensl eru til á mengi $A$ með $n$ stökum?\pause
+        \item $A \times A$ hefur þá $n^2$ stök (sjá: margfeldisregla) \pause
+        \item Mengi með $m$ stökum hefur $2^m$ hlutmengi \pause
+        \item Til eru $2^{n^2}$ vensl á $n$ staka mengi
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Dæmi}
@@ -149,6 +222,17 @@ R_5 &= \{(a, b)|a = b+1\}\\
 \end{columns}
 \end{frame}
 
+\begin{frame}{Samhverf vensl utan stærðfræðinnar}
+    \begin{itemize}
+        \item ``Er jafngilt''
+        \begin{itemize}
+            \item Jafngildisvensl: Vensl sem eru samhverf, sjálfhverf og gegnvirk
+        \end{itemize}
+        \item ``Er í hjónabandi með'' (skv. íslenskum lögum)
+        \item ``Er systkini''
+    \end{itemize}
+\end{frame}
+
 \begin{frame}[fragile]{Andsamhverf vensl}
 \begin{tcolorbox}[title=Andsamhverf vensl]
 Vensl $R$ á mengi $A$ eru andsamhverf (e. \emph{antisymmetric}) ef fyrir öll $a, b \in A$ gildir að ef $(a, b) \in R$ og $(b, a) \in R$, þá er $a=b$. Þ.e.a.s. vensl $R$ á mengi $A$ eru andsamhverf ef\\ $\forall a \forall b (((a, b) \in R \land (b, a) \in R) \to (a = b))$.
@@ -194,6 +278,14 @@ R_6 &= \{(a, b)|a+b \leq 3\}\\
 \end{columns}
 \end{frame}
 
+\begin{frame}{Gegnvirkni in the wild}
+    Hluti af skilgreiningu ``Comparable Interface'' í Java
+    \begin{center}
+        \includegraphics[width=\textwidth]{compareTo}
+    \end{center}
+    Kemur við sögu í Tölvunarfræði 2.
+\end{frame}
+
 \begin{frame}{Samsetning vensla}
 \begin{tcolorbox}[title=Samsetning vensla]
 Látum $R_1$ vera vensl frá mengi $A$ til mengis $B$ og $R_2$ vera vensl frá $B$ til mengis $C$. Þá skilgreinum við samsettu venslin $R_1 \circ R_2$ með eftirfarandi:
@@ -218,26 +310,11 @@ Finnum öll röðuð pör þar sem seinna stakið í pari úr $R$ passar við fy
 \]
 \end{frame}
 
-\begin{frame}{Skilgreining}
-\begin{tcolorbox}[title=Veldishafning]
-Látum $R$ vera vensl á mengið $A$. Þá er veldishafningin $R^n$, þar sem $n$ er jákvæð heiltala skilgreint endurkvæmt með
-\[
- R^1 = R, R^{n+1} = R^n \circ R
-\]
-\end{tcolorbox}
-Dæmi: Látum $R = \{(1, 1), (2, 1), (3, 2), (4, 3)\}$. Finnum veldin af $R$.
-
-\begin{align*}
-R^2 = R \circ R &= \{(1, 1), (2, 1), (3,1), (4,2)\}\\ \pause
-R^3 = R^2 \circ R &= \{(1, 1), (2, 1), (3,1), (4,1)\}\\ \pause
-R^n = R^4 &= \{(1, 1), (2, 1), (3,1), (4,1)\}
-\end{align*}
-\end{frame}
-
-
 \begin{frame}{Næst}
 
-Kafli 9.2 (Hagnýting vensla), Kafli 10.1 (Net), vonandi Kafli 9.3 (Framsetning vensla).
+Kafli 9.2 (Hagnýting vensla), kafli 9.3 (Framsetning vensla).
+
+E.t.v. gagnlegur kafli til dýpkunar á kafla 9.3: Kafli 10.1 (Net)
 
 \end{frame}
 
