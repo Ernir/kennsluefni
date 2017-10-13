@@ -1,6 +1,6 @@
-\documentclass[handout]{beamer}
+\documentclass{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 8, fyrri fyrirlestur}
@@ -14,70 +14,75 @@
 \section{Inngangur}
 
 \begin{frame}{Í síðasta þætti\ldots}
-\begin{itemize}
- \item Meira um strengi
-\end{itemize}
+Meira um strengi
 \end{frame}
 
 \section{Miðmisserispróf}
 
 \begin{frame}{Miðmisserispróf}
 \pause
-\begin{itemize}
- \item 60 nemendur af 72 ($\approx$83\%) tóku prófið 
- \begin{itemize}
-  \item 79\% árið 2015
-  \item 69\% árið 2014 
- \end{itemize} \pause
- \item Meðaleinkunn var $\approx$6.61 \pause
- \begin{itemize}
-  \item 7.19 árið 2015
-  \item 5.51 árið 2014
- \end{itemize}
-\end{itemize}
+    \begin{itemize}
+        \item 63 nemendur af 81 ($\approx$77\%) tóku prófið 
+        \begin{itemize}
+            \item 83\% árið 2016
+            \item 79\% árið 2015
+            \item 69\% árið 2014 
+        \end{itemize} \pause
+        \item Meðaleinkunn var $\approx$4.67 \pause
+        \begin{itemize}
+            \item 6.61 árið 2016
+            \item 7.19 árið 2015
+            \item 5.51 árið 2014
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Einkunnadreifingin}
 \begin{center}
-\includegraphics[width=0.8\textwidth]{midmisserisprof2016}
+\includegraphics[width=0.8\textwidth]{midmisserisprof2017}
 \end{center}
 \end{frame}
-
 
 \section{Miðmisseriskönnun}
 
 \begin{frame}{Miðmisseriskönnun}
 \begin{center}
-\includegraphics[width=\textwidth]{Dreifing2016}
+\includegraphics[width=\textwidth]{Dreifing2017}
 \end{center}
-Meðaleinkunn námskeiðsins var 8.31 (Meðaleinkunn IVT 7.83). 42/72 ($\approx$58\%) tóku þátt.
+Meðaleinkunn námskeiðsins var 7.64 (Meðaleinkunn IVT 7.8). 33/81 ($\approx$41\%) tóku þátt.
 \end{frame}
 
 \begin{frame}{Almenn ánægja}
-\begin{itemize}
- \item Fleiri jákvæðar en neikvæðar athugasemdir bárust um
- \begin{itemize}[<+->]
-  \item Skipulag
-  \item Fyrirlestraræfingar
-  \item Alla kennarana
- \end{itemize}
-\end{itemize}
+    \begin{itemize}
+        \item Fleiri jákvæðar en neikvæðar athugasemdir bárust um
+        \begin{itemize}[<+->]
+            \item Skipulag
+            \item Alla kennarana
+            \item Skilaverkefni
+            \item Glærur
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Almenn óánægja}
-\begin{itemize}
- \item Stofan
- \begin{itemize}
-  \item Óþægileg
-  \item Rafmagnslaus \pause
- \end{itemize}
- \item Socrative
- \begin{itemize}
-  \item Kerfið virðist vera svarthol \pause
- \end{itemize}
- \item Vantar stoðtíma \pause 
- \item Vantar fleiri dæmi
-\end{itemize}
+\begin{frame}{Endurteknar athugasemdir}
+    \begin{itemize}
+        \item Örfáar athugasemdir bárust oftar en einu sinni
+        \begin{itemize}
+            \item Nemendur týndir í skilaverkefnum
+            \item Vantar fleiri/hnitmiðaðri sýnidæmi í fyrirlestrum
+            \item Fyrirlestrar/dæmatímar gagnslausir fyrir lengra komna
+            \item Gert ráð fyrir forritunarþekkingu í upphafi
+            \item Vantar stoðtíma
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Aðgerðir}
+    \begin{itemize}
+        \item Stoðtíminn á föstudögum verður fastur liður
+        \item Leitast við að eyða meiri tíma með Matlab á skjánum í fyrirlestrum
+        \item \emph{Fleiri uppástungur þegnar!}
+    \end{itemize}
 \end{frame}
 
 \section{Gagnagrindur}
@@ -113,6 +118,14 @@ Meðaleinkunn námskeiðsins var 8.31 (Meðaleinkunn IVT 7.83). 42/72 ($\approx$
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Bendar}
+    \begin{itemize}
+        \item Bendir (e. \emph{pointers}) er breyta eða minnishólf sem inniheldur upplýsingar um staðsetningu annars minnishólfs
+        \item Eru á bak við tjöldin í Matlab, mjög sýnilegir í forritunarmálinu C og ættingjum þess
+        \item Hægt að nota benda til að halda utan um gögn í sundurlægum minnissvæðum
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Dæmi um gagnagrind}
 Eintengdur listi
 \begin{center}
@@ -144,7 +157,7 @@ Hakkatafla
   \item Nýlegasta dæmið: Mislangir strengir
  \end{itemize}
  \item Til að geyma safn af gögnum sem ekki eru öll ``eins'' í Matlab má nota nýja gagnagerð, svokallað hólfafylki (e. \emph{cell array})
- \item Hólfafylki komast fram hjá hefðbundnum minnissvæðatakmörkunum með því að geyma benda (e. \emph{pointers}) á önnur minnissvæði
+ \item Hólfafylki komast fram hjá hefðbundnum minnissvæðatakmörkunum með því að geyma benda á önnur minnissvæði
 \end{itemize}
 \end{frame}
 
@@ -194,7 +207,7 @@ cm1 =
 
 \begin{frame}[fragile]{Vísun í hólfavigra}
 \begin{center}
-Getum vísað á tvo vegu í stök hólfavigra
+Getum vísað í stök hólfavigra á tvo vegu
 \end{center}
 
 \begin{columns}
@@ -213,14 +226,6 @@ ans =
     [1x5 double]
 \end{minted}
 \end{columns}
-\end{frame}
-
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrri tvær spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \begin{frame}{Framsetning á hólfafylkjum}
@@ -288,12 +293,16 @@ students =
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{frame}[fragile]{Fyrirlestraræfing}
+    \begin{enumerate}
+        \item Skoðum aftur hólfavigurinn\\ \texttt{ca = \{23, 'a', 1:2:9, 'hello'\} }\\
+        . Hvaða gildi hefur \texttt{ca\{4\}(2:3)}?
+        \item Skoðum hólfafylkið\\
+    \texttt{ cf=\{'fylkin', 'eru'; [2 3; 8 7], [1:3; 2:4]\} }\\
+    . Hvernig má ná í alla aðra línuna í fylkinu sem er í fyrra hólfinu í annarri línu \texttt{cf}?
+        \item Af hverju er svona mikið vandamál að geyma gildi af mismunandi gerðum í sama vigrinum?
+        \item Er hægt að setja hólfavigur inn í hólfavigur?
+    \end{enumerate}
 \end{frame}
 
 \end{document}
