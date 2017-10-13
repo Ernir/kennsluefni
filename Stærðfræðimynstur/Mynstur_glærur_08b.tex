@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{Haust2017glærur}
 
@@ -21,37 +21,219 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Leiðrétting}
+\begin{frame}{Breytingar á skilatilhögun}
+    \begin{itemize}
+        \item Í kjölfar miðmisseriskönnunar verða tvær breytingar á skilaverkefnum gerðar sem snúa að nemendum:
+        \begin{enumerate}
+            \item Nemendur mega skila 2 og 2 saman
+            \item Hætt verður að nota regrade requests - vensl dæmatímakennara og dæma hverrar viku verða birt, leiðréttingarbeiðnir fara fram í gegnum tölvupóst
+        \end{enumerate}
+        \item Þessar breytingar taka gildi frá og með 8. skilaverkefni
+    \end{itemize}
+\end{frame}
 
-\begin{tcolorbox}[title={\color{red}Gegnvirk} vensl]
-Vensl $R$ á mengi $A$ eru {\color{red}gegnvirk} (e. \emph{transitive}) ef, hvenær sem $(a, b) \in R$ og $(b, c) \in R$, þá sé $(a, c) \in R$, fyrir öll $a, b, c \in A$. Þ.e.a.s. vensl $R$ á mengi $A$ eru {\color{red}gegnvirk} þegar $\forall a\forall b\forall c(((a, b) \in R \land (b, c) \in R) \to (a, c) \in R)$
+\section{Framsetning vensla með fylkjum}
+
+\begin{frame}{Vensl og fylki}
+\begin{itemize}
+ \item Líkt og við settum áður fram tvíundarvensl með töflu, þá getum við sett tvíundarvensl með því að nota fylki
+ \item Látum venslin $R$ vera tvíundarvensl á mengin $A = \{a_1, a_2, \ldots, a_m \}$ og $B = \{b_1, b_2, \ldots, b_n\}$
+ \item Þá getum við skilgreint tvíundarfylki þar sem stökin eru:
+\end{itemize}
+\[
+ m_{ij} = \left\{
+\begin{matrix}
+1 \text{ ef } (a_i, b_j) \in R\\
+0 \text{ ef } (a_i, b_j) \notin R\\
+\end{matrix}\right.
+\]
+\end{frame}
+
+\begin{frame}{Dæmi}
+    Skoðum fylki sem táknar vensl frá $A= \{a_1, a_2, a_3\}$ til $B=\{b_1, b_2, b_3, b_4, b_4\}$.
+    
+    \[
+        \begin{bmatrix}
+            0&1&0&0&0\\
+            1&0&1&1&0\\
+            1&0&1&0&1\\
+        \end{bmatrix}
+    \]
+
+    Hvaða vensl er um að ræða? \pause Það eru
+    \[
+        R = \{(a_1 , b_2 ), (a_2 , b_1 ), (a_2 , b_3 ), (a_2 , b_4 ), (a_3 , b_1 ), (a_3 , b_3 ), (a_3 , b_5 )\}        
+    \]
+\end{frame}
+
+\begin{frame}{Dæmi}
+Látum $A= \{1, 2, 3\}$ og $B = \{1, 2\}$ og $R$ vera vensl frá $A$ til $B$ þar sem $a > b$, $a \in A$ og $b \in B$. Hvert er fylkið sem táknar $R$?\\
+\pause
+Fáum að $R= \{(2, 1), (3, 1), (3, 2)\}$. Setjum ása á viðeigandi staði í $M$, fáum 
+\[
+ M_R =
+\begin{bmatrix}
+0 & 0\\
+1 & 0\\
+1 & 1\\
+\end{bmatrix}
+\]
+\end{frame}
+
+\begin{frame}{Athuganir um fylkjaframsetningu}
+\begin{columns}
+\column{0.6\textwidth}
+\begin{itemize}
+ \item Vensl á mengi (eitt mengi) eru með fylkjaframsetningu sem er ferningsfylki
+ \item Vensl $R$ á mengi $A$ eru sjálfhverf (e. \emph{reflexive}) ef $(a, a) \in R$ þegar $a \in A$.
+ \item Þá eru vensl sjálfhverf þá og því aðeins að öll stök á aðalhornalínu fylkjaframsetningar þess séu 1
+\end{itemize}
+\column{0.4\textwidth}
+\[
+\begin{bmatrix}
+1&&&&\\
+&1&&&\\
+&&\ddots&&\\
+&&&1&\\
+&&&&1\\
+\end{bmatrix}
+\]  
+\end{columns}
+\end{frame}
+
+\begin{frame}{Athuganir um fylkjaframsetningu}
+\begin{columns}
+\column{0.7\textwidth}
+\begin{itemize}
+ \item $R$ eru samhverf vensl á $A$ ef $(a,b) \in R \to (b, a) \in R$ fyrir öll $a, b \in A$
+ \begin{itemize}
+  \item Þá er $m_{ij} = m_{ji}$ í fylkjaframsetningunni
+ \end{itemize}
+ \item $R$ eru andsamhverf vensl á mengi $A$ ef $(a, b) \in R \land (b, a) \in R \to (a = b)$ fyrir öll $a, b \in A$
+ \begin{itemize}
+  \item Þá er a.m.k. annað af $m_{ij}$ og $m_{ji}$ núll þegar $i\neq j$ 
+ \end{itemize}
+
+\end{itemize}
+\column{0.3\textwidth}
+\includegraphics[width=\linewidth]{symmetric-antisymmetric-matrix}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Dæmi}
+    \begin{columns}
+        \column{0.3\textwidth}
+        \[
+        \begin{bmatrix}
+        1&1&0\\
+        1&1&1\\
+        0&1&1\\
+        \end{bmatrix}
+        \]
+        \column{0.7\textwidth}
+        \begin{itemize}
+            \item Eru venslin sem fylkið hér til hliðar táknar sjálfhverf, samhverf og/eða andsamhverf? \pause
+            \begin{itemize}
+                \item Öll hornalínustök fylkisins eru 1, svo venslin eru sjálfhverf
+                \item Fylkið er samhverft um hornalínuna, svo venslin eru samhverf (og ekki andsamhverf)
+            \end{itemize}
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\section{Netaframsetning á venslum}
+
+\begin{frame}{Stefnt net}
+Skilgreinum í snarhasti hugmynd um \emph{stefnt net}.
+\begin{tcolorbox}[title=Stefnt net]
+Stefnt net (e. \emph{directed graph}) samanstendur af mengi $V$ af hnútum (e. \emph{vertices} eða \emph{nodes}) og mengi $E$ af röðuðum pörum af hnútum í $V$ sem nefnast stefndir leggir eða örvaleggir (e. \emph{directed edges}). Í leggnum $(a, b)$ er fyrri hnúturinn upphafshnútur (e. \emph{initial vertex}) og seinni hnúturinn lokahnútur (e. \emph{terminal vertex}).
 \end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Stefnt net}
+Stefnd net eru oftast sett fram á þann hátt að punktar eða hringir tákni hnúta og örvar tákni stefndu leggina.
+
+\begin{center}
+\includegraphics[width=0.6\textwidth]{directed-graph}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Netaframsetning á venslum}
+\begin{itemize}
+ \item Við getum sett vensl $R$ á mengið $A$ fram með því að tákna stök $A$ sem hnúta og hvert raðað par $(a, b)$ í $R$ sem örvalegg
+ \item Stefndi leggurinn $(a, a)$ er táknaður með lykkju (e. \emph{loop}) á hnútnum $a$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dæmi}
 \begin{columns}
 \column{0.5\textwidth}
-Gegnvirk vensl:
-\begin{align*}
-R_1 &= \{(a, b)|a \leq b\}\\
-R_2 &= \{(a, b)|a > b\}\\
-R_3 &= \{(a, b)|a = b \text{ eða } a = -b\}\\
-R_4 &= \{(a, b)|a = b\}\\
-\end{align*}
+Hvernig getum við sett fram venslin
+\[
+ R = \{(1, 3), (1, 4), (2, 1), (2, 2), (2, 3),
+\]
+\[
+ (3, 1), (3, 3), (4, 1), (4, 3)\}
+\]
+á mengið $\{1, 2, 3, 4\}$ með stefndu neti? \pause
 \column{0.5\textwidth}
-Ekki gegnvirk vensl:
-\begin{align*}
-R_5 &= \{(a, b)|a = b+1\}\\
-R_6 &= \{(a, b)|a+b \leq 3\}\\
-\end{align*}
+\includegraphics[width=\linewidth]{relational-graph}
 \end{columns}
+\end{frame}
+
+\begin{frame}{Athuganir um netaframsetningu}
+    \begin{itemize}
+        \item Vensl eru sjálfhverf þá og því aðeins að netaframsetning þeirra hafi lykkju á hverjum hnút
+        \item Vensl eru samhverf þá og því aðeins að fyrir hvern örvalegg $(a,b)$ sé líka til örvaleggur $(b, a)$
+        \begin{itemize}
+        \item Milli sömu hnúta, en í gagnstæðar áttir
+        \end{itemize}
+        \item Vensl eru andsamhverf þá og því aðeins að á milli hverra tveggja hnúta sé aldrei leggur í báðar áttir
+        \item Vensl eru gegnvirk þá og því aðeins að hvenær sem örvaleggir $(a,b)$ og $(b,c)$ sé til sé líka til örvaleggur $(a,c)$
+        \begin{itemize}
+            \item Leggirnir mynda þá ``þríhyrning''
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Dæmi}
+    \begin{columns}
+        \column{0.4\textwidth}
+        \includegraphics[width=\linewidth]{relation-transitive}
+        \column{0.6\textwidth}
+        Hvaða eiginleika hafa venslin hér til hliðar? \pause
+        \begin{itemize}
+            \item Sjálfhverf, höfum lykkju á öllum hnútum
+            \item Ekki samhverf, t.d. því $(c,a)$ er í venslunum en ekki $(a,c)$
+            \item Ekki andsamhverf, því bæði $(b,c)$ og $(c,b)$ eru í venslunum 
+            \item Ekki gegnvirk, því $(a,b)$ og $(b,c)$ eru í venslunum en $(a,c)$ ekki
+        \end{itemize}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Dæmi}
+    \begin{columns}
+        \column{0.4\textwidth}
+        \includegraphics[width=\linewidth]{relation-symmetric}
+        \column{0.6\textwidth}
+        Hvaða eiginleika hafa venslin hér til hliðar? \pause
+        \begin{itemize}
+            \item Ekki sjálfhverf, höfum ekki lykkju á öllum hnútum
+            \item Samhverf, fyrir alla leggi höfum við tilsvarandi legg í ``hina áttina''. Sömuleiðis ekki andsamhverf.
+            \item Ekki gegnvirk, því $(c,a)$ og $(a,b)$ eru í venslunum en $(c,b)$ ekki
+        \end{itemize}
+    \end{columns}
 \end{frame}
 
 \section{N-undarvensl og gagnagrunnar}
 
 \begin{frame}{$n$-undarvensl}
-\begin{itemize}
- \item Í síðasta tíma skoðuðum við tvíundarvensl (vensl á tvö mengi) og vensl á mengi (eitt mengi)
- \item Oft koma upp vensl á milli tveggja eða fleiri mengja
- \item Köllum vensl á milli $n$ mengja $n$-undarvensl (e. \emph{n-ary relations})
-\end{itemize}
+    \begin{itemize}
+        \item Í síðasta tíma skoðuðum við tvíundarvensl (vensl á tvö mengi) og vensl á mengi (eitt mengi)
+        \item Oft koma upp vensl á milli tveggja eða fleiri mengja
+        \item Köllum vensl á milli $n$ mengja $n$-undarvensl (e. \emph{n-ary relations})
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Skilgreining}
@@ -96,25 +278,19 @@ Við getum séð fyrir okkur að þessi vensl séu hluti af gagnagrunni (e. \emp
 \end{columns}
 \end{frame}
 
-\begin{frame}{Hugtök úr gagnasafnsfræði}
-\begin{itemize}
- \item ``Superkey'' - samsetning á eigindum sem auðkenna hverja $n$-und venslanna einkvæmt
- \begin{itemize}
-  \item Þ.e.a.s. einhver dálkur eða dálkar sem duga sem auðkenni fyrir hverja línu
- \end{itemize}
- \item Superkey af lágmarksstærð er ``Candidate Key''
- \begin{itemize}
-  \item ``Primary Key'' er sá lykill sem valinn hefur verið sá mest viðeigandi af öllum Candidate Keys
-  \begin{itemize}
-   \item Viljum ekki að Primary Key sé háður gögnunum, oft er sérstakur dálkur búinn til
-  \end{itemize}
- \end{itemize}
- \item ``Intension of a relation'' - fastir eiginleikar vensla
- \item ``Extension of a relation'' - þær $n$-undir sem birtast í venslunum á einhverjum tímapunkti
-\end{itemize}
-\end{frame}
-
 \section{Venslaaðgerðir}
+
+\begin{frame}{Venslaaðgerðir}
+    \begin{itemize}
+        \item Til að vinna með gögn sem geymd eru í vensluðum gagnagrunnum þurfum við aðgerðir á $n$-undarvensl
+        \item Skoðum þrjú dæmi:
+        \begin{itemize}
+            \item Val
+            \item Dálkval
+            \item Tenging
+        \end{itemize}
+    \end{itemize}
+\end{frame}
 
 \begin{frame}{Val}
 Við getum skilgreint aðgerðir fyrir $n$-undarvensl. Slíkar aðgerðir gætu unnið með gögn í gagnagrunnum.
@@ -187,10 +363,24 @@ Notum $J_2$ á eftirfarandi vensl:
 \end{center}
 \end{frame}
 
-\begin{frame}[fragile]{SQL}
+\begin{frame}{SQL}
+    \begin{itemize}
+        \item Fjölmörg forritunarmál eru til, með mjög mismunandi eiginleika
+        \item Fyrirspurnarmál sem byggjast á SQL-staðlinum eru hins vegar allsráðandi í vinnu með venslaða gagnagrunna
+        \item Virkjarnir birtast á eftirfarandi hátt í SQL:
+        \begin{itemize}
+            \item Valvirkinn: \texttt{WHERE} klausa
+            \item Dálkval: Upptalning á dálkum
+            \item Tenging: \texttt{JOIN} klausa
+        \end{itemize}
+        \item Athugum þó: Þó að SQL byggist á venslaalgebru er samsvörunin ekki fullkomin, t.d. eru endurtekningar leyfilegar í niðurstöðum SQL-fyrirspurna
+    \end{itemize}    
+\end{frame}
+
+\begin{frame}[fragile]{Dæmi}
 \begin{columns}
 \column{0.4\textwidth}
-Fyrirspurnarmálið SQL er hægt að nota til að eiga samskipti við gagnagrunna.
+SQL-skipun sem velur brottfarartíma allra fluga á leið til Detroit 
 \vspace{0.5cm}
 \begin{minted}{sql}
 SELECT Departure_time
@@ -207,140 +397,15 @@ WHERE Destination='Detroit';
 \end{frame}
 
 \begin{frame}{Dæmi}
-Lítum á join í SQL: \url{http://sqlfiddle.com/\#!9/14848/1}
+    \begin{itemize}
+        \item Val og dálkval á flugtöfluna): \\ \url{http://sqlfiddle.com/\#!5/002a5/1}
+        \item Val, dálkval og tenging á kennslutöflurnar: \\ \url{http://sqlfiddle.com/\#!9/14848/1}
+        \item Flugtaflan án vals og dálkvals: \\ \url{http://sqlfiddle.com/\#!5/002a5/2}
+    \end{itemize}
 \end{frame}
-
-\section{Framsetning vensla með fylkjum}
-
-\begin{frame}{Vensl og fylki}
-\begin{itemize}
- \item Líkt og við settum áður fram tvíundarvensl með töflu, þá getum við sett tvíundarvensl með því að nota fylki
- \item Látum venslin $R$ vera tvíundarvensl á mengin $A = \{a_1, a_2, \ldots, a_m \}$ og $B = \{b_1, b_2, \ldots, b_n\}$
- \item Þá getum við skilgreint tvíundarfylki þar sem stökin eru:
-\end{itemize}
-\[
- m_{ij} = \left\{
-\begin{matrix}
-1 \text{ ef } (a_i, b_j) \in R\\
-0 \text{ ef } (a_i, b_j) \notin R\\
-\end{matrix}\right.
-\]
-\end{frame}
-
-\begin{frame}{Dæmi}
-Látum $A= \{1, 2, 3\}$ og $B = \{1, 2\}$ og $R$ vera vensl frá $A$ til $B$ þar sem $a > b$, $a \in A$ og $b \in B$. Hvert er fylkið sem táknar $R$?\\
-\pause
-Fáum að $R= \{(2, 1), (3, 1), (3, 2)\}$. Setjum ása á viðeigandi staði í $M$, fáum 
-\[
- M_R =
-\begin{bmatrix}
-0 & 0\\
-1 & 0\\
-1 & 1\\
-\end{bmatrix}
-\]
-\end{frame}
-
-\begin{frame}{Athuganir um fylkjaframsetningu}
-\begin{columns}
-\column{0.6\textwidth}
-\begin{itemize}
- \item Vensl á mengi (eitt mengi) eru með fylkjaframsetningu sem er ferningsfylki
- \item Vensl $R$ á mengi $A$ eru sjálfhverf (e. \emph{reflexive}) ef $(a, a) \in R$ þegar $a \in A$.
- \item Þá eru vensl sjálfhverf þá og því aðeins að öll stök á aðalhornalínu fylkjaframsetningar þess séu 1
-\end{itemize}
-\column{0.4\textwidth}
-\[
-\begin{bmatrix}
-1&&&&\\
-&1&&&\\
-&&\ddots&&\\
-&&&1&\\
-&&&&1\\
-\end{bmatrix}
-\]
-\end{columns}
-\end{frame}
-
-\begin{frame}{Athuganir um fylkjaframsetningu}
-\begin{columns}
-\column{0.7\textwidth}
-\begin{itemize}
- \item $R$ eru samhverf vensl á $A$ ef $(a,b) \in R \to (b, a) \in R$ fyrir öll $a, b \in A$
- \begin{itemize}
-  \item Þá er $m_{ij} = m_{ji}$ í fylkjaframsetningunni
- \end{itemize}
- \item $R$ eru andsamhverf vensl á mengi $A$ ef $(a, b) \in R \land (b, a) \in R \to (a = b)$ fyrir öll $a, b \in A$
- \begin{itemize}
-  \item Þá er a.m.k. annað af $m_{ij}$ og $m_{ji}$ núll þegar $i\neq j$ 
- \end{itemize}
-
-\end{itemize}
-\column{0.3\textwidth}
-\includegraphics[width=\linewidth]{symmetric-antisymmetric-matrix}
-\end{columns}
-\end{frame}
-
-\section{Net}
-
-\begin{frame}{Stefnt net}
-Skilgreinum í snarhasti hugmynd um \emph{stefnt net}.
-\begin{tcolorbox}[title=Stefnt net]
-Stefnt net (e. \emph{directed graph}) samanstendur af mengi $V$ af hnútum (e. \emph{vertices} eða \emph{nodes}) og mengi $E$ af röðuðum pörum af hnútum í $V$ sem nefnast stefndir leggir (e. \emph{directed edges}). Í leggnum $(a, b)$ er fyrri hnúturinn upphafshnútur (e. \emph{initial vertex}) og seinni hnúturinn lokahnútur (e. \emph{terminal vertex}).
-\end{tcolorbox}
-\end{frame}
-
-\begin{frame}{Stefnt net}
-Stefnd net eru oftast sett fram á þann hátt að punktar eða hringir tákni hnúta og örvar tákni stefndu leggina.
-
-\begin{center}
-\includegraphics[width=0.6\textwidth]{directed-graph}
-\end{center}
-
-\end{frame}
-
-\section{Netaframsetning á venslum}
-
-\begin{frame}{Netaframsetning á venslum}
-\begin{itemize}
- \item Við getum sett vensl $R$ á mengið $A$ fram með því að tákna stök $A$ sem hnúta og hvert raðað par $(a, b)$ í $R$ sem stefndan legg
- \item Stefndi leggurinn $(a, a)$ er táknaður með lykkju (e. \emph{loop}) á hnútnum $a$
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Dæmi}
-\begin{columns}
-\column{0.5\textwidth}
-Venslin
-\[
- R = \{(1, 3), (1, 4), (2, 1), (2, 2), (2, 3),
-\]
-\[
- (3, 1), (3, 3), (4, 1), (4, 3)\}
-\]
-
-á mengið $\{1, 2, 3, 4\}$ má tákna með stefnda netinu hér til hægri.
-\column{0.5\textwidth}
-\includegraphics[width=\linewidth]{relational-graph}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Athuganir um netaframsetningu}
-\begin{itemize}
- \item Vensl eru sjálfhverf þá og því aðeins að netaframsetning þeirra hafi lykkju á hverjum hnút
- \item Vensl eru samhverf þá og því aðeins að fyrir hvern stefndan legg $(a,b)$ sé líka til stefndur leggur $(b, a)$
- \begin{itemize}
-  \item Milli sömu hnúta, en í gagnstæðar áttir
- \end{itemize}
- \item Vensl eru andsamhverf þá og því aðeins að á milli hverra tveggja hnúta sé aldrei leggur í báðar áttir
-\end{itemize}
-
-\end{frame}
-
-
 
 \begin{frame}{Næst}
-10. kafli, eins langt og við komumst.
+5.3 (endurkvæmar skilgreiningar), 5.4 (endurkvæm reiknirit), e.t.v. byrjað á kafla 8
 \end{frame}
 
 
