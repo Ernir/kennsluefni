@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 9, fyrri fyrirlestur}
@@ -24,7 +24,7 @@ Kafli: 8.2
 
 \subsection{Upprifjun}
 
-\begin{frame}{Upprifjun Einfalt I/O}
+\begin{frame}{Upprifjun: Einföld skráarnotkun}
 \begin{itemize}
  \item Þegar unnið er með mikið gagnamagn er gott að geyma gögn í skrám
  \item Skipunin \texttt{save skráarnafn fylki -ascii} vistar gögnin í $fylki$ í skrá
@@ -39,7 +39,7 @@ Kafli: 8.2
  \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Dæmi um skráarinntak og skráarúttak}
+\begin{frame}[fragile]{Dæmi um einfalda skráarnotkun}
 \begin{minted}[frame=lines]{matlab}
 >> a = randi(5,2,2) % 2x2 slembifylki búið til
 a =
@@ -121,7 +121,7 @@ Getum lesið skrár á tvo vegu:
 
 \begin{frame}[fragile]{Notkun á fgetl}
 \vspace{\baselineskip}
-Notum lykkju til að lesa. Fallið \texttt{feof} (\textbf{f}ile \textbf{e}nd \textbf{o}f \textbf{f}ile) segir til um hvort við erum komin út á enda skráarinnar.
+Notum lykkju til að lesa. Fallið \texttt{feof} (\textbf{f}ile \textbf{e}nd \textbf{o}f \textbf{f}ile) segir til um hvort við erum komin út á enda skráarinnar. Algeng uppbygging:
 \begin{minted}[frame=lines]{matlab}
 fid = fopen('skráarheiti');
 if fid ~= -1
@@ -156,7 +156,7 @@ end
 \begin{frame}[fragile]{Skrá sem við munum vinna með}
 Áður en hafist er handa við að lesa inn skrá þurfum við að ákveða skrá til að vinna með.
 
-Skráin \texttt{subjexp.dat}, í bók (bls. 299 í 3. útgáfu, 323 í 4. útgáfu), er eftirfarandi:
+Skráin \texttt{subjexp.dat}, á bls. 323 í bók, er eftirfarandi:
 \begin{minted}[frame=lines]{matlab}
 5.3	a
 2.2	b
@@ -169,7 +169,7 @@ Skráin \texttt{subjexp.dat}, í bók (bls. 299 í 3. útgáfu, 323 í 4. útgá
 
 
 \begin{frame}[fragile]{Dæmi}
-Forritið byggt á forriti í bók (bls. 300 í 3. útgáfu, 323 í 4. útgáfu)
+Forrit byggt á forriti á bls. 323 í bók
 \begin{minted}[frame=lines]{matlab}
 fid = fopen('subjexp.dat');
 if fid ~= -1
@@ -183,14 +183,6 @@ else
 end
 fclose(fid);
 \end{minted}
-\end{frame}
-
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og fyrstu tvær spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \begin{frame}[fragile]{\texttt{textscan}}
@@ -241,59 +233,16 @@ mat =
 
 \end{frame}
 
-
-\subsection{Að skrifa í skrár}
-
-\begin{frame}[fragile]{\texttt{fprintf} í skrá}
-\begin{itemize}
- \item Aðalskipunin til að skrifa í skrár er \texttt{fprintf}
- \begin{itemize}
-  \item Þetta er sama \texttt{fprintf} fall og við könnumst við
-  \item Til að skrifa í skrána þarf að láta fallið fá skráarauðkenni sem fyrsta viðfang
- \end{itemize}
- \item Notkunin verður þá á borð við \verb|fprintf(fid, 'snið', breyta1, breyta2...)|
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{\texttt{fprintf} í skrá}
-Dæmi:
-\begin{minted}[frame=lines]{matlab}
-fid = fopen('tilraun.txt', 'w');
-for i = 1:5
-    fprintf(fid, '%d: %d\n', i, randi(50));
-end
-fclose(fid);
-\end{minted}
-Ath. að hér er skráin \emph{yfirskrifuð} í hvert skipti. Til að skrifa aftast í skrá þarf að gefa \texttt{fopen} aðrar heimildir.
-\end{frame}
-
-\begin{frame}{Skráarheimildir}
-\begin{center}
-\begin{tabular}{ll}
-\toprule
-Regla&Lýsing\\
-\midrule
-\texttt{'r'}&Opnar skrá til lesturs\\
-\texttt{'w'}&Opnar eða býr til skrá til skriftar, yfirskrifar\\
-\texttt{'a'}&Opnar eða býr til skrá til skriftar, skrifar aftast\\
-\texttt{'r+'}&Opnar skrá til skriftar eða lesturs\\
-\texttt{'w+'}&Opnar eða býr til skrá til skriftar eða lesturs, yfirskrifar\\
-\texttt{'a+'}&Opnar eða býr til skrá til skriftar eða lesturs, skrifar aftast\\
-\bottomrule
-\end{tabular}
-
-\end{center}
-
-\end{frame}
-
 \begin{frame}[fragile]{Fyrirlestraræfing}
 \begin{columns}
 \column{0.7\textwidth}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{enumerate}
+    \item Skrifið skrá sem inniheldur hitastigsupplýsingarnar á töflunni hér til hliðar og lesið hana inn með Matlab
+    \begin{itemize}
+        \item Góð æfing: Prófið að nota bæði \texttt{textscan} og ítrun ásamt \texttt{fgetl} til að lesa inn skrána
+    \end{itemize}
+    \item Skrifið forrit sem les inn tölur úr skránni \texttt{subjexp.dat} og reiknar út summu þeirra talna í fyrri dálkinum þar sem stafurinn í seinni dálkinum er \texttt{'a'}.
+\end{enumerate}
 \column{0.3\textwidth}
 \begin{center}
 \begin{tabular}{ll}
