@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 9, seinni fyrirlestur}
@@ -14,10 +14,57 @@
 \section{Inngangur}
 
 \begin{frame}{Í síðasta þætti\ldots}
+    \begin{itemize}
+    \item Innlestur skráa
+    \begin{itemize}
+        \item Línu fyrir línu
+        \item Sem heild með \texttt{textscan}
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection{Að skrifa í skrár}
+
+\begin{frame}[fragile]{\texttt{fprintf} í skrá}
 \begin{itemize}
- \item Innlestur skráa
+ \item Aðalskipunin til að skrifa í skrár er \texttt{fprintf}
+ \begin{itemize}
+  \item Þetta er sama \texttt{fprintf} fall og við könnumst við
+  \item Til að skrifa í skrána þarf að láta fallið fá skráarauðkenni sem fyrsta viðfang
+ \end{itemize}
+ \item Notkunin verður þá á borð við \verb|fprintf(fid, 'snið', breyta1, breyta2...)|
 \end{itemize}
-Kafli: 9.3
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{fprintf} í skrá}
+Dæmi:
+\begin{minted}[frame=lines]{matlab}
+fid = fopen('tilraun.txt', 'w');
+for i = 1:5
+    fprintf(fid, '%d: %d\n', i, randi(50));
+end
+fclose(fid);
+\end{minted}
+Ath. að hér er skráin \emph{yfirskrifuð} í hvert skipti. Til að skrifa aftast í skrá þarf að gefa \texttt{fopen} aðrar heimildir.
+\end{frame}
+
+\begin{frame}{Skráarheimildir}
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Regla&Lýsing\\
+\midrule
+\texttt{'r'}&Opnar skrá til lesturs\\
+\texttt{'w'}&Opnar eða býr til skrá til skriftar, yfirskrifar\\
+\texttt{'a'}&Opnar eða býr til skrá til skriftar, skrifar aftast\\
+\texttt{'r+'}&Opnar skrá til skriftar eða lesturs\\
+\texttt{'w+'}&Opnar eða býr til skrá til skriftar eða lesturs, yfirskrifar\\
+\texttt{'a+'}&Opnar eða býr til skrá til skriftar eða lesturs, skrifar aftast\\
+\bottomrule
+\end{tabular}
+
+\end{center}
+
 \end{frame}
 
 \section{Excel-skrár}
@@ -78,22 +125,41 @@ Kafli: 9.3
 \end{itemize}
 \end{frame}
 
-\section{Sýnidæmi um skráarvinnslu}
+\begin{frame}[fragile]{Fyrirlestraræfing}
+    \begin{columns}
+    \column{0.7\textwidth}
+    \begin{enumerate}
+         \item Skrifið hitastigstöfluna til hægri í skrá, þannig að hver lína í skránni innihaldi lýsingu á borð við
 
-\begin{frame}{Sýnidæmi}
-Getum við skrifað forrit sem les gögn og teiknar þau?
+         \texttt{Klukkan 0 var hitinn 12.5C}
+         \item Skrifið hitastigstöfluna í Microsoft Excel skrá.
+    \end{enumerate}
+    \column{0.3\textwidth}
+    \begin{center}
+    \begin{tabular}{ll}
+    \toprule
+    Klst&$C^\circ$\\
+    \midrule
+    0&12.5\\
+    3&12.4\\
+    6&12.3\\
+    9&12.8\\
+    12&13.4\\
+    15&14.0\\
+    18&13.1\\
+    21&12.8\\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Sýnidæmi}
-Getum við notað Matlab til að skrifa fyrir okkur heimasíðu?
-\end{frame}
-
-\begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{frame}{Viðbótardæmi}
+    \begin{itemize}
+        \item Dæmi 9.9
+        \item Dæmi 9.12
+        \item Dæmi 9.13
+    \end{itemize}
 \end{frame}
 
 \end{document}
