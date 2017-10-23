@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 10, fyrri fyrirlestur}
@@ -14,11 +14,11 @@
 \section{Inngangur}
 
 \begin{frame}{Í síðasta þætti\ldots}
-\begin{itemize}
- \item Excel-skrár
- \item \texttt{.mat} skrár
- \item Sýnidæmi um skráarvinnslu
-\end{itemize}
+    \begin{itemize}
+        \item Að skrifa í skrár
+        \item Excel-skrár
+        \item \texttt{.mat} skrár
+    \end{itemize}
 \end{frame}
 
 \section{Nafnlaus föll (10.1)}
@@ -138,14 +138,13 @@ Fallið sem handfangið vísar til verður að taka við einu gildi og skila ein
 \end{frame}
 
 \begin{frame}{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-\[
- \text{formúla: } V = \frac{4}{3} \pi r^3
-\]
+    \begin{enumerate}
+     \item Skilgreinið nafnlaust fall til að reikna rúmmál kúlu
+     \[
+      \text{formúla: } V = \frac{4}{3} \pi r^3
+     \]
+     \item Notið \texttt{fplot} til að teikna $f(x) = x\cos(5x)$ á bilinu 0 til 10
+    \end{enumerate}
 \end{frame}
 
 \section{Breytilegur fjöldi viðfanga (10.3)}
@@ -263,11 +262,31 @@ end % nestedvolume function
 \end{frame}
 
 \begin{frame}[fragile]{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+    \begin{columns}
+    \column{0.55\textwidth}
+    \begin{enumerate}
+     \setcounter{enumi}{2}
+     \item Sýnið haus á falli sem getur fengið núll eða fleiri inntaksbreytur
+     \item Hvernig má skrifa fall sem getur tekið 0, 1 eða 2 inntaksbreytur, en skilar villu ef þær eru fleiri?
+     \item Hvert er gildi skilabreytanna \texttt{a} og \texttt{b} í fallinu hér til hliðar?
+    \end{enumerate}
+    \column{0.45\textwidth}
+    \begin{minted}[frame=lines, fontsize=\small]{matlab}
+    function [a, b] = nestTest()
+    a = nested1();
+    b = nested2();
+    
+        function x = nested1()
+            x = 1;
+        end
+    
+        function x = nested2()
+            x = 2;
+        end
+    end
+    \end{minted}
+    
+    \end{columns}
 \end{frame}
 
 
