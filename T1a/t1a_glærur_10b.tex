@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 10, seinni fyrirlestur}
@@ -19,78 +19,7 @@
  \item Fallshandföng
  \item Breytilegur fjöldi viðfanga
 \end{itemize}
-Kaflar: 10.1 - 10.3 
-\end{frame}
-
-\section{Hreiðruð föll (10.4)}
-
-\begin{frame}{Hreiðruð föll}
-\begin{itemize}
- \item Matlab leyfir hreiðruð föll (e. \emph{nested functions})
- \begin{itemize}
-  \item Þá er skilgreining eins falls algjörlega innan í öðru falli
-  \item Notað til að skipuleggja forrit
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Dæmi um hreiðrað fall}
-\begin{minted}[frame=lines, label=nestedvolume.m]{matlab}
-function outvol = nestedvolume(len, wid, ht)
-% nestedvolume receives the length, width, and
-% height of a cube and returns the volume; it calls
-% a nested function that returns the area of the base
-% Format: nestedvolume(length,width,height)
-outvol = base * ht;
-  function outbase = base
-  % returns the area of the base
-  outbase = len * wid;
-  end % base function
-end % nestedvolume function
-\end{minted}
-
-\end{frame}
-
-
-\begin{frame}{Gildissvið breyta}
-\vspace{\baselineskip}
-\begin{itemize}
- \item Gildissvið breytu (e. \emph{scope of a variable}) er gildissvið ysta falls sem notar hana
- \begin{itemize}
-  \item Innra fall hefur aðgang að breytum ytra falls
-  \item Ytra fall hefur aðgang að breytum innra falls
-  \item Ef ytra fall notar breytu innra falls ekki, þá er hún staðvær (e. \emph{local}) í innra falli
- \end{itemize}
- \item Breytur í ytri föllum virka því sem víðværar (e. \emph{global}) breytur í innri föllum - ekki þarf að senda þær inn í föllin sem inntaksbreytur
- \item Bókin eyðir ekki miklu púðri í þessar pælingar - \href{http://se.mathworks.com/help/matlab/matlab_prog/nested-functions.html?refresh=true}{skjölunin á Matlab-síðunni} er með meira fyrir fróðleiksfúsa
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Fyrirlestraræfing}
-\begin{columns}
-\column{0.55\textwidth}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu spurninguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-\column{0.45\textwidth}
-\begin{minted}[frame=lines, fontsize=\small]{matlab}
-function [a, b] = nestTest()
-a = nested1();
-b = nested2();
-
-    function x = nested1()
-        x = 1;
-    end
-
-    function x = nested2()
-        x = 2;
-    end
-end
-\end{minted}
-
-\end{columns}
+Kaflar: 10.1 - 10.4 
 \end{frame}
 
 \section{Endurkvæmni (10.5)}
@@ -130,9 +59,9 @@ Sierpinski-þríhyrningurinn:
 
 \begin{frame}[fragile]{Endurkvæmni í Matlab}
 Föll í Matlab geta verið endurkvæm (bls. 335):
-\begin{minted}[frame=lines]{matlab}
+\begin{minted}[frame=lines, label=fact.m]{matlab}
 function facn = fact(n)
-if n == 1
+if n == 0
   facn = 1; % Grunntilfelli
 else
   facn = n * fact(n-1); % Almennt tilfelli
@@ -144,7 +73,7 @@ end
 
 \begin{frame}[fragile]{Dæmi: Endurkvæm útprentun}
 Fall sem prentar út orð í setningu í öfugri röð (úr bók):
-\begin{minted}[frame=lines]{matlab}
+\begin{minted}[frame=lines, label=prtwords.m]{matlab}
 function prtwords(sent)
 
   [word, rest] = strtok(sent);
@@ -156,10 +85,34 @@ end
 \end{minted}
 \end{frame}
 
+\begin{frame}[fragile]{Dæmi: Endurkvæmt hjálparfall}
+\vspace{\baselineskip}
+\begin{minted}[frame=lines, fontsize=\scriptsize, label=recursivemax.m]{matlab}
+function maximum = recursivemax(inputVector)
+maximum = maxhelper(inputVector, -inf);
+
+function partialmaximum = maxhelper(partialV, currentMax)
+	if isempty(partialV)
+	partialmaximum = currentMax;
+	else
+		if partialV(1) > currentMax
+		partialmaximum = maxhelper(partialV(2:end), partialV(1));
+		else
+		partialmaximum = maxhelper(partialV(2:end), currentMax);
+		end
+	end
+end
+end
+\end{minted}
+\end{frame}
+
 \begin{frame}{Tengd hugtök}
 \begin{itemize}
  \item Endurkvæmni (í forritun) byggir á svipuðum hugmyndum og þrepun í stærðfræði
- \item Endurkvæmni er afar skyld lykkjum
+ \begin{itemize}
+   \item Helsti munurinn - í endurkvæmni brjótum við vandamálið niður, í þrepun byggjum við okkur upp
+ \end{itemize}
+ \item Reikningar sem framkvæmdir eru af endurkvæmni eru mjög svipaðir þeim sem lykkjur framkvæma
  \begin{itemize}
   \item Lykkjur eru leið til að keyra sama kóðann oft, með smá breytingum í hverri ítrun
   \item Endurkvæmni er leið til að keyra sama kóðann oft, með smá breytingum í hverju fallskalli
@@ -185,12 +138,10 @@ end
 \begin{frame}[fragile]{Fyrirlestraræfing}
 \begin{columns}
 \column{0.4\textwidth}
-
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{enumerate}
+    \item Breytið fallinu \texttt{prtwords} (á fyrri glæru) svo það prenti setningu út í réttri röð, ekki öfugri (ráðlegging: Færið \texttt{disp}ið)
+    \item Hverju skilar fallskallið \texttt{f(v, 5)}, þar sem \texttt{v} er vigur af tölum?
+\end{enumerate}
 
 \column{0.6\textwidth}
 \begin{minted}[frame=lines, fontsize=\small]{matlab}
@@ -199,12 +150,20 @@ function r = f(v, x)
     r = false;
   else
     r = (v(1)==x) || f(v(2:end),x);
- end
+  end
 end
 \end{minted}
 
 \end{columns}
 \end{frame}
 
+\begin{frame}{Viðbótardæmi}
+    \begin{itemize}
+        \item Dæmi 10.14 (Hreiðruð föll)
+		\item Dæmi 10.15 (Nafnlaust fall)
+		\item Dæmi 10.20 (Fallshandfang)
+		\item Dæmi 10.25 (Endurkvæmni)
+    \end{itemize}
+\end{frame}
 
 \end{document}
