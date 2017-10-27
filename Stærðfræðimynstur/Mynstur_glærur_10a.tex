@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
 \usepackage{Haust2017glærur}
 
@@ -151,6 +151,7 @@ Netaframsetning (hluta?) internetsins, af wikimedia
 \begin{frame}{Samgöngur og innviðir}
 \begin{itemize}
  \item Getum táknað færslur alls kyns hluta og fyrirbrigða með netum
+ \item Talað um ``transportation network''
  \begin{itemize}
   \item Vegakerfi eða flugsamgöngur
   \begin{itemize}
@@ -188,7 +189,7 @@ Netaframsetning (hluta?) internetsins, af wikimedia
 \end{itemize}
 \end{frame}
 
-\section{Hugtök sem tengjast netum}
+\section{Grundvallarskilgreiningar neta}
 
 \begin{frame}{Hugtök}
 \begin{itemize}
@@ -215,8 +216,68 @@ Látum $G = (V, E)$ vera óstefnt net með $m$ leggjum. Þá er
 Handabandssetningin (e. \emph{the handshake theorem}) á við um fjölnet og net með lykkjum.
 \end{frame}
 
+\begin{frame}{Hnútar af oddatölustigi}
+    Getum leitt af handabandssetningunni eftirfarandi fylgisetningu:
+    \begin{tcolorbox}
+    Fjöldi hnúta af oddatölustigi í óstefndu neti er slétt tala.
+    \end{tcolorbox}
+\end{frame}
+    
+\begin{frame}{Stefnd net og stig}
+    \begin{itemize}
+        \item Í stefndu neti getum við skilgreint: innstig (e. \emph{in-degree}) og útstig (e. \emph{out-degree}) hnúta
+        \begin{itemize}
+            \item Innstig hnúts $v$ er táknað með $\deg^-(v)$ og er fjöldi örvaleggja sem hefur $v$ sem lokahnút
+            \item Útstig hnúts $v$ er táknað með $\deg^+(v)$ og er fjöldi örvaleggja sem hefur $v$ sem upphafshnút
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+    
+\begin{frame}{Dæmi}
+    \begin{columns}
+    \column{0.6\textwidth}
+    Hver eru innstig og útstig hnútanna í netinu hér að neðan?
+    
+    \vspace{0.5cm}
+    \includegraphics[width=\linewidth]{indegree-outdegree}
+    \pause
+    \column{0.4\textwidth}
+    \begin{tabular}{ccc}
+    \toprule
+    Hnútur&Innstig&Útstig\\
+    \midrule
+    $a$&2&4\\
+    $b$&2&1\\
+    $c$&3&2\\
+    $d$&2&2\\
+    $e$&3&3\\
+    $f$&0&0\\
+    \bottomrule
+    \end{tabular}
+    \end{columns}
+\end{frame}
+    
+\begin{frame}{Innstig og útstig}
+    Hver stefndur leggur/örvaleggur er með upphafshnút og lokahnút, svo við getum sett fram staðhæfingu:
+    
+    \begin{tcolorbox}
+    Látum $G = (V,E)$ vera stefnt net. Þá er
+    \[
+    \sum_{v\in V} \deg^-(v) = \sum_{v\in V} \deg^+(v) = |E|
+    \]
+    \end{tcolorbox}
+\end{frame}
+
 \begin{frame}{Næst}
-(Fleiri) hugtök í netafræði (10.2) og framsetning á netum (10.3)
+    \begin{itemize}
+        \item Kosningareiknirit (utan bókar)
+        \begin{itemize}
+            \item Regla D'Hondt
+            \item STV
+            \item Schulze 
+        \end{itemize}
+        \item (Fleiri) hugtök í netafræði (10.2) og framsetning á netum (10.3)
+    \end{itemize}
 \end{frame}
 
 

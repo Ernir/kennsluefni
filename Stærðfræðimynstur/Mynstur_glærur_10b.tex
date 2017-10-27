@@ -1,6 +1,6 @@
 \documentclass{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
 \subtitle{Vika 10, seinni fyrirlestur}
@@ -10,7 +10,6 @@
 \begin{frame}
 \titlepage
 \end{frame}
-
 
 \section{Inngangur}
 
@@ -22,75 +21,348 @@
 \end{itemize}
 \end{frame}
 
-\section{Eiginleikar neta}
+\section{Kosningareiknirit}
 
-\begin{frame}{Handabandssetningin}
-Upprifjun:
-\begin{tcolorbox}[title=Handabandssetningin]
-Látum $G = (V, E)$ vera óstefnt net með $m$ leggjum. Þá er
-\[
- 2m = \sum_{v \in V} \deg(v)
-\]
-\end{tcolorbox}
-Handabandssetningin (e. \emph{the handshake theorem}) á við um fjölnet og net með lykkjum.
+\subsection{Regla D'Hondt}
+
+\begin{frame}{Úthlutun fulltrúasæta}
+    \begin{itemize}
+        \item Ísland er fulltrúalýðræði með flokkakerfi, skipt í kjördæmi
+        \item Hvert kjördæmi hefur ákveðinn fjölda kjördæmissæta
+        \item Þurfum reiknirit sem getur breytt atkvæðafjölda yfir í þingsætafjölda
+        \item Regla D'Hondt er notuð á Íslandi
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Hnútar af oddatölustigi}
-\begin{tcolorbox}
-Fjöldi hnúta af oddatölustigi í óstefndu neti er slétt tala.
-\end{tcolorbox}
-
-Stutt sönnun: Látum $G = (V,E)$ vera óstefnt net. Látum $V_s$ vera mengi hnúta $G$ sem eru af stigi með slétta tölu og $V_o$ vera mengi hnúta $G$ sem eru af oddatölustigi. Nú er
-\[
- 2m = \sum_{v \in V} \deg(v) = \sum_{v \in V_s} \deg(v) + \sum_{v \in V_o} \deg(v).
-\]
-Þar sem $2m$ er slétt tala og $\sum_{v \in V_s} \deg(v)$ er slétt tala hlýtur $\sum_{v \in V_o} \deg(v)$ að vera slétt tala. Summa af oddatölum er einungis slétt þegar fjöldi oddatalnanna er sléttur, svo fjöldi oddatöluhnúta er sléttur.
+\begin{frame}{Atkvæðatölur og þingsæti}
+    \includegraphics[width=\textwidth]{kosningar2016}
 \end{frame}
 
-\begin{frame}{Stefnd net og stig}
-\begin{itemize}
- \item Í stefndu neti getum við skilgreint: innstig (e. \emph{in-degree}) og útstig (e. \emph{out-degree}) hnúta
- \begin{itemize}
-  \item Innstig hnúts $v$ er táknað með $\deg^-(v)$ og er fjöldi örvaleggja sem hefur $v$ sem lokahnút
-  \item Útstig hnúts $v$ er táknað með $\deg^+(v)$ og er fjöldi örvaleggja sem hefur $v$ sem upphafshnút
- \end{itemize}
-\end{itemize}
+\begin{frame}{Kröfur reikniritsins}
+    \begin{itemize}
+        \item Getum lýst inntaki og útttaki reiknirits sem úthluta á þingsætunum
+        \begin{itemize}
+            \item Inntak:
+            \begin{itemize}
+                \item Fjöldi þingsæta í kjördæmi $k$
+                \item Runa atkvæðafjölda fyrir $n$ flokka, $v_1,v_2,\ldots,v_n$
+            \end{itemize}
+            \item Úttak:
+            \begin{itemize}
+                \item Runa þingsætafjölda fyrir $n$ flokka, $s_1, s_2, \ldots, s_n$
+            \end{itemize}
+        \end{itemize}
+        \item Ætlumst til þess að þingsætafjöldinn sé ``sanngjarn''
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Dæmi}
-\begin{columns}
-\column{0.6\textwidth}
-Hver eru innstig og útstig hnútanna í netinu hér að neðan?
-
-\vspace{0.5cm}
-\includegraphics[width=\linewidth]{indegree-outdegree}
-\pause
-\column{0.4\textwidth}
-\begin{tabular}{ccc}
-\toprule
-Hnútur&Innstig&Útstig\\
-\midrule
-$a$&2&4\\
-$b$&2&1\\
-$c$&3&2\\
-$d$&2&2\\
-$e$&3&3\\
-$f$&0&0\\
-\bottomrule
-\end{tabular}
-\end{columns}
+\begin{frame}[fragile]{Möguleg útfærsla}
+\begin{verbatim}
+reiknirit dhondt(heiltala k, n staka heiltalnaruna v):
+  // k er þingsætafjöldinn, v inniheldur atkvæðafjölda
+  t = tómt n x k fylki heiltalna
+  fyrir hvern flokk i:
+    fyrir j frá 1 til k:
+      t_ij = v_i/(j)
+  s := tóm n staka runa heiltalna
+  meðan summa staka s er < k:
+    m = línunúmer stærsta staks í t
+    s_m = s_m + 1
+    yfirskrifa stærsta stakið í t með -óendanlegu
+  skila s // s táknar þingsætaúthlutunina
+\end{verbatim}
 \end{frame}
 
-\begin{frame}{Innstig og útstig}
-Hver stefndur leggur/örvaleggur er með upphafshnút og lokahnút, svo við getum sett fram staðhæfingu:
+\begin{frame}{D'Hondt tafla}
+    Möguleg atkvæðadreifing í $\approx 1000$ kjósenda kjördæmi með 9 sæti.
+    \begin{center}
+        \begin{tabular}{cllllllllll}
+            \toprule
+            Flokkur&1&2&3&4&5&6&7&8&9&Sæti\\
+            \midrule
+            D&244& 122& 81& 61& 48& 40& 34& 30& 27&\\
+            V&201& 100& 67& 50& 40& 33& 28& 25& 22&\\
+            P&190&  95& 63& 47& 38& 31& 27& 23& 21&\\
+            C&116&  58& 38& 29& 23& 19& 16& 14& 12&\\
+            A& 76&  38& 25& 19& 15& 12& 10&  9&  8&\\
+            B& 57&  28& 19& 14& 11&  9&  8&  7&  6&\\
+            S& 52&  26& 17& 13& 10&  8&  7&  6&  5&\\
+            F& 38&  19& 12&  9&  7&  6&  5&  4&  4&\\            
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{frame}
 
-\begin{tcolorbox}
-Látum $G = (V,E)$ vera stefnt net. Þá er
-\[
-\sum_{v\in V} \deg^-(v) = \sum_{v\in V} \deg^+(v) = |E|
-\]
-\end{tcolorbox}
+\begin{frame}{D'Hondt tafla}
+    Veljum 9 hæstu tölurnar til að fá þingsætadreifingu.
+    \begin{center}
+        \begin{tabular}{clllllllllc}
+            \toprule
+            Flokkur&1&2&3&4&5&6&7&8&9&Sæti\\
+            \midrule
+            D&\textbf{$244^1$}& \textbf{$122^4$}& \textbf{$81^8$}& 61& 48& 40& 34& 30& 27&3\\
+            V&\textbf{$201^2$}& \textbf{$100^6$}& 67& 50& 40& 33& 28& 25& 22&2\\
+            P&\textbf{$190^3$}& \textbf{$95^7$}& 63& 47& 38& 31& 27& 23& 21&2\\
+            C&\textbf{$116^5$}&  58& 38& 29& 23& 19& 16& 14& 12&1\\
+            A&\textbf{$76^9$}&  38& 25& 19& 15& 12& 10&  9&  8&1\\
+            B& 57&  28& 19& 14& 11&  9&  8&  7&  6&0\\
+            S& 52&  26& 17& 13& 10&  8&  7&  6&  5&0\\
+            F& 38&  19& 12&  9&  7&  6&  5&  4&  4&0\\
+                        
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{frame}
 
+\begin{frame}{Jöfnunarþingsæti}
+    \begin{itemize}
+        \item Auk kjördæmasæta eru jöfnunarþingsæti á Íslandi
+        \begin{itemize}
+            \item Tvö í Reykjavíkurkjördæmum og Suðvestur, eitt í Norðurkjördæmum og Suðurkjördæmi, samtals 9
+        \end{itemize}
+        \item Eingöngu flokkar sem fá 5\% atkvæða geta fengið jöfnunarþingsæti
+        \begin{itemize}
+            \item ``5\% múrinn'' á ekki við um kjördæmasæti
+        \end{itemize}
+        \item Útdeiling jöfnunarsætanna fer fram í þremur skrefum
+        \begin{enumerate}
+            \item Samsetning landstölulista
+            \item Finna fólkið sem var næst því að komast inn í hverju kjördæmi, sett á úthlutunarskrá
+            \item Útdeiling sæta
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Samsetning landstölulista}
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{itemize}
+            \item Notum aftur endurtekna deilingu til að setja saman landslista
+            \item Fyrir hvern flokk, reikna landstölur
+            \begin{itemize}
+                \item Landstölur eru kvótarnir $\frac{v}{s+1}, \frac{v}{s+2},\ldots$ þar sem $v$ er fjöldi atkvæða sem flokkurinn fékk á landsvísu og $s$ er heildarfjöldi kjördæmakjörinna
+            \end{itemize}
+            \item Landstölulistar flokkanna eru sameinaðar í einn landstölulista
+        \end{itemize}
+        \column{0.4\textwidth}
+        Landstölur 2016, efstu 9 sætin:
+        \begin{enumerate}            
+            \item S: 5446
+            \item A: 4526
+            \item C: 3974
+            \item S: 3631
+            \item A: 3394
+            \item C: 3311
+            \item V: 3016
+            \item C: 2838
+            \item P: 2744
+        \end{enumerate}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Úthlutunarskrá}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Í hverju kjördæmi eru næstu tveir kandídatar fundnir
+            \item Reiknuð atkvæðahlutföll fyrir hvern frambjóðanda sem ekki komst inn
+            \item Þau sem hafa hæstu hlutföll eru sett efst á sameinaða úthlutunarskrá
+        \end{itemize}
+        \column{0.5\textwidth}
+        Dæmi: Úthlutunarskrá Samfylkingarinnar 2016
+        \begin{enumerate}
+            \tiny
+            \item Oddný G. Harðardóttir (Suður): 6,38\%
+            \item Guðjón S. Brjánsson (Norðvestur): 6,29\%
+            \item Össur Skarphéðinsson (Reykjavík suður): 5,58\%
+            \item Sigríður Ingibjörg Ingadóttir (Reykjavík norður): 5,21\%
+            \item Árni Páll Árnason (Suðvestur): 4,75\%
+            \item Erla Björg Guðmundsdóttir (Norðaustur): 4,0\%
+            \item Ólafur Þór Ólafsson (Suður): 3,19\%
+            \item Inga B. Bjarnadóttir (Norðvestur): 3,14\%
+            \item Eva H. Baldursdóttir (Reykjavík suður): 2,79\%
+            \item Hildur Þórisdóttir (Norðaustur): 2,67\%
+            \item Helgi Hjörvar (Reykjavík norður): 2,6\%
+            \item Margrét Gauja Magnúsdóttir (Suðvestur): 2,38\%        
+        \end{enumerate}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Útdeiling}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Við útdeilingu jöfnunarsæta er farið niður landstölulistann
+            \item Fyrir hverja landstölu, efsti frambjóðandi á hlutfallslista viðkomandi flokks fundinn sem
+            \begin{enumerate}
+                \item Hefur ekki fengið jöfnunarsæti nú þegar
+                \item Er ekki í kjördæmi þar sem jöfnunarsætin eru búin
+            \end{enumerate}
+        \end{itemize}
+        \column{0.5\textwidth}
+        Jöfnunarþingsæti 2016
+        \begin{enumerate}
+            \tiny
+            \item Oddný G. Harðardóttir (S, Suður)
+            \item Nichole Leigh Mosty (A, Reykjavík suður)
+            \item Benedikt Jóhannesson (C, Norðaustur)
+            \item Guðjón S. Brjánsson (S, Norðvestur)
+            \item Theodóra S. Þorsteinsdóttir (A, Suðvestur)
+            \item Jón Steindór Valdimarsson (C, Suðvestur)
+            \item Andrés Ingi Jónsson (V, Reykjavík norður)
+            \item Pawel Bartoszek (C, Reykjavík suður)
+            \item Halldóra Mogensen (P, Reykjavík norður)       
+        \end{enumerate}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Nokkrar athuganir}
+    \begin{itemize}
+        \item Kerfið byggir á einföldum atkvæðaseðlum
+        \begin{itemize}
+            \item Einn kjósandi hefur eitt atkvæði
+        \end{itemize}
+        \item Kjördæmaskiptingin hefur mikil áhrif á niðurröðun
+        \item Frambjóðandi getur náð kjördæmissæti þrátt fyrir að flokkurinn sé undir 5\% á landsvísu
+        \item Kerfið tryggir ekki háa atkvæðanýtingu
+        \item Jöfnunarþingsætakerfið er óreiðukennt (e. \emph{chaotic}) - litlar breytingar á atkvæðatölum geta haft miklar afleiðingar á uppröðun jöfnunarþingsæta
+    \end{itemize}
+\end{frame}
+
+\subsection{Önnur kosningakerfi}
+
+\begin{frame}{Önnur kosningakerfi}
+    \begin{itemize}
+        \item Hægt er að mynda kosningakerfi á marga vegu
+        \item Dæmi um tilbrigði við hlutfallskosningaraðferð eins og D'Hondt - nota aðra kvóta
+        \begin{itemize}
+            \item Aðferð Websters: Kvótarnir $\frac{v}{2s+1}$ notaðir í stað $\frac{v}{s+1}$ í D'Hondt, kemur sér betur fyrir litla flokka
+        \end{itemize}
+        \item Getum líka myndað alveg ný kosningakerfi
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Webster tafla}
+    Veljum 9 hæstu tölurnar til að fá þingsætadreifingu.
+    \begin{center}
+        \begin{tabular}{clllllllllc}
+            \toprule
+            Flokkur&1&/3&/5&/7&/9&/13&/15&/17&/19&Sæti\\
+            \midrule
+            D&$244^1$&    $81^5$&    48&    34&    27&    18&    16&    14&    12&2\\
+            V&$201^2$&    $67^7$&    40&    28&    22&    15&    13&    11&    10&2\\
+            P&$190^3$&    $63^8$&    38&    27&    21&    14&    12&    11&    10&2\\
+            C&$116^4$&    38&    23&    16&    12&     8&     7&     6&     6&1\\
+            A&$76^6$&    25&    15&    10&     8&     5&     5&     4&     4&1\\
+            B&$57^9$&    19&    11&     8&     6&     4&     3&     3&     3&1\\
+            S& 52&    17&    10&     7&     5&     4&     3&     3&     2&0\\
+            F& 38&    12&     7&     5&     4&     2&     2&     2&     2&0\\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{STV}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Raðaðir atkvæðaseðlar fela í sér ýmsa möguleika
+            \item Einn slíkur möguleiki - Single Transferable Vote (STV) kerfi
+            \item Kjósendur forgangsraða frambjóðendum á kjörseðlinum
+            \item Hver kjósandi hefur eitt atkvæði sem getur flust yfir til annars frambjóðandi nái sá fyrsti ekki sæti
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{stv}
+            \\
+            \href{https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Preferential\_ballot.svg/593px-Preferential\_ballot.svg.png}{Kjörseðill með forgangsröðun}
+        \end{center}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Talning í STV}
+    STV kerfi þarfnast lágmarksþröskulds til að ná kjöri, venjulega
+    \[
+        v_n = \left \lfloor \frac{v_t}{s+1} \right \rfloor+1
+    \]
+    þar sem $v_n$ er nauðsynlegur atkvæðafjöldi, $v_t$ er heildarfjöldi atkvæða sem fellur til og $s$ er sætisfjöldinn.
+
+    \vspace{0.5cm}
+    Athugum: Í einkstaklingskosningum er þetta jafngilt því að þurfa $50\%+1$ atkvæði
+\end{frame}
+
+\begin{frame}{Framkvæmd STV}
+    \begin{itemize}
+        \item STV kosning fer fram í nokkrum umferðum, þar sem hver umferð skiptist í skref:
+        \begin{enumerate}
+            \item Frambjóðandi sem nær þröskuldinum er talinn kjörinn
+            \item Fái frambjóðandi fleiri atkvæði en nauðsynlegt er flytjast umframatkvæði yfir til næsta vals 
+            \begin{itemize}
+                \item Þetta má t.d. gera hlutfallslega eða á slembinn hátt
+            \end{itemize}
+            \item Hafi þessi umferð ekki bætt við neinum sem náðu kjöri er sá frambjóðandi sem hefur fæst atkvæði felldur út og atkvæði til viðkomandi færð yfir á næsta val
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Nokkrar athuganir}
+    \begin{itemize}
+        \item STV getur aukið atkvæðanýtingu miðað við einfaldar hlutfallskosningar
+        \item Atkvæðaseðlarnir verða flóknari
+        \item Reikniritið er flóknara - minna gegnsæi
+        \item Aðferðin er ekki ``monotonic''
+        \begin{itemize}
+            \item Það að gefa frambjóðanda lægri einkunn getur kostað viðkomandi kosningu
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Villa í STV}
+    Þrír frambjóðendur (vinstri, hægri, miðja) etja kappi um eitt sæti. 100 kjósendur mæta á kjörstað og velja sína tvo uppáhalds.
+    \vspace{0.5cm}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{center}
+            \begin{tabular}{llc}
+                \toprule
+                Fyrsta val&Annað val&Fjöldi\\
+                \midrule
+                Hægri 	&Miðja& 	28\\
+                Hægri 	&Vinstri &	5\\
+                Vinstri 	&Miðja& 	30\\
+                Vinstri 	&Hægri &	5\\
+                Miðja 	&Vinstri &	16\\
+                Miðja 	&Hægri &	16\\
+                \bottomrule
+            \end{tabular}
+        \end{center}
+        \column{0.5\textwidth}
+        Í einfaldri hlutfallskosningu vinnur vinstri með 35 atkvæðum. Í STV vinnur vinstri með 30+5+16=51 atkvæði gegn hægri.
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Villa í STV}
+    Svipuð kosning, en tveir kjósendur hægri sem áður völdu vinstri sem 2. val hafa víxlað röð atkvæða og vilja þar með frekar vinstri.
+    \vspace{0.5cm}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{center}
+            \begin{tabular}{llc}
+                \toprule
+                Fyrsta val&Annað val&Fjöldi\\
+                \midrule
+                Hægri 	&Miðja& 	28\\
+                \textbf{Hægri} 	&\textbf{Vinstri} &	\textbf{3}\\
+                Vinstri 	&Miðja& 	30\\
+                \textbf{Vinstri} 	&\textbf{Hægri} &	\textbf{7}\\
+                Miðja 	&Vinstri &	16\\
+                Miðja 	&Hægri &	16\\
+                \bottomrule
+            \end{tabular}
+        \end{center}
+        \column{0.5\textwidth}
+        Nú fara vinstri (37 atkvæði) og miðja (32 atkvæði) í 2. umferð. En nú sigrar miðja með 16+16+28 = 60 atkvæðum gegn 30+7+3 atkvæðum.
+    \end{columns}
 \end{frame}
 
 \section{Sérstök net}
@@ -104,8 +376,8 @@ Látum $G = (V,E)$ vera stefnt net. Þá er
   \item Núllnet (e. \emph{null graph})
   \item Fullskipuð net (e. \emph{complete graph})
   \item Hringa (e. \emph{cycles})
-  \item Hjól (e. \emph{wheels}
-  \item $n$-tengingar (e. \emph{$n$-cubes})
+  \item Hjól (e. \emph{wheels})
+  \item $n$-teningar (e. \emph{$n$-cubes})
  \end{itemize}
 \end{itemize}
 \end{frame}
@@ -238,16 +510,6 @@ Spyrðing (e. \emph{matching}) í einföldu neti $G = (V, E)$ er hlutmengi $E$ s
 \includegraphics[width=\textwidth]{matching-maximum}
 \end{frame}
 
-\begin{frame}{Setning Hall's}
-Getum sett fram setningu um tilvist fullkominnar spyrðingar milli hluta tvíhlutanets.
-
-\begin{tcolorbox}[title=Setning Halls]
-Tvíhlutanetið $G = (V, E)$ með tvíhlutaskiptinguna $\{V_1, V_2\}$ hefur fullkomna spyrðingu frá $V_1$ til $V_2$ ef og aðeins ef $|N(A)| \geq |A|$ fyrir öll hlutmengi $A$ í $V_1$.
-\end{tcolorbox}
-
-Þessi setning er stundum kölluð ``Giftingarsetning'' Halls.
-\end{frame}
-
 \section{Framsetning á netum}
 
 \begin{frame}{Framsetning á netum}
@@ -264,6 +526,8 @@ Tvíhlutanetið $G = (V, E)$ með tvíhlutaskiptinguna $\{V_1, V_2\}$ hefur full
 
 \begin{frame}{Grennslalistar}
 \includegraphics[width=\textwidth]{adjacency-lists}
+
+Þessi aðferð er lítið notuð í bókinni, en er mjög venjuleg í forritun.
 \end{frame}
 
 \begin{frame}{Grennslafylki}
@@ -284,20 +548,6 @@ Dæmi:
 \includegraphics[width=0.6\textwidth]{incidence-matrix}
 \end{center}
 Lykkja myndar dálk með einum ás. Í fjölneti eru endurteknir dálkar.
-\end{frame}
-
-
-\begin{frame}{Að skrifa net í forritunarmáli}
-\begin{itemize}
- \item Til að framkvæma útreikninga með gögnum sem tengjast netum þarf að koma netinu inn í tölvuna
- \item Mismunandi leiðir viðeigandi eftir forritunarmálum
- \begin{itemize}
-  \item Java: Klasi? (Líklega grennslalistar)
-  \item Matlab: Fylki? 
-  \item Python: Dictionaries? (Líklega grennslalistar)
-  \item C++: Structure? (Líklega grennslalistar)
- \end{itemize}
-\end{itemize}
 \end{frame}
 
 \begin{frame}{Næst}
