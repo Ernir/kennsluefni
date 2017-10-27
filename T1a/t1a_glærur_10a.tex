@@ -162,7 +162,7 @@ Fallið sem handfangið vísar til verður að taka við einu gildi og skila ein
 
 \begin{frame}[fragile]{Dæmi um \texttt{nargin} og \texttt{varargin}}
 \begin{minted}[frame=lines, fontsize=\small]{matlab}
-function varDisp(firstArg, varargin)
+function vardisp(firstArg, varargin)
 fprintf('Fjöldi viðfanga er %d\n', nargin)
 fprintf('Fasta viðfangið er %d\n', firstArg)
 
@@ -272,18 +272,18 @@ end % nestedvolume function
     \end{enumerate}
     \column{0.45\textwidth}
     \begin{minted}[frame=lines, fontsize=\small]{matlab}
-    function [a, b] = nestTest()
-    a = nested1();
-    b = nested2();
-    
-        function x = nested1()
-            x = 1;
-        end
-    
-        function x = nested2()
-            x = 2;
-        end
+function [a, b] = nestTest()
+a = nested1();
+b = nested2();
+
+    function x = nested1()
+        x = 1;
     end
+
+    function x = nested2()
+        x = 2;
+    end
+end
     \end{minted}
     
     \end{columns}
