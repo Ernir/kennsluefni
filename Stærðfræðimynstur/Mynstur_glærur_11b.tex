@@ -16,75 +16,10 @@
 
 \begin{frame}{Í síðasta tíma}
 \begin{itemize}
- \item Um misserislok
  \item Vegir 
  \item Samanhangandi net
+ \item Euler-vegir
 \end{itemize}
-\end{frame}
-
-\section{Euler-vegir}
-
-\begin{frame}{Elsta netavandamálið}
-Í borginni Königsberg voru eitt sinn 7 brýr.
-\begin{center}
-\includegraphics[width=0.8\textwidth]{konigsberg}
-\end{center}
-Er hægt að fara í göngutúr sem endar á sama stað og hann byrjar og liggur yfir hverja brú nákvæmlega einu sinni?
-\end{frame}
-
-\begin{frame}{Netaframsetning}
-\begin{columns}
-\column{0.6\textwidth}
-Stærðfræðingurinn Leonhard Euler leysti vandamálið með netaframsetningu.
-
-Við getum skilgreint Euler-rás:
-
-\begin{tcolorbox}[title=Euler-rás]
-Euler-rás (e. \emph{Euler circuit}) í óstefndu neti $G$ er einföld rás sem inniheldur alla leggi í $G$.
-\end{tcolorbox}
-Er til Euler-rás í Königsberg-netinu?
-\column{0.4\textwidth}
-\includegraphics[width=\textwidth]{konigsberg-graph}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Euler-rásir}
-Við getum fundið skilyrði sem er nauðsynlegt og nægjanlegt fyrir tilvist Euler-rásar í óstefndu neti.
-
-\begin{tcolorbox}
-Samanhangandi óstefnt net með a.m.k. tveimur hnútum hefur Euler-rás ef og aðeins ef stig allra hnúta í netinu er slétt tala.
-\end{tcolorbox}
-
-Königsberg-göngutúrinn okkar er þá ekki mögulegur.
-\end{frame}
-
-\begin{frame}{Að finna Euler-rásir}
-\begin{center}
-\includegraphics[width=0.8\textwidth]{finding-euler}
-\end{center}
-\end{frame}
-
-\begin{frame}{Dæmi}
-Við getum fundið Euler-rás í þessu neti.
-\begin{center}
-\includegraphics[width=0.6\textwidth]{mohammed-scimitars}
-\end{center}
-\pause
-Möguleg lausn:
-\[
-a, b, d, g, h, j, i, h, k, g, f, d, c, b, e, i, f, e, a
-\]
-
-\end{frame}
-
-\begin{frame}{Euler-vegir}
-\begin{tcolorbox}[title=Euler-vegur]
-Euler-vegur (e. \emph{Euler path}) í óstefndu neti $G$ er einfaldur vegur sem inniheldur alla leggi í $G$.
-\end{tcolorbox}
-
-\begin{tcolorbox}
-Samanhangandi óstefnt net hefur Euler-veg ef og aðeins ef stig nákvæmlega tveggja hnúta í netinu er oddatala.
-\end{tcolorbox}
 \end{frame}
 
 \section{Hamilton-vegir}

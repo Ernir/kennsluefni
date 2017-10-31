@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
 \subtitle{Vika 11, fyrri fyrirlestur}
@@ -16,52 +16,10 @@
 
 \begin{frame}{Í síðasta tíma}
 \begin{itemize}
- \item Eiginleikar neta
+ \item Kosningareiknirit
  \item Nokkrar gerðir sérstakra neta
  \item Spyrðingar
  \item Framsetning á netum
-\end{itemize}
-\end{frame}
-
-\subsection{Um misserislok}
-
-\begin{frame}{Námsáætlun}
-\begin{itemize}
- \item Tímar sem við eigum eftir:
- \begin{itemize}
-  \item Þri 1. nóvember (net/stoðtími)
-  \item Fös 4. nóvember (net)
-  \item Þri 8. nóvember (net/stoðtími)
-  \item Fös 11. nóvember (tré)
-  \item Þri 15. nóvember (tré/stoðtími)
-  \item Fös 18. nóvember (mál og stöðuvélar)
-  \item Þri 22. nóvember (mál og stöðuvélar)
-  \item Fös 25. nóvember (dæmayfirferð og stoðtími)
- \end{itemize}
- \item 12. kafla er sleppt
-\end{itemize}
-
-\end{frame}
-
-
-\begin{frame}{Síðustu skiladæmi}
-\begin{itemize}
- \item Útlit er fyrir að við náum 12 skilaverkefnum
- \begin{itemize}
-  \item Skilaverkefni 9: Skil 3. nóvember
-  \item Skilaverkefni 10: Skil 10. nóvember 
-  \item Skilaverkefni 11: Skil 17. nóvember
-  \item Skilaverkefni 12: Skil 24. nóvember
- \end{itemize}
- \item Af þessum 12 verkefnum mun einkunn 10 bestu skilaverkefna gilda 20\% til lokaeinkunnar
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Connect-einkunnin}
-\begin{itemize}
- \item \emph{Skil} á Connect-verkefnum gildir 10\% til lokaeinkunnar
- \item $\text{Einkunn} = (\text{hlutfall skilaðra fyrirlestraræfinga} + \text{hlutfall skilaðra dæmatímaverkefna}) \cdot 5$
- \item Tekið er við Connect-verkefnum út nóvember
 \end{itemize}
 \end{frame}
 
@@ -91,7 +49,7 @@ Látum $n$ vera ekki-neikvæða heiltölu. Þá er vegur af lengd $n$ frá hnút
 \end{center}
 \end{frame}
 
-\section{Samhengi}
+\section{Samhengi og samhengisþættir}
 
 \begin{frame}{Samanhangandi net}
 Út frá skilgreiningu á vegi fáum við skilgreiningu á samanhangandi (e. \emph{connected}) neti:
@@ -110,9 +68,10 @@ Til er einfaldur vegur á milli hverra tveggja aðskildra hnúta í óstefndu sa
 \begin{tcolorbox}[title=Hlutnet]
 Hlutnet nets $G$ er net $H$ sem hefur þá eiginleika að hnútamengi $H$ er hlutmengi hnútamengis $G$ og leggjamengi $H$ er hlutmengi leggjamengis $G$.
 \end{tcolorbox}
+\pause
 Getum þá skilgreint samhengisþátt:
 \begin{tcolorbox}
-Samhengisþáttur (e. \emph{connected component}) nets $G$ er hlutnet $G$ sem er samanhangandi og óstækkanlegt.
+Samhengisþáttur (e. \emph{connected component}) nets $G$ er hlutnet $G$ sem er samanhangandi og óstækkanlegt sem slíkt.
 \end{tcolorbox}
 Ósamanhangandi net hefur meira en einn samhengisþátt.
 \end{frame}
@@ -128,6 +87,12 @@ Samhengisþáttur (e. \emph{connected component}) nets $G$ er hlutnet $G$ sem er
 Leggur $e$ í $G$ kallast brú (e. \emph{bridge} eða \emph{cut edge}) ef hlutnetið sem myndað er með því að fjarlægja $e$ úr $G$ hefur fleiri samhengisþætti en $G$.
 \end{tcolorbox}
 Svipaða skilgreiningu má setja fram fyrir hnúta. Slíkir hnútar eru kallaðir ``cut vertices'' í bókinni.
+\end{frame}
+
+\begin{frame}{Bandaríska þingið}
+    \begin{center}
+        \includegraphics[width=\textwidth]{polarization}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Samhengi}
@@ -192,9 +157,76 @@ Svo fjöldi veganna er 8.
 \end{columns}
 \end{frame}
 
-\begin{frame}{Næst}
-Næst: Förum yfir Euler- og Hamilton-vegi, leit að stystu vegum (kaflar 10.5 og 10.6).
+\section{Euler-vegir}
+
+\begin{frame}{Elsta netavandamálið}
+Í borginni Königsberg voru eitt sinn 7 brýr.
+\begin{center}
+\includegraphics[width=0.8\textwidth]{konigsberg}
+\end{center}
+Er hægt að fara í göngutúr sem endar á sama stað og hann byrjar og liggur yfir hverja brú nákvæmlega einu sinni?
 \end{frame}
 
+\begin{frame}{Netaframsetning}
+\begin{columns}
+\column{0.6\textwidth}
+Stærðfræðingurinn Leonhard Euler leysti vandamálið með netaframsetningu.
+
+Við getum skilgreint Euler-rás:
+
+\begin{tcolorbox}[title=Euler-rás]
+Euler-rás (e. \emph{Euler circuit}) í óstefndu neti $G$ er einföld rás sem inniheldur alla leggi í $G$.
+\end{tcolorbox}
+Er til Euler-rás í Königsberg-netinu?
+\column{0.4\textwidth}
+\includegraphics[width=\textwidth]{konigsberg-graph}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Euler-rásir}
+Við getum fundið skilyrði sem er nauðsynlegt og nægjanlegt fyrir tilvist Euler-rásar í óstefndu neti.
+
+\begin{tcolorbox}
+Samanhangandi óstefnt net með a.m.k. tveimur hnútum hefur Euler-rás ef og aðeins ef stig allra hnúta í netinu er slétt tala.
+\end{tcolorbox}
+
+Königsberg-göngutúrinn okkar er þá ekki mögulegur.
+\end{frame}
+
+\begin{frame}{Dæmi}
+Við getum fundið Euler-rás í þessu neti.
+\begin{center}
+\includegraphics[width=0.6\textwidth]{mohammed-scimitars}
+\end{center}
+\pause
+Möguleg lausn:
+\[
+a, b, d, g, h, j, i, h, k, g, f, d, c, b, e, i, f, e, a
+\]
+
+\end{frame}
+
+\begin{frame}{Euler-vegir}
+\begin{tcolorbox}[title=Euler-vegur]
+Euler-vegur (e. \emph{Euler path}) í óstefndu neti $G$ er einfaldur vegur sem inniheldur alla leggi í $G$.
+\end{tcolorbox}
+
+\begin{tcolorbox}
+Samanhangandi óstefnt net hefur Euler-veg og ekki Euler-rás ef og aðeins ef stig nákvæmlega tveggja hnúta í netinu er oddatala.
+\end{tcolorbox}
+\end{frame}
+
+\begin{frame}{Hamilton- vegir og rásir}
+    \begin{tcolorbox}[title=Hamilton-vegir og rásir]
+    Einfaldur vegur í óstefndu neti sem fer í gegnum hvern hnút nákvæmlega einu sinni er kallaður Hamilton-vegur (e. \emph{Hamilton path}). Einföld rás sem fer nákvæmlega einu sinni í gegnum hvern hnút netsins er kölluð Hamilton-rás (e. \emph{Hamilton circuit}).
+    \end{tcolorbox}
+    Leit að Hamilton-vegum reynist vera miklu erfiðara vandamál!
+\end{frame}
+
+\begin{frame}{Næst}
+Næst: Hamilton-vegir (10.5), vegin net og stystu vegir (10.6).
+
+Þarnæst: Lagnet (10.7) og litun neta (10.8)
+\end{frame}
 
 \end{document}
