@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
 \subtitle{Vika 12, fyrri fyrirlestur}
@@ -16,9 +16,9 @@
 
 \begin{frame}{Í síðasta tíma}
 \begin{itemize}
- \item Euler-vegir
  \item Hamilton-vegir
  \item Leit að stystu vegum
+ \item Farandssöluvandamálið
 \end{itemize}
 \end{frame}
 
@@ -32,10 +32,16 @@ Net er kallað lagnet (e. \emph{planar graph}) sé hægt að teikna það í sl�
 
 \begin{frame}{Dæmi}
 \begin{center}
-Netið $K_4$ er lagnet.
+Netið $K_4$ er lagnet. \pause
 
 \includegraphics[width=0.8\textwidth]{graph-planar-k4}
 \end{center}
+\end{frame}
+
+\begin{frame}{Setning Fárys}
+    \begin{tcolorbox}[title=Setning Fárys]
+        Sérhvert einfalt lagnet á sér sléttunet þar sem leggirnir eru táknaðir með línustrikum.
+    \end{tcolorbox}
 \end{frame}
 
 \begin{frame}{Dæmi}
@@ -79,11 +85,25 @@ Látum $G$ vera einfalt samanhangandi lagnet með $e$ leggjum, $v$ hnútum og $r
 \end{frame}
 
 \begin{frame}{Dæmi}
+    Hversu marga möskva hefur sléttunetið $Q_3$?
+
+    \pause
+
+    Höfum 8 hnúta og 12 leggi. Þá er 
+    \begin{align*}
+        r &= e - v + 2\\
+          &= 12 - 8 + 2\\
+          &= 6
+    \end{align*}
+    sem við bjuggumst við, því netið er ``teningslaga''.
+\end{frame}
+
+\begin{frame}{Dæmi}
 Hversu marga möskva hefur sléttunet með 20 hnútum sem allir eru af stigi 3?
 \pause
 
 \vspace{1cm}
-Hér er $v=20$. Summa stiganna er $3v = 60 = 2e$, svo $e = 30$. Þá gefur jafna Eulers:
+Hér er $v=20$. Summa stiganna er $3v = 60$. Handabandssetning gefur að summan sé $2e$, svo $e = 30$. Þá gefur jafna Eulers:
 
 \[
  r = e - v + 2 = 30 - 20 + 2 = 12
@@ -104,33 +124,29 @@ $G$ hefur hnút af stigi sem er ekki hærra en $5$.
 \begin{tcolorbox}
 Hafi $G$ engar rásir af lengd 3 og $v \geq 3$, þá er $e \leq 2v -4$
 \end{tcolorbox}
+Getum notað síðustu fylgisetninguna til að sýna að $K_{3,3}$ sé ekki lagnet.
 \end{frame}
 
-\begin{frame}{Dæmi}
-Notum síðustu fylgisetninguna til að sýna að $K_{3,3}$ sé ekki lagnet. \pause
-
-\vspace{1cm}
-$K_{3,3}$ hefur meira en 3 hnúta og hefur engar rásir af lengd $3$ þar sem það er tvíhlutanet, svo setningin gildir.
-
-Netið hefur 6 hnúta og 9 leggi. En við sjáum að $9 \geq 2v - 4 = 8$, svo $K_{3, 3}$ getur ekki verið lagnet.
-\end{frame}
-
-\section{Grannmótanir}
-
-\begin{frame}{Grannmótun}
-Tvö net eru grannmóta (e. \emph{homeomorphic}) sé hægt að mynda þau úr sama neti með uppskiptingum á leggjum:
-\begin{center}
-\includegraphics[width=0.8\textwidth]{graph-homeomorphism}
-\end{center}
+\begin{frame}{Maximum planar graph}
+    \begin{columns}
+        \column{0.4\textwidth}
+        \begin{itemize}
+            \item Einfalt lagnet er ``maximal planar'' sé ekki hægt að bæta við það legg án þess að 
+            \item Sjá einnig: Að skipta á svæði niður í þríhyrninga, mikilvægt í tölvugrafík
+        \end{itemize}
+        \column{0.6\textwidth}
+        \includegraphics[width=\linewidth]{goldner-harary}
+        \begin{center}
+            Mynd: \href{https://en.wikipedia.org/wiki/File:Goldner-Harary\_graph.svg}{Wikipedia}
+        \end{center}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Setning Kuratowskis}
 \begin{tcolorbox}[title=Setning Kuratowskis]
 Net $G$ er lagnet þá og því aðeins að það innihaldi ekkert hlutnet sem er grannmóta $K_5$ eða $K_{3,3}$.
 \end{tcolorbox}
-
 \end{frame}
-
 
 \section{Hnútalitun}
 
@@ -152,6 +168,14 @@ Litunartala lagnets er ekki hærri en 4.
 Setningin var upphaflega sett fram sem tilgáta um miðja 19. öld. Hún var sönnuð árið 1976, þá með aðstoð tölvu.
 \end{frame}
 
+\begin{frame}{4 lita heimskort}
+    \begin{center}
+        \includegraphics[width=\textwidth]{4colors}
+    
+    Mynd: \href{https://commons.wikimedia.org/wiki/File:World_map_with_four_colours.svg}{Wikipedia}
+    \end{center}
+\end{frame}
+
 \begin{frame}{Hagnýtingar}
 \begin{itemize}
  \item Hnútalitanir má hagnýta á ýmsa vegu
@@ -160,17 +184,15 @@ Setningin var upphaflega sett fram sem tilgáta um miðja 19. öld. Hún var sö
   \begin{itemize}
    \item Lönd eru hnútar, landamæri eru leggir
   \end{itemize}
-  \item Ákvörðum tímasetningar fyrir lokapróf
+  \item Ákvörðum tímasetningar fyrir lokapróf (sjá: scheduling problems)
   \begin{itemize}
-   \item Táknum námskeið með hnútum, leggur á milli sé nemandi í þeim báðum
+   \item Táknum námskeið með hnútum, leggur á milli séu námskeiðin tekin af sömu nemendum
    \item Hver möguleg tímasetning fyrir próf er einn litur
   \end{itemize}
  \end{itemize}
  \item Hnútalitunarvandamálið er þekkt NP-complete vandamál
 \end{itemize}
-
 \end{frame}
-
 
 \begin{frame}{Næst}
 Kafli 11.1 (kynning á trjám), kafli 11.2 (hagnýtingar á trjám), e.t.v. kafli 11.3 (ferðast eftir trjám)
