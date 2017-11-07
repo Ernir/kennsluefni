@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 11, seinni fyrirlestur}
@@ -15,186 +15,268 @@
 
 \begin{frame}{Í síðasta þætti\ldots}
 \begin{itemize}
- \item Hlutbundin forritun
- \item Teiknihlutir
- \item Klasar
+    \item Teiknihlutir
+    \item Kynning á hlutbundinni forritun
+\end{itemize}
+Hluti af kafla 11
+\end{frame}
+
+\section{Hráar myndir}
+
+\begin{frame}{Hráar myndir}
+\begin{itemize}
+ \item Við getum teiknað upp talnafylki með \texttt{image} fallinu
  \begin{itemize}
-  \item Yfirskrifun aðferða og virkja
+  \item Hvert stak í fylkinu er teiknað upp sem ferningur
+  \item Gildi stakanna er notað til að vísa í litavörpun
+ \end{itemize}
+ \item Við getum líka fengið hráa mynd með því að nota \texttt{imagesc} fallið, en þá eru litirnir skalaðir til hlutfallslega
+\end{itemize}
+\end{frame}
+
+\section{Litavarpanir}
+
+\begin{frame}[fragile]{Litavarpanir}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Föll eins og \texttt{image} nota 
+ \item Þessum sjálfgefnu litum má breyta með því að stilla litavörpun (e. \emph{colormap}) fyrir teikninguna
+\begin{minted}{matlab}
+>> colormap('nafn vörpunar')
+\end{minted}
+\end{itemize}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Nokkrar innbyggðar litavarpanir:
+ \begin{itemize}
+  \item parula
+  \item jet
+  \item hsv
+  \item hot
+  \item cool
+  \item spring
+  \item summer
+  \item autumn
+  \item winter
+  \item gray
+  \item bone
+  \item copper
+  \item pink
  \end{itemize}
 \end{itemize}
-Kaflar: 11.1 til 11.3
+\end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Upprifjun}
-\begin{minted}[frame=lines, fontsize=\small]{matlab}
-classdef Fraction
-
-    properties
-        n % Teljari / numerator
-        d % Nefnari / denomenator
-    end
-    
-    methods
-        function frac = Fraction(numerator, denomenator)
-            frac.n = numerator;
-            frac.d = denomenator;
-        end
-    end
-    
-end
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Upprifjun}
-Tveimur aðferðum bætt við (undir ``methods'')
-\begin{minted}[frame=lines]{matlab}
-function disp(fr)
-    fprintf('%d/%d\n', fr.n, fr.d)
-end
-
-function newFrac = plus(frac1, frac2)
-    newN = frac1.n * frac2.d + frac2.n * frac1.d;
-    newD = frac1.d * frac2.d;
-    newFrac = Fraction(newN, newD);
-end
-\end{minted}
-\end{frame}
-
-\section{Erfðir}
-
-\begin{frame}{Annað dæmi}
+\begin{frame}[fragile]{Litavarpanir}
 \begin{itemize}
- \item Skoðum annað dæmi um hlut sem tákna má með hlutbundinni forritun - rétthyrning
+ \item Litavörpun er talnafylki með þremur dálkum
+ \item Hver lína táknar einn RGB-lit
  \begin{itemize}
-  \item Látum rétthyrning hafa eiginleika:
+  \item Hver tala er á bilinu 0 til 1 og táknar hlutfall viðkomandi grunnlits
+ \end{itemize}
+ \item Við getum skilgreint okkar eigin litavarpanir!
+ \item Svart og hvítt skiptist á:
+\end{itemize}
+\begin{minted}{matlab}
+>> mymap = repmat([0 0 0;1 1 1],4,1);
+>> colormap(mymap)
+\end{minted}
+\end{frame}
+
+\section{Teiknihandföng}
+
+\begin{frame}{Teiknihandföng}
+\begin{itemize}
+ \item Allar teikningar í Matlab samanstanda af teiknihlutum (e. \emph{graphics objects})
+ \begin{itemize}
+  \item Vísa má í teiknihluti með handföngum (e. \emph{handles})
+  \item Handfang vísar einkvæmt í hlutinn
+ \end{itemize}
+ \item Teiknihlutir eru af ýmsum gerðum
+ \begin{itemize}
+  \item Ásar, línur, texti, \ldots
+  \item Þessir hlutir hafa mismunandi eiginleika
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Plot objects}
+Teikniföllin (\texttt{plot}, \texttt{bar}, \texttt{pie}) skila handfangi fyrir teiknihlutinn
+\begin{minted}{matlab}
+>> x = -2*pi : 0.1 : 2*pi;
+>> y = sin(x);
+>> handle = plot(x,y)
+handle = 
+  Line with properties:
+  ...
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Eiginleikar teiknihluta}
+\begin{itemize}
+ \item Upprifjun: Getum náð í gildi einstakra eiginleika með \texttt{get}
+ \begin{minted}{matlab}
+ >> get(handle)
+  AlignVertexCenters: 'off'
+  ...
+ \end{minted}
+ \item Getum breytt gildum eiginleika með \texttt{set}
+ \begin{minted}{matlab}
+ >> set(handle, 'LineWidth', 2.5)
+ \end{minted}
+ \item Einnig er hægt að setja þá í upphaflegu teikniskipunina
+ \begin{minted}{matlab}
+ >> handle= plot(x,y,'LineWidth', 2.5);
+ \end{minted}
+\end{itemize}
+\end{frame}
+
+\section{Grunnhlutir}
+
+\begin{frame}[fragile]{Core objects}
+\begin{itemize}
+ \item Matlab er með ákveðna grunnhluti (e. \emph{core objects}) til teiknunar
+ \begin{itemize}
+  \item Lína (\texttt{line}), texti (\texttt{text}), rétthyrningur (\texttt{rectangle})
+ \end{itemize}
+ \item Hægt er að teikna þá með innbyggðum föllum
+\begin{minted}{matlab}
+>> h1 = line([3 1], [2 4], 'Color', 'r');
+\end{minted}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Línur}
+\begin{itemize}
+ \item Línur eru kunnuglegur teiknihlutur
+ \begin{itemize}
+  \item \texttt{plot} fallið býr til línur
+ \end{itemize}
+ \item Línur hafa ýmsa eiginleika
+ \begin{itemize}
+  \item \texttt{LineStyle} - heil lína, punktalína, engin lína
+  \item \texttt{LineWidth} - þykkt línunnar
+  \item \texttt{Marker} - hvaða tákn á að sýna í gagnapunktum
+ \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Texti}
+\begin{itemize}
+ \item Fallið \texttt{text} setur texta inn á teikninguna
+ \begin{itemize}
+  \item Almennt snið: \texttt{text(x,y,'strengur')}
+  \item \texttt{x} og \texttt{y} eru staðsetning neðra vinstra horns textakassans
+ \end{itemize}
+ \item Hægt er að nota sumar \LaTeX-skipanir í strengnum
+ \begin{itemize}
+  \item Líka í föllum eins og \texttt{title} og \texttt{xlabel}
+ \end{itemize}
+\end{itemize}
+
+\begin{minted}{matlab}
+>> x = 0:0.01:5;
+>> y = exp(x);
+>> line(x,y,'LineWidth',3);
+>> textHandle = text(3,50,'e^x \rightarrow');
+>> set(textHandle, 'Fontsize', 20);
+\end{minted}
+
+\end{frame}
+
+\begin{frame}{Texti}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Pics/exp-label}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Rétthyrningar}
+\begin{itemize}
+ \item Fallið \texttt{rectangle} teiknar rétthyrning
+ \begin{itemize}
+  \item Staðsetning (\texttt{Position}) hans er gefin með \texttt{[x, y, w, h]}
   \begin{itemize}
-   \item Lengd
-   \item Breidd
-  \end{itemize}
-  \item Látum rétthyrning hafa aðferðir:
-  \begin{itemize}
-   \item Reikna flatarmál
-   \item \texttt{disp}-aðferð
-   \item Samanburðaraðferð sem segir hvor tveggja rétthyrninga sé minni að flatarmáli
+   \item Staðsetning vinstra neðra horns, breidd og hæð
   \end{itemize}
  \end{itemize}
- \item Sýnidæmi - bls. 383 í 4. útgáfu bókarinnar
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Erfðir}
-\begin{itemize}
- \item Við getum notað einn klasa til að mynda annan
- \item Látum þá einn klasa erfa (e. \emph{inherit}) aðferðir og eiginleika frá öðrum
+ \item Sveigja (\texttt{Curvature}) hans er tveggja staka vigur með gildi frá \texttt{[0,0]} til \texttt{[1,1]}
  \begin{itemize}
-  \item Klasinn sem erfir er þá undirklasi (e. \emph{subclass})
-  \item Klasinn sem erft er frá er þá yfirklasi (e. \emph{superclass})
+  \item Fyrra gildið er hversu hátt hlutfall af láréttu línunum er sveigt, hið seinna á við lóðréttu línurnar
  \end{itemize}
 \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Að erfa}
-\begin{itemize}
- \item Til að skilgreina undirklasa:
 \begin{minted}{matlab}
-classdef UndirKlasi < Yfirklasi
+>> rectangleHandle = rectangle('Position', [2 1 4 2]);
+>> axis([0 8 0 4])
+>> set(rectangleHandle, 'Curvature', [0.2 0.2])
 \end{minted}
- \item Til að vísa í smið yfirklasa úr undirklasa:
+
+\end{frame}
+
+\begin{frame}{Rétthyrningar}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{Pics/rectangle-example}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Hringir}
+\pause
+\begin{itemize}
+ \item Hægt er að teikna hringi og sporöskjur með því að búa til ``rétthyrninga'' með sveigjuna \texttt{[1 1]}
+\end{itemize}
 \begin{minted}{matlab}
-obj = obj@MySuperClass(SuperClassArguments);
+>> circleHandle = rectangle('Curvature',[1 1]);
+>> axis('square')
+>> axis([-1 2 -1 2])
 \end{minted}
-\item Til að vísa í aðra aðferð í yfirklasa:
+\end{frame}
+
+\begin{frame}{Hringir}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Pics/circle-example}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Marghyrningar}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{itemize}
+ \item Til að teikna marghyrninga má nota fallið \texttt{patch}
+ \begin{itemize}
+  \item Fær inn $x$ og $y$ hnit
+ \end{itemize}
+\end{itemize}
 \begin{minted}{matlab}
-disp@MySuperClass(obj)
+>> xCoords = [1 4 3 2];
+>> yCoords = [1 1 2 2];
+>> patch(xCoords,yCoords,'r')
+>> axis([0 5 0 3])
 \end{minted}
-\end{itemize}
+\column{0.5\textwidth}
+\includegraphics[width=\textwidth]{Pics/patch-example}
+\end{columns}
 \end{frame}
-
-
-\begin{frame}{Sýnidæmi}
-Búum til nýjan klasa sem notar rétthyrningsklasann til að tákna kassa.
-
-\vspace{1cm}
-Skoðum bls. 385 í 4. útgáfu bókarinnar
-\end{frame}
-
-\section{Handfangsklasar og gildisklasar}
-
-\begin{frame}{Tvær gerðir klasa}
-\begin{itemize}
- \item Í Matlab höfum við tvær gerðir klasa
- \item Gildisklasar (e. \emph{value classes})
- \begin{itemize}
-  \item Ef við tökum ekkert annað fram, þá er klasi sem við búum til gildisklasi
-  \item Þegar við notum gildisklasa til að búa til nýja hluti, þá er hver hlutur sem búinn er til óháður öðrum
- \end{itemize}
- \item Handfangsklasar (e. \emph{handle classes})
- \begin{itemize}
-  \item Handfangsklasi er búinn til með því að erfa frá innbyggða klasanum \texttt{handle}
-  \item Allir hlutir sem búnir eru til með handfangsklasa vísa í sama fyrirbrigðið
- \end{itemize}
-\end{itemize}
-\end{frame}
-
-\section{``Attributes''}
-
-\begin{frame}{Aðgangsstýring}
-\begin{itemize}
- \item Við getum stýrt því hvaðan eiginleikar og aðferðir hvers klasa eru aðgengileg
- \item Erum þá með margar \texttt{properties} og/eða \texttt{methods} blokkir
- \item Þetta getur haldið fólki frá slæmum forritunarvenjum og/eða villum
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Aðgangsstýring eiginleika}
-\begin{itemize}
- \item Aðgangsmöguleikar eiginleika:
- \begin{itemize}
-  \item \texttt{public} - eiginleikinn er aðgengilegur alls staðar frá (sjálfgefið)
-  \item \texttt{private} - eiginleikinn er eingöngu aðgengilegur innan sama klasa
-  \item \texttt{protected} - eiginleikinn er eingöngu aðgengilegur innan sama klasa eða í undirklösum hans 
- \end{itemize}
- \item Gerðir aðgangs:
- \begin{itemize}
-  \item \texttt{GetAccess}: Lesaðgangur að eiginleika
-  \item \texttt{SetAccess}: Skrifaðgangur að eiginleika
-  \item \texttt{Access}: Bæði les- og skrifaðgangur
- \end{itemize}
- \item Dæmi: Blokkin \texttt{properties (SetAccess = protected)} inniheldur eiginleika sem aðeins eru breytanlegir innan sama klasa, en hægt er að skoða alls staðar frá
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Aðgangsstýring aðferða}
-\begin{itemize}
- \item Hægt er að stilla aðgang aðferða með lykilorðunum \texttt{public}, \texttt{private} og \texttt{protected}
- \item Eina gerðin er \texttt{Access}, sem stýrir því hvaðan er hægt að kalla á aðferðina
- \item Dæmi: Blokkin \texttt{methods (Access = protected)} inniheldur aðferðir sem aðeins er hægt að kalla á úr sama klasa
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Fleiri ``attributes''}
-\begin{itemize}
- \item Fleiri lykilorð eru til sem stýra hegðun aðferða
- \item Þau taka öll \texttt{logical} gildi og \texttt{false} er sjálfgefið
- \begin{itemize}
-  \item \texttt{Abstract} - ef satt, þá er aðferðin ekki útfærð (heldur þarf undirklasa)
-  \item \texttt{Hidden} - ef satt, þá er aðferðin ekki sýnd þegar beðið er um lista af aðferðum
-  \item \texttt{Sealed} - ef satt er ekki hægt að endurskilgreina aðferðina í undirklösum
-  \item \texttt{Static} - ef satt tilheyrir aðferðin klasanum sjálfum frekar en hlutum sem hann býr til
- \end{itemize}
-
-\end{itemize}
-
-\end{frame}
-
 
 \begin{frame}[fragile]{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
+\begin{minted}{matlab}
+>> rectangleH = rectangle();
+>> set(rectangleH, 'Position', [1 1 2 1])
+>> axis([0 4 0 3])
+\end{minted}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{enumerate}
+            \setcounter{enumi}{0}
+            \item Rissið upp myndina sem kóðinn hér fyrir ofan teiknar
+            \item Teiknið umferðarmerkið hér til hliðar með tveimur \texttt{patch} skipunum. 
 
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+            Vísbending: Hornpunktar innri þríhyrningsins eru $(0.85,0.9), (0.15,0.9), (0.5,0.15)$
+        \end{enumerate}
+        \column{0.5\textwidth}
+        \begin{center}
+            \includegraphics[width=0.8\linewidth]{Pics/bidskylda}
+        \end{center}
+    \end{columns}
 \end{frame}
-
 
 \end{document}

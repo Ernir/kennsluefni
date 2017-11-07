@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 12, fyrri fyrirlestur}
@@ -14,64 +14,96 @@
 \section{Inngangur}
 
 \begin{frame}{Í síðasta þætti\ldots}
-\begin{itemize}
- \item Hlutbundin forritun
-\end{itemize}
+    \begin{itemize}
+        \item Fleiri teikniskipanir
+        \begin{itemize}
+            \item Patch
+            \item Rectangle
+            \item Line
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
-\section{Teikning fyrir lengra komna}
-
-\begin{frame}{Teikniföll}
-\begin{itemize}
- \item Höfum séð fallið \texttt{plot} til að teikna línurit áður
- \item Einnig:
- \begin{itemize}
-  \item Föll til að merkja línuritin:
-  \begin{itemize}
-   \item \texttt{xlabel}, \texttt{ylabel}, \texttt{title}, \texttt{legend}
-  \end{itemize}
-  \item Fall til að kvarða ásana
-  \begin{itemize}
-   \item \texttt{axis}
-  \end{itemize}
-  \item Skipanir til að stýra teikningu
-  \begin{itemize}
-   \item \texttt{grid}, \texttt{hold}
-  \end{itemize}
- \end{itemize}
-\end{itemize}
+\begin{frame}{Upprifjun um teikniföll}
+    \begin{itemize}
+        \item Höfum séð fallið \texttt{plot} til að teikna línurit áður
+        \item Einnig:
+        \begin{itemize}
+            \item Föll til að merkja línuritin:
+        \begin{itemize}
+        \item \texttt{xlabel}, \texttt{ylabel}, \texttt{title}, \texttt{legend}
+        \end{itemize}
+        \item Fall til að kvarða ásana
+        \begin{itemize}
+            \item \texttt{axis}
+        \end{itemize}
+        \item Skipanir til að stýra teikningu
+        \begin{itemize}
+            \item \texttt{grid}, \texttt{hold}
+        \end{itemize}
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Upprifjun um plot}
+\begin{frame}[fragile]{Upprifjun um teikniföll}
 \begin{columns}
-\column{0.50\textwidth}
-\begin{minted}[fontsize=\small]{matlab}
->> x = linspace(-10,10);
->> y = sin(x).*x;
->> plot(x,y,'r*--')
->> axis([-10 10 -12 12])
->> title('Fallið f(x) = sin(x)*x')
->> grid on
-\end{minted}
-\column{0.50\textwidth}
-\includegraphics[width=\linewidth]{Pics/sintimesx}
+\column{0.6\textwidth}
+\inputminted[frame=lines, label=plotexample.m, fontsize=\small]{matlab}{Code/plotexample.m}
+\column{0.4\textwidth}
+\includegraphics[width=\linewidth]{Pics/sintimesx.png}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Nýtt trix: Fylki línurita}
+\section{Nánar um teikningu}
+
+\subsection{Figure og Axes}
+
+\begin{frame}[fragile]{figure fallið}
+    \begin{itemize}
+        \item Fallið \texttt{figure} opnar tóman teikniglugga
+        \item Hægt er að kalla á það án viðfanga, en sé viðfang gefið er hægt að vísa til ákveðinnar myndar
+    \end{itemize}
+    \begin{minted}{matlab}
+>> figure(1)
+>> fplot(@sin, [-3, 3])
+>> figure(2)
+>> fplot(@cos, [-3, 3])
+>> figure(1)
+>> hold on
+>> fplot(@tan, [-3, 3])
+    \end{minted}
+\end{frame}
+
+\begin{frame}{gca og axes hlutir}
+    \begin{itemize}
+        \item Margir eiginleikar í algengum Matlab-myndum stýrast af \texttt{axes} hlutum
+        \begin{itemize}
+            \item Föll eins og \texttt{title} og \texttt{xlim} vísa í ``virkan'' axes hlut
+        \end{itemize}
+        \item Hægt er að ná í þann axes hlut sem er virkur með skipuninni \texttt{gca}
+        \item Algengt: Náð í vísun í núverandi \texttt{axes}, afrit vistað í breytu og síðan unnið með afritið
+        \begin{itemize}
+            \item \texttt{ax = gca;}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection{Undirteikningar}
+
+\begin{frame}{Fylki teikninga}
 \begin{columns}
 \column{0.6\textwidth}
 \begin{itemize}
- \item Getum búið til fylki af línuritum með \texttt{subplot} fallinu
+ \item Getum búið til fylki af teikningum með \texttt{subplot} fallinu
  \item Almennt form: \texttt{subplot(r, c, n)}
  \begin{itemize}
-  \item Býr til $r \times c$ grind af línuritum
-  \item $n$ táknar staðsetningu línuritsins í grindinni, í röð eftir línum
+  \item Býr til $r \times c$ grind af teikningum
+  \item $n$ táknar staðsetningu teikningarinnar í grindinni, í röð eftir línum
  \end{itemize}
 \end{itemize}
 \column{0.4\textwidth}
 \begin{center}
-Númer línuritanna í $2 \times 2$ grind af línuritum
+Númer teikninganna í $2 \times 2$ grind af teikningum
 
 \includegraphics[width=0.8\linewidth]{Pics/subplotgrid}
 \end{center}
@@ -80,27 +112,14 @@ Númer línuritanna í $2 \times 2$ grind af línuritum
 
 \begin{frame}[fragile]{Dæmi}
 \begin{columns}
-\column{0.5\textwidth}
-\begin{minted}[frame=lines, fontsize=\small]{matlab}
-x = -2*pi:0.1:2*pi;
-y = sin(x);
-subplot(2,1,1);
-plot(x,y);
-xlabel('x');
-ylabel('sin(x)');
-axis([-2*pi 2*pi -1 1]);
-
-y = cos(x);
-subplot(2,1,2);
-plot(x,y);
-xlabel('x');
-ylabel('cos(x)');
-axis([-2*pi 2*pi -1 1]);
-\end{minted}
-\column{0.5\textwidth}
+\column{0.4\textwidth}
+\inputminted[frame=lines, label=subplotexample.m, fontsize=\scriptsize]{matlab}{Code/subplotexample.m}
+\column{0.6\textwidth}
 \includegraphics[width=\textwidth]{Pics/subplot-example.pdf}
 \end{columns}
 \end{frame}
+
+\subsection{Fleiri teikniföll}
 
 \begin{frame}{Fleiri föll}
 \begin{itemize}
@@ -117,30 +136,23 @@ axis([-2*pi 2*pi -1 1]);
 
 \begin{frame}{Dæmi}
 \vspace{1cm}
-Skoðum \texttt{subplottypes.m} á bls. 408 (349 í 3ju útgáfu). Það býr til
+Skoðum \texttt{subplottypes.m} á bls. 408. Það býr til
 
 \begin{center}
-\includegraphics[width=0.6\textwidth]{Pics/plottypes.pdf}
+\includegraphics[width=0.8\textwidth]{Pics/plottypes.png}
 \end{center}
 \end{frame}
 
-\subsection{Aðrar gerðir grafa}
-
 \begin{frame}[fragile]{Tíðnirit}
-Tíðnirit er súlurit sem sýnir hversu oft einstök gildi koma fyrir
+Tíðnirit er súlurit sem sýnir hversu oft einstök gildi koma fyrir.
 \begin{columns}
-\column{0.5\textwidth}
-\begin{minted}[fontsize=\small]{matlab}
->> eink = [4 6 3 7 10 7 5 9 6 7];
->> hist(eink,1:10)
->> xlabel('Einkunn')
->> ylabel('Fjöldi')
-\end{minted}
-
-\column{0.5\textwidth}
+\column{0.6\textwidth}
+    \inputminted[frame=lines, label=histexample.m, fontsize=\small]{matlab}{Code/histexample.m}
+\column{0.4\textwidth}
 \includegraphics[width=\linewidth]{Pics/hist}
 \end{columns}
-
+\vspace{\baselineskip}
+Eldra fall: \texttt{hist}
 \end{frame}
 
 \begin{frame}[fragile]{Kökurit}
@@ -208,16 +220,10 @@ for i=1:n
 end
 movie(F);
 \end{verbatim}
-Mörgum römmum er raðað inn í vigur, sem eru svo settir saman. Dæmi má sjá á bls. 416 (355 í 3ju útgáfu).
+Mörgum römmum er raðað inn í vigur, sem eru svo settir saman.
 
-\end{frame}
+Skoðum \texttt{pendulumexample.m}.
 
-\begin{frame}[fragile]{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu þrjár spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
 \end{frame}
 
 \section{Óvissubil (utan bókar)}
@@ -254,18 +260,21 @@ Hægt er að láta efri og neðri óvissu vera mismikla með \texttt{errorbar}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Óvissa á $x$-ás}
-\begin{itemize}
- \item \texttt{errorbar} eins og það kemur úr kassanum ræður ekki við að teikna lárétt óvissubil
- \begin{itemize}
-  \item Óheppilegt í verklegri eðlisfræði
- \end{itemize}
- \item Sem betur fer er Matlab forritunarmál, svo lausnir hafa fundist
- \begin{itemize}
-  \item \href{http://www.mathworks.com/matlabcentral/fileexchange/40221-plot-data-with-error-bars-on-both-x-and-y-axes}{errorbarxy.m} - teiknar lárétt og lóðrétt óvissubil samtímis
-  \item \href{http://www.mathworks.com/matlabcentral/fileexchange/3963-herrorbar}{herrorbar} - teiknar lárétt óvissubil (mætti nota með \texttt{hold on})
- \end{itemize}
-\end{itemize}
+\begin{frame}[fragile]{Lárétt óvissa}
+    \begin{columns}
+        \column{0.55\textwidth}
+        Hægt er teikna lárétta óvissu
+\begin{minted}[fontsize=\scriptsize]{matlab}
+>> x = 1:6;
+>> y = [1 1.4 1.9 2.6 3 3.6];
+>> l = [0.04 0.05 0.04 0.06 0.05 0.05];
+>> u = [0.05 0.05 0.06 0.04 0.04 0.05];
+>> errorbar(x,y,l,u,'horizontal')
+\end{minted}
+        Eigi að vera aðskilin lárétt og lóðrétt óvissa má teikna tvisvar með \texttt{hold on}.
+        \column{0.45\textwidth}
+        \includegraphics[width=\textwidth]{Pics/horizontal-errorbar}
+    \end{columns}
 \end{frame}
 
 \section{Þrívíddarteikningar}
@@ -387,32 +396,26 @@ Teiknum upp fallið $xe^{-x^2-y^2}$
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Að teikna hæðarlínur}
+    Hægt er að teikna hæðarlínur á mjög svipaðan hátt og yfirborð eru teiknuð með \texttt{mesh} eða \texttt{surf}. Notum einfaldlega \texttt{contour} eða \texttt{contour3} í staðinn.
+    
+    \begin{minted}{matlab}
+    >> [x,y] = meshgrid(linspace(-2,2),linspace(-2,2));
+    >> z = sin(x).*exp(y);
+    >> contour(x,y,z)
+    \end{minted}    
+\end{frame}
+
 \begin{frame}{Fyrirlestraræfing}
-\begin{columns}
-\column{0.6\textwidth}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
-\column{0.4\textwidth}
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-$x$&$y$&óvissa\\
-\midrule
-1&1.1&0.15\\
-2&2.0&0.25\\
-3&2.9&0.20\\
-4&3.7&0.40\\
-5&5.0&0.10\\
-\bottomrule
-\end{tabular}
-\end{center}
-\[
- \frac{\sin(\sqrt{x^2 + y^2})}{\sqrt{x^2 + y^2}}
-\]
-\end{columns}
+    \begin{enumerate}
+     \item Teiknið föllin $\sin(x)$, $\cos(x)$ og $\tan(x)$ á bilinu $-\pi$ til $\pi$ hlið við hlið með \texttt{subplot}
+     \item Teiknið upp fallið $x\cdot \cos(x)$ á bilinu $0$ til $20\pi$ með comet
+     \item Teiknið fallið
+     \[
+     \frac{\sin(\sqrt{x^2 + y^2})}{\sqrt{x^2 + y^2}}
+     \]
+     á bilinu $-6\pi$ til $6\pi$ fyrir $x$ og $y$
+    \end{enumerate}
 \end{frame}
 
 
