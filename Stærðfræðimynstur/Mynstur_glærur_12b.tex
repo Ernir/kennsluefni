@@ -1,9 +1,9 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
-\subtitle{Vika 12, fyrri fyrirlestur}
+\subtitle{Vika 12, seinni fyrirlestur}
 
 \begin{document}
 
@@ -15,10 +15,96 @@
 \section{Inngangur}
 
 \begin{frame}{Í síðasta tíma}
-\begin{itemize}
- \item Lagnet
- \item Hnútalitun
-\end{itemize}
+    \begin{itemize}
+        \item Lagnet
+        \item Hnútalitun
+    \end{itemize}
+\end{frame}
+
+\section{Stefnd rásalaus net}
+
+\begin{frame}{Stefnd rásalaus net}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Stefnt rásalaust net (e. \emph{directed acyclic graphs}, DAG) er stefnt net án örvarása
+            \item Klassískt dæmi: Skipulagning á forkröfum
+            \item Hægt er að finna röðun (e. \emph{topological ordering}) á stefndu neti þá og því aðeins að það sé rásalaust
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{center}
+            \includegraphics[width=\linewidth]{directed-acyclic-graph}
+            
+            Mynd: \href{https://commons.wikimedia.org/wiki/File:Directed_acyclic_graph.svg}{Wikipedia}
+        \end{center}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Dæmi}
+    \vspace{\baselineskip}
+    Getum notað stefnt rásalaust net til að hjálpa okkur að klæðast.
+    
+    \begin{center}
+        \usetikzlibrary{arrows}
+        \begin{tikzpicture}
+            \tikzset{edge/.style = {->,> = latex'}}
+            \node (a1) at (0, 4) {Nærbuxur};
+            \node (b1) at (2, 1) {Sokkar};
+            \node (c1) at (2, 3) {Buxur};
+            \node (d1) at (3, 2) {Bolur};
+            \node (e1) at (3, 4) {Peysa};
+            \node (f1) at (0, 3) {Kápa};
+            \node (g1) at (0, 1) {Skór};
+
+            \draw[edge] (a1) to (c1);
+            \draw[edge] (b1) to (g1);
+            \draw[edge] (c1) to (f1);
+            \draw[edge] (c1) to (g1);
+            \draw[edge] (d1) to (e1);
+            \draw[edge] (e1) to (f1);
+
+            \node (a2) at (6, 0) {Nærbuxur};
+            \node (b2) at (6, 0.8) {Sokkar};
+            \node (c2) at (6, 1.6) {Buxur};
+            \node (d2) at (6, 2.4) {Bolur};
+            \node (e2) at (6, 3.2) {Peysa};
+            \node (f2) at (6, 4.0) {Kápa};
+            \node (g2) at (6, 4.8) {Skór};
+
+            \draw[edge] (a2) to[bend left=70] (c2);
+            \draw[edge] (b2) to[bend right=70] (g2);
+            \draw[edge] (c2) to[bend right=70] (f2);
+            \draw[edge] (c2) to[bend left=70] (g2);
+            \draw[edge] (d2) to (e2);
+            \draw[edge] (e2) to (f2);
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Git}
+    Í dag er Git vinsælasta kerfið til að sjá um útgáfustjórnun (e. \emph{version control}) í hugbúnaði. 
+    Git byggist á stefndum rásalausum netum þar sem hver hnútur táknar ástand forritstexta.
+
+    \begin{center}
+        \includegraphics[width=\textwidth]{git-dag}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Git dæmi}
+\begin{minted}{bash}
+$ git init # Tóm git-lind búin til
+$ echo "prufutexti" > skra.txt
+$ cat skra.txt 
+prufutexti
+$ git add skra.txt && git commit -m "Nýr hnútur búinn til"
+$ echo "Nýr texti" > skra.txt # Skránni breytt
+$ cat skra.txt
+Nýr texti
+$ git add skra.txt && git commit -m "Annar hnútur"
+$ git checkout HEAD~1 # Bakkað um einn hnút
+$ cat skra.txt # Skráin er nú í upphaflegu ástandi
+prufutexti
+\end{minted}
 \end{frame}
 
 \section{Tré}
@@ -55,7 +141,7 @@ Skógur með þremur samhengisþáttum:
 
 \begin{frame}{Rótartré}
 \begin{tcolorbox}[title=Rótartré]
-Rótartré (e. \emph{rooted tree}) er tré þar sem einn hnútur hefur verið skilgreindur sem rót (e. \emph{root}). Hafi rótartré stefnu er stefna hvers leggs í átt frá rótinni.
+Rótfast tré eða rótartré (e. \emph{rooted tree}) er tré þar sem einn hnútur hefur verið skilgreindur sem rót (e. \emph{root}). Hafi rótartré stefnu er stefna hvers leggs í átt frá rótinni.
 \end{tcolorbox}
 Tré $T$ og aðskilin rótartré mynduð út frá því:
 \begin{center}
@@ -162,9 +248,9 @@ Sum eftirfarandi trjáa eru í jafnvægi:
 \begin{frame}{Fleiri eiginleikar trjáa}
 Vitum við hæð trés getum við sett skorður á laufafjöldann.
 \begin{tcolorbox}
-$m$-undartré af hæð $h$ hefur að hámarki $m^h$ lauf.
+$m$-undartré af hæð $h$ hefur að hámarki $l = m^h$ lauf.
 \end{tcolorbox}
-Og enn sterkar:
+
 \begin{tcolorbox}
 $m$-undartré af hæð $h$ með $l$ lauf hefur $h \geq \lceil \log_m l \rceil$. Sé $m$-undartréð fullskipað og í jafnvægi, þá er $h = \lceil \log_m l\rceil$.
 \end{tcolorbox}
@@ -222,21 +308,21 @@ Athugum ákvarðanatré fyrir röðun á þremur stökum $a, b$ og $c$:
 \end{frame}
 
 \begin{frame}{Fjöldi samanburða}
-\begin{itemize}
- \item Rifjum upp: Fjöldi umraðana á $n$ stökum er $n!$
- \begin{itemize}
-  \item Þetta er fjöldi laufa í ákvarðanatré röðunar
- \end{itemize}
- \item Munum enn: Um $m$-undartré af hæð $h$ með $l$ lauf gildir $h \geq \lceil \log_m l\rceil$
- \begin{itemize}
-  \item Afleiðing: Við þurfum $\lceil \log_m n! \rceil$ einfalda samanburði til að raða $n$ stökum
- \end{itemize}
- \item Rifjum upp: $\log n!$ er $\Theta(n \log n)$
- \begin{itemize}
-  \item Afleiðing: Fjöldi samanburða sem röðunarreiknirit sem ber saman öll stökin þarf er $\Omega(n\log n)$
-  \item Merge sort nær þessu!
- \end{itemize}
-\end{itemize}
+    \begin{itemize}
+        \item Rifjum upp: Fjöldi umraðana á $n$ stökum er $n!$ \pause
+        \begin{itemize}
+            \item Þetta er fjöldi laufa í ákvarðanatré röðunar
+        \end{itemize}
+            \item Munum enn: Um $m$-undartré af hæð $h$ með $l$ lauf gildir $h \geq \lceil \log_m l\rceil$ \pause
+        \begin{itemize}
+            \item Afleiðing: Við þurfum $\lceil \log_m n! \rceil$ einfalda samanburði til að raða $n$ stökum \pause
+        \end{itemize}
+            \item Rifjum upp: $\log n!$ er $\Theta(n \log n)$ \pause
+        \begin{itemize}
+            \item Afleiðing: Fjöldi samanburða sem röðunarreiknirit sem ber saman öll stökin þarf er $\Omega(n\log n)$
+            \item Merge sort nær þessu!
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \section{Trjáflakk}
@@ -256,41 +342,29 @@ Athugum ákvarðanatré fyrir röðun á þremur stökum $a, b$ og $c$:
 \end{frame}
 
 \begin{frame}[fragile]{Fyrirröð}
-Getum skilgreint trjáflakk í fyrirröð (e. \emph{preorder traversal}).
+    Getum skilgreint trjáflakk í fyrirröð (e. \emph{preorder traversal}).
 
-\begin{verbatim}
-stef preorder(r: hnútur í m-undartré)
-  skrifa gildið í r
-  fyrir b := öll börn r frá vinstri til hægri
-    preorder(b)
-\end{verbatim}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{preorder-algorithm}
+    \end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Miðröð}
-Getum skilgreint trjáflakk í miðröð (e. \emph{inorder}).
+    Getum skilgreint trjáflakk í miðröð (e. \emph{inorder}).
 
-\begin{verbatim}
-stef inorder( r: hnútur í m-undartré )
-  ef r er lauf þá
-    skrifa gildið í r
-  annars
-    inorder(vinstra barn r)
-    skrifa gildið í r
-    fyrir b:=öll börn r nema vinstra, frá vinstri til hægri
-      inorder(b)
-\end{verbatim}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{inorder-algorithm}
+    \end{center}
+
 Miðröð kemur mjög oft fyrir, því að hún skrifar út tvíleitartré í réttri röð.
 \end{frame}
 
 \begin{frame}[fragile]{Eftirröð}
 Getum skilgreint trjáflakk í eftirröð (e. \emph{postorder}).
 
-\begin{verbatim}
-stef postorder( r: hnútur í m-undartré )
-  fyrir b:=öll börn r frá vinstri til hægri
-    preorder(b)
-  skrifa gildið í r
-\end{verbatim}
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{postorder-algorithm}
+\end{center}
 \end{frame}
 
 \begin{frame}{Samanburður}
