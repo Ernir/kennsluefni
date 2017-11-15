@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Stærðfræðimynstur í tölvunarfræði}
 \subtitle{Vika 13, fyrri fyrirlestur}
@@ -39,17 +39,17 @@ Tré hefur eitt spanntré (tréð sjálft). Önnur einföld samanhangandi net ha
 
 \begin{frame}{Af hverju spanntré?}
 \begin{itemize}
- \item Spanntréð sjálft getur haft merkingu
- \begin{itemize}
-  \item Dæmi: Snjóstormur hefur lamað vegakerfið, spanntré lýsir þeim vegum sem nægilegt er að ryðja til að umferð komist aftur í gang
- \end{itemize}
- \item Tré eru oft meðfærilegri heldur en almenn net
- \begin{itemize}
-  \item Getum viljað búa til tré úr neti til að geta notað öflug trjáreiknirit á það
- \end{itemize}
+    \item Spanntréð sjálft getur haft merkingu
+    \begin{itemize}
+        \item Viljum dreifa upplýsingum um netkerfi með sem fæstum sendingum
+        \item Snjóstormur hefur lamað vegakerfið, spanntré lýsir þeim vegum sem nægilegt er að ryðja til að umferð komist aftur í gang
+    \end{itemize}
+    \item Tré eru oft meðfærilegri heldur en almenn net
+    \begin{itemize}
+        \item Getum viljað búa til tré úr neti til að geta notað öflug trjáreiknirit á það
+    \end{itemize}
 \end{itemize}
 \end{frame}
-
 
 \begin{frame}{Að finna spanntré}
 \begin{itemize}
@@ -82,6 +82,10 @@ Tré hefur eitt spanntré (tréð sjálft). Önnur einföld samanhangandi net ha
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Dýptarleit}
+    \includegraphics[width=0.8\textwidth]{dfs}
+\end{frame}
+
 \begin{frame}{Dæmi}
 \begin{center}
 \includegraphics[width=0.7\textwidth]{tree-spanning-dfs}
@@ -100,7 +104,6 @@ Tré hefur eitt spanntré (tréð sjálft). Önnur einföld samanhangandi net ha
   \item Bætum öllum nágrönnum (ásamt tilheyrandi leggjum) við spanntréð og skilgreinum fyrir þá röðun, munum fjarlægð þeirra frá rótinni
   \item Skoðum endurtekið og í skilgreindri röð alla nágranna þeirra hnúta sem voru í síðustu fjarlægð frá rótinni og bætum þeim við spanntréð ef við höfum ekki gert það áður
  \end{itemize}
- \item Líka endurkvæmt!
 \end{itemize}
 \end{frame}
 
@@ -143,6 +146,10 @@ Setjum fram tvö gráðug reiknirit til að finna léttustu spanntré.
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Dæmi}
+    \includegraphics[width=\textwidth]{prim-example}
+\end{frame}
+
 \begin{frame}{Reiknirit Kruskals}
 \begin{itemize}
  \item Kennt við Joseph Kruskal, er líka gráðugt reiknirit sem finnur léttasta spanntré (í neti með $e$ hnútum og $v$ leggjum)
@@ -155,8 +162,12 @@ Setjum fram tvö gráðug reiknirit til að finna léttustu spanntré.
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Dæmi}
+    \includegraphics[width=\textwidth]{kruskal-example}
+\end{frame}
+
 \begin{frame}{Næst}
-Stöðuvélar (13.2 og 13.3)
+Stöðuvélar án úttaks (13.3), e.t.v. mál (13.1).
 \end{frame}
 
 
