@@ -1,6 +1,6 @@
 \documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \title{Tölvunarfræði 1a}
 \subtitle{Vika 13, fyrri fyrirlestur}
@@ -14,11 +14,10 @@
 \section{Inngangur}
 
 \begin{frame}{Í síðasta þætti\ldots}
-\begin{itemize}
- \item Image fallið og litavarpanir
- \item Teiknihandföng
- \item Grunnhlutir 
-\end{itemize}
+    \begin{itemize}
+        \item Margliður
+        \item Nálgun og brúun
+    \end{itemize}
 \end{frame}
 
 \section{Tölfræði}
@@ -160,161 +159,36 @@ ans =  8.5000
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og gerið fyrstu tvær spurningarnar.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{frame}{Fyrirlestraræfing}
+    \begin{enumerate}
+        \item Skrifið nafnlaust Matlab-fall sem reiknar spannarmiðju (e. \emph{mid-range}), sem er meðaltal hágildis og lággildis
+        \item Einfarar eru oft skilgreindir sem þau gildi sem eru meira en tvö staðalfrávik frá meðaltalinu. Skrifið vigurkóða til að finna alla einfara í vigri
+        \item Skrifið Matlab-fall sem reiknar út staðalfrávik vigurs ef kallað er á það með einni úttaksbreytu, en staðalfrávik og fervik ef kallað er á það með tveimur úttaksbreytum
+    \end{enumerate}
 \end{frame}
 
-\section{Mengi}
-
-\begin{frame}{Mengi í Matlab}
-Hægt er að nota vigra í Matlab sem mengi. Skoðum nokkrar nýjar aðgerðir:
-\begin{center}
-\begin{tabular}{ll}
-\toprule
-Fall&Aðgerð\\
-\midrule
-\texttt{union}&sammengi $A \cup B$\\
-\texttt{intersect}&sniðmengi $A \cap B$\\
-\texttt{setdiff}&mengjamismunur $ A \setminus B$\\
-\texttt{setxor}&samhverfur mengjamunur $A \Delta B$\\
-\bottomrule
-\end{tabular}
-\end{center}
+\begin{frame}{Meiri forritun}
+    \begin{itemize}
+        \item Lítum á tvö sýnidæmi um flóknari hlutbundin forrit
+        \begin{itemize}
+            \item Hermun á bolta
+            \item Útfærsla á nafnatöflu (e. \emph{symbol table}) með tvíleitartré (e. \emph{binary search tree})
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
-\begin{frame}{Mengi?}
-\begin{itemize}
- \item Mengi koma furðu oft fyrir í forritun
- \begin{itemize}
-  \item Almenn hugtök eiga víða við
- \end{itemize}
- \item Mengjahugsunarháttur er allsráðandi í gagnagrunnsvinnslu
- \item Oft sem gögn þurfa að hafa mengjaeiginleika
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}[fragile]{Sammengi}
-Sammengi tveggja vigra skilar vigri með öllum stökunum úr þeim báðum, án endurtekninga.
-\begin{minted}[frame=lines]{matlab}
-a = [6 4 2 0 -1];
-b = [-1 0 1 1 3];
->> c = union(a, b)
-c =
-  -1   0   1   2   3   4   6
-\end{minted}
-Athugum: Úttakið er raðað!
-\end{frame}
-
-\begin{frame}[fragile]{Sniðmengi}
-Sniðmengi tveggja vigra skilar vigri með öllum sameiginlegum stökunum, án endurtekninga
-\begin{minted}[frame=lines]{matlab}
->> piano = {'Ari', 'Erna', 'Hallur'};
->> fotbolti = {'Ásta', 'Bjarni', 'Erna', 'Óli'};
->> d = intersect(piano, fotbolti)
-d = 
-    'Erna'
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Mengjamismunur}
-Mengjamunur tveggja vigra skilar vigri með þeim stökum fyrri vigursins sem ekki koma fyrir í þeim seinni
-\begin{minted}[frame=lines]{matlab}
->> piano = {'Ari', 'Erna', 'Hallur'};
->> fotbolti = {'Ásta', 'Bjarni', 'Erna', 'Óli'};
->> setdiff(piano, fotbolti)
-ans = 
-    'Ari'    'Hallur'
->> setdiff(fotbolti, piano)
-ans = 
-    'Bjarni'    'Ásta'    'Óli'
-\end{minted}
-
-\end{frame}
-
-\begin{frame}[fragile]{Samhverfur mengjamismunur}
-Samhverfur mengjamunur tveggja vigra skilar vigri með þeim stökum vigranna sem ekki eru í sniðmengi þeirra
-\begin{minted}[frame=lines]{matlab}
->> piano = {'Ari', 'Erna', 'Hallur'};
->> fotbolti = {'Ásta', 'Bjarni', 'Erna', 'Óli'};
->> setxor(piano, fotbolti)
-ans = 
-   'Ari'   'Bjarni'   'Hallur'   'Ásta'   'Óli'
-\end{minted}
-\[
-A \Delta B = (A \setminus B) \cup (B \setminus A) = (A \cup B) \setminus (A \cap B)
-\]
-\end{frame}
-
-\begin{frame}[fragile]{Einkvæmni}
-\begin{itemize}
- \item Í stærðfræði kemur hvert stak aðeins einu sinni fyrir í mengjum
- \begin{itemize}
-  \item Munum að ``mengin'' í Matlab eru bara vigrar sem við kjósum að líta á sem mengi
-  \item \ldots og vigrar leyfa endurtekningar
- \end{itemize}
- \item Fallið \texttt{unique} gerir stökin einkvæm
-\end{itemize}
-\begin{minted}[frame=lines]{matlab}
->> unique([3 2 2 4 2 3])
-ans =
-   2   3   4
->> unique([3 2 2 4 2 3], 'stable')
-ans =
-   3   2   4
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Vísar sem úttak}
-Mengjaföllin skila líka vísum inn í upphaflegu vigrana.
-\begin{minted}[frame=lines]{matlab}
->> a = [6 4 2 0 -1];     
->> b = [-1 0 1 1 3];
->> [c, aIndex, bIndex] = intersect(a, b)
-c =
-  -1   0
-aIndex =
-   5   4
-bIndex =
-   1   2
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{\texttt{ismember} fallið}
-Fallið \texttt{ismember} athugar hvort stök vigurs séu stök í öðrum vigri.
-\begin{minted}[frame=lines]{matlab}
->> piano = {'Ari', 'Erna', 'Hallur'};
->> ismember({'Gunna', 'Ari', 'Bjarni'}, piano)
-ans =
-   0   1   0
-\end{minted}
-Fáum út rökvigur sem er jafn stór og fyrri vigurinn.
-\end{frame}
-
-\begin{frame}[fragile]{\texttt{ismember} fallið}
-Röð inntaksbreytanna skiptir máli í \texttt{ismember} fallinu.
-\begin{minted}[frame=lines]{matlab}
->> v1 = [3 5 2 7 8];
->> v2 = [4 1 5];
->> ismember(v1, v2) % hvaða stök í v1 eru í v2?
-ans =
-   0   1   0   0   0
->> ismember(v2, v1) % hvaða stök í v2 eru í v1?
-ans =
-   0   0   1
-\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Fyrirlestraræfing}
-Skráið ykkur inn á \url{http://socrative.com/} og klárið æfinguna.
-
-Herbergisnúmer = \texttt{TOL105G2016}
-
-Notendanafn = HÍ-tölvupóstfang
+\begin{frame}{Hugmyndin um nafnatöflu}
+    \begin{itemize}
+        \item Höfum stök þar sem hvert samanstendur af lykli (e. \emph{key}) og gildi (e. \emph{value})
+        \item Notum lykilinn til að fletta upp gildum
+        \begin{itemize}
+            \item Dæmi: Flettum upp nafni með því að nota kennitölu
+        \end{itemize}
+        \item Ef við notum fylki til að geyma stökin vex keyrslutíminn línulega með fjölda staka í nafnatöflunni
+        \begin{itemize}
+            \item Útfærsla með tvíleitartré er mun hraðvirkari þegar töflurnar eru stórar
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \end{document}
