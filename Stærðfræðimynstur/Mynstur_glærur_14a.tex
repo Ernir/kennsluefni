@@ -1,6 +1,6 @@
-\documentclass{beamer}
+\documentclass[handout]{beamer}
 
-\usepackage{Haust2016glærur}
+\usepackage{Haust2017glærur}
 
 \usetikzlibrary{automata,positioning}
 
@@ -20,26 +20,11 @@
 \begin{itemize}
  \item Endanlegar stöðuvélar
  \begin{itemize}
-  \item \ldots með úttaki
-  \item \ldots án úttaks
+  \item Löggengir samþykkjarar
+  \item Brigðgengir samþykkjarar
+  \item Reglulegar segðir
  \end{itemize}
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Brigðgengni - Dæmi}
-\begin{center}
-Brigðgeng stöðuvél og jafngild löggeng stöðuvél
-\end{center}
-\begin{columns}
-\column{0.48\textwidth}
-\includegraphics[width=\linewidth]{nfa-example}
-\column{0.04\textwidth}
-\column{0.48\textwidth}
-\includegraphics[width=\linewidth]{nfa-equiv}
-\end{columns}
-\begin{center}
-Þær samþykkja málið $\{0^n , 0^n01, 0^n11 | n \geq 0\}$
-\end{center}
 \end{frame}
 
 \begin{frame}{Planið}
@@ -136,7 +121,7 @@ Látum $V$ vera hlutmengi stafrófs $I$. Turing vél $T$ með lokastöðum samþ
 \end{frame}
 
 \begin{frame}{Dæmi}
-Smíðum Turing vél sem samþykkir mál þeirra strengja sem hafa $0$ sem bita númer 2.
+Smíðum Turing vél sem samþykkir mál þeirra strengja sem hafa $1$ sem bita númer 2.
 \begin{center}
 \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
 \node[state,initial]		(s0) 			{$s_0$};
@@ -229,6 +214,7 @@ $M0011M$, $MM011M$, $MM01MM$, $MMM1MM$, $MMMMMM$
  \item Getum leyft meira:
  \begin{itemize}
   \item Getum leyft mörg bönd
+  \item Getum leyft það að sleppa tilfærslu haussins
   \item Getum leyft tvívítt band
   \item Getum leyft marga hausa
   \item Getum leyft brigðgengni
