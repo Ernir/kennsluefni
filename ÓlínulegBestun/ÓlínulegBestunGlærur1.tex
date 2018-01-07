@@ -1,0 +1,145 @@
+\documentclass{beamer}
+
+\usepackage{Vor2018glærur}
+
+\title{Ólínuleg Bestun}
+\subtitle{Fyrirlestur 1}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Matlab}
+
+\begin{frame}{Hvað er þetta Matlab?}
+\begin{itemize}
+    \item Matlab er bæði \emph{forritunarmál} og \emph{forritunarumhverfi}
+    \item Nafnið stendur fyrir \textbf{Mat}rix \textbf{Lab}oratory
+    \item Sérsniðið fyrir vísindalega útreikninga
+    \begin{itemize}
+        \item \href{http://se.mathworks.com/company/newsletters/articles/the-origins-of-matlab.html}{Upphaflega (1984) búið til sem þægilegra viðmót á FORTRAN-forritunarsöfn fyrir fylkjareikninga}
+    \end{itemize}
+    \item Talið auðvelt að læra
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Uppsetning Matlab}
+    \begin{itemize}
+    \item Matlab er hvorki opið né gjaldfrjálst
+    \begin{itemize}
+        \item Fyrirtækið \emph{Mathworks Inc.} á Matlab
+        \item Háskólinn býður upp á notkunarleyfi
+        \item Uppsetningarleiðbeiningar má finna á: \url{https://notendur.hi.is/\~jonasson/matlab/}
+    \end{itemize}
+        \item Ókeypis og opið kerfi sem líkist Matlab er til, \href{https://www.gnu.org/software/octave/}{GNU Octave}
+        \begin{itemize}
+            \item Erfitt að nota Octave í þessu námskeiði
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Breytur og gagnatög}
+
+\begin{frame}[fragile]{Tögun í Matlab}
+Matlab er dýnamískt tagað mál með sjálfvirkum tögunarbreytingum
+
+\begin{minted}{matlab}
+>> x = 1.4 % Fleytitala búin til
+x =
+    1.4000
+>> x + 'a' % Stafbreytan a túlkuð sem tala
+ans =
+    98.4000
+\end{minted}
+
+Meðal grundvallargagnataga eru \texttt{double}, \texttt{char} og \texttt{logical}. Meðal einkennandi taga fyrir Matlab eru \texttt{cell} og \texttt{struct}.
+
+\end{frame}
+
+\begin{frame}{Fylki og vigrar í Matlab}
+    \begin{itemize}
+        \item Flest í Matlab er einhvers konar fylki
+        \begin{itemize}
+            \item ``venjulegar'' breytur eru $1 \times 1$ fylki
+            \item Vigrar eru $1 \times n$ eða $n \times 1$ fylki
+        \end{itemize}
+        \item Höfum sérstakan virkja til að búa til og vísa í stök vigra, \texttt{:}
+        \item Flest innbyggð föll í Matlab geta tekið við vigurinntökum
+        \item Virkjarnir \texttt{*} og \texttt{/} framkvæma aðgerðir úr línulegri algebru, \texttt{.*} og \texttt{./} framkvæma stakvísar aðgerðir
+        \item Skoðum sérstaklega: rökvigrar og rökvísanir
+    \end{itemize}
+\end{frame}
+
+\section{Föll í Matlab}
+
+\begin{frame}[fragile]{Innbyggð föll}
+    \begin{itemize}
+        \item Fjöldinn allur af innbyggðum föllum er til staðar í Matlab
+        \item Allt í sama nafnarýminu, engar innflutningsskipanir
+        \item Besti vinur ykkar: \texttt{help [fallsnafn]} og \texttt{doc [fallsnafn]}
+    \end{itemize}
+    \begin{minted}{matlab}
+>> x = linspace(-pi,pi,5)
+x =
+    -3.1416   -1.5708         0    1.5708    3.1416
+>> sin(x)
+ans =
+    -0.0000   -1.0000         0    1.0000    0.0000  
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Notendaskilgreind forrit}
+    \begin{itemize}
+        \item Höfum nokkrar gerðir forrita, sem eru geymdar í \texttt{.m} skrám
+        \begin{itemize}
+            \item Skipanaskrár \eng{scripts} eru samansöfn af Matlab-skipunum keyrðar í röð
+            \item Notendaskilgreind föll \eng{user-defined functions}, svipar til t.d. Python
+            \item Klasar
+        \end{itemize}
+        \item Fallshaus í Matlab:
+
+        \begin{minted}{matlab}
+function [skil1, skil2, ...] = nafnfalls(inn1, ...)
+        \end{minted}
+
+        \item Meginreglan (með þó nokkrum undantekningum) er að hvert fall sé skilgreint í sinni eigin skrá, sem heitir það sama og fallið
+    \end{itemize}
+\end{frame}
+
+\section{Lykkjur og flæðisstýring}
+
+\begin{frame}{Lykkjur og flæðisstýring í Matlab}
+    \begin{itemize}
+        \item Höfum kunnuglega flæðisstýringu
+        \begin{itemize}
+            \item \texttt{if}, \texttt{elseif}, \texttt{else}
+            \item Höfum líka \texttt{switch}
+        \end{itemize}
+        \item Tvær gerðir af lykkjum
+        \begin{itemize}
+            \item For-lykkja, sem reyndar er ``foreach'' lykkja
+            \item While-lykkja
+        \end{itemize}
+        \item Svigar og slaufusvigar koma ekki fyrir, lokun með \texttt{end} lykilorðinu
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Uppbygging}
+\begin{minted}{matlab}
+if skilyrdi
+    skipanir
+end
+
+for hlaupabreyta = svid
+    skipanir
+end
+
+while skilyrdi
+    skipanir
+end
+\end{minted}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,86 @@
+\usepackage[utf8]{inputenc} % Language and font encoding
+\usepackage[icelandic]{babel}
+\usepackage[T1]{fontenc}
+
+
+\usepackage{tikz}
+\usepackage[listings,theorems]{tcolorbox}
+\usepackage{booktabs}
+\usepackage{minted} %Minted and configuration
+\usemintedstyle{default}
+
+\renewcommand{\theFancyVerbLine}{\sffamily \arabic{FancyVerbLine}}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Beamer configuration
+%%%%%%%%%%%%%%%%%%%%%%
+\setbeamertemplate{navigation symbols}{}
+
+% Add slide numbers, source: https://tex.stackexchange.com/a/137028/21638
+\addtobeamertemplate{navigation symbols}{}{% 
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\usecolortheme{dove}
+\setbeamercolor{frametitle}{fg=white}
+
+\usebackgroundtemplate%
+{%
+\vbox to \paperheight{
+\includegraphics[width=\paperwidth]{hi-slide-head}
+
+\vfill
+\hspace{0.5cm}\includegraphics[width=0.3\paperwidth]{hi-von-logo}
+\vspace{0.4cm}
+    }%
+}
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Yfirlit}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+\setbeamerfont{frametitle}{size=\normalsize}
+\addtobeamertemplate{frametitle}{}{\vspace*{0.5cm}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% tcolorbox configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Setup from: http://tex.stackexchange.com/a/43329/21638
+\tcbset{%
+    noparskip,
+    colback=gray!10, %background color of the box
+    colframe=gray!40, %color of frame and title background
+    coltext=black, %color of body text
+    coltitle=black, %color of title text 
+    fonttitle=\bfseries,
+    alerted/.style={coltitle=red, colframe=gray!40},
+    example/.style={coltitle=black, colframe=green!20, colback=green!5},
+}
+
+%%%%%%%%%%%
+% Shortcuts
+%%%%%%%%%%%
+
+\newcommand{\Mod}[1]{\ \text{mod}\ #1}
+\newcommand{\eng}[1]{(e.\ \emph{#1})}
+\newmintedfile[cppfile]{cpp}{frame=lines, linenos=true}
+\newmintedfile[javafile]{java}{frame=lines, linenos=true}
+\newmintedfile[matlabfile]{matlab}{frame=lines, linenos=true}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Further configuration
+%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{colorlinks=true,pdfauthor={Eirikur Ernir Þorsteinsson},linkcolor=blue,urlcolor=blue}
+\graphicspath{{./Pics/}{../Pics/}}
+
+\author{Eiríkur Ernir Þorsteinsson}
+\institute{Háskóli Íslands}
+\date{Vor 2018}
