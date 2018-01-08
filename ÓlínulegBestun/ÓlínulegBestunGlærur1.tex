@@ -14,15 +14,26 @@
 \section{Matlab}
 
 \begin{frame}{Hvað er þetta Matlab?}
-\begin{itemize}
-    \item Matlab er bæði \emph{forritunarmál} og \emph{forritunarumhverfi}
-    \item Nafnið stendur fyrir \textbf{Mat}rix \textbf{Lab}oratory
-    \item Sérsniðið fyrir vísindalega útreikninga
-    \begin{itemize}
-        \item \href{http://se.mathworks.com/company/newsletters/articles/the-origins-of-matlab.html}{Upphaflega (1984) búið til sem þægilegra viðmót á FORTRAN-forritunarsöfn fyrir fylkjareikninga}
-    \end{itemize}
-    \item Talið auðvelt að læra
-\end{itemize}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Matlab er bæði \emph{forritunarmál} og \emph{forritunarumhverfi}
+            \item Nafnið stendur fyrir \textbf{Mat}rix \textbf{Lab}oratory
+            \item Sérsniðið fyrir vísindalega útreikninga
+            \begin{itemize}
+                \item \href{http://se.mathworks.com/company/newsletters/articles/the-origins-of-matlab.html}{Upphaflega (1984) búið til sem þægilegra viðmót á Fortran-forritunarsöfn fyrir fylkjareikninga}
+            \end{itemize}
+            \item Talið auðvelt að læra
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{quote}
+            Half of the students in the class were from math and computer science, and they were not impressed 
+        
+            ...
+            
+            The other half of the students were from engineering, and they liked MATLAB.
+        \end{quote}
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Uppsetning Matlab}
@@ -65,6 +76,7 @@ Meðal grundvallargagnataga eru \texttt{double}, \texttt{char} og \texttt{logica
             \item ``venjulegar'' breytur eru $1 \times 1$ fylki
             \item Vigrar eru $1 \times n$ eða $n \times 1$ fylki
         \end{itemize}
+        \item Vísun í stök vigra í Matlab byrjar í \textbf{1}
         \item Höfum sérstakan virkja til að búa til og vísa í stök vigra, \texttt{:}
         \item Flest innbyggð föll í Matlab geta tekið við vigurinntökum
         \item Virkjarnir \texttt{*} og \texttt{/} framkvæma aðgerðir úr línulegri algebru, \texttt{.*} og \texttt{./} framkvæma stakvísar aðgerðir
@@ -95,7 +107,7 @@ ans =
         \item Höfum nokkrar gerðir forrita, sem eru geymdar í \texttt{.m} skrám
         \begin{itemize}
             \item Skipanaskrár \eng{scripts} eru samansöfn af Matlab-skipunum keyrðar í röð
-            \item Notendaskilgreind föll \eng{user-defined functions}, svipar til t.d. Python
+            \item Notendaskilgreind föll \eng{user-defined functions}
             \item Klasar
         \end{itemize}
         \item Fallshaus í Matlab:
@@ -132,7 +144,7 @@ if skilyrdi
     skipanir
 end
 
-for hlaupabreyta = svid
+for itrunarbreyta = svid
     skipanir
 end
 
@@ -140,6 +152,17 @@ while skilyrdi
     skipanir
 end
 \end{minted}
+\end{frame}
+
+\begin{frame}{Fyrirlestraræfing 1}
+    \begin{itemize}
+        \item (Æfing 3.1f) Þýðið gildinguna $r := \text{ ekki } (q \text{ eða } (p \text{ og } a \neq 2))$ yfir í Matlab
+        \item (Byggt á æfingu 3.2) Skrifið Matlab-fall sem tekur inn gildi á $m$, $k_1$, $k_2$ og skilar $T$ reiknuðu út frá formúlunni
+        \[
+            T = 2\pi\sqrt{\frac{m}{k_1+k_2}}
+        \]
+        \item (Æfing 3.8) Skrifið forrit sem býr til tvö $4 \times 4$ slembifylki $A$ og $B$, reiknar summu þeirra $C$ og skrifar öll fylkin út með \texttt{disp}
+    \end{itemize}
 \end{frame}
 
 \end{document}
