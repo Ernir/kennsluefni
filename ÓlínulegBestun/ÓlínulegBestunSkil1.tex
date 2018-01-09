@@ -1,0 +1,50 @@
+\documentclass{article}
+    
+\usepackage{Vor2018skil}
+
+\title{Ólínuleg bestun \\ Skilaverkefni 1}
+\author{}
+
+\begin{document}
+\maketitle
+
+Skila skal þessu verkefni á Uglu fyrir klukkan 13 mánudaginn 15. janúar.
+
+Lausnin þarf að vera snyrtilega upp sett .pdf skjal sem inniheldur forrit og keyrsludæmi. Notið jafnbilaletur við framsetningu á forritstexta.
+
+Verkefnið er einstaklingsverkefni.
+
+\question
+
+Notið Matlab til að finna lausn jöfnunnar $g(x) = 0$. Notið fæðingardag ykkar til að búa til fjóra stuðla, $a_3, a_2, a_1$ og $a_0$. Ég er fæddur 21. október 1987, svo ég fæ stuðana $a_3 = 21$, $a_2 = 10$, $a_1 = 8$ og $a_0 = 7$. Látið svo $g(x) = a_3x^3 + a_2x^2 + a_1x + a_0$.
+
+\begin{enumerate}[a)]
+    \item Skrifið Matlab fall með haus \texttt{function gx = g(x)} til að reikna $g(x)$.
+    \item Teiknið fallið $g$ með \texttt{fplot}\footnote{sjá sýnidæmi 25 á bls. 84}.
+    \item Skrifið fall til að leysa jöfnuna $f(x) = 0$ með sniðilsaðferð \eng{secant method}. Séu $x_1$ og $x_2$ nálganir við lausn reiknar aðferðin nýja nálgun með
+    \[
+        x_3 = x_2 - f(x_2)\frac{x_2-x_1}{f(x_2) - f(x_1)}.
+    \]
+    Þessir útreikningar eru endurteknir þar til góð nálgun er fengin.
+    Látið fallið taka $f$ inn sem viðfang\footnote{sjá kafla 5.9} ásamt tveimur upphafságiskunum. Hættið þegar munur á nýju gildi og gildinu þar á undan er minni en $10^{-8}$. Prófið fallið með því að leysa jöfnuna $g(x) = 0$.
+    \item Prófið að nota innbyggða fallið \texttt{fzero} til að leysa jöfnuna.
+\end{enumerate}
+
+\question 
+
+Innbyggða Matlab-fallið \texttt{fminsearch} má nota til að lágmarka föll af mörgum breytistærðum. Algengt fall til að prófa er fall Rosenbrocks,
+\[
+    f(x)  = 100(x_2 - x_1^2)^2 + (1-x_1)^2.
+\]
+
+\begin{enumerate}[a)]
+    \item Skrifið Matlab-fall sem tekur við tveggja staka vigri $x$ og skilar fallsgildi Rosenbrock-fallsins í $x$.
+    \item Búið til hæðarlínumynd af fallinu með \texttt{contour}\footnote{sjá bls. 180-181}.
+    \item Ákvarðið lággildi $f$ með aðstoð \texttt{fminsearch}.
+\end{enumerate}
+
+\question
+
+\paragraph{Æfing 12.3 í bók} Þyngdarstuðull (BMI) er skilgreindur sem $m/h^2$ þar sem $m$ er þyngd í kg og $h$ er hæð í $m$. Gerið ráð fyrir að samband milli hæðar og þyngdar sé þannig að þyngdarstuðull karla sé normaldreifður með meðaltal 27 og staðafrávik 5 og ennfremur að hæð sé normaldreifð með meðaltal 1.78 og staðalfrávik 0.08m (óháð þyngdarstuðli). Búið til gervigögn um hæð og þyngd 500 karla miðað við þessar forsendur með fallinu \texttt{randn}. Finnið bestu línu fyrir hæð sem fall af þyngd og teiknið gögnin og línuna á sömu mynd. Ákvarðið jafnframt bestu parabólu og teiknið hana inn á myndina.
+
+\end{document}
