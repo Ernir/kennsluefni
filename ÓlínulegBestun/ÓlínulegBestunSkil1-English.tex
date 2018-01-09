@@ -1,0 +1,52 @@
+\documentclass{article}
+    
+\usepackage{Vor2018skil}
+
+\title{Nonlinear optimization \\ Weekly Assignment 1}
+\author{}
+
+\begin{document}
+\maketitle
+
+Hand in this assignment on Ugla before 13:00 on January 15th.
+
+The solution should be a decently laid out .pdf document containing programs and demonstrations of executions. Use a monospaced font to present program code.
+
+The assignment is for individuals.
+
+\section{Exercise 1}
+
+Use Matlab to solve the equation $g(x) = 0$. Use your date of birth to create four coefficients, $a_3, a_2, a_1$ og $a_0$. The teacher's date of birth is 21. October 1987, giving the coefficients $a_3 = 21$, $a_2 = 10$, $a_1 = 8$ og $a_0 = 7$. Let $g(x) = a_3x^3 + a_2x^2 + a_1x + a_0$.
+
+\begin{enumerate}[a)]
+    \item Write a Matlab function with the header \texttt{function gx = g(x)} to compute $g(x)$.
+    \item Plot the function $g$ using \texttt{fplot}.
+    \item Write a function to solve $f(x) = 0$ using the secant method. If $x_1$ and $x_2$ are solution approximations the method will compute a new approximation as
+    \[
+        x_3 = x_2 - f(x_2)\frac{x_2-x_1}{f(x_2) - f(x_1)}.
+    \]
+    These computations are repeated until the desired accuracy is achieved.
+    Let the function accept $f$ as a parameter along with two initial guesses. Stop iterating when the difference between a new value and the previous value is less than $10^{-8}$. Test the function by solving $g(x) = 0$.
+    \item Try using \texttt{fzero} to solve the same equation.
+\end{enumerate}
+
+\section{Exercise 2} 
+
+The Matlab built-in function \texttt{fminsearch} can be used for multivariable function minimization. A common function to test is Rosenbrock's function,
+\[
+    f(x)  = 100(x_2 - x_1^2)^2 + (1-x_1)^2.
+\]
+
+\begin{enumerate}[a)]
+    \item Write a Matlab-function accepting a two-element vector $x$ and returns the value of the Rosenbrock function at $x$.
+    \item Create a contour plot of the Rosenbrock function using the \texttt{contour} Matlab built-in function.
+    \item Use \texttt{fminsearch} to find the function's minimum.
+\end{enumerate}
+
+\section{Exercise 3}
+
+Body Mass Index (BMI) is defined as $m/h^2$ where $m$ is a person's mass in kilograms and $h$ is a height in meters. Assume that the ratio of height to mass among men conforms to a normal distribution with a mean of 27 and a standard deviation of 5, and that height conforms to a normal distribution with a mean of 1.78 and a standard deviation of 0.08.
+
+Use the \texttt{randn} function to create dummy data representing the height and weight of 500 men in accordance with these assumptions. Find the line of best fit approximating height as a function of weight and plot the (dummy) data and the line on the same figure. Also determine the best-fitting parabola and draw it on the figure.
+
+\end{document}
