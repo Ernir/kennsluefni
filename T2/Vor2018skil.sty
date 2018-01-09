@@ -3,11 +3,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage[icelandic]{babel}
 \usepackage[T1]{fontenc}
-\usepackage{mathpazo}
+\usepackage[sc]{mathpazo}
 \usepackage[parfill]{parskip}
 % Tables and lists
 \usepackage{booktabs,tabularx}
-\usepackage{multirow, multicol}
+\usepackage{multirow}
 \usepackage{enumerate}
 % Math
 \usepackage{amsmath, amsfonts, amssymb, amsthm}
@@ -28,17 +28,24 @@
 \floatname{program}{Forrit}
 % End minted configuration
 
+% Mimicking the exam class
+\newcounter{questioncounter}[section]
+\newcommand{\question}{\refstepcounter{questioncounter} \subsection{Verkefni \thequestioncounter }}
+
 % Picture locations
 \graphicspath{{./Pics/}}
 
 % Meta information
 \date{}
 \author{Eiríkur Ernir Þorsteinsson}
-\newcommand{\semester}{vor 2017}
-\newcommand{\Semester}{Vor 2017}
+\newcommand{\semester}{haust 2017}
+\newcommand{\Semester}{Haust 2017}
 
 % Hyphenation
 \hyphenpenalty=5000
 % Page and section numbering
 \setcounter{secnumdepth}{-1} 
 \pagenumbering{gobble}
+
+% Shortcuts
+\newcommand{\eng}[1]{(e.\ \emph{#1})}
