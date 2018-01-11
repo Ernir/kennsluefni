@@ -5,7 +5,7 @@
 
 \usepackage{tikz}
 \usepackage[listings,theorems]{tcolorbox}
-\usepackage{booktabs, tabularx}
+\usepackage{booktabs}
 \usepackage{minted} %Minted and configuration
 \usemintedstyle{default}
 
@@ -15,16 +15,25 @@
 % Beamer configuration
 %%%%%%%%%%%%%%%%%%%%%%
 \setbeamertemplate{navigation symbols}{}
+
+% Add slide numbers, source: https://tex.stackexchange.com/a/137028/21638
+\addtobeamertemplate{navigation symbols}{}{% 
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
 \usecolortheme{dove}
 \setbeamercolor{frametitle}{fg=white}
 
 \usebackgroundtemplate%
 {%
 \vbox to \paperheight{
-\includegraphics[width=\paperwidth]{Pics/hi-slide-head-2016}
+\includegraphics[width=\paperwidth]{hi-slide-head}
 
 \vfill
-\hspace{0.5cm}\includegraphics[width=0.3\paperwidth]{Pics/hi-von-logo}
+\hspace{0.5cm}\includegraphics[width=0.3\paperwidth]{hi-von-logo}
 \vspace{0.4cm}
     }%
 }
@@ -57,20 +66,22 @@
 }
 
 
+%%%%%%%%%%%
 % Shortcuts
+%%%%%%%%%%%
+
 \newcommand{\Mod}[1]{\ \text{mod}\ #1}
 \newcommand{\eng}[1]{(e.\ \emph{#1})}
 \newmintedfile[cppfile]{cpp}{frame=lines, linenos=true}
 \newmintedfile[javafile]{java}{frame=lines, linenos=true}
-
+\newmintedfile[matlabfile]{matlab}{frame=lines, linenos=true}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 % Further configuration
 %%%%%%%%%%%%%%%%%%%%%%%
-\hypersetup{colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue}
-\graphicspath{{./Pics/}}
-
+\hypersetup{colorlinks=true,pdfauthor={Eirikur Ernir Þorsteinsson},linkcolor=blue,urlcolor=blue}
+\graphicspath{{./Pics/}{../Pics/}}
 
 \author{Eiríkur Ernir Þorsteinsson}
 \institute{Háskóli Íslands}
-\date{Vor 2017}
+\date{Vor 2018}

@@ -10,12 +10,12 @@ int main() {
     int *pointsToInt = &age;
     cout << "pointsToInt points to age" << endl;
     // Displaying the value of pointer
-    cout << "pointsToInt = 0x" << hex << pointsToInt << endl;
+    cout << "pointsToInt = " << hex << pointsToInt << endl;
     // Displaying the value at the pointed location
     cout << "*pointsToInt = " << dec << *pointsToInt << endl;
     pointsToInt = &dogsAge;
     cout << "pointsToInt points to dogsAge now" << endl;
-    cout << "pointsToInt = 0x" << hex << pointsToInt << endl;
+    cout << "pointsToInt = " << hex << pointsToInt << endl;
     cout << "*pointsToInt = " << dec << *pointsToInt << endl;
     return 0;
 }
