@@ -4,10 +4,11 @@
 using namespace std;
 
 class Human {
-private:
+   private:
     string name;
     int age;
-public:
+
+   public:
     Human(string humansName, int humansAge) {
         this->name = humansName;
         this->age = humansAge;

@@ -26,5 +26,7 @@ int main() {
     }
     cout << endl;
 
+    delete[] pizzaSizes;
+
     return 0;
 }

@@ -4,7 +4,7 @@
 using namespace std;
 
 class Human {
-public:
+   public:
     string name;
     int age;
 
@@ -15,12 +15,12 @@ public:
 };
 
 int main() {
-    // An object of class Human with 
+    // An object of class Human with
     // attribute name as "Adam"
     Human firstMan;
     firstMan.name = "Adam";
     firstMan.age = 30;
-    // An object of class Human with 
+    // An object of class Human with
     // attribute name as "Eve"
     Human firstWoman;
     firstWoman.name = "Eve";
@@ -29,8 +29,10 @@ int main() {
     firstWoman.IntroduceSelf();
 
     Human* secondMan = new Human();
-    secondMan->name = "Bob"; // recommended
+    secondMan->name = "Bob";
     (*secondMan).age = 32;
     secondMan->IntroduceSelf();
     delete secondMan;
 }
+
+/* SOURCE: Sam's Teach Yourself C++ in One Hour a Day, Lesson 9 */
