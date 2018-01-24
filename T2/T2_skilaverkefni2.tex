@@ -15,7 +15,7 @@ Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Grad
 
 \question
 
-Skrifið C++ forrit sem les inn tölur af staðalinntaki. Safnið tölunum saman í vigur (\texttt{std::vector} breytu) af \texttt{double} tölum. Reiknið og skrifið út miðgildi \eng{median} talnanna og dreifni \eng{variance} þeirra.
+Skrifið C++ forrit sem les inn tölur af staðalinntaki. Skrifið forrit sem safnar tölunum saman í vigur (\texttt{std::vector} breytu) af \texttt{double} tölum. Reiknið og skrifið út miðgildi \eng{median} talnanna og dreifni \eng{variance} þeirra.
 
 Dæmi:
 \begin{verbatim}
@@ -27,12 +27,27 @@ $ ./statistics
 Miðgildi talnanna er 6.5
 Dreifni talnanna er  5.1875
 \end{verbatim}
+og 
+\begin{verbatim}
+$ ./statistics
+4.1
+6.0
+5.2
+9.1
+7.7
+Miðgildi talnanna er 6
+Dreifni talnanna er  3.1736
+\end{verbatim}
+
+Skilið \textbf{tveimur keyrsludæmum}, með tölunum að ofan.\footnote{Þetta er gert til að flýta fyrir yfirferð.} 
 
 \paragraph{Áminning:} Til að finna miðgildi talnasafns með oddatölufjölda talna má byrja á að raða safninu og velja töluna sem er í miðjunni. Til að finna miðgildi talnasafns með sléttum fjölda talna þarf að taka meðaltal stakanna tveggja sem er í miðjunni. Dreifni talnasafns $x$ með $N$ tölum má reikna með formúlunni $\frac{1}{N} \sum_{i=1}^N(x_i - \mu)^2$ þar sem $\mu$ er meðaltal talnanna.
 
+\newpage
+
 \question
 
-Gefinn er vísir að klasanum \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w3/singlylinkedlist.cpp}{hluti af klasanum \texttt{SinglyLinkedList}} sem notar eintengdan lista til að geyma tákn. Fullbúna útfærslu væri hægt að nota á svipaðan hátt og \texttt{std::vector}. En við látum okkur duga að bæta eftirfarandi atriðum við klasann:
+Gefinn er vísir að klasanum \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w3/singlylinkedlist.cpp}{\texttt{SinglyLinkedList}} sem notar eintengdan lista til að geyma tákn. Fullbúna útfærslu væri hægt að nota á svipaðan hátt og \texttt{std::vector}. En við látum okkur duga að bæta eftirfarandi atriðum við klasann:
 
 \begin{enumerate}[a)]
 	\item Bætið við aðferðinni \texttt{prepend} sem bætir einum hnút fremst í listann. Nýji hnúturinn skal vera geymdur í kös. Fallið þarf að uppfæra eiginleikana \texttt{head} og \texttt{length}.
@@ -60,8 +75,8 @@ Bætið eftirfarandi atriðum við forritið:
 
 \begin{enumerate}[a)]
 	\item Fjölbindingu á \texttt{*} virkjanum í \texttt{Fraction} svo hægt sé að margfalda brot saman.
-    \item Smið fyrir \texttt{MixedFraction} sem getur tekið við þremur inntökum, þannig að fyrsta inntakið tákni heiltöluhluta.
-    \item Fjölbindingu á \texttt{<<} virkjanum svo að \texttt{MixedFraction} skrifist út á strauminn í samræmi við lýsingu.
+	\item Smið fyrir \texttt{MixedFraction} sem getur tekið við þremur inntökum, þannig að fyrsta inntakið tákni heiltöluhluta.
+	\item Fjölbindingu á \texttt{<<} virkjanum svo að \texttt{MixedFraction} skrifist út á strauminn í samræmi við lýsingu.
 \end{enumerate}
 
 Ekki breyta \texttt{main} fallinu sem er gefið nema þar sem það er sérstaklega tekið fram. Þegar forritið er keyrt ætti útskriftin að vera:
