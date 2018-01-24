@@ -9,82 +9,73 @@
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 2}}
 
-Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
 
-\section{Spurning 1}
-Skrifið C++ fall \texttt{readToArray} sem tekur tölu $n$ sem inntaksbreytu, les inn $n$ tölur af \texttt{std::cin} og geymir þær í ``gamaldags'' heiltölufylki. Fallið skal skila bendi á fyrsta stak fylkisins.
+Þegar forriti er skilað inn til yfirferðar er mikilvægt að láta \textbf{niðurstöðurnar fylgja}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
 
-Skrifið síðan C++ fall \texttt{readToVector} sem gerir það sama, en les inn í og skilar \texttt{std::vector} breytu.
+\question
 
-Skrifið að lokum \texttt{main} fall sem kallar á bæði föllin með $n = 3$ og skrifar út summu allra talnanna (6 alls). Gætið þess að öllu minni sé skilað. Sýnið dæmi um keyrslu.
+Skrifið C++ forrit sem les inn tölur af staðalinntaki. Safnið tölunum saman í vigur (\texttt{std::vector} breytu) af \texttt{double} tölum. Reiknið og skrifið út miðgildi \eng{median} talnanna og dreifni \eng{variance} þeirra.
 
-\section{Spurning 2}
-Eintengdur listi (e. \emph{singly linked list}) er einföld gagnagerð. Hún samanstendur af hnútum sem innihalda gögn og tengingum þeirra á milli. Tengingin er í eina átt - hver hnútur vísar á nákvæmlega einn annan hnút og tengingin myndar aldrei rás.
-
-Við getum búið til eintengdan lista í C++ með því að skilgreina klasa sem táknar einn hnút. Eiginleikar klasans eru þá annars vegar gögn (hér heiltölur) og hins vegar bendir á næsta hnút:
-
-\begin{minted}[frame=lines]{cpp}
-class Node {
-  public:
-    
-    Node* next;
-    int data;
-    
-    Node(int data, Node* next) {
-      this->data = data;
-      this->next = next;
-    }    
-};
-\end{minted}
-
-Hér er síðasti hnúturinn í listanum látinn benda á tómt gildi. Við köllum þann hnút sem enginn hnútur bendir á ``haus'' listans.
-
-En til að gagnlegt sé að geyma eitthvað í listanum er nauðsynlegt að útfæra fyrir hann aðgerðir. Klárið að útfæra eftirfarandi:
-
+Dæmi:
 \begin{verbatim}
-int length(Node* head) {
-
-}
-
-Node* search(Node* head, int n) {
-
-}
+$ ./statistics
+5
+6
+11
+7
+Miðgildi talnanna er 6.5
+Dreifni talnanna er  5.1875
 \end{verbatim}
 
-Hér skal \texttt{length} taka inn bendi á haus og skila fjölda hnúta í listanum. \texttt{search} skal taka inn bendi á haus og heiltölu $n$, og skila bendi á hnút sem inniheldur þá tölu.
+\paragraph{Áminning:} Til að finna miðgildi talnasafns með oddatölufjölda talna má byrja á að raða safninu og velja töluna sem er í miðjunni. Til að finna miðgildi talnasafns með sléttum fjölda talna þarf að taka meðaltal stakanna tveggja sem er í miðjunni. Dreifni talnasafns $x$ með $N$ tölum má reikna með formúlunni $\frac{1}{N} \sum_{i=1}^N(x_i - \mu)^2$ þar sem $\mu$ er meðaltal talnanna.
 
-Sýnið dæmi um keyrslu á föllunum.
+\question
 
-\section{Spurning 3}
+Gefinn er vísir að klasanum \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w3/singlylinkedlist.cpp}{hluti af klasanum \texttt{SinglyLinkedList}} sem notar eintengdan lista til að geyma tákn. Fullbúna útfærslu væri hægt að nota á svipaðan hátt og \texttt{std::vector}. En við látum okkur duga að bæta eftirfarandi atriðum við klasann:
 
-Skrifið fjóra C++ klasa þar sem erfðir koma við sögu. Klasarnir eru: 
+\begin{enumerate}[a)]
+	\item Bætið við aðferðinni \texttt{prepend} sem bætir einum hnút fremst í listann. Nýji hnúturinn skal vera geymdur í kös. Fallið þarf að uppfæra eiginleikana \texttt{head} og \texttt{length}.
+	\item Notið fjölbindingu til að láta \texttt{[]} virkjann sækja gögnin í hnút eftir númeri (eins og hægt er að gera við fylki og \texttt{std::vector}). Vísun með of háu númeri er villa.
+	\item Bætið viðeigandi eyði \eng{destructor} við klasann. Hann þarf að sjá til þess að öllu minni sem úthlutað var við keyrslu \texttt{prepend} aðferðarinnar sé skilað.
+\end{enumerate}
 
-\begin{itemize}
- \item \texttt{Shape}. Shape hefur \texttt{virtual} aðferðina \texttt{area} til að reikna út flatarmál.
- \item \texttt{Circle}, sem erfir frá \texttt{Shape} og hefur að auki eiginleikann \texttt{radius}. Smiður \texttt{Circle} skal taka inn eina breytu, radíusinn.
- \item \texttt{Rectangle}, sem erfir frá \texttt{Shape} og hefur að auki eiginleikana \texttt{height} og \texttt{width}. Smiður \texttt{Rectangle} skal taka inn tvær breytur, hæð og breidd.
- \item \texttt{Square}, sem erfir frá \texttt{Rectangle}. Smiður \texttt{Square} skal taka inn eina breytu, hliðarlengd.
-\end{itemize}
-Sýnið dæmi um keyrslu þar sem tilvik af \texttt{Circle}, \texttt{Rectangle} og \texttt{Square} eru búin til og flatarmál þeirra skrifuð út, með útskýringum.
+Ekki breyta \texttt{main} fallinu sem er gefið. Þegar forritið er keyrt ætti útskriftin að vera:
 
-\newpage
+\begin{verbatim}
+$ ./singlylinkedlist
+T -> O -> L -> 2 -> 0 -> 3 -> G -> Ø
+Stak 0 í listanum er T
+Stak 3 í listanum er 2
+Kallað hefur verið á eyðinn fyrir listann
+\end{verbatim}
 
-\section{Spurning 4}
-Tvinntölur (e. \emph{complex numbers}) eru gagnleg útvíkkun á rauntalnahugtakinu. Tvinntölur fást með því að skilgreina stærðina $i$ svo að $i^2 = -1$. Þá má setja fram tvinntölu $z$ sem $z = a+bi$ þar sem $a$ og $b$ eru rauntölur.
+\question
 
-Ýmislegt skemmtilegt gildir um tvinntölur, t.d. það að allar margliður með tvinntölustuðla eigi sér tvinntölurót, en við höfum aðallega áhuga á að geta reiknað með þeim í C++.
+Við unnum með almenn brot í Skilaverkefni 1. Nú skal nota fjölbindingu virkja og erfðir til að gera betur.
 
-Skrifið klasann \texttt{Complex} sem bætir tvinntölustuðningi við C++. Tvinntöluklasinn skal styðja eftirfarandi aðgerðir:
+Gefinn er \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w3/mixedfraction.cpp}{hluti af klasanum \texttt{Fraction}}, sem táknar almenn brot. Forritið inniheldur líka vísi að klasanum \texttt{MixedFraction}, sem virkar eins og \texttt{Fraction} en hefur útskrift á þann hátt að heiltöluhluti er brotinn frá brothlutanum þegar teljari er stærri en nefnari og brothlutanum er sleppt þegar brotið er í raun heiltala.
 
-\begin{itemize}
- \item Samlagningu tveggja tvinntalna. Samlagning tvinntalna $z = a + bi$ og $w = c + di$ skilgreinist af $z + w = (a+c) + (b+d)i$. Samlagning skal vera studd með fjölbindingu á \texttt{+} virkjanum.
- \item Frádrátt einnar tvinntölu frá annarri. Frádráttur tvinntalna $z = a + bi$ og $w = c + di$ skilgreinist af $z - w = (a-c) + (b-d)i$. Frádráttur skal vera studdur með fjölbindingu á \texttt{-} virkjanum.
- \item Margföldun tveggja tvinntalna. Margföldun tvinntalna $z = a + bi$ og $w = c + di$ skilgreinist af $zw = (ac -bd) + (bc+ad)i$.
- Margföldun skal vera studd með fjölbindingu á \texttt{*} virkjanum.
- \item Útreikning samokatölu. Samokatala $z = a+bi$ er $\overline{z} = a-bi$. Útreikning á samokatölu skal útfæra í aðferðinni \texttt{conjugate}.
- \item Útskrift á skipanalínu á forminu \texttt{a + bi}.
-\end{itemize}
-Sýnið dæmi um keyrslu þar sem tölurnar $z = -3.5 + 2i$ og $w = -1+3i$ eru lagðar saman, $w$ er dregin frá $z$, þær margfaldaðar saman og samokatala $z$ er reiknuð. Skrifið út niðurstöður útreikninganna með útskriftaraðferðinni.
+Bætið eftirfarandi atriðum við forritið:
+
+\begin{enumerate}[a)]
+	\item Fjölbindingu á \texttt{*} virkjanum í \texttt{Fraction} svo hægt sé að margfalda brot saman.
+    \item Smið fyrir \texttt{MixedFraction} sem getur tekið við þremur inntökum, þannig að fyrsta inntakið tákni heiltöluhluta.
+    \item Fjölbindingu á \texttt{<<} virkjanum svo að \texttt{MixedFraction} skrifist út á strauminn í samræmi við lýsingu.
+\end{enumerate}
+
+Ekki breyta \texttt{main} fallinu sem er gefið nema þar sem það er sérstaklega tekið fram. Þegar forritið er keyrt ætti útskriftin að vera:
+
+\begin{verbatim}
+$ ./mixedfraction
+Búum til og birtum brotið 4/3 sem Fraction: 4/3
+Margföldum saman Fraction-in 1/2 og 2/3: 1/3
+Búum til og birtum brotið 1/4 sem MixedFraction: 1/4
+Búum til og birtum brotið 4/1 sem MixedFraction: 4
+Búum til og birtum brotið 0/2 sem MixedFraction: 0
+Búum til og birtum brotið 7/6 sem MixedFraction: 1 1/6
+Búum til og birtum brotið 1 1/3 sem MixedFraction: 1 1/3
+\end{verbatim}
 
 \vfill
 \includegraphics[width=0.5\linewidth]{hi-von-logo}
