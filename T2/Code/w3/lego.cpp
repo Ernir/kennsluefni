@@ -3,8 +3,7 @@
 using namespace std;
 
 class LegoTower {
-public:
-
+   public:
     LegoTower(){};
 
     LegoTower(int height, int numPips) {
@@ -15,7 +14,7 @@ public:
     // Overload + operator to add two LegoTower objects.
     // The resulting tower will have the combined height
     // of and the lesser of their number of pips.
-    LegoTower operator+(const LegoTower &lt) {
+    LegoTower operator+(LegoTower lt) {
         LegoTower legoTower;
         legoTower.height = this->height + lt.height;
         legoTower.numPips = min(this->numPips, lt.numPips);
@@ -27,9 +26,8 @@ public:
 };
 
 int main() {
-
-    LegoTower lt1(3, 8);
-    LegoTower lt2(4, 4);
+    LegoTower lt1(1, 4);
+    LegoTower lt2(2, 2);
 
     LegoTower lt3 = lt1 + lt2;
 
@@ -37,3 +35,5 @@ int main() {
 
     return 0;
 }
+
+/* SOURCE: Unknown. */

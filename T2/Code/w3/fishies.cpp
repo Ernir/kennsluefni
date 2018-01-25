@@ -3,7 +3,7 @@
 using namespace std;
 
 class Fish {
-public:
+   public:
     bool isFreshWaterFish;
 
     void swim() {
@@ -15,17 +15,13 @@ public:
 };
 
 class Tuna : public Fish {
-public:
-    Tuna() {
-        isFreshWaterFish = false;
-    }
+   public:
+    Tuna() { isFreshWaterFish = false; }
 };
 
 class Carp : public Fish {
-public:
-    Carp() {
-        isFreshWaterFish = true;
-    }
+   public:
+    Carp() { isFreshWaterFish = true; }
 };
 
 int main() {
@@ -38,3 +34,5 @@ int main() {
     myDinner.swim();
     return 0;
 }
+
+/* SOURCE: Sam's Teach Yourself C++ in One Hour a Day, Lesson 10 */

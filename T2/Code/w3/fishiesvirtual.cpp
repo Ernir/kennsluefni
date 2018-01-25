@@ -3,26 +3,20 @@
 using namespace std;
 
 class Fish {
-public:
-    virtual void Swim() {
-        cout << "Fish swims!" << endl;
-    }
+   public:
+    virtual void Swim() { cout << "Fish swims!" << endl; }
 };
 
 class Tuna : public Fish {
-public:
+   public:
     // override Fish::Swim
-    void Swim() {
-        cout << "Tuna swims!" << endl;
-    }
+    void Swim() { cout << "Tuna swims!" << endl; }
 };
 
 class Carp : public Fish {
-public:
+   public:
     // override Fish::Swim
-    void Swim() {
-        cout << "Carp swims!" << endl;
-    }
+    void Swim() { cout << "Carp swims!" << endl; }
 };
 
 void MakeFishSwim(Fish* inputFish) {
@@ -39,3 +33,4 @@ int main() {
     MakeFishSwim(&myLunch);
     return 0;
 }
+/* SOURCE: Sam's Teach Yourself C++ in One Hour a Day, Lesson 10 */

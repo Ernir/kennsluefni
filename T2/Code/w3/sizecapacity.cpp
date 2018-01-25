@@ -20,3 +20,5 @@ int main() {
     cout << ", Capacity: " << integers.capacity() << endl;
     return 0;
 }
+
+/* SOURCE: Sam's Teach Yourself C++ in One Hour a Day, Lesson 17 */
