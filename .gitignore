@@ -42,4 +42,5 @@ T2/vscode/
 
 # Annað rusl
 
-T1a/.directory
+*/.directory
+*/*/.directory
