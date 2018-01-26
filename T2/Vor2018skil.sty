@@ -32,6 +32,9 @@
 \newcounter{questioncounter}[section]
 \newcommand{\question}{\refstepcounter{questioncounter} \subsection{Verkefni \thequestioncounter }}
 
+\newcounter{solutioncounter}[questioncounter]
+\newcommand{\solution}{\refstepcounter{solutioncounter} \subsubsection{Lausn \thesolutioncounter{} á verkefni \thequestioncounter }}
+
 % Picture locations
 \graphicspath{{./Pics/}}
 
