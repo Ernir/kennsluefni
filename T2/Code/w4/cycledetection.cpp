@@ -36,17 +36,6 @@ bool hasCycle(Node* head) {
     head: bendir á upphaf eintengds lista
     skilar: sönnu ef listinn inniheldur hringvísun, annars ósönnu
     */
-    Node* turtle = head;
-    Node* hare = head;
-
-    while (turtle && hare && hare->next) {
-        turtle = turtle->next;
-        hare = hare->next->next;
-
-        if (turtle == hare) {
-            return true;
-        }
-    }
     return false;
 }
 
