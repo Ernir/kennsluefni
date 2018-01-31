@@ -43,8 +43,8 @@ class SinglyLinkedList {
         cout << "Ø" << endl;
     }
 
-    void prepend(T c) {
-        this->head = new Node(c, this->head);
+    void prepend(T data) {
+        this->head = new Node(data, this->head);
         this->length += 1;
     }
 
