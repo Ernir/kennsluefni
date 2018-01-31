@@ -9,51 +9,92 @@
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 3}}
 
-Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
 
+Þegar forriti er skilað inn til yfirferðar er mikilvægt að láta \textbf{niðurstöðurnar fylgja}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
 
-\section{Spurning 1}
-Spegilstrengur (e. \emph{palindrome}) er strengur sem er eins hvort sem hann er lesinn afturábak eða áfram. Þannig er t.d. strengurinn \texttt{ABBA} spegilstrengur, en \texttt{ABAB} ekki.
+Athugið að fyrstu tvö verkefni þessarar viku eru verkefni í \textbf{Java}. Gert er ráð fyrir að forritun í Java sé að mestu leyti þekkt úr Tölvunarfræði 1. Mikilvægt er að setja upp Java-þýðanda sem allra fyrst. Verkefni næstu viku krefjast þess líka að forritssafn kennslubókarinnar (algs4.jar) sé sett upp. Sjá \href{http://algs4.cs.princeton.edu/code/}{leiðbeiningar á síðu bókarinnar}.
+\question
 
-Skrifið C++ fallið \texttt{isPalindrome} sem tekur inn \texttt{string} breytu og skilar rökbreytu sem táknar hvort strengurinn sé spegilstrengur eða ekki. Sýnið dæmi um keyrslu fallsins á streng sem er spegilstrengur og keyrslu á streng sem er það ekki. Skilið öllum forritskóða.
+Aftur er gefinn vísir að \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w4/Fraction.java}{klasa sem táknar almenn brot}. Þar á eftir að útfæra tvær gerðir samanburða - með \texttt{equals} aðferð, sem reiknar hvort að brotin tákni sömu stærð og með \texttt{compareTo}, sem skilgreinir röðun.
 
-\section{Spurning 2}
-Flest könnumst við við íslenskar kennitölur. Vel þekkt er að fyrstu sex tölustafirnir í kennitölu einstaklings er mynduð með fæðingardagsetningu viðkomandi og að tíundi stafurinn segir til um öldina.
-Minna þekkt er að stafir sjö og átta eru merkingarlausar raðtölur og að níundi tölustafurinn er ``vartala'' sem notuð er til að reikna hvort að kennitalan sé lögleg.
+Klárið útfærsluna. Ekki breyta \texttt{main} fallinu sem er gefið eða hausum fallanna sem á að útfæra. Útskriftin ætti að vera:
 
-Lesa má um regluna sem notuð er til að ákvarða hvort kennitala sé lögleg á vef þjóðskrár, \url{http://www.skra.is/thjodskra/um-thjodskra-/um-kennitolur/}.
+\begin{verbatim}
+$ java Fraction
+p.equals(p): true
+p.equals(r): true
+r.equals(p): true
+p.equals(r): true
+r.equals(t): true
+p.equals(t): true
+t.equals(null): false
+q.compareTo(q): 0
+r.compareTo(q): 1
+q.compareTo(r): -1
+r.compareTo(q): 1
+q.compareTo(s): 1
+r.compareTo(s): 1
+\end{verbatim}
 
-Skrifið C++ fallið \texttt{isLegal}, sem tekur inn \texttt{string} sem inniheldur tíu tölustafi og skilar rökbreytu sem táknar hvort að kennitalan sé lögleg eða ekki.
+\paragraph{Ábending:} Hægt er að lesa um kröfur sem gerðar eru til \texttt{equals} á \href{https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#equals(java.lang.Object)}{síðu Oracle} og á bls. 102 í kennslubók. Hægt er að lesa um \texttt{compareTo} á \href{https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html}{síðu Oracle} og á bls. 246-247 í kennslubók.
 
-Einungis þarf að athuga vartöluna, ekki hvort að kennitalan sé að öðru leyti gild.
+\question
 
-Sýnið dæmi um keyrslu fallsins á kennitölunum \texttt{2110873909} og \texttt{2110873919}. Skilið öllum forritskóða.
+Gefinn er byrjun á fjölnota Java-klasanum \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w4/SinglyLinkedList.java}{\texttt{SinglyLinkedList}} sem skal uppfylla eftirfarandi skil:
 
-\paragraph{Ábending:} C++11 fallið \href{http://www.cplusplus.com/reference/string/stoi/}{stoi} er líklegt til að koma að notum.
-\newpage
-\section{Spurning 3}
-Í hverjum löngum streng getum við fundið algengustu hlutstrengi. Til dæmis eru algengustu hlutstrengir af lengd 3 í textanum \texttt{PANAMASKANDALABRANDARAR} strengirnir \texttt{NDA} og \texttt{AND}.
+\begin{center}
+\begin{tabularx}{\linewidth}{rlX}
+\toprule
+Skilar&Notkun&Lýsing\\
+\midrule
+-&\texttt{SinglyLinkedList()}& Smiður, upphafsstillir tóman lista\\
+\texttt{boolean}&\texttt{isEmpty()}&Skilar sönnu sé listinn tómur, annars ósönnu\\
+\texttt{int}&\texttt{size()}&Skilar fjölda staka í listanum\\
+\texttt{String}&\texttt{toString()}&Skilar snyrtilegri framsetningu á gögnum listans\\
+\texttt{T}&\texttt{get(int index)}&Skilar gildi staks númer \texttt{index} í listanum\\
+\texttt{void}&\texttt{insert(int index, T data)}&Setur stak með gögnin \texttt{data} á stað \texttt{index} í listanum, gögn sem á eftir koma hliðrast í átt að enda listans\\
+\bottomrule
+\end{tabularx}
+\end{center}
+Klárið útfærsluna. Ekki breyta \texttt{main} fallinu sem er gefið eða hausum fallanna sem á að útfæra. Útskriftin ætti að vera:
 
-Skrifið C++ fallið \texttt{mostFrequentWords} sem tekur inn \texttt{string} breytu \texttt{text} og heiltölu \texttt{k} og skilar \texttt{unordered\_set} sem inniheldur alla algengustu hlutstrengi af lengd \texttt{k} sem finna má í \texttt{text}.
+\begin{verbatim}
+$ java SinglyLinkedList
+[ 2 ]
+[ 1 2 ]
+[ 1 2 4 ]
+[ 1 2 3 4 ]
+list1.get(0): 1
+list1.get(1): 2
+list1.get(2): 3
+list1.get(3): 4
+Kall á list1.get(-1) mistókst réttilega
+Kall á list1.get(list1.size()) mistókst réttilega
+[ A B C D ]
+\end{verbatim}
 
-Sýnið dæmi um keyrslur fallsins á heiltölunni 5 og strengjunum tveimur í \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w3/dna.txt}{dna.txt} þar sem innihald mengjanna er skrifað út. Í fyrra tilvikinu ætti að vera um að ræða strenginn \texttt{AACAA} sem er skrifaður út, í hinu strengina \texttt{AAAAT}, \texttt{GGGGT} og \texttt{TTTTA}. Skilið öllum forritskóða.
+\question
+Hringvísanir valda oft vandræðum við forritun. T.d. er auðvelt að skilgreina forrit óvart hvert út frá öðru (eins og $f(x) = g(x), g(x) = h(x), h(x) = f(x)$). Til eru reiknirit sem sérstaklega eru hönnuð til að þefa uppi hringvísanir.
 
-\section{Spurning 4}
-Sækið sögusafnið ``The Memoirs of Sherlock Holmes'' af \href{https://www.gutenberg.org/ebooks/834}{Project Gutenberg}, á ``Plain Text UTF-8'' sniði.
+Reiknirit sem kennt er við ``hérann og skjaldbökuna'' er hægt að nota til að uppgötva hringvísanir í eintengdum listum (sjá mynd \ref{fig:circular-list}).
 
-Skrifið C++ fallið \texttt{findInBook} sem tekur inn tvær breytur, breytuna \texttt{text} sem inniheldur bókatextann og aðra sem inniheldur strenginn \texttt{pattern} sem leita skal að í bókinni. Fallið skal skila línunúmerum allra lína þar sem \texttt{pattern} kemur fyrir.
+\begin{figure}
+    \caption{Listi sem hefur verið eyðilagður með hringvísun}
+    \label{fig:circular-list}
+    \includegraphics[width=\textwidth]{circular-list}
+\end{figure}
 
-Notið fallið til að svara eftirfarandi spurningum:
+Reikniritið notar tvo benda, annar er hérinn og hinn er skjaldbakan. Báðir byrja í haus listans en færast á mismunandi hraða. Í hverri ítrun reikniritsins færist hérinn fram um tvo hnúta en skjaldbakan fram um einn. Listinn inniheldur hringvísun þá og því aðeins að bendarnir vísi einhvern tímann á sama hnút eftir að ítrun hefst. 
 
-\begin{enumerate}[a)]
- \item Á hvaða línum kemur orðið ``\texttt{Elementary}'' fyrir?
- \item Á hvaða línum kemur orðasambandið ``\texttt{, my dear Watson}'' fyrir?
-\end{enumerate}
+Gefin er \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w4/cycledetection.cpp}{beinagrind}. Klárið að útfæra \texttt{hasCycle} aðferðina með reikniriti hérans og skjaldbökunnar. Ekki breyta \texttt{main} fallinu sem er gefið. Útskriftin ætti að vera á forminu:
 
-Sýnið hvernig forritið skrifar út svör við spurningunum. Skilið öllum forritskóða.
-
-\paragraph{Ábending:} Fallið \texttt{getline} getur lesið inn heila línu af texta í einu.
+\begin{verbatim}
+$ ./cycledetection
+Listinn er af lengd 781
+Listinn inniheldur hring
+\end{verbatim}
 
 \vfill
-\includegraphics[width=0.5\linewidth]{hi-von-logo}
+%\includegraphics[width=0.5\linewidth]{hi-von-logo}
 \end{document}
