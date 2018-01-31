@@ -75,11 +75,25 @@ Kall á list1.get(list1.size()) mistókst réttilega
 \end{verbatim}
 
 \question
+
+Gefinn er hluti af \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w4/singlylinkedlist.cpp}{fjölnota C++ klasa sem táknar eintengdan lista}. Skrifið aðferðina \texttt{reverse} sem snýr við röð staka í listanum.
+
+Ekki breyta \texttt{main} fallinu sem er gefið. Útskriftin ætti að vera:
+\begin{verbatim}
+$ ./singlylinkedlist
+T -> O -> L -> 2 -> 0 -> 3 -> G -> Ø
+G -> 3 -> 0 -> 2 -> L -> O -> T -> Ø
+\end{verbatim}
+
+\newpage
+\subsection{AUKADÆMI - gildir ekki til einkunnar}
+Þetta dæmi var upphaflega verkefni 3. Fyrir mistök var lausnin á því gefin út, svo það stendur eftir sem aukadæmi.
+
 Hringvísanir valda oft vandræðum við forritun. T.d. er auðvelt að skilgreina forrit óvart hvert út frá öðru (eins og $f(x) = g(x), g(x) = h(x), h(x) = f(x)$). Til eru reiknirit sem sérstaklega eru hönnuð til að þefa uppi hringvísanir.
 
 Reiknirit sem kennt er við ``hérann og skjaldbökuna'' er hægt að nota til að uppgötva hringvísanir í eintengdum listum (sjá mynd \ref{fig:circular-list}).
 
-\begin{figure}
+\begin{figure}[b]
     \caption{Listi sem hefur verið eyðilagður með hringvísun}
     \label{fig:circular-list}
     \includegraphics[width=\textwidth]{circular-list}
