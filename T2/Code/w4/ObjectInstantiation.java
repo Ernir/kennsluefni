@@ -14,7 +14,7 @@ public class ObjectInstantiation {
         }
         //if (primitiveInt.equals(1)) Villa!
 
-        if(boxedInt == autoBoxedInt) {
+        if (boxedInt == autoBoxedInt) {
             StdOut.println("Runs if the Integer values are \"==\"");
         }
         if (boxedInt.equals(autoBoxedInt)) {

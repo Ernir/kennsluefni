@@ -6,14 +6,14 @@ public class PassingVariables {
         i++;
     }
 
-    private static void incrementInt(MyInt myInt) {
+    private static void incrementInt(IntegerBox myInt) {
         myInt.increment();
     }
 
     public static void main(String[] args) {
-        MyInt myInt = new MyInt(1);
+        IntegerBox myInt = new IntegerBox(1);
         incrementInt(myInt);
-        StdOut.println(myInt.getData());
+        StdOut.println(myInt.get());
 
         int primitiveInt = 1;
         incrementInt(primitiveInt);
