@@ -2,15 +2,20 @@ import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.Stack;
 
 class Hanoi {
+    /*
+    Táknar eina ákveðna uppsetningu á Hanoi þrautinni.
+    */
 
     private Stack<Integer> left;
     private Stack<Integer> middle;
     private Stack<Integer> right;
+    private int n;
 
     public Hanoi(int n) {
         /*
-        Creates a new instance of the Hanoi puzzle, with n disks.
+        Upphafsstillir þrautina með n skífum.
          */
+        this.n = n;
         this.left = new Stack<>();
         this.middle = new Stack<>();
         this.right = new Stack<>();
@@ -19,28 +24,24 @@ class Hanoi {
             this.left.push(i);
         }
         this.displayState();
-
-        // Kalla á Solve aðferðina hérna!
     }
 
-    /*
-    ??? solve (???) {
-        // Aðferð sem færir skífur á milli hlaðanna þar til upphaflegi hlaðinn er tómur og
-        // annar hlaði inniheldur allar skífurnar, í smækkandi röð.
-        // Eftir hverja tilfærslu skal kalla á displayState() aðferðina.
+    public void solve() {
+        /*
+        Skrifar út lausn á þrautinni, eitt skref í einu.
+        */
+        // Hér þarf að skrifa kóða
     }
-    */
 
     private void displayState() {
-        StdOut.println("Left stack:   " +  this.left.toString());
-        StdOut.println("Middle stack: " +  this.middle.toString());
-        StdOut.println("Right stack:  " + this.right.toString());
+        StdOut.println("Vinstri : " +  this.left.toString());
+        StdOut.println("Miðja   : " +  this.middle.toString());
+        StdOut.println("Hægri   : " + this.right.toString());
         StdOut.println("#####################");
     }
 
-
     public static void main(String[] args) {
-        new Hanoi(4);
+        new Hanoi(3).solve();
     }
 
 }
