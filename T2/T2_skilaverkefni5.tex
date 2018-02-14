@@ -5,68 +5,72 @@
 \title{Tölvunarfræði 2, \semester \\ Skilaverkefni 5}
 \author{}
 
+\hyphenation{StdRandom}
+
 \begin{document}
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 5}}
 
-Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
 
-Í þessum verkefnum þarf að skrifa klasa í Java og C++\footnote{Uppfærð verkefnislýsing: Hér stóð áður ``skrifa klasa í Java''.} sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skrifa \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu hverrar aðferðar.
+Þegar forriti er skilað inn til yfirferðar er mikilvægt að láta \textbf{niðurstöðurnar fylgja}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
 
-\section{Spurning 1}
-Gefinn er \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w5/SimpleSinglyLinkedList.java}{klasi \textbf{í Java}} sem táknar eintengdan lista. Betrumbætið klasann svo hann útfæri \texttt{Iterable}. Keyrsludæmið skal sýna notkun foreach lykkju.
+Athugið að verkefni þessarar viku eru í Java. Verkefnin krefjast þess að forritssafn kennslubókarinnar (algs4.jar) sé sett upp. Sjá \href{http://algs4.cs.princeton.edu/code/}{leiðbeiningar neðarlega á síðu bókarinnar}.
 
-\section{Spurning 2}
-Turninn í Hanoi (e. \emph{Tower of Hanoi}) er stærðfræðiþraut sem gengur út á að færa skífur á milli þriggja hlaða. Sjá \href{https://www.tutorialspoint.com/data_structures_algorithms/images/tower_of_hanoi.gif}{hreyfimynd}.
+Verkefnin eru \emph{ekki óháð} í þetta skiptið. Mælt er með að leysa þau í röð. Byrjið snemma og leitið hjálpar ef þið lendið í vandræðum. Þegar forrit í seinni verkefnunum notar forrit sem var útfært fyrir fyrra verkefni þarf ekki að láta það fylgja með þegar seinna verkefninu er skilað til yfirferðar.
 
-Í byrjun eru $n$ skífur á einum hlaðanum í stærðarröð, stærsta skífan neðst. Þrautin er unnin þegar allar skífurnar hafa verið færðar frá fyrsta hlaðanum yfir á annan hlaða, en fylgja þarf eftirfarandi reglum þegar skífurnar eru færðar:
+\question
+
+Til að prófa forrit þurfum við oft að nota slembitölur. Í algs4 safninu er klasinn \href{https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/StdRandom.java.html}{StdRandom} sem inniheldur gagnlegar hjálparaðferðir til að búa til slembitölur.
+
+Eitt vantar okkur þó - aðferð til að búa til slembið fylki af \texttt{Double} tölum.
+
+Skrifið slíka aðferð í samræmi við lýsingu í \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/MoreRandom.java}{beinagrind}. Ekki breyta \texttt{main} aðferðinni sem er gefin eða haus aðferðarinnar.
+
+Útskrift forritsins ætti ekki að breytast á milli keyrslna og vera á eftirfarandi formi:
+
+\begin{verbatim}
+$ java MoreRandom
+0.736073918590018 0.5765058389895272 0.13046441762918415
+\end{verbatim}
+
+\question
+
+Skrifið forrit sem framkvæmir endurteknar mælingar á keyrslutíma innsetningarröðunar (úr algs4) til að sannfærast um að aðferðin sé í alvörunni $O(n^2)$ reiknirit. Örlítil \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/PlotRunningTimes.java}{beinagrind} er gefin.
+
+Mælið keyrslutíma reikniritsins á fylkjum sem innihalda frá 0 upp í 5000 slembnar fleytitölur. Prófið stærðirnar $0, 10, 20, 30, \ldots , 5000$. Til að fá gott mat á keyrslutímana skuluð þið framkvæma röðunina 20 sinnum fyrir hverja stærð á fylki og reikna meðalkeyrslutímann.
+
+Teiknið að lokum niðurstöðurnar upp sem safn af punktum, með stærð fylkjanna á lárétta ásnum og meðalkeyrslutímann fyrir fylki af þeirri stærð á lóðrétta ásnum. Niðurstaðan ætti að vera svipuð og á mynd \ref{mynd:1}.
+
+\begin{figure}[h]
+	\caption{Keyrslutími innsetningarröðunar eftir inntaksstærð. Ef vel er að gáð má sjá fleygboga.}
+	\label{mynd:1}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{insertion-sort-times}
+	\end{center}
+\end{figure}
+
+\paragraph{Ábendingar}
+
 \begin{enumerate}
- \item Einungis má færa eina skífu í einu
- \item Þegar skífa er færð er hún tekinn efst af einum af hlaðanum og færð efst á annan hlaða
- \item Aldrei má setja skífu ofan á minni skífu
+	\item Gert er ráð fyrir að grunnnotkun á \texttt{StdDraw} klasanum sé þekkt. Sé svo ekki, athugið umfjöllun um teikniaðferðir sem hefst á bls. 42, sérstaklega fyrsta sýnidæmið á bls. 45.
+    \item Fjallað er um útfærslur röðunarreikniritanna í \texttt{algs4} og hvernig má nota þau í köflum 2.1 og 2.2 í Algorithms.
+    \item Látið slembitölugjafann vinna út frá föstu ``seed''. Sjá verkefni 1.
+	\item Hægt er að nota \texttt{System.nanoTime()} eða \texttt{StopWatchCPU} úr \texttt{algs4} til að mæla tíma.
+	\item Forritið tók rúma mínútu í keyrslu á tölvu kennarans. Gagnlegt er að nota aðrar tölur (t.d. lægra \texttt{maxArraySize} og hærra \texttt{stride}) meðan á forritun stendur.
 \end{enumerate}
 
-Skrifið forrit \textbf{í Java} sem skrifar út öll skref sem þarf til að leysa Turninn í Hanoi. Það skal tákna hlaðana þrjá með tilvikum af klasanum \texttt{Stack} úr \texttt{algs4.jar}. Notið beinagrindina í \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w5/Hanoi.java}{Hanoi.java}.
+\question
 
+Því er oft haldið fram að innsetningarröðun sé skilvirk fyrir lítil fylki en dragist svo afturúr. Staðfestið þetta með tilraunum.
 
-\newpage
+Tímamælið annars vegar innsetningarröðun og hins vegar sameiningarröðun (úr algs4) á 10 staka slembnu fleytitölufylki 50000 sinnum og reiknið meðalkeyrslutímana. Innsetningarröðun ætti þá að vera hraðvirkari.
 
-\section{Spurning 3}
-Skrifið klasa \textbf{í C++} sem uppfyllir eftirfarandi skil fyrir biðröð heiltalna.
+Hækkið svo stærð fylkisins um 1 og athugið aftur hvort innsetningarröðun sé hraðvirkari. Haldið áfram að hækka þar til sameiningarröðun tekur fram úr eða þar til komið er upp í fylki af stærðinni 1000.
 
-\begin{center}
-\begin{tabularx}{\textwidth}{rlX}
-\toprule
-\multicolumn{3}{c}{\texttt{public class Queue\footnote{Uppfærð verkefnislýsing: Hér stóð áður Queue<int>, sem var ruglandi}}}\\
-\midrule
--&\texttt{Queue()}& Smiður, býr til tóma biðröð\\
-\texttt{void}&\texttt{enqueue(int n)}&Bætir tölunni \texttt{n} í biðröðina\\
-\texttt{int}&\texttt{dequeue()}&Fjarlægir þá tölu sem lengst hefur verið í biðröðinni og skilar henni\\
-\texttt{int}&\texttt{size()}&Skilar fjölda talna í biðröðinni\\
-\bottomrule
-\end{tabularx}
-\end{center}
+Gefin er örlítil \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/SortingCompetition.java}{beinagrind}. Skilið niðurstöðu tilraunanna.
 
-Notið \texttt{std::vector} breytu til að geyma gögn biðraðarinnar.
-
-\section{Spurning 4}
-Skrifið klasa \textbf{í C++} sem uppfyllir eftirfarandi skil fyrir hlaða heiltalna. 
-
-\begin{center}
-\begin{tabularx}{\textwidth}{rlX}
-\toprule
-\multicolumn{3}{c}{\texttt{public class Stack}}\\
-\midrule
--&\texttt{Stack()}& Smiður, býr til tóman hlaða\\
-\texttt{void}&\texttt{push(int n)}&Bætir tölunni \texttt{n} á hlaðann\\
-\texttt{int}&\texttt{pop()}&Fjarlægir þá tölu sem styst hefur verið á hlaðanum og skilar henni\\
-\texttt{int}&\texttt{peek()}&Skilar þeirri tölu sem styst hefur verið á hlaðanum en skilur við hlaðann í sama ástandi\\
-\bottomrule
-\end{tabularx}
-\end{center}
-
-Notið eintengdan lista til að geyma gögn hlaðans.
-
-\vfill
-\includegraphics[width=0.5\linewidth]{hi-von-logo}
+\paragraph{Ábending:} Látið slembitölugjafann vinna út frá föstu ``seed''. Sjá verkefni 1.
+%\vfill
+%\includegraphics[width=0.5\linewidth]{hi-von-logo}
 \end{document}
