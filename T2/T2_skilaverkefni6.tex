@@ -11,42 +11,55 @@
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 6}}
 
-Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
 
-Í þessum verkefnum þarf að skrifa klasa í Java og C++ sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skrifa \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu hverrar aðferðar sem þið skrifið.
+Þegar forriti er skilað inn til yfirferðar er mikilvægt að láta \textbf{niðurstöðurnar fylgja}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
 
-\section{Spurning 1}
-Skráin \href{http://algs4.cs.princeton.edu/14analysis/1Mints.txt}{1Mints.txt} inniheldur 1000000 tölur.
+\question
 
-Skrifið Java-forrit sem ber saman keyrslutíma útfærslu algs4.jar á innsetningarröðun og sameiningarröðun á fylki sem inniheldur
+Til að sjá fyrir sér virkni forrita getur verið gagnlegt að skrifa út milliniðurstöður þeirra.
 
-\begin{itemize}
- \item Fyrstu 100 tölurnar í 1Mints.txt
- \item Fyrstu 10000 tölurnar í 1Mints.txt
- \item Fyrstu 100000 tölurnar í 1Mints.txt
-\end{itemize}
+Gefið er forritið \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/NotQuick.java}{NotQuick.java}, sem er útgáfa af \texttt{Quick.java} sem sleppir því að stokka fylkið í upphafi.\footnote{Aðrir hlutar forritsins sem eru verkefninu óviðkomandi hafa líka verið fjarlægðir.}
 
-Forritið skal skrifa út niðurstöður samanburðanna.
+Dæmi um útskrift á ástöndunum undir lok \texttt{partition} aðferðarinnar þegar bókstöfunum í \texttt{KRATELEPUIMQCXOS} er raðað er eftirfarandi\footnote{Þessi stafaruna er hluti af sýnidæmi á bls. 289 í Algorithms.}:
 
-\paragraph{Ábending:} Hægt er að nota \href{https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#nanoTime--}{System.nanoTime} eða Stopwatch.java í algs4.jar til að mæla tíma.
+\begin{verbatim}
+Fyrir röðun: K R A T E L E P U I M Q C X O S 
+Vendistak K, raðað frá  0 til 15: E C A I E K L P U T M Q R X O S 
+Vendistak E, raðað frá  0 til  4: E C A E I K L P U T M Q R X O S 
+Vendistak E, raðað frá  0 til  2: A C E E I K L P U T M Q R X O S 
+Vendistak A, raðað frá  0 til  1: A C E E I K L P U T M Q R X O S 
+Vendistak L, raðað frá  6 til 15: A C E E I K L P U T M Q R X O S 
+Vendistak P, raðað frá  7 til 15: A C E E I K L M O P T Q R X U S 
+Vendistak M, raðað frá  7 til  8: A C E E I K L M O P T Q R X U S 
+Vendistak T, raðað frá 10 til 15: A C E E I K L M O P S Q R T U X 
+Vendistak S, raðað frá 10 til 12: A C E E I K L M O P R Q S T U X 
+Vendistak R, raðað frá 10 til 11: A C E E I K L M O P Q R S T U X 
+Vendistak U, raðað frá 14 til 15: A C E E I K L M O P Q R S T U X 
+Eftir röðun: A C E E I K L M O P Q R S T U X 
+\end{verbatim}
 
-\section{Spurning 2}
-Ein leið til að raða spilum í spilastokki er að raða þeim þannig að fyrst komi öll hjörtu, svo allir spaðar, svo allir tíglar og að lokum öll lauf. 
-Innan hvers lits er spilunum svo raðað þannig að ásinn sé lægstur, svo tvisturinn, svo koll af kolli þar til kóngur viðkomandi lits kemur síðast.
+Breytið NotQuick svo það skrifi út ástandið undir lok hvers kalls á \texttt{partition} aðferðina. Vendistakið, mörk undirfylkisins sem verið var að raða og fylkið í heild sinni þurfa að koma fram í hverri útskrift. Ekki breyta öðrum aðferðum en \texttt{partition} aðferðinni.
 
-Klasinn \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/Card.java}{\texttt{Card.java}} táknar spil í spilastokki. Hann notar \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/Suit.java}{\texttt{Suit.java}}.
-Gerið spilin raðanleg með því að útfæra fyrir þau \texttt{\href{https://docs.oracle.com/javase/8/docs/api/java/lang/Comparable.html}{Comparable}} skilin á viðeigandi hátt.
+\newpage
 
-\section{Spurning 3}
-Skrifið C++ fall sem framkvæmir innsetningarröðun (e. \emph{insertion sort}) á fylki heiltalna.
+\question
 
-Notið beinagrindina í  \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/InsertionSort.cpp}{InsertionSort.cpp}.
-\section{Spurning 4}
-Skrifið klasa \sout{í C++} \textbf{í Java} sem táknar sérhæfðan eintengdan lista sem sjálfkrafa geymir stök sín í stígandi röð.
+Skrifið aðferð í Java sem tekur inn tvær forgangsbiðraðir og sameinar þær. 
+Hún skal búa til nýja forgangsbiðröð sem inniheldur öll stök sem finna mátti í forgangsbiðröðunum sem hún tók inn. 
 
-Röð stakanna skal viðhaldið af innsetningaraðferð klasans. Hún skal gera ráð fyrir því að listinn sé nú þegar í stígandi röð. Þegar bæta skal við nýju gildi skal innsetningaraðferðin fara í gegnum listann og finna stað til að setja inn nýja gildið án þess að raska röðinni.
+Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/PriQueueMerge.java}{PriQueueMerge.java}. Ekki breyta \texttt{main} aðferðinni eða haus \texttt{merge} aðferðarinnar.
 
-Nota má beinagrindina í \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/SortedList.cpp}{SortedList.cpp} til hliðsjónar. {\color{red} Beinagrind í Java mun birtast undir \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w6/SortedList.java}{SortedList.java} von bráðar.}
+Í réttri útfærslu ætti prufuforritið að skrifa út tölurnar \texttt{9 8 7 6 5 4 3 2 1 0}.
+
+\question
+
+Útfærið quicksort reikniritið í C++ fyrir \texttt{std::vector} heiltalna. Notið \texttt{Quick.java} til hliðsjónar.
+
+Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/quicksort.cpp}{quicksort.cpp}. Ekki breyta \texttt{main} fallinu, \texttt{issorted} fallinu eða haus \texttt{quicksort} fallsins.
+
+\paragraph{Ábending 1:} Hægt er að stokka vigur með því að nota \href{http://www.cplusplus.com/reference/algorithm/random_shuffle/}{\texttt{std::random\_shuffle}} (sjá notkunardæmi í \texttt{main} fallinu).
+\paragraph{Ábending 2:} \&-merkið í fallsinntakinu lætur fallið meðhöndla inntakið sem vísun, á svipaðan hátt og við erum farin að venjast í Java. 
 
 \vfill
 \includegraphics[width=0.5\linewidth]{hi-von-logo}
