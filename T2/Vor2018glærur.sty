@@ -52,6 +52,34 @@
 \setbeamerfont{frametitle}{size=\normalsize}
 \addtobeamertemplate{frametitle}{}{\vspace*{0.5cm}}
 
+% Slide appearance shortcuts
+\newcommand{\headonly}{ % Removes the logo
+\usebackgroundtemplate%
+{%
+\vbox to \paperheight{
+\includegraphics[width=\paperwidth]{hi-slide-head}}%
+}
+}
+
+\newcommand{\headandfoot}{ % Shows both the slide header and footer
+    \usebackgroundtemplate%
+{%
+\vbox to \paperheight{
+\includegraphics[width=\paperwidth]{hi-slide-head}
+
+\vfill
+\hspace{0.5cm}\includegraphics[width=0.3\paperwidth]{hi-von-logo}
+\vspace{0.4cm}
+    }%
+}
+}
+
+\newcommand{\imageslide}[2][0cm]{{
+\usebackgroundtemplate{\hspace{#1}\includegraphics[height=\paperheight]{#2}}
+\begin{frame}[plain]
+\end{frame}
+}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % tcolorbox configuration
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -70,7 +98,7 @@
 
 
 %%%%%%%%%%%
-% Shortcuts
+% General shortcuts
 %%%%%%%%%%%
 
 \newcommand{\Mod}[1]{\ \text{mod}\ #1}

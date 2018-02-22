@@ -1,0 +1,1 @@
+This folder contains individual slides extracted from Sedgewick and Wayne's lecture slides for the Algorithms, 4th edition textbook. Those slides can be accessed at [the book's website](http://algs4.cs.princeton.edu/lectures/). All credit goes to the original authors.
