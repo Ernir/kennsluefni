@@ -9,58 +9,79 @@
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 7}}
 
-\paragraph{Skilavefur} Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}.
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
 
-\paragraph{Vinnubrögð og frágangur} Skrifa þarf forrit í Java og C++ sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skila \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu. Leitist við að nota beinagrindur óbreyttar þegar þær eru gefnar. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+Þegar forriti er skilað inn til yfirferðar er mikilvægt að láta \textbf{niðurstöðurnar fylgja}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
 
-\paragraph{Samþykki til dreifingar} Dæmatímakennarar velja framúrskarandi lausnir til birtingar undir nafni í lausnasafni. Sé þess óskað að einhverjar þinna úrlausna séu ekki birtar nema nafnlaust eða alls ekki birtar yfir höfuð skal taka slíkt fram í hverju dæmi sem takmörkunin á við.
+\question
 
-\section{Spurning 1}
-Gefið er forritið \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/NotQuick.java}{NotQuick.java}, sem er útgáfa af \texttt{Quick.java} sem sleppir því að stokka fylkið í upphafi.\footnote{Auk þess hefur pakkaskilgreiningu forritsins verið breytt svo hægt sé að afrita skrána beint inn í vinnumöppu.}
+Klasinn \href{https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/BST.java.html}{BST.java} táknar nafnatöflu með samanburðarhæfum lyklum. Hann inniheldur aðferðirnar \texttt{min} og \texttt{max} til að finna útgildi töflunnar.
 
-Skrifið Java-forrit sem ber saman keyrslutíma á \texttt{Quick.java} og \texttt{NotQuick.java} á fylki sem inniheldur fyrstu 20000 tölurnar í \href{http://algs4.cs.princeton.edu/14analysis/1Mints.txt}{1Mints.txt}, annars vegar þegar fylkið er í þeirri röð sem það birtist í \texttt{1Mints.txt} og hins vegar þegar því hefur þegar verið raðað. 4 tilvik alls.
+Þessar aðferðir eru útfærðar með endurkvæmni. Það gerir kóðann knappan og fágaðan\footnote{Skv. gildismati kennarans.}, en getur valdið vandræðum verði tvíleitartréð sem liggur að baki töflunni mjög langt frá því að vera í jafnvægi.
 
-Gefið líka stutt svör við eftirfarandi spurningum:
+Breytið útfærslunum á (public) \texttt{min()} og \texttt{max()} aðferðunum svo að þær noti ítrun í stað endurkvæmni. Skilið breyttu aðferðunum ásamt dæmi um keyrslu á gefnum \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w8/stringsearchtree.java}{prufuklasa}.
 
-\begin{enumerate}[a)]
- \item \texttt{NotQuick.java} getur stundum verið fljótara en \texttt{Quick.java}. Hvernig stendur á því?
- \item Af hverju getum við lent í því að \texttt{NotQuick.java} ljúki ekki keyrslu (hrynji) á stórum inntökum sem \texttt{Quick.java} ræður þó við?
-\end{enumerate}
+\paragraph{Ábending 1:} Afritið \texttt{BST.java} í vinnumöppuna ykkar og breytið því eintaki. Prufuklasinn keyrir ekki án þess.
 
-Nota má forritið í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/SortCompare.java}{SortCompare.java} til viðmiðunar.
+\paragraph{Ábending 2:} Mjög gagnlegt er að nota debugger til að skoða uppbyggingu breytunnar \texttt{bst} rétt áður en keyrslu prufuforritsins lýkur til að átta sig á uppbyggingu tvíleitartrésins.
 
-\section{Spurning 2}
-Skrifið aðferð í Java sem tekur inn tvær forgangsbiðraðir og sameinar þær. 
-Hún skal búa til nýja forgangsbiðröð sem inniheldur öll stök sem finna mátti í annarri hvorri forgangsbiðröðinni sem hún tók inn.
+\question
 
-Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/PriQueueMerge.java}{PriQueueMerge.java}.
+Skrifið forrit sem framkvæmir endurteknar mælingar á \href{https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/BinarySearchST.java.html}{BinarySearchST}.
 
-\section{Spurning 3}
-Útfærið quicksort reikniritið í C++ fyrir \texttt{std::vector}. Notið \texttt{Quick.java} til hliðsjónar.
+Mælið keyrslutíma uppflettingar á slembivöldum lykli í nafnatöflum sem innihalda frá 50000 upp í 5000000 aðskilda heiltölulykla. 
 
-Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/quicksort.cpp}{quicksort.cpp}.
+Prófið stærðirnar $50000, 100000, 150000, \ldots , 5000000$. Til að fá betra mat skuluð þið framkvæma röðunina 20000 sinnum fyrir hverja stærð á fylki og reikna meðalkeyrslutímann. Veljið nýjan lykil í hverri einustu keyrslu (20000 mismunandi lyklar fyrir hverja stærð verða prófaðir).
 
-\paragraph{Ábending 1:} Hægt er að stokka vigur með því að nota \href{http://www.cplusplus.com/reference/algorithm/random_shuffle/}{\texttt{std::random\_shuffle}}.
-\paragraph{Ábending 2:} \&-merkið í fallsinntakinu lætur fallið meðhöndla inntakið sem vísun, á \emph{svipaðan} hátt og við erum farin að venjast í Java.
+Teiknið að lokum niðurstöðurnar upp sem safn af punktum, með fjölda lykla á lárétta ásnum og meðalkeyrslutímann fyrir töflunni af þeirri stærð á lóðrétta ásnum. Niðurstaðan ætti að vera svipuð og á mynd \ref{mynd:1}.
 
-\section{Spurning 4}
-Skrifið klasa í Java sem uppfyllir hefðbundin skil fyrir hlaða:
+\newpage
 
-\begin{center}
-\begin{tabularx}{\textwidth}{rlX}
-\toprule
-\multicolumn{3}{c}{\texttt{public class Stack<Item>}}\\
-\midrule
--&\texttt{Stack()}& Smiður, býr til tóman hlaða\\
-\texttt{void}&\texttt{push(Item item)}&Bæta \texttt{item} á hlaðann\\
-\texttt{Item}&\texttt{pop()}&Fjarlægja og skila því staki sem styst hefur verið á hlaðanum\\
-\texttt{boolean}&\texttt{isEmpty()}&Er hlaðinn tómur?\\
-\texttt{int}&\texttt{size()}&Fjöldi hluta á hlaðanum\\
-\bottomrule
-\end{tabularx}
-\end{center}
+Sérstök beinagrind er ekki gefin, en grunnstærðirnar eru eftirfarandi:
 
-Notið forgangsbiðröðina \texttt{MaxPQ.java} að geyma gögn hlaðans. Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w7/Stack7.java}{Stack7.java} og klárið þær aðferðir sem merktar eru. Þegar aðferðirnar eru rétt útfærðar ætti \texttt{main} aðferðin að skrifa út \texttt{ANANASBANN!}.
+\begin{minted}{java}
+int maxArraySize = 5000000;  // Mesta stærð á fylki sem við ætlum að tímamæla
+int stride =       50000;    // Bil á milli stærða
+int numTrials =    20000;    // Fjöldi mælinga fyrir hverja stærð fylkis
+\end{minted}
+
+Hugmyndir (og beinagrindin) úr skilaverkefni 5 geta verið gagnlegar.
+
+\begin{figure}[h]
+	\caption{Keyrslutími helmingunarleitar eftir inntaksstærð. Ef vel er gáð má sjá logra.}
+	\label{mynd:1}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{binary-search-times}
+	\end{center}
+\end{figure}
+
+\paragraph{Ábending 1} Valkvæmt er að festa grunntölu slembitölugjafans.
+\paragraph{Ábending 2} Forritið tók tæplega 20 sekúndur í keyrslu á tölvu kennarans. Gagnlegt er að nota aðrar tölur (t.d. lægra \texttt{maxArraySize} og hærra \texttt{stride}) meðan á forritun stendur.
+\paragraph{Ábending 3} Grunnstærðirnar eru ekki heilagar. Vera má að þessar tölur gefi slæma (eða enga) mynd á ykkar tölvu. Takið fram ef þið neyðist til að breyta þeim.
+
+\question
+
+Í \texttt{algs4.jar} sjáum við tvíleitartré til að útfæra nafnatöflu eins og \href{https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/BST.java.html}{BST.java}. Þar eru lyklar \eng{keys} og gildi \eng{values} aðskilin fyrirbrigði. Þetta er gagnlegt til að geta flett upp gildum eftir lyklum.
+
+En ef þarfir okkar eru minni, t.d. ef það eina sem við þurfum að gera er að geyma gögn og athuga síðar hvort við höfum skráð þau áður getum við notað örlítið einfaldari útfærslu á tvíleitartré. Þetta krefst þess að gögnin sem geymd eru séu samanburðarhæf. Strengir (hér \texttt{std::string}) í C++ eru dæmi um samanburðarhæf gögn. 
+
+Skrifið tvíleitartré í C++ sem styður aðgerðirnar \texttt{put} og \texttt{contains} í samræmi við lýsingu í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w8/stringsearchtree.cpp}{beinagrind}. Útfærið einnig útskrift trésins á staðalstraum (í réttri röð).
+
+Ekki breyta \texttt{main} fallinu eða haus fallanna og aðferðanna sem á að útfæra. 
+
+\newpage
+Dæmi um útskrift (lína 2 er breytileg):
+\begin{verbatim}
+$ ./stringsearchtree
+Setjum ávexti í tréð í eftirfarandi röð:
+Mandarína Greip Sítróna Stjörnuávöxtur Ananas Mangó Epli Banani Melóna Súraldin
+
+Allir ávextirnir lentu í trénu.
+Engin ferskja er í trénu, sem er eðlilegt.
+
+Skrifum út ávextina í trénu í réttri röð:
+Ananas Banani Epli Greip Mandarína Mangó Melóna Stjörnuávöxtur Sítróna Súraldin
+\end{verbatim}
 
 \vfill
 \includegraphics[width=0.5\linewidth]{hi-von-logo}
