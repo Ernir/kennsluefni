@@ -9,37 +9,62 @@
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 8}}
 
-\paragraph{Skilavefur} Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}.
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
 
-\paragraph{Vinnubrögð og frágangur} Skrifa þarf forrit í Java og C++ sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skila \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu. Leitist við að nota beinagrindur óbreyttar þegar þær eru gefnar. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+Þegar forriti er skilað inn til yfirferðar er mikilvægt að láta \textbf{niðurstöðurnar fylgja}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
 
-\paragraph{Samþykki til dreifingar} Dæmatímakennarar velja framúrskarandi lausnir til birtingar undir nafni í lausnasafni. Sé þess óskað að einhverjar þinna úrlausna séu ekki birtar nema nafnlaust eða alls ekki birtar yfir höfuð skal taka slíkt fram í hverju dæmi sem takmörkunin á við.
+\question
 
-\section{Spurning 1}
-Teiknið tvíleitartréð sem myndi liggja að baki nafnatöflu sem útfærð var með \texttt{BST.java} eftir að stök með lyklana
-\begin{center}
-\texttt{E A S Y Q U E S T I O N} 
-\end{center}
-væru sett inn í hana í röð, ef hún væri tóm í upphafi. Látið gildi hvers staks vera númer lykilsins.
+Eintengdir listar hafa skemmt okkur vel hingað til. En við hingað til ekki útfært aðferð sem eyðir staki úr eintengdum lista eftir sætisnúmeri. Gefin er \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w9/SinglyLinkedList.java}{beinagrind í Java}. Bætið \texttt{delete} aðferðinni við beinagrindina skv. lýsingu.
 
-\section{Spurning 2}
-Skrifið forrit í Java sem les inn orð af staðalinntaki og athugar hversu mörg þeirra séu leyfileg orð í Scrabble skv. \href{http://introcs.cs.princeton.edu/java/data/ospd.txt}{ospd.txt} (Official Scrabble Player's Dictionary). Forritið skal framkvæma leitina tvisvar, annarsvegar með línulegri leit og hins vegar með helmingunarleit. Það skal skrifa út hversu mörg orðin eru og keyrslutímann sem hvor aðferð um sig þarf.
+Skilið eingöngu \texttt{delete} aðferðinni sem þið skrifið, gert verður ráð fyrir að aðrir hlutar forritsins séu óbreyttir við yfirferð.
 
-Prófið forritið með orðasafninu í \href{http://introcs.cs.princeton.edu/java/data/words.txt}{words.txt}.
+Hluti útskriftar (sjá einnig verkefni 2):
 
-Ekki þarf að útfæra eigin helmingunarleit, nota má forrit úr \texttt{algs4.jar} sem framkvæmir helmingunarleit af einhverju tagi.
+\begin{verbatim}
+Listinn er í upphafi: 1 -> 2 -> 3 -> 4 -> Ø
 
-Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w8/ScrabbleSearch.java}{ScrabbleSearch.java}.
+Hendum nú út öllum hnútunum í slembinni röð
+Hendum staki númer 2. Eftir eyðingu er listinn: 1 -> 2 -> 4 -> Ø
+Hendum staki númer 0. Eftir eyðingu er listinn: 2 -> 4 -> Ø
+Hendum staki númer 0. Eftir eyðingu er listinn: 4 -> Ø
+Hendum staki númer 0. Eftir eyðingu er listinn: Ø
+\end{verbatim}
 
-\section{Spurning 3}
-Skrifið helmingunarleit í C++ sem vinnur á \texttt{std::vector} af aðskildum heiltölum í \emph{lækkandi} röð.
+\question
 
-Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w8/DescendingBinarySearch.cpp}{DescendingBinarySearch.cpp}.
+Skrifið aðferðina \texttt{swap}, sem víxlar á staðsetningum tveggja hnúta í eintengdum lista. Beinagrindin úr verkefninu á undan er notuð aftur. Framkvæmið víxlunina með því að uppfæra vísanirnar í hnútana, ekki bara gögn þeirra.
 
-\section{Spurning 4}
-Við höfum skoðað fylkjaútfærslu á hrúgu. Skrifið nú hrúgu í Java sem útfærð er með því að skrifa þrítengt tré (þar sem hver hnútur veit af foreldri sínu og báðum börnum) og notið hana til að útfæra forgangsbiðröð.
+Skilið eingöngu \texttt{swap} aðferðinni sem þið skrifið, gert verður ráð fyrir að aðrir hlutar forritsins séu óbreyttir við yfirferð.
 
-Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w8/TreeHeapPriQueue.java}{TreeHeapPriQueue.java}.
+Hluti útskriftar:
+
+\begin{verbatim}
+Listinn er í upphafi:          1 -> 2 -> 3 -> 4 -> Ø
+
+Skiptum á hnútum 1 og 3, fáum: 1 -> 4 -> 3 -> 2 -> Ø
+Lagfærum listann aftur, fáum:  1 -> 2 -> 3 -> 4 -> Ø
+Prófum að skipta á endunum:    4 -> 2 -> 3 -> 1 -> Ø
+Lagfærum aftur:                1 -> 2 -> 3 -> 4 -> Ø
+\end{verbatim}
+
+\question
+
+Hægt er að nota það sem við höfum lært um skilvirkar útfærslur á forgangsbiðröðum til að útfæra röðunarreiknirit sem heitir heapsort.
+
+Heapsort á fylki fer fram með tveimur lykkjum.
+
+\begin{itemize}
+	\item Í fyrri lykkjunni er fylkinu endurraðað svo það uppfylli hrúguskilyrði.
+
+	\item Í seinni lykkjunni notum við lítum við á vinstri hluta fylkisins sem óraðaðan og hægri hluta fylkisins sem raðaðan. Finnum endurtekið stærsta stak í vinstri hlutanum, færum það yfir til raðaða hlutans, lögum óraðaða hlutann svo hann uppfylli aftur hrúguskilyrði og færum mörk hlutanna til vinstri um eitt sæti.
+\end{itemize}
+Reikniritinu svipar þannig til valröðunar, nema hvað leitin í óraðaða hluta fylkisins er mun skilvirkari.
+
+Fjallað er um heapsort á bls. 323 til 327 í Algorithms. Skrifið útfærslu á heapsort fyrir í C++ sem svipar til Java-útfærslunnar sem finna má á bls. 324 og \href{https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/Heap.java.html}{síðu bókarinnar}.
+
+Gefin er \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w9/heapsort.cpp}{beinagrind}. Skilið \texttt{heapsort} fallinu ásamt öðrum kóða sem þið bætið við, gert verður ráð fyrir að \texttt{main} og \texttt{issorted} föllin séu óbreytt við yfirferð.
+
 \vfill
 \includegraphics[width=0.5\linewidth]{hi-von-logo}
 \end{document}
