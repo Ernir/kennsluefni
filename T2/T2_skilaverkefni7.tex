@@ -21,9 +21,11 @@ Klasinn \href{https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/BST.jav
 
 Breytið útfærslunum á (public) \texttt{min()} og \texttt{max()} aðferðunum svo að þær noti ítrun í stað endurkvæmni. Skilið breyttu aðferðunum ásamt dæmi um keyrslu á gefnum \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w8/BSTTest.java}{prufuklasa}.
 
-\paragraph{Ábending 1:} Afritið \texttt{BST.java} í vinnumöppuna ykkar og breytið því eintaki. Prufuklasinn keyrir ekki án þess.
+\paragraph{Ábending 1:} Afritið \texttt{BST.java} í vinnumöppuna ykkar og breytið því eintaki. Prufuklasinn keyrir ekki án þess. Prufuklasinn og afritið af \texttt{BST.java} þurfa að vera með sömu \texttt{package} skilgreiningu séu klasarnir í sömu möppu. Oftast þýðir þetta að stroka þarf út pakkaskilgreininguna.
 
 \paragraph{Ábending 2:} Mjög gagnlegt er að nota debugger til að skoða uppbyggingu breytunnar \texttt{bst} rétt áður en keyrslu prufuforritsins lýkur til að átta sig á uppbyggingu tvíleitartrésins.
+
+\newpage
 
 \question
 
@@ -34,8 +36,6 @@ Mælið keyrslutíma uppflettingar á slembivöldum lykli í nafnatöflum sem in
 Prófið stærðirnar $50000, 100000, 150000, \ldots , 5000000$. Til að fá betra mat skuluð þið framkvæma röðunina 20000 sinnum fyrir hverja stærð á fylki og reikna meðalkeyrslutímann. Veljið nýjan lykil í hverri einustu keyrslu (20000 mismunandi lyklar fyrir hverja stærð verða prófaðir).
 
 Teiknið að lokum niðurstöðurnar upp sem safn af punktum, með fjölda lykla á lárétta ásnum og meðalkeyrslutímann fyrir töflunni af þeirri stærð á lóðrétta ásnum. Niðurstaðan ætti að vera svipuð og á mynd \ref{mynd:1}.
-
-\newpage
 
 Sérstök beinagrind er ekki gefin, en grunnstærðirnar eru eftirfarandi:
 
@@ -59,6 +59,8 @@ Hugmyndir (og beinagrindin) úr skilaverkefni 5 geta verið gagnlegar.
 \paragraph{Ábending 2} Forritið tók tæplega 20 sekúndur í keyrslu á tölvu kennarans. Gagnlegt er að nota aðrar tölur (t.d. lægra \texttt{maxArraySize} og hærra \texttt{stride}) meðan á forritun stendur.
 \paragraph{Ábending 3} Grunnstærðirnar eru ekki heilagar. Vera má að þessar tölur gefi slæma (eða enga) mynd á ykkar tölvu. Takið fram ef þið neyðist til að breyta þeim.
 
+\newpage
+
 \question
 
 Í \texttt{algs4.jar} sjáum við tvíleitartré til að útfæra nafnatöflu eins og \href{https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/BST.java.html}{BST.java}. Þar eru lyklar \eng{keys} og gildi \eng{values} aðskilin fyrirbrigði. Þetta er gagnlegt til að geta flett upp gildum eftir lyklum.
@@ -69,7 +71,6 @@ Skrifið tvíleitartré í C++ sem styður aðgerðirnar \texttt{put} og \texttt
 
 Ekki breyta \texttt{main} fallinu eða haus fallanna og aðferðanna sem á að útfæra. 
 
-\newpage
 Dæmi um útskrift (lína 2 er breytileg):
 \begin{verbatim}
 $ ./stringsearchtree
