@@ -5,6 +5,9 @@
 #include <string>
 #include <algorithm>
 
+// Til að fá VS Code til að hætta að væla. Sjá time.h.
+extern clock_t clock (void) __THROW;
+
 using namespace std;
 
 int main() {
