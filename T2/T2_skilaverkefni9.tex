@@ -9,67 +9,34 @@
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 9}}
 
-\paragraph{Skilavefur} Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}.
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
 
-\paragraph{Vinnubrögð og frágangur} Skrifa þarf forrit í Java og C++ sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skila \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu. Leitist við að nota beinagrindur óbreyttar þegar þær eru gefnar. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
-
-\paragraph{Samþykki til dreifingar} Dæmatímakennarar velja framúrskarandi lausnir til birtingar undir nafni í lausnasafni. Sé þess óskað að einhverjar þinna úrlausna séu ekki birtar nema nafnlaust eða alls ekki birtar yfir höfuð skal taka slíkt fram í hverju dæmi sem takmörkunin á við.
+Þegar forriti er skilað inn til yfirferðar er mikilvægt að láta \textbf{niðurstöðurnar fylgja}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
 
 \section{Spurning 1}
-Við höfum séð nafnatöflur útfærðar í C++ með \texttt{std::unordered\_map} og \texttt{std::map}. Tilgreint er að uppfletting, innsetning og eyðing í \texttt{std::unordered\_map} skuli vera framkvæmanleg á föstum tíma í meðaltilfellinu, en á logratíma í \texttt{std::map}.
-
-Framkvæmið tímamælingar á eftirfarandi aðgerðum fyrir hvora gagnagrind um sig:
-
-\begin{itemize}
- \item Innsetningu þar sem orðin í \href{http://introcs.cs.princeton.edu/java/data/words.txt}{\texttt{words.txt}} eru notuð sem lyklar og sett inn í slembinni röð. Fyrsta innsetningin skal hafa heiltölugildið 0, næsta 1 og svo koll af kolli
- \item Leit að hverju orði um sig í \texttt{words.txt} í stafrófsröð
- \item Innsetningu þar sem fyrstu á fyrstu 20000 heiltölurnar eru notaðar sem lyklar og settar inn í slembinni röð. Fyrsta innsetningin skal hafa heiltölugildið 0, næsta 1 og svo koll af kolli
- \item Leit að hverri af fyrstu 20000 heiltölunum, í vaxandi röð
-\end{itemize}
-Samtals er því um 8 mælingar að ræða. Hægt er að mæla keyrslutíma forrits í C++ með \href{http://www.cplusplus.com/reference/ctime/clock/}{clock}. Notið beinagrindina í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w9/MapTime.cpp}{MapTime.cpp}.
-
-\newpage
+Teiknið 2-3 tréð sem fæst eftir að lyklarnir \texttt{E A S Y Q U T I O N} eru settir inn í það í röð, væri tréð tómt í upphafi. Látið gildin vera númer lykilsins (í innsetningarröð).
 
 \section{Spurning 2}
-Teiknið 2-3 tréð sem fæst eftir að stök með lyklana
-\begin{center}
-\texttt{E A S Y Q U T I O N} 
-\end{center}
-eru sett inn í það í röð, væri tréð tómt í upphafi. Látið gildi hvers staks vera númer lykilsins.
+Nafnatöflur eru útfærðar í C++ með \href{http://www.cplusplus.com/reference/unordered_map/unordered_map/}{\texttt{std::unordered\_map}} og \href{http://www.cplusplus.com/reference/map/map/}{\texttt{std::map}}. Tilgreint er að uppfletting, innsetning og eyðing í \texttt{std::unordered\_map} skuli vera framkvæmanleg á föstum tíma í meðaltilfellinu, en á logratíma í \texttt{std::map}.
+
+Framkvæmið tímamælingar á eftirfarandi aðgerðum fyrir \emph{hvora gagnagrind um sig}:
+
+\begin{itemize}
+ \item Innsetningu þar sem orðin í \href{http://introcs.cs.princeton.edu/java/data/words.txt}{\texttt{words.txt}} eru notuð sem lyklar og sett inn í slembinni röð. Gildin skipta ekki máli, en þægilegt er að nota stígandi heiltölur.
+ \item Leit að hverju einasta orði í \texttt{words.txt}
+\end{itemize}
+Samtals er því um 4 mælingar að ræða. Hægt er að mæla keyrslutíma forrits í C++ með \href{http://www.cplusplus.com/reference/ctime/clock/}{clock}. Beinagrind er ekki gefin, en sjá \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w10/fibotime.cpp}{fibotime.cpp} sem dæmi um tímamælingu í C++.
+
+\textbf{Ábending:} Séu fyrstu niðurstöður ekki afgerandi, prófið að keyra hverja mælingu oft og taka meðaltímann.
 
 \section{Spurning 3}
 
-Bætið tveimur boolean-aðferðum við \texttt{RedBlackBST.java}:
-
-\begin{itemize}
- \item Aðferðinni \texttt{is23()} sem athugar hvort allar rauðar tengingar í viðkomandi tré séu til vinstri og hvort allir hnútar trésins hafi að hámarki eina rauða tengingu
- \item Aðferðinni \texttt{isBalanced()} sem athugar hvort alli vegir frá rót til tóms laufs innihaldi jafn margar svartar tengingar
-\end{itemize}
-
-Bætið prófunum á aðferðunum við \texttt{main}-aðferð klasans og sýnið dæmi um keyrslu.
-
-% 3.3.33
-% Add to RedBlackBST a method is23() to check that no node is
-% connected to two red links and that there are no right-leaing red links and a method
-% isBalanced() to check that all paths from the root to a null link have the same number
-% of black links. Combine these methods with code from isBST() in Exercise 3.2.32 to
-% create a method isRedBlackBST() that checks that the tree is a red-black BST.
-
-\section{Spurning 4}
-
 Búið til útgáfu af \texttt{SeparateChainingHashST} sem notar \texttt{RedBlackBST} í stað \texttt{SequentialSearchST} til þess að útkljá árekstra. Nefnið hana \texttt{RedBlackHashST}.
 
-Sýnið dæmi um keyrslu og tímamælingu þar sem keyrslutími \texttt{RedBlackHashST} er marktækt betri en keyrslutími \texttt{SeparateChainingHashST}. 
+Skrifið líka forrit sem framkvæmir tímamælingu þar sem keyrslutími \texttt{RedBlackHashST} er marktækt betri en keyrslutími \texttt{SeparateChainingHashST}.
 
-Þið megið velja eða skrifa ykkar eigin gagnagerð til að setja inn í töflurnar.
+\textbf{Ábending:} Þessi hegðun kemur hratt fram séu lyklarnir mismunandi m.t.t. \texttt{compareTo} en eins m.t.t. \texttt{hashCode}.
 
-% 3.4.37
-% Run experimental studies to determine the effect of using RedBlackBST
-% instead of SequentialSearchST to handle collisions in SeparateChainingHashST .
-% This solution carries the advantage of guaranteeing logarithmic performance even for
-% a bad hash function and the disadvantage of necessitating maintenance of two different
-% symbol-table implementations. What are the practical effects?
-
-\vfill
-\includegraphics[width=0.5\linewidth]{hi-von-logo}
+%\vfill
+%\includegraphics[width=0.5\linewidth]{hi-von-logo}
 \end{document}
