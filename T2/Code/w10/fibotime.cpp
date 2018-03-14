@@ -1,16 +1,11 @@
-#include <algorithm>
 #include <iostream>
-#include <map>
-#include <string>
-#include <unordered_map>
-#include <vector>
 
 /*
  * ATH: Á sumum vélum þarf að afkommenta aðra eða báðar af eftirfarandi 
  * línum til að forritið þýðist umkvörtunarlaust.
  */
 // #include <time.h>
-// extern clock_t clock(void);
+extern clock_t clock(void);
 
 using namespace std;
 
