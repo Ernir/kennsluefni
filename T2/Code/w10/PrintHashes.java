@@ -6,5 +6,7 @@ public class PrintHashes {
         StdOut.println(".hashCode() fyrir true:             " + Boolean.TRUE.hashCode());
         StdOut.println(".hashCode() fyrir double-töluna 3:  " + new Double(3).hashCode());
         StdOut.println(".hashCode() fyrir strenginn \"call\": "  + "call".hashCode());
+        StdOut.println(".hashCode() fyrir strenginn \"Aa\":   " + "Aa".hashCode());
+        StdOut.println(".hashCode() fyrir strenginn \"BB\":   " + "BB".hashCode());
     }
 }
