@@ -9,56 +9,56 @@
 \maketitle
 \hypersetup{pdftitle={Tölvunarfræði 2 - Skilaverkefni 10}}
 
-\paragraph{Skilavefur} Skila skal þessum verkefnum á \href{https://gradescope.com/courses/5640}{Gradescope}.
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
 
-\paragraph{Vinnubrögð og frágangur} Skrifa þarf forrit í Java %og C++ 
-sem útfæra ýmsar aðferðir. Í öllum tilvikum skal skila \texttt{main} fall/aðferð sem býr til prufugögn og sýnir virkni hverrar aðferðar um sig. Skilið öllum forritskóða og sýnið dæmi um keyrslu. Leitist við að nota beinagrindur óbreyttar þegar þær eru gefnar. Vönduð framsetning og læsilegur kóði er hluti af verkefninu, sjá \href{https://piazza.com/class/ixkicfen49l111?cid=52}{glósu um frágang og framsetningu}.
+Þegar forriti er skilað inn til yfirferðar er mikilvægt að láta \textbf{niðurstöðurnar fylgja}. Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu.
 
-\paragraph{Samþykki til dreifingar} Dæmatímakennarar velja framúrskarandi lausnir til birtingar undir nafni í lausnasafni. Sé þess óskað að einhverjar þinna úrlausna séu ekki birtar nema nafnlaust eða alls ekki birtar yfir höfuð skal taka slíkt fram í hverju dæmi sem takmörkunin á við.
+\question
+Net eins og þau eru útfærð í \texttt{Graph.java} eru fjölnet \eng{multigraphs}. Sú útfærsla leyfir meira en einn legg á milli hverra tveggja hnúta og lykkjur \eng{loops}, leggi með báða enda tengda við sama hnút.
 
-\section{Spurning 1}
-Skráin \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w10/tinyDG.txt}{tinyDG.txt} inniheldur gögn sem nota mætti til að skilgreina stefnt net á hátt sem \texttt{Digraph} klasinn skilur. 
+Algengt er að takmarka net svo að þau hafi engar lykkjur og að hámarki einn legg á milli hverra tveggja hnúta. Slík net eru kölluð einföld net \eng{simple graphs}.
 
-Teiknið netið. Merkið hnútana með númerum og notið örvar til að tákna stefnu leggjanna.
+Skrifið klasann \texttt{SimpleGraph.java} sem erfir frá \texttt{Graph.java} en kemur í veg fyrir að endurteknum leggjum eða lykkjum sé bætt við netið. Það er gert með því að fækka smiðunum og láta \texttt{addEdge} aðferðina valda \texttt{IllegalArgumentException} þegar slíkt er reynt.
 
-\paragraph{Ábending} Til að sjá grennslalistaframsetningu á netinu, notið skjalið til að búa til tilvik af \texttt{Digraph} klasanum og kallið á \texttt{toString()} aðferðina.
+\href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w11/SimpleGraph.java}{Beinagrind} er gefin ásamt \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w11/tinyG.txt}{gagnaskrá}. Ekki breyta \texttt{main} aðferðinni eða haus \texttt{addEdge}. 
 
-\section{Spurning 2}
-Búið til útgáfu af \texttt{Graph} sem leyfir hvorki lykkjur (leggi sem byrja og enda í sama hnút) og né endurtekna leggi. Meðhöndlið endurtekningar á þann hátt að lykkjur valdi villu (t.d. \texttt{IllegalArgumentException}) en endurteknir leggir hafi engin áhrif. 
+\question
+Frávik\footnote{þýðing kennara, aðrar þýðingar velkomnar} \eng{eccentricity} hnúts er lengd stystu leiðar frá hnútnum til þess hnúts sem lengst er frá honum. Þvermál \eng{diameter} nets er mesta frávik hnúta netsins. Radíus \eng{radius} nets er minnsta frávik hnúta netsins. Miðhnútur \eng{central point} nets er hnútur með frávik sem er jafnt radíus netsins.
 
-Nefnið útgáfuna \texttt{SimpleGraph}. Sýnið dæmi um keyrslu þar sem nýja virknin er sýnd.
+Skrifið forrit sem reiknar þessa eiginleika samkvæmt eftirfarandi skilum:
 
-\section{Spurning 3}
-Ein leið til að herma útbreiðslu smitsjúkdóma á milli staða er að nota netaframsetningu. Táknum hverja staðsetningu með hnúti og tengingu þeirra á milli með legg. Þá gætum við t.d. athugað hvað gerist ef sýking kemur upp á flugvelli og breiðist út til tengdra flugvalla.
+\begin{center}
+\includegraphics[width=\textwidth]{graph-properties}
+\end{center}
 
-Klárið forritið \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w10/Epidemic.java}{Epidemic.java}, sem hermir eftir endurteknum faröldrum sem breiðast út frá flugvöllunum í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w10/routes.txt}{routes.txt}.
+\href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w11/GraphProperties.java}{Beinagrind} ásamt gagnaskránni \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w11/routes.txt}{routes.txt} er gefin. Ekki breyta \texttt{main} aðferðinni eða haus aðferðanna sem þarf að útfæra. Þegar forritið er keyrt er niðurstaðan eftirfarandi:
 
-Dæmi um mögulega keyrslu:
 \begin{verbatim}
-Outbreak in JFK!
-Infected: ATL, JFK, MCO, ORD
-Outbreak in MCO!
-Infected: ATL, HOU, JFK, MCO, ORD
-Outbreak in HOU!
-Infected: ATL, DFW, HOU, JFK, MCO, ORD
-Outbreak in HOU!
-Infected: ATL, DFW, HOU, JFK, MCO, ORD
-Outbreak in ORD!
-Infected: ATL, DEN, DFW, HOU, JFK, MCO, ORD, PHX
-Outbreak in DFW!
-Infected: ATL, DEN, DFW, HOU, JFK, MCO, ORD, PHX
-Outbreak in HOU!
-Infected: ATL, DEN, DFW, HOU, JFK, MCO, ORD, PHX
-Outbreak in PHX!
-Infected: ATL, DEN, DFW, HOU, JFK, LAS, LAX, MCO, ORD, PHX
-All is lost.
+Done reading routes.txt
+Eiginleikar leiðanetsins:
+
+Þvermál: 4
+Radíus:  2
+Miðja:   ORD
+
+ Völlur frávik 
+===============
+   JFK     3   
+   MCO     4   
+   ORD     2   
+   DEN     3   
+   HOU     3   
+   DFW     2   
+   PHX     3   
+   ATL     3   
+   LAX     4   
+   LAS     4  
 \end{verbatim}
-Í hverri ítrun er sýktur flugvöllur valinn af handahófi til að breiða út sjúkdóminn. Hver keyrsla getur því verið mismunandi, en henni lýkur ekki á annan hátt en að allir flugvellirnir séu sýktir.
 
-\section{Spurning 4}
-Það að ákvarða Bacon-tölu ýmissa leikara er skemmtilegur\footnote{frá sjónarhóli netafræðinnar} samkvæmisleikur. Þegar ákvarða skal Bacon tölu fyrir leikara fær leikarinn Kevin Bacon Bacon-töluna 0, leikari sem leikið hefur í mynd með Kevin Bacon fær Bacon-töluna 1, leikari sem leikið hefur í mynd með leikara sem hefur leikið í mynd með Kevin Bacon fær Bacon-töluna 2 (nema viðkomandi leikari eigi rétt á lægri Bacon-tölu) og svo koll af kolli. Sé ekki mögulegt að finna leið á milli leikarans og Kevins Bacons í gegnum sameiginleg leikverk er Bacon-tala viðkomandi leikara óskilgreind.
+\question
+Það að ákvarða Bacon-tölu ýmissa leikara er vinsæll samkvæmisleikur meðal netafræðinga. Þegar ákvarða skal Bacon tölu fyrir leikara fær leikarinn Kevin Bacon Bacon-töluna 0, leikari sem leikið hefur í mynd með Kevin Bacon fær Bacon-töluna 1, leikari sem leikið hefur í mynd með leikara sem hefur leikið í mynd með Kevin Bacon fær Bacon-töluna 2 (nema viðkomandi leikari eigi rétt á lægri Bacon-tölu) og svo koll af kolli. Sé ekki mögulegt að finna leið á milli leikarans og Kevins Bacons í gegnum sameiginleg leikverk er Bacon-tala viðkomandi leikara óskilgreind.
 
-Skrifið forrit sem leitar í gegnum \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w10/movies.txt}{movies.txt}, finnur Bacon-tölu allra leikaranna sem þar eru taldir upp og skrifar út fjölda leikara sem eru með hverja tölu, á eftirfarandi sniði:
+Skrifið forrit sem leitar í gegnum \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w11/movies.txt}{movies.txt}, finnur Bacon-tölu allra leikaranna sem þar eru taldir upp og skrifar út fjölda leikara sem eru með hverja tölu, á eftirfarandi sniði:
 
 \begin{verbatim}
 0: 1
@@ -67,13 +67,13 @@ Skrifið forrit sem leitar í gegnum \href{https://github.com/Ernir/kennsluefni/
 3: 40862
 4: 1591
 5: 125
-621 actors have no defined Bacon number
+Óskilgreint: 621
 \end{verbatim}
 
 Sem hér (eðlilega) segir okkur að nákvæmlega einn leikari hafi Bacon-töluna 0, 1324 leikarar Bacon-töluna 1, og svo framvegis.
 
-Nota má hugmyndir í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w10/SixDegrees.java}{SixDegrees.java}.
+Nota má hugmyndir í \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w11/SixDegrees.java}{SixDegrees.java}.
 
-% \vfill
-% \includegraphics[width=0.5\linewidth]{hi-von-logo}
+\vfill
+\includegraphics[width=0.5\linewidth]{hi-von-logo}
 \end{document}
