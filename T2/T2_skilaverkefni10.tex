@@ -20,7 +20,7 @@ Algengt er að takmarka net svo að þau hafi engar lykkjur og að hámarki einn
 
 Skrifið klasann \texttt{SimpleGraph.java} sem erfir frá \texttt{Graph.java} en kemur í veg fyrir að endurteknum leggjum eða lykkjum sé bætt við netið. Það er gert með því að fækka smiðunum og láta \texttt{addEdge} aðferðina valda \texttt{IllegalArgumentException} þegar slíkt er reynt.
 
-\href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w11/SimpleGraph.java}{Beinagrind} er gefin ásamt \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w11/tinyG.txt}{gagnaskrá}. Ekki breyta \texttt{main} aðferðinni eða haus \texttt{addEdge}. 
+\href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w11/SimpleGraph.java}{Beinagrind} er gefin ásamt \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w11/tinyG.txt}{gagnaskrá}. Ekki breyta \texttt{main} aðferðinni eða haus \texttt{addEdge}. 
 
 \question
 Frávik\footnote{þýðing kennara, aðrar þýðingar velkomnar} \eng{eccentricity} hnúts er lengd stystu leiðar frá hnútnum til þess hnúts sem lengst er frá honum. Þvermál \eng{diameter} nets er mesta frávik hnúta netsins. Radíus \eng{radius} nets er minnsta frávik hnúta netsins. Miðhnútur \eng{central point} nets er hnútur með frávik sem er jafnt radíus netsins.
@@ -58,7 +58,7 @@ Miðja:   ORD
 \question
 Það að ákvarða Bacon-tölu ýmissa leikara er vinsæll samkvæmisleikur meðal netafræðinga. Þegar ákvarða skal Bacon tölu fyrir leikara fær leikarinn Kevin Bacon Bacon-töluna 0, leikari sem leikið hefur í mynd með Kevin Bacon fær Bacon-töluna 1, leikari sem leikið hefur í mynd með leikara sem hefur leikið í mynd með Kevin Bacon fær Bacon-töluna 2 (nema viðkomandi leikari eigi rétt á lægri Bacon-tölu) og svo koll af kolli. Sé ekki mögulegt að finna leið á milli leikarans og Kevins Bacons í gegnum sameiginleg leikverk er Bacon-tala viðkomandi leikara óskilgreind.
 
-Skrifið forrit sem leitar í gegnum \href{https://github.com/Ernir/kennsluefni/tree/master/T2/Code/w11/movies.txt}{movies.txt}, finnur Bacon-tölu allra leikaranna sem þar eru taldir upp og skrifar út fjölda leikara sem eru með hverja tölu, á eftirfarandi sniði:
+Skrifið forrit sem leitar í gegnum \href{https://raw.githubusercontent.com/Ernir/kennsluefni/master/T2/Code/w11/movies.txt}{movies.txt}, finnur Bacon-tölu allra leikaranna sem þar eru taldir upp og skrifar út fjölda leikara sem eru með hverja tölu, á eftirfarandi sniði:
 
 \begin{verbatim}
 0: 1
