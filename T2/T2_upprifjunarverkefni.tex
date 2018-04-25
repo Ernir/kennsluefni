@@ -1,0 +1,46 @@
+\documentclass{article}
+
+\usepackage{Vor2018skil}
+
+\title{Tölvunarfræði 2, \semester \\ Upprifjunarverkefni}
+\author{}
+
+\begin{document}
+\maketitle
+\hypersetup{pdftitle={Tölvunarfræði 2 - Upprifjunarverkefni}}
+
+Þessi verkefni eru ætluð til upprifjunar og æfingar fyrir próf, full einkunn er gefin fyrir allar heiðarlegar tilraunir. Hafið í huga að best er að meðhöndla þetta sem alvöru próftexta, prófið að leysa þau án tölvu.
+
+Skila skal þessum verkefnum á \href{https://gradescope.com/courses/14122}{Gradescope}.
+
+Öllum forritskóða skal skila framsettum með jafnbilaletri. Hann þarf að vera afritanlegur úr .pdf skjalinu. Vönduð framsetning og læsilegur kóði er hluti af verkefninu. 
+
+\question
+Skrifið Java-aðferðina \texttt{reverseStack} sem tekur inn hlaða og snýr við röð stakanna sem í honum eru.
+
+\question
+Skrifið Java-aðferðina \texttt{farthestM} sem tekur inn skjóðu af hlutum sem tákna punkta í tvívíðu hnitakerfi ásamt heiltölu \texttt{m}. Aðferðin skal reikna út fjarlægð hvers punkts frá upphafspunkti hnitakerfisins og skila skjóðu af þeim \texttt{m} fjarlægðum sem lengstar eru.
+
+\begin{minted}[frame=lines]{java}
+static Bag<Double> farthestM(Bag<Point2D> points, int m) {
+
+}
+\end{minted}
+
+\question
+
+Útfærið innsetningarröðun í C++ fyrir \texttt{std::vector} heiltalna. Hjálparaðferðin \texttt{exch} er gefin.
+
+\begin{minted}[frame=lines]{cpp}
+void exch(vector<int> &v, int i, int j) {
+    int swap = v[i];
+    v[i] = v[j];
+    v[j] = swap;
+}
+
+void insertionSort(vector<int> &v) {
+
+}
+\end{minted}
+
+\end{document}
