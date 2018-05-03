@@ -19,10 +19,8 @@
 *.gz
 *BACKUP
 
-# Hunsa próf og sum verkefni
+# Hunsa sum verkefni
 
-*Próf*
-*próf*
 T1a/*verkefni*.tex
 Mynstur/*verkefni*.tex
 
