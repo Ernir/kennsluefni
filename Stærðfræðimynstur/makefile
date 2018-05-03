@@ -16,3 +16,4 @@ cleanjunk:
 	-rm -f *.vrb
 	-rm -f *.backup
 	-rm -f *.synctex.gz
+	-rm -f *.log

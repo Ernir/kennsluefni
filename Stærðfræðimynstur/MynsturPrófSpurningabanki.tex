@@ -1,0 +1,319 @@
+\documentclass[addpoints]{exam}
+    
+\makeatletter % Lagfæring fyrir nýjar útgáfur af TeXLive
+\expandafter\providecommand\expandafter*\csname ver@framed.sty\endcsname
+{2003/07/21 v0.8a Simulated by exam}
+\makeatother
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[icelandic]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+
+\usepackage[parfill]{parskip}
+\usepackage{booktabs,tabularx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{minted} %Minted and configuration
+\usepackage{afterpage}
+\usepackage{scrextend}
+
+\usepackage[pdftex,bookmarks=true,colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue]{hyperref}
+
+\setcounter{secnumdepth}{-1} 
+\hyphenpenalty=5000
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    }
+
+\usemintedstyle{default}
+\renewcommand{\theFancyVerbLine}{\sffamily \arabic{FancyVerbLine}}
+\author{}
+\date{}
+
+\footer{}{}{}
+
+\setcounter{secnumdepth}{-1} 
+
+\qformat{\large \textbf Spurning \thequestion \phantom{M}(\totalpoints \phantom{l}stig) \hfill}
+\renewcommand{\solutiontitle}{\noindent\textbf{Svar:}\par\noindent}
+\renewcommand{\points}{stig}
+\renewcommand{\questionshook}{\setlength{\itemsep}{0.5cm}}
+\hqword{Spurning:}
+\hpword{Stig í boði:}
+\hsword{Stig:}
+\htword{Samtals}
+
+\title{TÖL104G Stærðfræðimynstur í tölvunarfræði - lokapróf}
+\author{}
+\date{Dagsetning}
+
+\pagestyle{headandfoot}
+\firstpageheader{TÖL104G -\\ Stærðfræðimynstur í tölvunarfræði}{Spurningabanki}{Dagsetning}
+\firstpagefooter{}{Bls. \thepage\ af \numpages}{}
+\runningfooter{}{Bls. \thepage\ af \numpages}{}
+\setlength{\columnsep}{0.5cm}
+
+% \printanswers
+\begin{document}
+
+% \thispagestyle{empty}
+Fullt nafn: \vspace*{1mm} \hrule
+
+\begin{center}
+\begin{minipage}{.8\textwidth}
+Haus til að útskýra prófið.
+\end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{questions}
+
+\section{Kafli 1}
+
+\question[10] \textbf{(Ísl)} Vitað er að riddarar ljúga aldrei, ribbaldar ljúga alltaf og að allar manneskjur séu annaðhvort riddarar eða ribbaldar. Nú hittum við Önnu, Ásmund og Birnu. Hvað eru Anna, Ásmundur og Birna ef Anna segir ``ég er ribbaldi og Ásmundur er riddari'' en Ásmundur segir ``nákvæmlega eitt af okkur þremur er riddari''? Útskýrið af hverju.
+
+\textbf{(En)} It is known that knights always tell the truth, knaves never tell the truth, and that every person is either a knight or a knave. Suppose that we meet Anna, Ásmundur and Birna. What are Anna, Ásmundur and Birna if Anna says ``I am a knave and Ásmundur is a knight'' and Ásmundur says ``Exactly one of the three of us is a knight''? Explain your reasoning.
+
+% \begin{center}
+%    \cellwidth{1.5em}
+%    \gradetable[h][questions]
+% \end{center}
+
+\question[10] \textbf{(Ísl)} Látum $K(x)$ vera staðhæfinguna ``$x$ á kött'' og $H(x)$ vera staðhæfinguna ``$x$ á hund''. Látum óðalið vera mengi nemenda í þessu námskeiði. Setjið staðhæfinguna ``enginn nemandi í þessu námskeiði á bæði hund og kött'' fram með því að nota $K(x)$, $H(x)$, rökvirkja og magnara.
+ 
+\textbf{(En)} Let $K(x)$ be the statement ``$x$ has a cat'' and $H(x)$ be the statement ``$x$ has a dog''. Let the domain consist of all students in this class. Express the statement ``no student in this class has both a dog and a cat'' by using $K(x)$, $H(x)$, logical operators and quantifiers.
+
+\question[10]
+\textbf{(Ísl)} Sýnið að $\lnot p \to (q \to r)$ og $q \to (p \lor r)$ séu jafngildar.
+
+\textbf{(En)} Show that $\lnot p \to (q \to r)$ and $q \to (p \lor r)$ are equivalent.
+
+\section{Kafli 2}
+
+\question[10]
+\textbf{(Ísl)} Látum $A$ og $B$ vera hlutmengi endanlegs almengis $U$. Notið skilgreiningar á mengjahugtökum og þekktar umritunarreglur til að sýna að $|\overline{A} \cap \overline{B}| = |U| - |A| - |B| + |A\cap B|$
+
+\textbf{(En)} Let $A$ and $B$ be subsets of the finite universal set $U$. Use definitions of set concepts and known identities to show that $|\overline{A} \cap \overline{B}| = |U| - |A| - |B| + |A\cap B|$
+
+\question[10]
+\textbf{(Ísl)} Finnið rakningarvensl til að lýsa skuldastöðunni $s_k$ eftir $k$ mánuði á láni upp á 5000 krónur, séu ársvextirnir 7\% og mánaðarlega séu 100 krónur borgaðar inn á lánið. Vextir eru reiknaðir mánaðarlega, áður en afborgunin fer fram.
+
+\textbf{(En)} Find a recurrence relation for the balance $s_k$ owed at the end of $k$ months on a loan of 5000 krónur at an annual interest rate of 7\% if a payment of 100 krónur is made each month. Interest is computed on a monthly basis, before accounting for that month's payment.
+
+\section{Kafli 3}
+
+\question[10]
+\texttt{(En)} Lítið á eftirfarandi föll, sem eru aðskilin með kommum.
+
+\[
+\sqrt{n}, 9^{999} n, 2^n, 10\log n, n!, 1000 n^2, 2 n^{1000}, n \log n
+\]
+
+Skrifið föllin í númeruðu línurnar hér að neðan svo að hvert fall sé í stóra $O$ af þeim föllum sem á eftir koma.
+
+\texttt{(En)} Consider the comma-separated list of functions above. Write the functions in the numbered lines below so that each function is big-$O$ of the list's later functions.
+
+\begin{enumerate}
+    \item \underline{\hspace{5cm}}
+    \item \underline{\hspace{5cm}}
+    \item \underline{\hspace{5cm}}
+    \item \underline{\hspace{5cm}}
+    \item \underline{\hspace{5cm}}
+    \item \underline{\hspace{5cm}}
+    \item \underline{\hspace{5cm}}
+    \item \underline{\hspace{5cm}} 
+\end{enumerate}
+
+\question[10]
+\textbf{(Ísl)} Sýnið að $(n \log n + n^2)^2$ sé í $O(n^4)$.
+
+\textbf{(En)} Show that $(n \log n + n^2)^2$ is $O(n^4)$.
+
+\section{Kafli 4}
+\question[5]
+\textbf{(Ísl)} Finnið prímtöluþáttun tölunnar 110. Sýnið aðferð.
+
+\textbf{(En)} Find the prime factorization of the number 110. Show your work.
+
+\question[5]
+\textbf{(Ísl)} Finnið sextándakerfisframsetningu á tvíundartölunni \texttt{1100 1010 0101 1100 1010 1101 1110 1101}.
+
+\textbf{(En)} Convert the number \texttt{1100 1010 0101 1100 1010 1101 1110 1101} from its binary expansion to its hexadecimal expansion.
+
+\question[5]
+\begin{multicols}{2}
+
+\textbf{(Ísl)} Dulkóðið strenginn \texttt{ABRACADABRAC} með umskiptingardulkóðunarfallinu $\sigma$ með blokkum af stærð 4. $\sigma$ skilgreinist af töflunni hér til hægri.
+
+\textbf{(En)} Encrypt the string \texttt{ABRACADABRAC} using the block transposition function $\sigma$ using blocks of size 4. $\sigma$ is defined by the table to the right.
+
+\vspace{1cm}
+\begin{center}
+\begin{tabular}{cc}
+\toprule
+$x$&$\sigma(x)$\\
+\midrule
+1&4\\
+2&3\\
+3&1\\
+4&2\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\end{multicols}
+
+\section{Kafli 5}
+
+\question[10]
+\textbf{(Ísl)} Skilgreinið lengd strengs á endurkvæman máta. Táknið lengd strengsins $w$ með $l(w)$ og viðkomandi stafróf með $\Sigma$.
+
+\textbf{(En)} Give a recursive definition of the length of a string. Represent the length of the string $w$ with $l(w)$ and the relevant alphabet with $\Sigma$.
+
+\question[10] 
+
+\textbf{(Ísl)} Notið þrepun til að sýna að
+\[
+ \frac{1}{1\cdot 3} + \frac{1}{3\cdot 5} + \ldots + \frac{1}{(2n -1)(2n+1)} = \frac{n}{2n +1}
+\]
+þegar $n$ er jákvæð heiltala. Takið fram hver þrepunarforsendan er og hvenær hún er notuð. 
+
+\textbf{(En)} Use mathematical induction to demonstrate that the formula given above is correct when $n$ is a positive integer. Identify the inductive hypothesis as well as where it is used.
+
+\section{Kafli 6}
+
+\question[10]
+\textbf{(Ísl)} Sýnið að ef $n$ og $k$ eru heiltölur, $1 \leq k \leq n$, þá sé
+\[
+k\binom{n}{k} = n\binom{n-1}{k-1}.
+\]
+{a) (5 stig)} Notið bókstafareikning
+
+{b) (5 stig)} Notið tvöfalda talningu.
+
+\textbf{(En)} Show that if $n$ and $k$ are integers with $1 \leq k \leq n$, then the formula given above holds.
+
+{a) (5 points)} Use an algebraic proof
+
+{b) (5 points)} Use a combinatorial proof.
+
+\section{Kafli 8}
+
+\question 
+
+\textbf{(Ísl)} Gefin eru rakningarvensl:
+\[
+ a_n = a_{n-1} + 6a_{n-2}
+\]
+
+\begin{parts}
+ \part[1] Eru þessi rakningarvensl einsleit eða óeinsleit?
+ \part[1] Eru þessi rakningarvensl línuleg eða ólínuleg?
+ \part[1] Af hvaða stigi eru þessi rakningarvensl?
+ \part[2] Finnið kennijöfnu fyrir rakningarvenslin.
+\end{parts}
+
+\textbf{(En)} A recurrence relation is given above.
+
+\begin{enumerate}[(a)]
+ \item (1 point) Is the recurrence relation homogeneous or nonhomogeneous?
+ \item (1 point) Is the recurrence relation linear or nonlinear?
+ \item (1 point) What is the degree of the recurrence relation?
+ \item (2 points) Give a characteristic equation for the recurrence relation.
+\end{enumerate}
+
+\section{Kafli 9}
+
+\question[5]
+\textbf{(Ísl)} Setjið venslin 
+\[
+\{(2, 2), (2, 3), (2, 4), (3, 2), (3, 3), (3, 4)\}
+\]
+á mengið $\{1, 2, 3, 4\}$ fram með því að nota stefnt net. Eru venslin sjálfhverf? Útskýrið stuttlega hvernig það sést.
+
+\textbf{(En)} Represent the above relation on the set $\{1, 2, 3, 4\}$ by using a directed graph. Is the relation reflexive? Briefly explain your reasoning.
+
+\question[10]
+\textbf{(Ísl)} Sýnið að hlutmengi andsamhverfra vensla sé líka andsamhverf vensl.
+
+\textbf{(En)} Show that the subset of an antisymmetric relation is also antisymmetric.
+
+\question
+
+\textbf{(Ísl)} Sýnið dæmi um vensl á (eitt) mengi sem eru
+\begin{parts}
+\part[5] Bæði samhverf og andsamhverf
+\part[5] Hvorki samhverf né andsamhverf
+\end{parts}
+
+\textbf{(En)} Give an example of a relation on a set that is
+\begin{enumerate}[(a)]
+ \item (5 points) Both symmetric and antisymmetric.
+ \item (5 points) Neither symmetric nor antisymmetric.
+\end{enumerate}
+
+\section{Kafli 10}
+
+\question[10] 
+
+\textbf{(Ísl)} Hversu margar Hamilton-rásir eru í fullskipaða netinu $K_n$, þar sem $n \geq 3$? Rökstyðjið.
+
+\textbf{(En)} How many Hamilton-circuits does the complete graph $K_n$, with $n \geq 3$ have? Explain your reasoning.
+
+\question[10]
+\begin{multicols}{2}
+\textbf{(Ísl)} Skoðum netið til hægri.
+
+{a) (5 stig)} Sýnið að netið sé lagnet
+
+{b) (5 stig)} Sýnið grennslafylki þess.
+
+\textbf{(En)} Consider the graph to the right.
+
+{a) (5 points)} Show that the graph is planar.
+
+{b) (5 points)} Show its adjacency matrix.
+
+\begin{center}
+% \includegraphics[width=0.8\linewidth]{Pics/exam-planar-graph}
+\end{center}
+
+\end{multicols}
+
+\question[10] \textbf{(Ísl)} Hver er lágmarksfjöldi lita sem þarf til að lita þessa mynd svo að engin aðlæg svæði fái sama lit? Rökstyðjið með netaframsetningu.
+
+\textbf{(En)} What is the minimum number of colors required to color the given picture so that no adjacent areas get the same color? Support your claim using a graph representation.
+
+\section{Kafli 11}
+\question[10] \textbf{(Ísl)} Sýnið að einfalt net sem myndað er með því að bæta einum legg við tré hefur nákvæmlega eina rás.
+
+\textbf{(En)} Show that a simple graph formed by adding a single edge to a tree has precisely one circuit.
+
+\question[10]
+\textbf{(Ísl)} Sýnið að leggur í tré sé brú.
+
+\textbf{(En)} Show that the edge of a tree is a bridge.
+
+\section{Kafli 13}
+
+\question[10] \textbf{(Ísl)} Teiknið endanlega stöðuvél sem samþykkir mál þeirra bitastrengja sem ekki innihalda tvö núll hlið við hlið.
+
+\textbf{(En)} Draw a finite-state automaton which recognizes the set of bit strings that do not contain two consecutive zeros.
+
+\question[10]
+
+\textbf{(Ísl)} Teiknið löggenga endanlega stöðuvél sem samþykkir mál þeirra bitastrengja sem byrja á 1 og innihalda a.m.k. tvö 0.
+
+\textbf{(En)} Draw a deterministic finite automaton which accepts the set of bit strings which start with the symbol 1 and contain at least two 0s.
+
+\end{questions}
+\end{document}
