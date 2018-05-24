@@ -1,0 +1,498 @@
+\documentclass[addpoints]{exam}
+
+\makeatletter % Lagfæring fyrir nýjar útgáfur af TeXLive
+\expandafter\providecommand\expandafter*\csname ver@framed.sty\endcsname
+{2003/07/21 v0.8a Simulated by exam}
+\makeatother
+
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[icelandic]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[sc]{mathpazo}
+
+\usepackage[parfill]{parskip}
+\usepackage{booktabs,tabularx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{minted} %Minted and configuration
+\usepackage{afterpage}
+\usepackage{scrextend}
+
+\usepackage[pdftex,bookmarks=true,colorlinks=true,pdfauthor={Eirikur Ernir Thorsteinsson},linkcolor=blue,urlcolor=blue]{hyperref}
+
+\setcounter{secnumdepth}{-1} 
+\hyphenpenalty=5000
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
+\usemintedstyle{default}
+\renewcommand{\theFancyVerbLine}{\sffamily \arabic{FancyVerbLine}}
+\author{}
+\date{}
+
+\footer{}{}{}
+
+\setcounter{secnumdepth}{-1} 
+
+\qformat{\large \textbf Spurning \thequestion \phantom{M}(\totalpoints \phantom{l}stig) \hfill}
+\renewcommand{\solutiontitle}{\noindent\textbf{Svar:}\par\noindent}
+\renewcommand{\points}{stig}
+\renewcommand{\questionshook}{\setlength{\itemsep}{0.5cm}}
+\hqword{Spurning:}
+\hpword{Stig í boði:}
+\hsword{Stig:}
+\htword{Samtals}
+
+\title{TÖL105G Tölvunarfræði 1a - lokapróf}
+\author{}
+\date{8. desember 2016}
+
+\pagestyle{headandfoot}
+\firstpageheader{TÖL105G -\\ Tölvunarfræði 1a}{Lokapróf}{8. desember 2016}
+\firstpagefooter{}{Bls. \thepage\ af \numpages}{}
+\runningfooter{}{Bls. \thepage\ af \numpages}{}
+\setlength{\columnsep}{0.5cm}
+
+% \printanswers
+\begin{document}
+
+% \thispagestyle{empty}
+Fullt nafn: \vspace*{1mm} \hrule
+\vspace*{0.5cm}
+
+\begin{center}
+\begin{minipage}{.8\textwidth}
+Á þessu prófi eru \numquestions\ spurningar sem samtals gefa \numpoints\ stig.
+Ekki er dregið frá fyrir röng svör.
+
+Skrifið svör á þessar síður, ekki nota prófbók sé hún gefin.
+
+Leyfileg hjálpargögn eru reiknivél og ein A4 blaðsíða af glósum.
+\end{minipage}
+\end{center}
+
+\vspace{1cm}
+
+\begin{questions}
+
+\question Krossaspurningar. Merkið vandlega við réttan möguleika.
+
+\begin{parts}
+\part[3] Gefin er skipunin
+\begin{minted}{matlab}
+>> x = 1;
+\end{minted}
+í Matlab-skipanaglugganum. Af hvaða tagi verður breytan \texttt{x}?
+
+\begin{oneparcheckboxes}
+\choice \texttt{int32}
+\CorrectChoice \texttt{double}
+\choice \texttt{logical}
+\choice \texttt{char}
+\choice \texttt{single}
+\end{oneparcheckboxes}
+
+\part[3] Gefin er skipunin
+\begin{minted}{matlab}
+>> y = 1/2*2;
+\end{minted}
+í Matlab-skipanaglugganum. Hvert verður gildi breytunnar \texttt{y}?
+
+\begin{oneparcheckboxes}
+\choice 0.25
+\choice 0.5
+\CorrectChoice 1
+\choice 2
+\choice strengurinn \texttt{'1/2*2'} 
+\end{oneparcheckboxes}
+
+\part[3] Gefin er skipunin
+\begin{minted}{matlab}
+>> z = [1,2]*[1,2;3,4]
+\end{minted}
+í Matlab-skipanaglugganum. Hverjar verða víddir breytunnar \texttt{z}?
+
+\begin{oneparcheckboxes}
+\CorrectChoice $1 \times 2$
+\choice $1 \times 4$
+\choice $2 \times 2$
+\choice $4 \times 4$
+\choice \texttt{z} fær ekki gildi því skipunin veldur villu
+\end{oneparcheckboxes}
+
+\part[3] Gefin er skipunin
+\begin{minted}{matlab}
+>> c = {1:3:7, {1:2:7}}
+\end{minted}
+í Matlab-skipanaglugganum. Hver eftirfarandi skipana gæfi gildið 3 væri hún slegin inn í kjölfarið?
+
+\begin{oneparcheckboxes}
+\choice \texttt{c\{1\}\{2\}}
+\choice \texttt{c\{1\}(2)}
+\choice \texttt{c\{2\}\{2\}}
+\CorrectChoice \texttt{c\{2\}(2)}
+\choice \texttt{c(2)\{2\}}
+\end{oneparcheckboxes}
+
+\part[3] Gefin er skipunin
+\begin{minted}{matlab}
+>> l = ~mod(1:3,2) == 0 & [-1 -1 0]
+\end{minted}
+í Matlab-skipanaglugganum. Hvert verður gildi \texttt{l}?
+
+\begin{oneparcheckboxes}
+\choice \verb|[]| (tómi vigurinn)
+\CorrectChoice \verb|[1 0 0]|
+\choice \verb|[1 0 1]|
+\choice \verb|[0 0 1]|
+\choice \verb|[0 0 0]|
+\end{oneparcheckboxes}
+
+
+% \part[3] Ef vigrarnir $x$ og $y$ innihalda hnit 10 punkta, hvaða skipun gefur jöfnu bestu 2. stigs margliðu sem nálgar punktana?
+% \begin{oneparcheckboxes}
+% \choice \texttt{polyval(x,y,2)}
+% \choice \texttt{polyfit(x,y,'parabola')}
+% \choice \texttt{interp2(x,y,2)}
+% \CorrectChoice \texttt{polyfit(x,y,2)}
+% \choice \texttt{interp1(x,y,2)}
+% \end{oneparcheckboxes}
+
+\vspace*{1.5cm}
+\begin{center}
+\gradetable[h][questions]
+\end{center}
+\newpage
+
+\part[3] Gefin er skipunin
+\begin{minted}{matlab}
+>> s = setxor([3 4 5], intersect(1:2:5, 3:5))
+\end{minted}
+í Matlab-skipanaglugganum. Hvert verður gildi \texttt{s}?
+
+\begin{oneparcheckboxes}
+\choice \verb|[]| (tómi vigurinn)
+\choice \verb|[3 5 6]|
+\CorrectChoice \verb|[4]|
+\choice \verb|[5]|
+\choice \verb|[3 6]|
+\end{oneparcheckboxes}
+
+\begin{multicols}{2}
+\part[3] Hvað skrifar Matlab-forritsbúturinn hér til hliðar út?
+
+\begin{checkboxes}
+\choice \texttt{   100     50}
+\choice \texttt{   64     6}
+\CorrectChoice \texttt{   128     7}
+\choice \texttt{   99     50}
+\choice Hann skrifar aldrei neitt út, lykkjan er óendanleg
+\end{checkboxes}
+\begin{minipage}{\linewidth}
+\begin{minted}[frame=lines]{matlab}
+n = 100;
+i = 1;
+j = 0;
+
+while i < n
+    i = i*2;
+    j = j + 1;
+end
+
+disp([i j])
+\end{minted}
+\end{minipage}
+\end{multicols}
+
+\part[3] Í Matlab er hægt að láta fall taka annað fall sem inntaksbreytu með því að nota
+
+\begin{checkboxes}
+\choice Hreiðrað fall (e. \emph{nested function})
+\choice Endurkvæmt fall (e. \emph{recursive function})
+\choice Veldisvísisfall (e. \emph{exponential function})
+\choice Vigurfall (e. \emph{vector function})
+\CorrectChoice Fallshandfang (e. \emph{function handle})
+\end{checkboxes}
+\end{parts}
+
+\newpage
+
+\question[10] Pýþagórísk þrennd samanstendur af þremur heiltölum $x,y$ og $z$ sem hafa eiginleikann $x^2  + y^2 = z^2$. Þannig mynda t.d. $x = 3, y = 4$ pýþagóríska þrennd með $z = 5$. Hins vegar myndar $x = 2$ og $y = 3$ ekki pýþagóríska þrennd, því $\sqrt{2^2 + 3^2}$ er ekki heiltala.
+
+Skrifið Matlab-skipanir (skipanaskrá) sem finna og skrifa út allar Pýþagórískar þrenndir með $x$ og $y$ á bilinu 2 til 20.
+
+Dæmi um hluta af keyrslu skráarinnar:
+\begin{minted}{matlab}
+>> pyth
+     3     4     5
+     4     3     5
+     5    12    13
+     ...
+    20    15    25
+\end{minted}
+
+\newpage
+
+\question
+\begin{parts}
+\part[5]
+Gefin er skráin \texttt{gogn.txt}, sem er á sniði sem sjá má hér að neðan. Fjórir dálkar eru í skránni, aðskildir með bilum. Fyrst kemur dálkur af bókstöfum, svo dálkur af tölum, svo annar bókstafadálkur og að lokum talnadálkur aftur.
+
+Skrifið Matlab-skipanir (skipanaskrá) sem sem les gögnin úr skránni og setur tölurnar í fyrri talnadálkinum í vigurinn $x$ og tölurnar í seinni talnadálkinum í vigurinn $y$.
+
+\begin{verbatim}
+x 0.0 y 3.01
+x 0.1 y 3.24
+x 0.25 y 4.2
+x 0.5 y 5.1
+x 0.71 y 7.3
+x 0.9 y 7.7
+x 1.12 y 8.91
+x 1.2 y 11.4
+ ...   ...
+\end{verbatim}
+
+\newpage
+
+\part[6] Gerum ráð fyrir að við höfum tvo jafn langa fleytitalnavirgra $x$ og $y$, líka þeim sem hægt væri að fá með skipununum úr (a)-lið. 
+
+Skrifið Matlab-skipanir (skipanaskrá) sem skrifa töflu sem inniheldur vigrana í skrána \texttt{tafla.txt} með sniði sem sjá má hér að neðan.
+
+Taflan er alls 12 stafbila breið. Allar tölurnar eru skrifaðar með 2 aukastöfum. Ekki þarf að gera ráð fyrir að tölurnar verði ``lengri'' en þær sem sýndar eru á mynd. Einnig á að skrifa töfluhausinn í skrána (línuna og táknin \texttt{x} og \texttt{y}).
+
+\begin{verbatim}
+  x     y  
+------------
+ 0.00  3.01
+ 0.10  3.24
+ 0.25  4.20
+ 0.50  5.10
+ 0.71  7.30
+ 0.90  7.70
+ 1.12  8.91
+ 1.20 11.40
+ ...   ...
+\end{verbatim}
+\newpage
+
+\part[5]
+Gerum ráð fyrir að við höfum tvo jafn langa fleytitalnavirgra $x$ og $y$, líka þeim sem hægt væri að fá með skipununum úr (a)-lið. Skrifið Matlab-skipanir (skipanaskrá) sem teikna þessi gögn upp á svipaðan hátt og smá má á mynd hér að neðan, ásamt þeim fleygboga (2. stigs margliðu) sem nálgar þau best.
+
+Svartir hringir eru í gagnapunktum en boginn er blár óbrotinn ferill.
+
+%\includegraphics[width=0.5\linewidth]{Pics/imaginary-data-plot}
+
+\newpage
+\begin{solution}
+\begin{minted}[frame=lines] {matlab}
+fid = fopen('gogn3.txt');
+data = textscan(fid, '%s %f %s %f');
+x = data{2};
+y = data{4};
+fclose(fid);
+
+fid2 = fopen('table.txt', 'w');
+fprintf(fid2, '  x     y  \n');
+fprintf(fid2, '-------------\n');
+for i = 1:length(x)
+    fprintf(fid2, '%5.2f%6.2f\n', x(i), y(i));
+end
+fclose(fid2);
+
+clf
+p2 = polyfit(x,y,2);
+xi = linspace(min(x), max(x));
+plot(x,y,'ok', xi, polyval(p2, xi),'b-')
+\end{minted}
+\end{solution}
+\end{parts}
+     
+\question[10] Spegilstrengur (e. \emph{palindrome}) er strengur sem er eins hvort sem hann er lesinn afturábak eða áfram.
+
+Skrifið endurkvæma Matlab-fallið \texttt{isPalindrome} sem tekur inn einn streng og skilar rökgildinu 1 (satt) ef strengurinn er spegilstrengur, annars rökgildinu 0 (ósatt). 
+
+Fallið skal vinna með því að kalla á sjálft sig. Að hámarki helmingur stiga fæst fyrir lausn sem gerir það ekki.
+
+Dæmi um mögulegar keyrslur fallsins:
+
+\begin{minted}{matlab}
+>> isPalindrome('ratatat')
+ans =
+   0
+>> isPalindrome('abba')
+ans =
+   1
+\end{minted}
+
+\begin{solution}
+ 
+\begin{minted}[frame=lines]{matlab}
+function p = isPalindrome(s)
+p = length(s) <= 1;
+if ~p
+    p = s(1) == s(end) && isPalindrome(s(2:end-1));
+end
+end
+\end{minted}
+
+\end{solution}
+
+\newpage
+
+\question[10] Rómverjar skrifuðu tölur með því að nota stafi úr stafrófi sínu. Bókstöfum var úthlutað gildi, m.a. fékk stafurinn \texttt{I} gildið 1, stafurinn \texttt{V} gildið 5 og stafurinn \texttt{X} gildið 10.
+
+Til að tákna aðrar tölur en þær sem samsvara skilgreindum bókstaf þurfti að nota marga bókstafi. Þegar stafir voru skrifaðir í lækkandi röð (stafur með hærra gildi á undan staf með lægra gildi) voru gildi þeirra lögð saman. En þegar lægri bókstafur kom á undan hærri var sá lægri dreginn frá.
+
+Skrifið Matlab-fallið \texttt{decodeRoman} sem tekur inn streng sem táknar rómverska tölu og skilar henni á nútímasniði. Fallið þarf að ráða við stafina \texttt{I}, \texttt{V} og \texttt{X}.
+
+Dæmi um mögulegar keyrslur fallsins:
+\begin{minted}{matlab}
+>> decodeRoman('VII')
+ans =
+     7
+>> decodeRoman('XX')
+ans =
+    20
+>> decodeRoman('XIV')
+ans =
+    14
+\end{minted}
+
+\begin{solution}
+\begin{minted}{matlab}
+function arabic = decodeRoman(roman)
+letters = struct('I',1,'V',5,'X',10, 'L', 50, 'C', 100);
+arabic = 0;
+for i = 1:length(roman)-1
+    if letters.(roman(i)) >= letters.(roman(i+1))
+        arabic = arabic + letters.(roman(i));
+    else
+        arabic = arabic - letters.(roman(i));
+    end
+end
+arabic = arabic + letters.(roman(end));
+end
+\end{minted}
+
+\end{solution}
+
+
+\newpage
+\question 
+\begin{parts}
+\part[5] Skrifið nafnlaust fall (e. \emph{anonymous function}) sem samsvarar eftirfarandi: \[f(x,y) = \frac{\cos^2(x)}{\sqrt{|y|}}+y\] Fallið skal geta tekið við vigurinntökum.
+
+\vspace*{5cm}
+
+\part[5] Skrifið Matlab-skipanir sem sýna yfirborðsmynd (e. \emph{surface plot}) af fallinu í fyrri lið frá -10 upp í 10 á $x$-ásnum og -2 upp í 2 á $y$-ásnum með \texttt{winter} litavörpuninni. 
+
+Gera má ráð fyrir að fallið $f$ hafi verið rétt skrifað í fyrri liðnum.
+\end{parts}
+
+\begin{solution}
+\begin{minted}{matlab}
+f = @(x,y) cos(x).^2./sqrt(y);
+[X,Y] = meshgrid(linspace(-10,10),linspace(-2,2));
+surf(X,Y,f(X,Y))
+colormap('winter')
+\end{minted}
+
+\end{solution}
+
+\newpage
+
+\question[10] Skrifið Matlab-klasann \texttt{Drink} sem táknar drykkjarvörur. Klasinn skal hafa eiginleikana \texttt{name}, \texttt{price} og \texttt{volume}. Hann skal hafa smið (e. \emph{constructor}) við hæfi og eina aðferð til viðbótar sem heitir \texttt{ppl} og skilar lítraverði drykksins (sem myndi þá vera $\frac{price}{volume}$).
+
+Dæmi um mögulega notkun klasans:
+
+\begin{minted}{matlab}
+>> pm = Drink('Pepsi Max', 199, 2); % Drykkjarvaran "tveggja lítra Pepsi Max"
+>> ppl(pm)
+ans =
+   99.5000
+\end{minted}
+
+\begin{solution}
+\begin{minted}{matlab}
+classdef Drink
+    properties
+        name
+        price
+        volume
+    end
+    
+    methods
+        function obj = Drink(n, p, v)
+            obj.name = n;
+            obj.price = p;
+            obj.volume = v;
+        end
+        
+        function p = ppl(obj)
+            p = obj.price/obj.volume;
+        end
+    end
+end
+\end{minted}
+
+\end{solution}
+
+
+\newpage
+
+\question[10] Leikurinn mylla (e. \emph{tic tac toe}) er flestum kunnuglegur. Spilarar skiptast á að fylla út í $3 \times 3$ rúðustrikað spilaborð með táknunum \texttt{x} og \texttt{o} þar til annar spilarinn hefur náð að fylla heila röð, heilan dálk eða heila hornalínu með tákni sínu, eða þar til ljóst er að hvorugur spilarinn nái markmiðinu. %Spilanir á stærri spilaborðum eru erfiðari og þar með áhugaverðari.
+
+Skrifið Matlab-fallið \texttt{playTictactoe} sem virkar sem (afar léleg) gervigreind fyrir myllu. Eitt kall á fallið samsvarar spilun á einni umferð í myllu.
+
+Fallið skal taka inn ferningslaga strengjafylki sem táknar mylluborð. Fylkið skal tákna reiti sem spilari \emph{x} hefur fyllt út í með tákninu \texttt{x}, reiti sem spilari \emph{o} hefur fyllt út í með tákninu \texttt{o} og alla óútfyllta reiti með biltákni. Fallið skal svo skila nýju strengjafylki sem táknar mylluborð sem er eins og inntaksspilaborðið, nema hvað einn óútfylltur reitur valinn af handahófi hefur verið fylltur út. Sé fjöldi \texttt{x} í inntaksspilaborðinu slétt tala á viðbótartáknið að vera \texttt{x}, annars skal það vera \texttt{o}.
+
+Gera má ráð fyrir að notandi fallsins reyni ekki að fylla út fullútfyllt spilaborð eða spilaborð þar sem þegar hefur komið upp vinningsstaða.
+
+Dæmi um mögulega keyrslu fallsins:
+\begin{minted}{matlab}
+>> playTicTacToe(['xo ';' x ';' o '])
+ans =
+xo 
+ xx
+ o 
+>> playTicTacToe(ans)
+ans =
+xo 
+ xx
+ oo
+>> playTicTacToe(ans)
+ans =
+xo 
+ xx
+ooo
+\end{minted}
+
+\begin{solution}
+\begin{minted}{matlab}
+function board = playTicTacToe(board)
+numX = sum(sum(board=='x'));
+if mod(numX, 2) == 0
+    newSymbol = 'x';
+else
+    newSymbol = 'o';
+end
+emptySpaces = find(board==' '); % We assume there is an empty space
+nextSpace = emptySpaces(randi(length(emptySpaces)));
+board(nextSpace) = newSymbol;
+end
+\end{minted}
+
+\end{solution}
+
+
+\newpage Viðbótarblaðsíða
+
+\end{questions}
+\end{document}
