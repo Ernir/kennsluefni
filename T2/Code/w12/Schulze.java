@@ -26,7 +26,8 @@ public class Schulze {
                 if (i != j) {
                     for (int k = 0; k < n; k++) {
                         if (i != k && j != k) {
-                            p[j][k] = Math.max(p[j][k], Math.min(p[j][i], p[i][k])); // "veikasti hlekkurinn" uppfærður
+                            // "veikasti hlekkurinn" uppfærður
+                            p[j][k] = Math.max(p[j][k], Math.min(p[j][i], p[i][k])); 
                         }
                     }
                 }
