@@ -99,29 +99,6 @@ Fullt nafn: \vspace*{1mm} \hrule
 	\question[4] Spurningar um grunnatriði C++. Merkið við einn réttan möguleika eða gefið stutt svör. \eng{Questions about C++ fundamentals. Select one choice or give short answers.}
 
 	\begin{parts}
-		% \part Gefið er C++ forrit. Hvað skrifar það út? \eng{A C++ program is given. What is its output?}
-		% 
-		% \begin{minted}[frame=lines]{cpp}
-		% #include <iostream>
-		% int main() {
-		%     int v[] = {3, 2, 1};
-		%     int i = 3;
-		%     while (v[i] == 0) {
-		%         i++;
-		%     }
-		%     std::cout << v[i] << std::endl;
-		%     return 0;
-		% }
-		% 
-		% \end{minted}
-		% 
-		% \begin{checkboxes}
-		%  \choice 0
-		%  \choice 1
-		%  \choice Forritið fer í endalausa lykkju \eng{The program enters an infinite loop}
-		%  \choice Forritið þýðist ekki \eng{The program does not compile}
-		%  \choice Virkni forritsins er óskilgreind \eng{The program's behaviour is undefined}
-		% \end{checkboxes}
 
 		\part Gefinn er C++ forritsbútur. Hvert er gildi breytunnar \texttt{x} eftir að hann hefur verið keyrður?
 
@@ -143,7 +120,6 @@ int x = v[3];
 
 		\eng{Which of the following C++ statements defines \texttt{b} as a pointer to the memory address of the integer variable \texttt{i}?}
 
-		% \begin{oneparcheckboxes}
 		\begin{checkboxes}
 			\choice \texttt{\$int b = \&i;}
 			\choice \texttt{int* b = \&i;}
@@ -151,7 +127,6 @@ int x = v[3];
 			\choice \texttt{int* b = *i;}
 			\choice \texttt{int\& b = \&i;}
 		\end{checkboxes}
-		% \end{oneparcheckboxes}
 
 		\part Þegar \texttt{new} er notað við skilgreiningu á C++ breytu, í hvaða minnissvæði er breytan geymd? Gerum ráð fyrir kunnuglegum C++ útfærslum.
 
@@ -418,24 +393,6 @@ public:
 
 	\newpage
 
-	% \question[4] Gefinn er hluti af útfærslu á hlaða í C++. Klárið að útfæra \texttt{pop()} aðferðina í samræmi við lýsingu í kóðanum.
-	% \cppfile{Code/w13/Node.cpp}
-	% \cppfile{Code/w13/Stack.cpp}
-
-	%\question[4] Gefinn er hluti af útfærslu á biðröð í C++. Útfærið þær aðferðir sem vantar.
-
-	% \question[4] Skrifið Java-aðferðina \texttt{mergeBags} sem tekur inn tvær skjóður og skilar nýrri skjóðu sem inniheldur gögn inntaksskjóðanna tveggja.
-
-	% Gerið ráð fyrir skilum skilgreindum í skilum fyrir \texttt{Bag}. Inntaksskjóðurnar skulu ekki breytast við keyrslu aðferðarinnar.
-
-	% \javafile{Code/w13/MergeBags.java}
-
-	% \question[4] Gefinn er hluti af útfærslu á helmingunarleit í Java. Klárið útfærsluna í ssamræmi við lýsingu.
-
-	% \question[4] Gefinn er hluti af útfærslu á helmingunarleit í C++. Klárið útfærsluna í samræmi við lýsingu.
-
-	% \question[4] Gefinn er hluti af útfærslu á innsetningarröðun í Java. Klárið útfærsluna.
-
 	\question[4] Gefinn er hluti af útfærslu á quicksort reikniritinu í C++ fyrir \texttt{std::vector} heiltalna. Klárið fallið sem framkvæmir quicksort á skilgreindan hlutvigur. Gera má ráð fyrir að \texttt{partition} fallið sé til staðar og að það virki í samræmi við lýsingu, ekki þarf að útfæra það.
 
 	\eng{A partial quicksort implementation for \texttt{std::vector}s of integers in C++ is given. Finish the quicksort function that operates on a defined subvector. The \texttt{partition} function can be assumed to exist and to work according to its description, it does not need to be implemented.}
@@ -601,8 +558,6 @@ public class MaxPQ<Key> {
 }
 \end{minted}
 
-	% \question[4] Gefinn er hluti af útfærslu á nafnatöflu með tvíleitartré í Java. Klárið að útfæra \texttt{get} aðferðirnar í samræmi við lýsingu í kóðanum. Aðferðirnar þurfa ekki að vera óháðar hvor annarri.
-
 	\question[4] Gefinn er hluti af útfærslu á helmingunarleit í Java. Hún vinnur á fylki af aðskildum lyklum sem raðað er í hækkandi röð. Klárið \texttt{rank} aðferðina í samræmi við kóðalýsinguna. Athugið að hún skal virka þó að stakið sem leitað er að sé ekki til staðar.
 
 	\eng{A partial implementation of binary search in Java is given. It applies to an array of distinct keys in ascending order. Finish the \texttt{rank} method according to the code description. Note that the method should work even if the key being searched for is not present.}
@@ -692,13 +647,6 @@ private static void pathThrough(EdgeWeightedDigraph g, int start, int through, i
 
 }
 \end{minted}
-
-
-	%Gerið ráð fyrir aðferðum skilgreindum í skilum fyrir \texttt{DiGraph} og \texttt{SP}.
-
-	%\question[4] Gefin er skrá sem inniheldur lengdargráður og breiddargráður. (E-ð e-ð evklíðskt stöff)
-
-	% \question[4] Gefinn er hluti af útfærslu á röðunarreikniriti sem notar talningu yfir stafróf til að framkvæma röðun. Klárið útfærsluna.
 
 	\newpage
 	\question[4] Skrifið Java-aðferðina \texttt{allSubstrings} sem tekur inn strenginn \texttt{text} og heiltölu \texttt{k}, þar sem \texttt{k} er minni en lengd \texttt{text}.
