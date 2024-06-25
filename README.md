@@ -1,8 +1,6 @@
-Hér má finna ýmist efni sem Eiríkur Ernir Þorsteinsson hefur notað við kennslu.
+Hér má finna ýmist efni sem Eiríkur Ernir Þorsteinsson notaði við kennslu á tímabilinu 2013-2018.
 
-Þegar villur finnast í efninu má tilkynna það í gegnum issue-kerfið á þessari síðu.
-
-Þriðji aðili má nota efnið, sjá LEYFI.md.
+Kennsluferlinum er núna lokið, en efnið má nota, sjá LEYFI.md.
 
 # Þýðing
 
